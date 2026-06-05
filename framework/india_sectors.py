@@ -55,9 +55,12 @@ def load_sector_constituents(source: str = "seed", csv_path: str | None = None) 
     """Return the sector→constituents map. THIS is the real input.
 
     source:
-      "seed"        — hardcoded fallback (offline / guardrail).
-      "niftystocks" — live NSE sectoral index members via the niftystocks pkg.
-      "nse"         — NSE official index constituents (nsepython).
+      "seed"        — hardcoded fallback (offline / guardrail). CURRENTLY PRIMARY:
+                      see audit note below — no reliable live constituent feed yet.
+      "niftystocks" — DO NOT TRUST: audited 2026-06, returns STALE pre-2022 members
+                      (e.g. LTI/MINDTREE pre-merger). Kept only as a code path.
+      "nse"         — NSE official index constituents (nsepython). nsepython has no
+                      constituents fn; proper source is NSE/niftyindices CSV (TODO).
       "csv"         — user-supplied csv_path with columns: sector,symbol.
 
     Any fetch failure falls back to SEED_SECTORS so the pipeline never hard-stops.

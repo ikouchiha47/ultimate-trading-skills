@@ -79,8 +79,11 @@ class YFinanceSource:
         sym = symbol if symbol.endswith((".NS", ".BO")) else symbol + suffix
         iv = {"D": "1d"}.get(interval, interval)
         df = yf.download(sym, start=start, end=end, interval=iv, progress=False)
-        df.columns = [c.lower() for c in df.columns]
-        return df[[c for c in _OHLCV_COLS if c in df.columns]]
+        # yfinance returns a 2-level column MultiIndex (field, ticker) — flatten to field.
+        if isinstance(df.columns, pd.MultiIndex):
+            df.columns = df.columns.get_level_values(0)
+        df.columns = [str(c).lower() for c in df.columns]
+        return df[[c for c in _OHLCV_COLS if c in df.columns]].sort_index()
 
 
 @register_data_source
