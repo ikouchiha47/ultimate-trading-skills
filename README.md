@@ -20,13 +20,14 @@ Built by vendoring four sources into four layers. Provenance and India-port stat
 ### The backbone (this is the real product, not any single strategy)
 
 ```
-framework/         # the contracts everything plugs into
-  interfaces.py    #   IDataSource, IStrategy, Signal, StrategyMeta
-  registry.py      #   register/enumerate providers
-  harness.py       #   BacktestHarness — ONE evaluator: walk-forward + costs + null
-data/sources.py    # your data table as IDataSource adapters (jugaad/openalgo/screener/macro/...)
-strategies/        # the zoo — each a StrategyProvider implementing IStrategy
-  mean_reversion_bnf.py   # first reference provider (Kotegawa/BNF)
+framework/                   # the contracts everything plugs into
+├── interfaces.py            #   IDataSource, IStrategy, Signal, StrategyMeta
+├── registry.py              #   register/enumerate providers
+└── harness.py               #   BacktestHarness — ONE evaluator: walk-forward + costs + null
+data/
+└── sources.py               # your data table as IDataSource adapters (jugaad/openalgo/screener/macro/...)
+strategies/                  # the zoo — each a StrategyProvider implementing IStrategy
+└── mean_reversion_bnf.py    # first reference provider (Kotegawa/BNF)
 ```
 
 Stance: **no strategy is privileged or dropped a priori.** Each is reproduced from a
