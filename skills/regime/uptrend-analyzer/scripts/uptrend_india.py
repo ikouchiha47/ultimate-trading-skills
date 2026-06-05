@@ -92,8 +92,9 @@ def c_historical(avg_ratio: float):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
-    ap.add_argument("--source", default="seed", choices=["seed", "niftystocks", "nse"],
-                    help="sector→constituents source; seed=hardcoded fallback")
+    ap.add_argument("--source", default="seed", choices=["seed", "nse_csv"],
+                    help="sector→constituents source; seed=hardcoded fallback, "
+                         "nse_csv=manually-downloaded NSE CSVs in data/constituents/")
     args = ap.parse_args()
     print(f"Computing India breadth-health (source={args.source})...", file=sys.stderr)
     sectors = compute_sector_data(source=args.source)

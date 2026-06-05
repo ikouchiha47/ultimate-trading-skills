@@ -2,8 +2,7 @@
 
 Systematic trading research for **Indian markets only** (NSE/BSE). Serious project — be
 meticulous, no placeholder numbers posing as real, every strategy competes via backtest
-against a null. Architecture + thesis live in `README.md`; theory sources in
-`CONCEPTS_REFERENCES.md`.
+against a null. Architecture + thesis live in `README.md`; theory sources in `manuals/`.
 
 ## Environment (uv, isolated — do NOT touch system Python)
 
@@ -47,12 +46,13 @@ uv pip install --reinstall pillow
 | `mftool` | mutual-fund scheme NAV + category filter (the "schemes" question) | ✅ works (after Pillow fix) |
 | `yfinance` | fallback OHLCV | ✅ works; multi-index cols → flatten in adapter |
 | `nsepython` `nse_eq` | live single-stock quote | ❌ blocked by NSE anti-bot — not needed |
-| `niftystocks` | live sector constituents | ❌ STALE (pre-2022, e.g. LTI/MINDTREE) — do NOT use |
+| `niftystocks` | live sector constituents | ❌ STALE (pre-2022, e.g. LTI/MINDTREE) — REMOVED |
 
-**Open gap:** no reliable *live* sector-constituent feed (niftystocks is frozen; nsepython has
-no constituents fn). Proper source = NSE/niftyindices index-constituent CSVs. Until wired,
-`framework/india_sectors.SEED_SECTORS` stays the primary map (it's a loaded input, fallback-only
-by design — see `load_sector_constituents`).
+**Sector constituents:** no reliable programmatic feed exists (niftystocks frozen; nsepython has
+no constituents fn). Resolved by manual download: drop NSE/niftyindices constituent CSVs into
+`data/constituents/<Sector>.csv` and use `source="nse_csv"` — see `data/constituents/README.md`.
+`SEED_SECTORS` is the per-sector fallback. Commit the CSVs for reproducible (survivorship-aware)
+backtests.
 
 ## Conventions
 

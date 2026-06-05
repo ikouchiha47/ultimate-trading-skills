@@ -34,11 +34,11 @@ Stance: **no strategy is privileged or dropped a priori.** Each is reproduced fr
 paper/recorded trader, registered as a provider, and ranked by the harness against a
 null on Indian data. "First know what works."
 
-`CONCEPTS_REFERENCES.md` — theory + source map (mean-reversion, Grossman-Stiglitz, LPPL/HLPPL, VCP, gradient descent). Crash-timing (LPPL/HLPPL) is **just another `CrashTiming` provider on the backlog** — competes via backtest like everything else, not a dependency, not on the critical path. `DEPLOYMENT.md` — data tiers + OpenAlgo Docker.
+`manuals/` — theory + source reference, one file per concept (why-edge-exists, price–volume, mean-reversion, regime/HMM, VCP, factor models, backtesting discipline, risk). Crash-timing (LPPL/HLPPL) is **just another `CrashTiming` provider on the backlog** — competes via backtest like everything else, not a dependency, not on the critical path. `DEPLOYMENT.md` — data tiers + OpenAlgo Docker.
 
 ## The core thesis (why this stack exists)
 
-A sector gets force-sold (rotation / FII risk-off, not earnings). Fundamentally-strong names inside it get sold **indiscriminately** and revert. The edge = telling **flow-driven** dislocation (fadeable) from **information-driven** (not). Sector context + quality filter is the separator. See `CONCEPTS_REFERENCES.md`.
+A sector gets force-sold (rotation / FII risk-off, not earnings). Fundamentally-strong names inside it get sold **indiscriminately** and revert. The edge = telling **flow-driven** dislocation (fadeable) from **information-driven** (not). Sector context + quality filter is the separator. See `manuals/`.
 
 ## Run order (daily)
 

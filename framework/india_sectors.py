@@ -35,7 +35,9 @@ SEED_SECTORS: dict[str, list[str]] = {
     "Infra": ["LT", "ADANIPORTS", "ULTRACEMCO", "GRASIM", "SIEMENS", "ABB"],
 }
 
-# NSE index name per sector — used to FETCH live constituents (the real input).
+from pathlib import Path
+
+# NSE index name per sector — the index whose official constituent CSV to download.
 SECTOR_INDEX = {
     "PSU Bank": "NIFTY PSU BANK", "Private Bank": "NIFTY PRIVATE BANK",
     "Financial Services": "NIFTY FINANCIAL SERVICES", "Auto": "NIFTY AUTO",
@@ -44,6 +46,11 @@ SECTOR_INDEX = {
     "Infra": "NIFTY INFRASTRUCTURE",
 }
 
+# Directory of manually-downloaded NSE/niftyindices constituent CSVs (the live input).
+# One file per sector, named "<Sector>.csv" (the SEED_SECTORS keys), in NSE's native
+# format (a "Symbol" column). See data/constituents/README.md for how to fetch them.
+CONSTITUENTS_DIR = Path(__file__).resolve().parents[1] / "data" / "constituents"
+
 # Cyclical/defensive classification — domain judgment, a legit steering guardrail.
 # Overridable by callers, but stable enough to keep as default.
 CYCLICAL_SECTORS = ["PSU Bank", "Private Bank", "Financial Services", "Auto", "Realty", "Infra"]
@@ -51,22 +58,38 @@ DEFENSIVE_SECTORS = ["IT", "Pharma", "FMCG"]   # IT defensive in India (USD expo
 COMMODITY_SECTORS = ["Metal", "Energy"]
 
 
+def _read_nse_csv_symbols(path: Path) -> list[str]:
+    """Extract symbols from one NSE/niftyindices constituent CSV (has a 'Symbol' column)."""
+    import csv as _csv
+    with path.open(newline="") as fh:
+        rows = list(_csv.DictReader(fh))
+    if not rows:
+        return []
+    # NSE header is "Symbol"; be lenient about case/whitespace.
+    key = next((k for k in rows[0] if k and k.strip().lower() == "symbol"), None)
+    if key is None:
+        return []
+    return [r[key].strip() for r in rows if r.get(key) and r[key].strip()]
+
+
 def load_sector_constituents(source: str = "seed", csv_path: str | None = None) -> dict[str, list[str]]:
     """Return the sector→constituents map. THIS is the real input.
 
     source:
-      "seed"        — hardcoded fallback (offline / guardrail). CURRENTLY PRIMARY:
-                      see audit note below — no reliable live constituent feed yet.
-      "niftystocks" — DO NOT TRUST: audited 2026-06, returns STALE pre-2022 members
-                      (e.g. LTI/MINDTREE pre-merger). Kept only as a code path.
-      "nse"         — NSE official index constituents (nsepython). nsepython has no
-                      constituents fn; proper source is NSE/niftyindices CSV (TODO).
-      "csv"         — user-supplied csv_path with columns: sector,symbol.
+      "seed"     — hardcoded fallback (offline / guardrail). CURRENTLY PRIMARY until
+                   constituent CSVs are dropped in data/constituents/ (no reliable
+                   programmatic live feed: niftystocks is stale, nsepython has none).
+      "nse_csv"  — read manually-downloaded NSE constituent CSVs from CONSTITUENTS_DIR,
+                   one file per sector named "<Sector>.csv". This is the recommended
+                   live path — see data/constituents/README.md. Any sector without a
+                   file falls back to its SEED entry.
+      "csv"      — single user file at csv_path with columns: sector,symbol.
 
-    Any fetch failure falls back to SEED_SECTORS so the pipeline never hard-stops.
+    Anything missing falls back to SEED_SECTORS so the pipeline never hard-stops.
     """
     if source == "seed":
         return dict(SEED_SECTORS)
+
     if source == "csv" and csv_path:
         import csv as _csv
         out: dict[str, list[str]] = {}
@@ -74,25 +97,20 @@ def load_sector_constituents(source: str = "seed", csv_path: str | None = None) 
             for row in _csv.DictReader(fh):
                 out.setdefault(row["sector"], []).append(row["symbol"])
         return out or dict(SEED_SECTORS)
-    if source == "niftystocks":
-        try:
-            from niftystocks import ns
-            getter = {  # niftystocks exposes per-index getters
-                "NIFTY IT": ns.get_nifty_it, "NIFTY BANK": ns.get_nifty_bank,
-                "NIFTY AUTO": ns.get_nifty_auto, "NIFTY FMCG": ns.get_nifty_fmcg,
-                "NIFTY PHARMA": ns.get_nifty_pharma, "NIFTY METAL": ns.get_nifty_metal,
-                "NIFTY REALTY": ns.get_nifty_realty, "NIFTY ENERGY": ns.get_nifty_energy,
-            }
-            out = {sec: getter[idx]() for sec, idx in SECTOR_INDEX.items() if idx in getter}
-            return out or dict(SEED_SECTORS)
-        except Exception:  # noqa: BLE001
-            return dict(SEED_SECTORS)
-    # "nse" or unknown → fetch via nsepython, fallback to seed
-    try:
-        from nsepython import nse_get_index_constituents  # type: ignore
-        return {sec: nse_get_index_constituents(idx) for sec, idx in SECTOR_INDEX.items()} or dict(SEED_SECTORS)
-    except Exception:  # noqa: BLE001
-        return dict(SEED_SECTORS)
+
+    if source == "nse_csv":
+        out = dict(SEED_SECTORS)  # start from seed; override per-sector where a file exists
+        if CONSTITUENTS_DIR.is_dir():
+            for sector in SEED_SECTORS:
+                f = CONSTITUENTS_DIR / f"{sector}.csv"
+                if f.exists():
+                    syms = _read_nse_csv_symbols(f)
+                    if syms:
+                        out[sector] = syms
+        return out
+
+    # unknown source → safest default
+    return dict(SEED_SECTORS)
 
 
 # Back-compat alias (do not rely on it as the live map).
