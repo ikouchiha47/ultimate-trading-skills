@@ -8,7 +8,7 @@ Two pluggable abstractions, evaluated empirically:
                    earns its place via the BacktestHarness against a null.
 
 Design stance: "first know what works." A strategy is *registered and tested*,
-not believed. See README and CONCEPTS_REFERENCES.md.
+not believed. See README and manuals/.
 """
 
 from __future__ import annotations
@@ -27,11 +27,20 @@ import pandas as pd
 # ---------------------------------------------------------------------------
 
 class DataKind(str, Enum):
-    OHLCV = "ohlcv"            # price bars
+    OHLCV = "ohlcv"            # price bars (stocks AND indices)
     FUNDAMENTALS = "fundamentals"
     SECTOR_BREADTH = "sector_breadth"
     INSTITUTIONAL_FLOW = "institutional_flow"  # FII/DII
     MACRO = "macro"           # credit growth, G-Sec yields, CPI (RBI/MOSPI/CMIE)
+    FUND_NAV = "fund_nav"     # mutual-fund scheme NAV (AMFI via mftool)
+
+
+# Canonical normalized schema for any OHLCV source. Adapters MUST return these as
+# lowercase columns on an ascending DatetimeIndex.
+OHLCV_COLUMNS = ("open", "high", "low", "close", "volume")
+# Sources MAY append extra columns beyond OHLCV (consumers ignore unknown ones). India
+# stock feeds add delivery data — valuable for flow-vs-information (manuals/02).
+OHLCV_EXTRA_COLUMNS = ("delivery_pct", "deliverable_qty", "vwap", "trades")
 
 
 @runtime_checkable
@@ -45,7 +54,13 @@ class IDataSource(Protocol):
     def history(
         self, symbol: str, start: date, end: date, interval: str = "D", exchange: str = "NSE"
     ) -> pd.DataFrame:
-        """Return OHLCV with a DatetimeIndex and columns [open, high, low, close, volume]."""
+        """Return a price-bar frame on an ascending DatetimeIndex.
+
+        Guarantees lowercase OHLC columns (open, high, low, close); `volume` is present
+        for stocks (NaN/absent for index sources, which have no volume). Sources MAY add
+        extra columns from OHLCV_EXTRA_COLUMNS (e.g. delivery_pct). No look-ahead: the
+        last row is the most recent COMPLETED bar.
+        """
         ...
 
 

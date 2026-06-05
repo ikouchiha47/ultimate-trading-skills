@@ -126,56 +126,103 @@ class SectorData:
     ratio: float                 # fraction of constituents in uptrend (0..1)
     trend: str                   # "up" / "down"
     momentum_20d: float | None   # mean 20-day return of constituents
-    n: int                       # constituents counted
+    n: int                       # constituents counted (>= MIN_BARS of data)
     status: str = ""
 
 
-def _compute_one(symbols: list[str]) -> tuple[float, float, int]:
-    """Return (uptrend_ratio, mean_20d_return, n_counted) for a sector's constituents."""
-    import yfinance as yf
+MIN_BARS = 200  # need 200 bars for a valid 200DMA / trend read
 
+# Type of the injectable per-symbol fetcher: (symbol, start, end) -> normalized OHLCV df.
+HistoryFn = "Callable[[str, date, date], pd.DataFrame]"
+
+
+def _default_history(symbol: str, start: date, end: date):
+    """Default fetcher: normalized yfinance OHLCV (fast enough for breadth scans).
+
+    yfinance is our documented FALLBACK source, used here for breadth because it is
+    fast across ~hundreds of symbols. Pass JugaadData().history as history_fn for the
+    deep-dive (it adds delivery_pct — see manuals/02).
+    """
+    from data.sources import YFinanceSource
+    return YFinanceSource().history(symbol, start, end)
+
+
+def _metrics_from_ohlcv(df) -> dict | None:
+    """Per-stock metrics from one normalized OHLCV frame. None if too few bars."""
+    import numpy as np
+
+    if df is None or df.empty or "close" not in df.columns:
+        return None
+    close = df["close"].astype(float).dropna()
+    n = len(close)
+    if n < MIN_BARS:
+        return None
+    ma50 = close.rolling(50).mean().iloc[-1]
+    ma200 = close.rolling(200).mean().iloc[-1]
+    last = close.iloc[-1]
+    uptrend = bool(last > ma50 and ma50 > ma200)
+    ret_20d = float(last / close.iloc[-21] - 1) if n > 21 else np.nan
+    ret_window = float(last / close.iloc[0] - 1)
+    years = n / 252.0
+    cagr = float((last / close.iloc[0]) ** (1 / years) - 1) if years > 0 else np.nan
+    max_dd = float((close / close.cummax() - 1).min())
+    avg_delivery = (float(df["delivery_pct"].astype(float).mean())
+                    if "delivery_pct" in df.columns else np.nan)
+    return {
+        "n_bars": n, "last": float(last), "ma50": float(ma50), "ma200": float(ma200),
+        "uptrend": uptrend, "ret_20d": ret_20d, "ret_window": ret_window,
+        "cagr": cagr, "max_drawdown": max_dd, "avg_delivery_pct": avg_delivery,
+    }
+
+
+def compute_constituent_metrics(
+    symbols: list[str], history_fn=None, lookback_days: int = 400
+) -> "pd.DataFrame":
+    """Per-stock metric table for a list of symbols (indexed by symbol).
+
+    This is the building block both the breadth read and the sector deep-dive use — it
+    keeps the per-symbol numbers (cagr, drawdown, delivery, 20d return) instead of
+    averaging them away. Symbols that fail to fetch or have < MIN_BARS are dropped.
+    """
+    import pandas as pd
+
+    fetch = history_fn or _default_history
     end = date.today()
-    start = end - timedelta(days=400)
-    up = counted = 0
-    rets: list[float] = []
+    start = end - timedelta(days=lookback_days)
+    rows: dict[str, dict] = {}
     for s in symbols:
-        sym = s if s.endswith(".NS") else s + ".NS"
         try:
-            df = yf.download(sym, start=start, end=end, interval="1d", progress=False)
-            if df.empty or len(df) < 200:
-                continue
-            close = df["Close"].squeeze()
-            ma50 = close.rolling(50).mean().iloc[-1]
-            ma200 = close.rolling(200).mean().iloc[-1]
-            last = close.iloc[-1]
-            counted += 1
-            if last > ma50 and ma50 > ma200:
-                up += 1
-            if len(close) > 20:
-                rets.append(float(close.iloc[-1] / close.iloc[-21] - 1))
+            m = _metrics_from_ohlcv(fetch(s, start, end))
         except Exception:  # noqa: BLE001
-            continue
-    ratio = up / counted if counted else 0.0
-    mom = sum(rets) / len(rets) if rets else None
-    return ratio, mom, counted
+            m = None
+        if m is not None:
+            rows[s] = m
+    df = pd.DataFrame.from_dict(rows, orient="index")
+    df.index.name = "symbol"
+    return df
 
 
 def compute_sector_data(
-    sectors: dict[str, list[str]] | None = None, source: str = "seed"
+    sectors: dict[str, list[str]] | None = None, source: str = "seed", history_fn=None
 ) -> list[SectorData]:
-    """Compute SectorData for every Indian sector. Shared by both skills.
+    """Aggregate SectorData for every Indian sector from the per-stock table.
 
-    sectors : explicit sector→constituents map (highest precedence — pass a
-              fetched/curated map here in a workflow).
-    source  : if sectors is None, load via load_sector_constituents(source).
-              Defaults to "seed" so it runs offline; pass "niftystocks"/"nse"
-              in production to use the live map.
+    sectors    : explicit sector→constituents map (highest precedence).
+    source     : if sectors is None, load via load_sector_constituents(source)
+                 ("seed" offline default, "nse_csv" for the live map).
+    history_fn : optional injected fetcher (e.g. JugaadData().history); default yfinance.
     """
     if sectors is None:
         sectors = load_sector_constituents(source)
     out: list[SectorData] = []
     for sector, syms in sectors.items():
-        ratio, mom, n = _compute_one(syms)
+        m = compute_constituent_metrics(syms, history_fn=history_fn)
+        n = len(m)
+        if n:
+            ratio = float(m["uptrend"].mean())
+            mom = float(m["ret_20d"].mean()) if m["ret_20d"].notna().any() else None
+        else:
+            ratio, mom = 0.0, None
         status = ("overbought" if ratio > OVERBOUGHT_THRESHOLD
                   else "oversold" if ratio < OVERSOLD_THRESHOLD else "neutral")
         out.append(SectorData(sector, round(ratio, 4), "up" if ratio >= 0.5 else "down",
