@@ -19,7 +19,7 @@ Built by vendoring four sources into four layers. Provenance and India-port stat
 
 ### The backbone (this is the real product, not any single strategy)
 
-```
+```sh
 framework/                   # the contracts everything plugs into
 ├── interfaces.py            #   IDataSource, IStrategy, Signal, StrategyMeta
 ├── registry.py              #   register/enumerate providers

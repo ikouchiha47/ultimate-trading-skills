@@ -1,26 +1,13 @@
 #!/usr/bin/env python3
 """India sector rotation analysis — PORT of the US sector-analyst.
 
-The US version fetched a pre-computed sector_summary.csv (TraderMonty's uptrend
-dashboard). No such feed exists for India, so this version COMPUTES the per-sector
-uptrend ratio from constituents of the NSE sectoral indices, then runs the same
-downstream logic: ranking, cyclical/defensive regime score, overbought/oversold,
-and cycle-phase estimation.
-
-Sector→constituent map is taken from the ajeesh repo's sector_mapping.md
-(skills/screeners/india-news-tracker/references/sector_mapping.md).
-
-Cyclical/defensive classification is INDIA-specific:
-  - IT is DEFENSIVE here (USD export earner / INR hedge), unlike the US.
-  - Metal + Energy/Oil&Gas are the commodity bucket.
-
-Data: defaults to yfinance (.NS); swap to jugaad/openalgo via data/sources.py.
-Uptrend ratio = fraction of a sector's constituents in an uptrend
-  (close > 50DMA AND 50DMA > 200DMA).
+The US version fetched a pre-computed sector_summary.csv. No such feed exists for
+India, so the sector/uptrend math lives in framework/india_sectors.py (shared with
+uptrend-analyzer). This script adds the rotation / cyclical-vs-defensive / cycle-phase
+logic on top.
 
 Usage:
-    python3 analyze_sector_india.py            # human-readable
-    python3 analyze_sector_india.py --json
+    python3 analyze_sector_india.py [--json]
 """
 
 from __future__ import annotations
@@ -28,30 +15,17 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from dataclasses import dataclass
-from datetime import date, timedelta
+from datetime import date
+from pathlib import Path
 
-# --- India sector → representative constituents (from ajeesh sector_mapping.md) ---
-INDIAN_SECTORS: dict[str, list[str]] = {
-    "PSU Bank": ["SBIN", "BANKBARODA", "PNB", "CANBK", "UNIONBANK", "INDIANB", "BANKINDIA"],
-    "Private Bank": ["HDFCBANK", "ICICIBANK", "KOTAKBANK", "AXISBANK", "INDUSINDBK", "FEDERALBNK", "IDFCFIRSTB"],
-    "Financial Services": ["BAJFINANCE", "BAJAJFINSV", "HDFCAMC", "SBILIFE", "ICICIGI", "CHOLAFIN"],
-    "Auto": ["M&M", "TATAMOTORS", "MARUTI", "BAJAJ-AUTO", "HEROMOTOCO", "EICHERMOT", "ASHOKLEY", "TVSMOTOR", "BOSCHLTD"],
-    "IT": ["TCS", "INFY", "HCLTECH", "WIPRO", "TECHM", "LTIM", "MPHASIS", "COFORGE", "PERSISTENT"],
-    "Pharma": ["SUNPHARMA", "DRREDDY", "CIPLA", "DIVISLAB", "TORNTPHARM", "LUPIN", "AUROPHARMA", "ALKEM", "BIOCON"],
-    "FMCG": ["HINDUNILVR", "ITC", "NESTLEIND", "BRITANNIA", "GODREJCP", "DABUR", "MARICO", "COLPAL", "TATACONSUM"],
-    "Metal": ["TATASTEEL", "JSWSTEEL", "HINDALCO", "VEDL", "NMDC", "NATIONALUM", "SAIL", "JINDALSTEL"],
-    "Energy": ["RELIANCE", "NTPC", "POWERGRID", "ONGC", "BPCL", "IOC", "GAIL", "TATAPOWER", "COALINDIA"],
-    "Realty": ["DLF", "GODREJPROP", "OBEROIRLTY", "PRESTIGE", "PHOENIXLTD", "LODHA", "BRIGADE", "SOBHA"],
-    "Infra": ["LT", "ADANIPORTS", "ULTRACEMCO", "GRASIM", "SIEMENS", "ABB"],
-}
-
-CYCLICAL_SECTORS = ["PSU Bank", "Private Bank", "Financial Services", "Auto", "Realty", "Infra"]
-DEFENSIVE_SECTORS = ["IT", "Pharma", "FMCG"]            # IT defensive in India
-COMMODITY_SECTORS = ["Metal", "Energy"]
-
-OVERBOUGHT_THRESHOLD = 0.80   # ratio scale 0..1 (fraction of constituents in uptrend)
-OVERSOLD_THRESHOLD = 0.20
+# repo root on path so we can import the shared sector engine
+sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+from framework.india_sectors import (  # noqa: E402
+    CYCLICAL_SECTORS,
+    DEFENSIVE_SECTORS,
+    COMMODITY_SECTORS,
+    compute_sector_data,
+)
 
 # Cycle phases (India): which sectors lead/lag. Mirrors the Bandhan business-cycle table.
 CYCLE_PHASES = {
@@ -62,59 +36,13 @@ CYCLE_PHASES = {
 }
 
 
-@dataclass
-class SectorData:
-    sector: str
-    ratio: float
-    trend: str
-    slope: float | None = None
-    status: str = ""
+def _avg(xs):
+    return sum(xs) / len(xs) if xs else None
 
-
-def _uptrend_ratio(symbols: list[str]) -> tuple[float, int]:
-    """Fraction of constituents with close > 50DMA AND 50DMA > 200DMA."""
-    import yfinance as yf
-    end = date.today()
-    start = end - timedelta(days=400)
-    up = 0
-    counted = 0
-    for s in symbols:
-        sym = s if s.endswith(".NS") else s + ".NS"
-        try:
-            df = yf.download(sym, start=start, end=end, interval="1d", progress=False)
-            if df.empty or len(df) < 200:
-                continue
-            close = df["Close"].squeeze()
-            ma50 = close.rolling(50).mean().iloc[-1]
-            ma200 = close.rolling(200).mean().iloc[-1]
-            last = close.iloc[-1]
-            counted += 1
-            if last > ma50 and ma50 > ma200:
-                up += 1
-        except Exception as exc:  # noqa: BLE001
-            print(f"  warn {sym}: {exc}", file=sys.stderr)
-    return (up / counted if counted else 0.0), counted
-
-
-def build_sector_data() -> list[SectorData]:
-    out: list[SectorData] = []
-    for sector, syms in INDIAN_SECTORS.items():
-        ratio, n = _uptrend_ratio(syms)
-        trend = "up" if ratio >= 0.5 else "down"
-        status = "overbought" if ratio > OVERBOUGHT_THRESHOLD else "oversold" if ratio < OVERSOLD_THRESHOLD else "neutral"
-        print(f"  {sector:20s} ratio={ratio:.2f} ({n} stks) {status}", file=sys.stderr)
-        out.append(SectorData(sector, round(ratio, 4), trend, None, status))
-    return out
-
-
-# --- downstream logic preserved from the US original (ranking / regime / phase) ---
 
 def rank_sectors(sectors):
     return [dict(rank=i + 1, sector=s.sector, ratio_pct=round(s.ratio * 100, 1), trend=s.trend, status=s.status)
             for i, s in enumerate(sorted(sectors, key=lambda x: x.ratio, reverse=True))]
-
-
-def _avg(xs): return sum(xs) / len(xs) if xs else None
 
 
 def analyze_groups(sectors):
@@ -126,12 +54,12 @@ def analyze_groups(sectors):
         return {"regime": "incomplete", "score": 50}
     diff = cyc - dfn
     score = round(min(100, max(0, 50 + diff * 100)))
-    late = bool(com is not None and com > cyc and com > dfn)
-    regime = "risk-on (cyclical leadership)" if score > 60 else "risk-off (defensive leadership)" if score < 40 else "neutral"
+    regime = ("risk-on (cyclical leadership)" if score > 60
+              else "risk-off (defensive leadership)" if score < 40 else "neutral")
     return {"cyclical_avg_pct": round(cyc * 100, 1), "defensive_avg_pct": round(dfn * 100, 1),
             "commodity_avg_pct": round(com * 100, 1) if com is not None else None,
             "difference_pct": round(diff * 100, 1), "score": score, "regime": regime,
-            "late_cycle_flag": late}
+            "late_cycle_flag": bool(com is not None and com > cyc and com > dfn)}
 
 
 def estimate_cycle_phase(sectors):
@@ -142,7 +70,7 @@ def estimate_cycle_phase(sectors):
     tmap = {s.sector: s.trend for s in sectors}
     scores = {}
     for ph, d in CYCLE_PHASES.items():
-        ld = d["leaders"]; lg = d["laggards"]
+        ld, lg = d["leaders"], d["laggards"]
         ls = sum(1 for s in ld if s in top) / len(ld)
         gs = sum(1 for s in lg if s in bot) / len(lg)
         tt = [s for s in ld if s in tmap] + [s for s in lg if s in tmap]
@@ -159,9 +87,11 @@ def estimate_cycle_phase(sectors):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--source", default="seed", choices=["seed", "niftystocks", "nse"],
+                    help="sector→constituents source; seed=hardcoded fallback")
     args = ap.parse_args()
-    print("Computing India sector uptrend ratios (yfinance)...", file=sys.stderr)
-    sectors = build_sector_data()
+    print(f"Computing India sector uptrend ratios (source={args.source})...", file=sys.stderr)
+    sectors = compute_sector_data(source=args.source)
     result = {
         "as_of": str(date.today()),
         "ranking": rank_sectors(sectors),
@@ -171,7 +101,7 @@ def main():
     if args.json:
         print(json.dumps(result, indent=2))
     else:
-        r = result["regime"]; p = result["cycle_phase"]
+        r, p = result["regime"], result["cycle_phase"]
         print(f"\n=== India Sector Rotation — {result['as_of']} ===")
         print(f"Regime: {r['regime']} (score {r['score']}/100, cyc-def {r.get('difference_pct')}pp)")
         print(f"Cycle phase estimate: {p['phase'].upper()} (confidence {p['confidence']})")
