@@ -9,6 +9,22 @@ description: Track and analyze Indian stock market news, corporate announcements
 
 This skill fetches, categorizes, scores, and summarizes Indian market news from multiple sources. It tracks corporate announcements, SEBI circulars, bulk/block deals, insider trades, earnings calendars, and breaking market news — then feeds actionable insights to the user or other skills (like Scenario Analyzer).
 
+> ## Two modes (ultimate-trading-skills adaptation)
+> The vendored `scripts/news_fetcher.py` is **RSS-based → RECENT news only** (verified working;
+> needs the `news` extra: `uv pip install -e ".[news]"`). RSS feeds do not carry old items, so
+> `--days` cannot reach back months/years.
+>
+> For **point-in-time HISTORICAL** news (e.g. "what was reported about IOB around its PCA exit in
+> Sep 2021" — the input to `sector-deep-dive` stage 6), use **date-scoped WebSearch**, not RSS.
+> Verified viable 2026-06: a query like
+> `Indian Overseas Bank out of RBI PCA framework September 2021` returns the contemporaneous
+> 29-Sep-2021 BusinessToday / BW articles (the URL even encodes the date). This is **agentic**
+> (Claude runs WebSearch), not the script.
+>
+> **Stage-6 discipline:** a "who pivoted" claim is only legitimate as the join of (a) a MEASURED
+> price/relative-strength inflection from the deep-dive data, (b) a date-scoped SOURCED event from
+> WebSearch, and (c) fundamental corroboration. Never narrate from memory (see `manuals/01`).
+
 ## Architecture
 
 ```

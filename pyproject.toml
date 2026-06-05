@@ -27,6 +27,11 @@ backtest = [
 scrape = [
     "playwright",
 ]
+# News collection — RSS for recent items (india-news-tracker). Historical/point-in-time
+# news uses date-scoped WebSearch (agentic, no dep), verified viable.
+news = [
+    "feedparser",
+]
 
 [tool.uv]
 # nothing yet

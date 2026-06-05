@@ -61,6 +61,23 @@ browser-like client works); nseindia.com's API runs Akamai Bot Manager — headl
 fingerprinted and rejected at the HTTP/2 layer. We don't need live quotes (backtest-first); real-time
 is OpenAlgo's job (deferred execution), not scraping.
 
+## Porting status — VENDORED ≠ WIRED
+
+All upstream skills are physically copied in. The work remaining is wiring to the verified data
+layer + running/verifying + connecting them — NOT copying.
+
+| State | Skills |
+|---|---|
+| Vendored, native India (ajeesh) | `screeners/`: fii-dii-flow-tracker, india-market-breadth, india-news-tracker, india-stock-analysis, nse-vcp-screener, options-strategy-advisor, scenario-analyzer, technical-analyst, weekly-fno-trade-planner; `edge-pipeline/backtest-expert`; `fundamentals/equity-research` |
+| Vendored + India-ported + verified | `regime/sector-analyst`, `regime/uptrend-analyzer`; new `regime/sector-deep-dive` |
+| Vendored but STILL US content (unported) | `regime/`: macro-regime-detector, us-market-bubble-detector, market-breadth-analyzer, breadth-chart-analyst, exposure-coach |
+| Verified to run | `india-news-tracker` RSS fetcher (recent); historical via date-scoped WebSearch (agentic) |
+| NOT done for any vendored skill | wired to framework data layer · run/verified · connected to each other + influence graph |
+
+Key reused mappings: `scenario-analyzer` = forward causal cascade (event→impacts) + event taxonomy
+= the influence graph run forward; `sector-deep-dive` stage 6 = same graph backward; `technical-analyst`
+= the MA/markers framework (don't reinvent indicators); `india-news-tracker` = the news CLI agent.
+
 ## Conventions
 
 - Git commits: **no `Co-Authored-By` trailer.**
