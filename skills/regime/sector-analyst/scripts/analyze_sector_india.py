@@ -87,9 +87,9 @@ def estimate_cycle_phase(sectors):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
-    ap.add_argument("--source", default="seed", choices=["seed", "nse_csv"],
+    ap.add_argument("--source", default="seed", choices=["seed", "nse_fetch", "nse_csv"],
                     help="sector→constituents source; seed=hardcoded fallback, "
-                         "nse_csv=manually-downloaded NSE CSVs in data/constituents/")
+                         "nse_fetch=live niftyindices download, nse_csv=cached CSVs")
     args = ap.parse_args()
     print(f"Computing India sector uptrend ratios (source={args.source})...", file=sys.stderr)
     sectors = compute_sector_data(source=args.source)

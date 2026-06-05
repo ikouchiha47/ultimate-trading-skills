@@ -1,12 +1,22 @@
-# Sector constituents — manual NSE download
+# Sector constituents — live NSE source (auto-fetched, cached here)
 
-This is the **live, authoritative** sector→stock mapping. There is no reliable programmatic
-feed (the `niftystocks` package is frozen at pre-2022 members; `nsepython` has no constituents
-function). NSE itself publishes the current list for every index as a CSV — so we download those
-by hand and drop them here. This beats any scraper: it's the source of truth and never silently
-goes stale.
+This is the **live, authoritative** sector→stock mapping from niftyindices.com. Files here are
+normally written automatically by `data/nse_constituents.py` (`source="nse_fetch"`); they can also
+be downloaded by hand if the fetch is ever blocked. The `niftystocks` package is NOT used (frozen
+at pre-2022 members).
 
-## How to get the files
+## Automatic (preferred)
+
+```python
+from framework.india_sectors import load_sector_constituents
+m = load_sector_constituents(source="nse_fetch")  # live fetch + cache to this dir
+m = load_sector_constituents(source="nse_csv")     # read the cache offline
+```
+`nse_fetch` uses `requests`+cookie-warmup with retries, and falls back to **Playwright headless**
+(install: `uv pip install -e ".[scrape]" && uv run playwright install chromium`). Per-sector
+fallback to `SEED_SECTORS` if a sector fails.
+
+## Manual fallback — how to get the files by hand
 
 1. Go to **https://www.niftyindices.com** → *Indices* → pick the sectoral index.
 2. On the index page, use **Download (.csv)** for the constituent list

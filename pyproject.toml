@@ -21,6 +21,12 @@ data = [
 backtest = [
     "vectorbt",
 ]
+# Headless-browser fallback for sites that intermittently block plain requests
+# (niftyindices constituent CSVs). Primary path is requests+cookie-warmup; this is
+# only the fallback. Requires `playwright install chromium` after pip install.
+scrape = [
+    "playwright",
+]
 
 [tool.uv]
 # nothing yet

@@ -45,14 +45,21 @@ uv pip install --reinstall pillow
 | `nsepython` `nse_get_index_list` | validate index names (213) | ✅ works |
 | `mftool` | mutual-fund scheme NAV + category filter (the "schemes" question) | ✅ works (after Pillow fix) |
 | `yfinance` | fallback OHLCV | ✅ works; multi-index cols → flatten in adapter |
-| `nsepython` `nse_eq` | live single-stock quote | ❌ blocked by NSE anti-bot — not needed |
-| `niftystocks` | live sector constituents | ❌ STALE (pre-2022, e.g. LTI/MINDTREE) — REMOVED |
+| niftyindices.com CSV | live sector constituents | ✅ works via `requests`+headers; Playwright fallback wired |
+| `nsepython` `nse_eq` | live single-stock quote | ❌ Akamai-blocked (403/HTTP2) even via headless Playwright — NOT needed |
+| `niftystocks` | live sector constituents | ❌ STALE (pre-2022) — REMOVED |
 
-**Sector constituents:** no reliable programmatic feed exists (niftystocks frozen; nsepython has
-no constituents fn). Resolved by manual download: drop NSE/niftyindices constituent CSVs into
-`data/constituents/<Sector>.csv` and use `source="nse_csv"` — see `data/constituents/README.md`.
-`SEED_SECTORS` is the per-sector fallback. Commit the CSVs for reproducible (survivorship-aware)
-backtests.
+**Sector constituents — SOLVED.** `data/nse_constituents.py` fetches live from niftyindices.com:
+`requests` + cookie-warmup + retry (primary), **Playwright headless fallback** (`scrape` extra +
+`playwright install chromium`). Use `source="nse_fetch"` (live, caches to `data/constituents/`) or
+`source="nse_csv"` (read the cache offline). `SEED_SECTORS` is per-sector fallback. Commit the
+cached CSVs for reproducible (survivorship-aware) backtests. Live counts differ a lot from the old
+seed (e.g. NIFTY ENERGY = 40 names, not 9) — always prefer `nse_fetch`/`nse_csv`.
+
+**Why `nse_eq` can't be cracked but the CSV can:** niftyindices is a static file host (any
+browser-like client works); nseindia.com's API runs Akamai Bot Manager — headless Chromium is
+fingerprinted and rejected at the HTTP/2 layer. We don't need live quotes (backtest-first); real-time
+is OpenAlgo's job (deferred execution), not scraping.
 
 ## Conventions
 

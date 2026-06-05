@@ -76,19 +76,27 @@ def load_sector_constituents(source: str = "seed", csv_path: str | None = None) 
     """Return the sector→constituents map. THIS is the real input.
 
     source:
-      "seed"     — hardcoded fallback (offline / guardrail). CURRENTLY PRIMARY until
-                   constituent CSVs are dropped in data/constituents/ (no reliable
-                   programmatic live feed: niftystocks is stale, nsepython has none).
-      "nse_csv"  — read manually-downloaded NSE constituent CSVs from CONSTITUENTS_DIR,
-                   one file per sector named "<Sector>.csv". This is the recommended
-                   live path — see data/constituents/README.md. Any sector without a
-                   file falls back to its SEED entry.
-      "csv"      — single user file at csv_path with columns: sector,symbol.
+      "seed"      — hardcoded fallback (offline / guardrail).
+      "nse_fetch" — fetch LIVE from niftyindices.com (requests+cookie-warmup, Playwright
+                    fallback), caching to data/constituents/. The recommended live path.
+                    See data/nse_constituents.py. Per-sector fallback to SEED.
+      "nse_csv"   — read already-downloaded/cached NSE CSVs from CONSTITUENTS_DIR, one file
+                    per sector "<Sector>.csv". Offline-reproducible; per-sector SEED fallback.
+      "csv"       — single user file at csv_path with columns: sector,symbol.
 
     Anything missing falls back to SEED_SECTORS so the pipeline never hard-stops.
     """
     if source == "seed":
         return dict(SEED_SECTORS)
+
+    if source == "nse_fetch":
+        out = dict(SEED_SECTORS)
+        try:
+            from data.nse_constituents import fetch_sector_constituents
+            out.update(fetch_sector_constituents())  # only successful sectors override seed
+        except Exception:  # noqa: BLE001
+            pass
+        return out
 
     if source == "csv" and csv_path:
         import csv as _csv
