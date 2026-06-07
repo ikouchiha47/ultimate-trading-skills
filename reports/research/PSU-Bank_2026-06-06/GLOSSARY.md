@@ -51,3 +51,19 @@ Node colour: green = listed company (has a price) · yellow = unlisted group ent
 JV partner. Edge: **green = price-validated co-move / high-confidence** · blue = leads · dotted =
 unvalidated. `group_entity` = subsidiary/associate; `partners_with` = JV partner. Edge "strength" =
 the parent's stake %. Listed subs annotated with correlation to the parent (corroboration, not proof).
+
+## Credit ratings (what the grades mean)
+Indian **long-term** scale (CRISIL / ICRA / CARE / India Ratings–Fitch / Brickwork), best → worst:
+- **AAA** — highest safety, lowest credit risk (the big PSU banks' senior debt).
+- **AA** (AA+/AA/AA−) — high safety, marginally more risk than AAA (typical for PSU **AT1 / Tier-I**
+  bonds, and the *senior* debt of weaker PSU banks).
+- **A** (A+/A/A−) — adequate safety. **BBB** — moderate (lowest investment grade); below **BBB−** = speculative.
+
+**Modifiers/terms:** `+`/`−` = standing within a band · **Outlook** (Stable / Positive / Negative) =
+likely medium-term direction · **Rating Watch** = a near-term event may move it. **Short-term scale:**
+**A1+** (highest) … A4 — used for Certificates of Deposit / CP. **Actions:** Assigned (new) ·
+Reaffirmed/Affirmed (unchanged) · Upgraded/Downgraded · Withdrawn.
+
+**Important:** one rationale doc rates MANY instruments at different grades — e.g. a bank's
+Tier-II/FD at **AAA** but its **AT1 (Tier-I)** a notch lower at **AA+**. The "senior" rating we cite is
+the *highest* (issuer / FD / Tier-II). Prefixes (`CRISIL` / `[ICRA]` / `IND` / `CARE`) denote the agency.

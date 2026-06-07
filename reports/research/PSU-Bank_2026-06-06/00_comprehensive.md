@@ -150,9 +150,32 @@ Per-bank group/dependency graphs (subsidiaries/JVs; stakes as edge strength; lis
 
 ![BANKINDIA group graph](charts/dependency_BANKINDIA.png)
 
+## 5d. Credit ratings — senior, long-term (agent-read from CRISIL rationale, dated)
+Read from each bank's latest CRISIL rationale (`filings/ratings/`, fetched by `_ratings.py`; the agent
+extracts — the doc rates many instruments, so this is the *senior*/highest grade, with AT1/Tier-I noted).
+See [GLOSSARY — Credit ratings](GLOSSARY.md#credit-ratings-what-the-grades-mean) for the scale.
+
+| Bank | Senior (LT) | AT1 / Tier-I | Short-term | Latest CRISIL action |
+|---|---|---|---|---|
+| SBIN | CRISIL AAA/Stable | AAA/Stable | — | Reaffirmed, 5 Mar 2026 |
+| BANKBARODA | CRISIL AAA/Stable | AA+/Stable | — | Reaffirmed, 2 Jan 2026 |
+| UNIONBANK | CRISIL AAA/Stable | AA+/Stable | — | Reaffirmed, 11 Dec 2025 |
+| CANBK | CRISIL AAA/Stable | AA+/Stable | A1+ | Reaffirmed, 18 Feb 2026 |
+| PNB | CRISIL AAA/Stable | AA+/Stable | A1+ | Reaffirmed, 12 Dec 2025 |
+| INDIANB | CRISIL AAA/Stable | — | — | Assigned (infra bonds), 16 Mar 2026 |
+| BANKINDIA | CRISIL **AA+**/Stable | — | — | Assigned (infra bonds), 18 Dec 2025 |
+| IOB | CRISIL **AA+/AA**/Stable | — | — | Reaffirmed, 26 Jun 2025; FD on notice of withdrawal |
+| MAHABANK | `unknown`† | — | A1+ | Reaffirmed (CDs), 4 Nov 2025 |
+| UCOBANK | `unknown`† | — | A1+ | Reaffirmed (CDs), 14 Aug 2025 |
+
+*All the big PSUs hold **AAA/Stable** senior; **BANKINDIA and IOB sit a notch lower at AA+** — the rating
+agencies' read of the weaker franchises, consistent with their lower ROE / price-action in §3.
+†CRISIL rates only MAHABANK's and UCOBANK's Certificates of Deposit (short-term **A1+**); their long-term
+senior rating is by ICRA/CARE — not yet read (the ICRA docs are fetched, Fitch needs a browser pass).*
+
 ## 6. Caveats (discipline)
-- RBI sectoral data is **system-wide**, not PSU-only; per-bank loan mix is being sourced from ARs
-  (some `unknown` until extracted). Repo/policy current level: pull from RBI before quoting a number.
+- RBI sectoral data is **system-wide**, not PSU-only; per-bank loan mix is now sourced (screener
+  advance-mix, §2b). Repo/policy current level: pull from RBI before quoting a number.
 - Trailing 5-yr profit CAGRs (39–73%) are off cyclical-loss bases — **not** forward guides.
 - The 50-DMA edge is one basket / one bull window; modest. Not investment advice.
 
