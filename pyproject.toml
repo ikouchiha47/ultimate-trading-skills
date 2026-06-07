@@ -21,6 +21,7 @@ data = [
     "niftystocks",   # live NSE sectoral index constituents
     "openpyxl",      # XLSX engine for xlsx_reader (RBI Sectoral Deployment tables)
     "tabulate",      # markdown table rendering for xlsx_reader output
+    "python-pptx",   # parse concall PPT decks (fallback when transcript/AI-summary unavailable)
 ]
 backtest = [
     "vectorbt",

@@ -140,7 +140,8 @@ async def get_documents(page) -> dict:
         concall_items = await page.locator("div.concalls ul.list-links li").all()
         for li in concall_items:
             date = (await li.inner_text()).strip().splitlines()[0].strip()
-            entry: dict = {"date": date, "transcript": None, "ppt": None, "ai_summary": None}
+            entry: dict = {"date": date, "transcript": None, "ppt": None,
+                           "ai_summary": None, "recording": None}
 
             for a in await li.locator("a.concall-link[href]").all():
                 title = (await a.inner_text()).strip()
@@ -149,6 +150,8 @@ async def get_documents(page) -> dict:
                     entry["transcript"] = href
                 elif "PPT" in title:
                     entry["ppt"] = href
+                elif "REC" in title:                       # call recording (audio/video link)
+                    entry["recording"] = href
 
             # AI Summary is a button with data-url, not a link
             ai_btn = li.locator("button.concall-link[data-url*='/concalls/summary/']")

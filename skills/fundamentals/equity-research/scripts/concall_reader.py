@@ -43,21 +43,22 @@ SESSION_FILE = Path.home() / ".screener_session.json"
 
 
 def download_pdf(url: str) -> bytes | None:
+    """Unified fetch (requests → auto Playwright fallback). BSE transcript PDFs live on the
+    Akamai-gated AttachHis host; if even the browser route can't get the PDF, the CALLER cascades
+    to the AI summary / PPT (run() priority chain)."""
     try:
-        with requests.get(url, headers=BSE_HEADERS, timeout=(10, 60), stream=True) as r:
-            if r.status_code != 200:
-                print(f"[concall] HTTP {r.status_code} for {url}")
-                return None
-            chunks = []
-            for chunk in r.iter_content(chunk_size=1024 * 256):
-                chunks.append(chunk)
-            data = b"".join(chunks)
-            if b"%PDF" not in data[:10]:
-                print(f"[concall] Response is not a PDF")
-                return None
+        import sys as _sys
+        from pathlib import Path as _P
+        _root = _P(__file__).resolve().parents[4]          # repo root
+        if str(_root) not in _sys.path:
+            _sys.path.insert(0, str(_root))
+        from framework.fetch import fetch
+        data = fetch(url, expect="pdf", referer="https://www.bseindia.com/")
+        if data:
             return data
-    except Exception as e:
-        print(f"[concall] Download error: {e}")
+        print("[concall] transcript PDF inaccessible (Akamai) — will try other formats")
+    except Exception as e:  # noqa: BLE001
+        print(f"[concall] download error: {e}")
     return None
 
 
@@ -88,6 +89,39 @@ async def fetch_ai_summary(url: str) -> str:
         return text.strip()
 
 
+def parse_ppt(url: str) -> str | None:
+    """Concall PPT deck -> text. BSE serves these as a PDF OR a real .pptx; handle both via the
+    unified fetch (Akamai fallback). PDF -> pdf_convert; pptx (OOXML zip) -> python-pptx."""
+    import sys as _sys
+    from pathlib import Path as _P
+    _root = _P(__file__).resolve().parents[4]
+    if str(_root) not in _sys.path:
+        _sys.path.insert(0, str(_root))
+    from framework.fetch import fetch
+    data = fetch(url, expect="any", referer="https://www.bseindia.com/")
+    if not data:
+        return None
+    if data[:4] == b"%PDF":
+        md, _ = pdf_convert(data)
+        return md
+    if data[:4] == b"PK\x03\x04":                       # OOXML .pptx
+        try:
+            import io
+            from pptx import Presentation
+            prs = Presentation(io.BytesIO(data))
+            out = []
+            for i, slide in enumerate(prs.slides, 1):
+                texts = [sh.text.strip() for sh in slide.shapes
+                         if getattr(sh, "has_text_frame", False) and sh.text.strip()]
+                if texts:
+                    out.append(f"## Slide {i}\n" + "\n".join(texts))
+            return "\n\n".join(out) or None
+        except Exception as e:  # noqa: BLE001
+            print(f"[concall] pptx parse failed: {e}")
+            return None
+    return None
+
+
 def pick_concall(docs: dict, date_filter: str) -> dict | None:
     """Find a concall entry matching a date string like 'Feb 2026'."""
     date_filter = date_filter.strip().lower()
@@ -106,6 +140,8 @@ def run(args):
 
     transcript_url = args.transcript
     ai_summary_url = args.ai_summary
+    ppt_url = getattr(args, "ppt", None)
+    rec_url = getattr(args, "rec", None)
 
     # Load from docs JSON if provided
     if args.from_docs:
@@ -123,8 +159,11 @@ def run(args):
             sys.exit(1)
         transcript_url = entry.get("transcript")
         ai_summary_url = entry.get("ai_summary")
+        ppt_url = entry.get("ppt")
+        rec_url = entry.get("recording") or entry.get("rec")
         result["date"] = entry["date"]
-        print(f"[concall] {entry['date']} — transcript={bool(transcript_url)} ai_summary={bool(ai_summary_url)}")
+        print(f"[concall] {entry['date']} — transcript={bool(transcript_url)} "
+              f"ai_summary={bool(ai_summary_url)} ppt={bool(ppt_url)} rec={bool(rec_url)}")
 
     # ── Priority 1: Transcript PDF ────────────────────────────────
     if transcript_url:
@@ -143,6 +182,25 @@ def run(args):
         result["source"] = "ai_summary"
         result["text"] = asyncio.run(fetch_ai_summary(ai_summary_url))
         print(f"[concall] AI Summary: {len(result['text'])} chars extracted")
+
+    # ── Priority 3: PPT deck (PDF or .pptx) ──────────────────────
+    if not result["text"] and ppt_url:
+        print("[concall] Falling back to PPT deck...")
+        text = parse_ppt(ppt_url)
+        if text:
+            result["source"] = "ppt"
+            result["text"] = text
+            print(f"[concall] PPT: {len(text)} chars extracted")
+
+    # ── Priority 4: Recording (audio/video) — STT, opt-in ─────────
+    # Claude can't ingest audio here, so transcription is a separate, config-gated step:
+    #   yt-dlp (grab audio) -> faster-whisper (local CTranslate2 STT) -> transcript.
+    # Heavy + rarely needed (transcript/AI-summary/PPT cover ~all), so default = capture link only.
+    if not result["text"] and rec_url:
+        result["source"] = "recording_link"
+        result["text"] = (f"Audio/video recording only — speech-to-text NOT run (opt-in).\n"
+                          f"Recording: {rec_url}\nTo extract: yt-dlp → faster-whisper (config-gated).")
+        print(f"[concall] Only a recording — captured link; STT (yt-dlp+faster-whisper) is opt-in: {rec_url}")
 
     if not result["text"]:
         print("[concall] No content retrieved.")

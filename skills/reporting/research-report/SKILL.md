@@ -25,6 +25,33 @@ or a SOURCED disclosure (dated link). Anything you cannot source is written **`u
 inferred from price, never fabricated. Keep computed-vs-sourced separate (a web figure is never a
 computed number). Mark provenance on every figure.
 
+## The workflow (see `WORKFLOW.md` for the diagram)
+**gather → structure → unify → review**, with the hard boundary: **scripted core only gathers +
+computes; YOU (the agent) plan, author the prose/structure, unify and review.** NEVER write a Python
+program that emits the report markdown — pages are authored from the template, not generated.
+
+**TODO IS THE HEART — do this FIRST and keep it live.** Before any work, build the plan with the
+task tools (`TaskCreate`) — a task per stage and per sub-step (e.g. one per company to author/review)
+— and maintain it throughout (`TaskUpdate` in_progress→completed; `TaskList` to see what's left).
+Every gap found in review goes back in as a task. The todo is the single source of truth for progress;
+don't run the flow from memory. **If the task tools aren't available**, fall back to a `_todo.md` in
+the report folder — ONE per unique research query — updated the same way; persist it until the context
+changes (user pivots to a different search), and on a context change **confirm before** replacing it.
+
+1. **Plan & scope** — build the TODO; resolve sector→index→constituents; decide universe/depth; create the folder.
+2. **Gather (scripted)** — data + charts + graphs + backtests + filings (the inputs you embed).
+3. **Structure (you)** — author each page from `templates/` (company + sector), filling sections
+   from the gathered data; embed charts as images with caption cards.
+4. **Unify (you)** — make the N pages ONE report: (a) identical section structure/order/colours so
+   pages are comparable; (b) cross-link Overview↔company↔Industry↔Glossary↔strategies; (c) reconcile
+   — the same number/Stance is identical everywhere (no contradictions); (d) one narrative thread
+   from Overview→Industry→Observations→each stance.
+5. **Review step-by-step (you, supervisor)** — FIRST **apply the sector analysis to EACH company and
+   seed it**: how Porter/PESTEL forces, RBI credit-deployment mix, the influence-graph bellwether/
+   beta role, and the EARNED strategy anchor hit THAT name → **update the company page** (its "Sector
+   forces → this company" mapping + refresh stance/risks). THEN run the discipline checklist. Gaps
+   route back to gather or re-author. Then publish.
+
 ## Output layout — one folder per investigation
 
 ```
