@@ -85,7 +85,8 @@ share-per-segment, not a clean partition. ‡SBIN reports SME (not MSME). Canara
 
 For the **industry-wide** view — how system credit is deployed across sectors and what is growing fastest
 (Services/NBFC, infrastructure, personal/housing) — see the RBI **"Sectoral Deployment of Bank Credit"**
-release we sourced: `data/RBI_sectoral_deployment_apr2026.{md,json,xlsx}` (used in `00_comprehensive` §3b).
+release we sourced (`data/RBI_sectoral_deployment_apr2026.{md,json,xlsx}`) — the YoY-growth-by-sector
+table is shown in [`00_comprehensive` §2a](00_comprehensive.md).
 
 ## 6. Structural drivers — why the sector re-rated
 - **Asset-quality clean-up**: GNPA collapsed across the cycle (CANBK GNPA 2.08% / NNPA 0.45%,
