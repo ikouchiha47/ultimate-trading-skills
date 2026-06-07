@@ -4,42 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🟢 Stance: **Buy on dips**
-> **₹167.0** · Mcap **₹1,27,481 Cr** · P/E **6.56** · P/B **0.95** · ROE **15.7%** · Div **2.84%** · 1-yr **+10.1%**
-> Trend: 🟡 **pullback within uptrend** — −2.8% vs 50-DMA, **+4.3% vs 200-DMA** (above the long-term anchor)
-> **Why 🟢:** cheapest risk/reward of the cohort (ROE 15.7% at P/B 0.95), clean asset quality, profit
-> momentum intact, CASA improving sharply (32.5→35.2%), capital well above requirements (CET1 15.7%).
-> The −2.8% below 50-DMA is the EARNED setup. Watch the capital raise (₹8,000 Cr approved) and light
-> volume (0.77×, no strong accumulation signature).
->
-> **Links:** [Screener](https://www.screener.in/company/UNIONBANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-UNIONBANK/) · [BSE](https://www.bseindia.com/stock-share-price/union-bank-of-india/UNIONBANK/532477/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=UNIONBANK)
+## 🟢 Stance — Buy on dips
 
----
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹167 | ₹1,27,481 Cr | 6.56 | 0.95 | 15.7% | 2.84% | +10.1% |
 
-## Visuals (charts first)
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🟡 pullback within uptrend | -2.8% | +4.3% | 39.2% | 0.77× | 0.13 |
 
-### Price · volume · 25/50/200-DMA · delivery
-![UNIONBANK price/volume/DMA](charts/UNIONBANK_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **UNIONBANK now (2026-06-04,
-> computed):** −2.8% below the 50-DMA (a dip within the trend), **+4.3% vs the 200-DMA** = clearly
-> above the long-term anchor; delivery 39.2% (investor participation), RelVol 0.77× (light — no
-> decisive accumulation), absorption 0.13 — the pullback is the setup, but light volume says wait
-> for the dip to settle rather than chase.
+**Why 🟢:** cheapest risk/reward of the cohort (ROE 15.7% at P/B 0.95), clean asset quality, profit momentum intact, CASA improving sharply (32.5→35.2%), capital well above requirements (CET1 15.7%). The −2.8% below 50-DMA is the EARNED setup. Watch the capital raise (₹8,000 Cr approved) and light volume (0.77×, no strong accumulation signature).
 
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![UNIONBANK financials](charts/UNIONBANK_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹13.10 L cr vs Investments
-> ₹3.44 L cr=G-sec/SLR vs Borrowing ₹0.78 L cr — where the money sits); quarterly Net Profit
-> momentum; EPS. ₹ Cr, sourced screener. The clean post-FY21 inflection is the asset-quality
-> cleanup turning chronic losses into record profit.
-
-### Group / dependency graph
-![UNIONBANK group graph](charts/dependency_UNIONBANK.png)
-> **What it shows:** subsidiaries/associates (edge = stake %). Green = listed (price-validated
-> co-move with the parent), yellow = unlisted, purple = foreign JV partner.
-> [Legend](GLOSSARY.md#graph-diagrams).
+**Links:** [Screener](https://www.screener.in/company/UNIONBANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-UNIONBANK/) · [BSE](https://www.bseindia.com/stock-share-price/union-bank-of-india/UNIONBANK/532477/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=UNIONBANK)
 
 ---
 

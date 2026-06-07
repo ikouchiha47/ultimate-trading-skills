@@ -4,66 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🟢 Stance: **Accumulate on 50-DMA dips**
-> **₹136** · Mcap **₹1,23,189 Cr** · P/E **6.87** · P/B **1.05** · ROE **16.1%** · Div **3.09%** · 1-yr **+17.2%**
-> Trend: 🟡 **decision zone** — +1.4% vs 50-DMA, −0.4% vs 200-DMA (sitting on the rising long-term anchor)
-> **Why 🟢:** only large PSU bank above its 50-DMA, **highest absorption in the basket (0.40)**, clean
-> asset quality, modest P/B — fits the sector's EARNED 50-DMA reversion play. Watch the FY26-27
-> capital raise (dilution) and the lumpy quarterly profit.
->
-> **Links:** [Screener](https://www.screener.in/company/CANBK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-CANBK/) · [BSE](https://www.bseindia.com/stock-share-price/canara-bank/CANBK/532483/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=CANBK)
+## 🟢 Stance — Accumulate on 50-DMA dips
 
----
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹136 | ₹1,23,189 Cr | 6.87 | 1.05 | 16.1% | 3.09% | +17.2% |
 
-## Visuals (charts first)
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🟡 decision zone | +1.4% | -0.4% | 40.4% | 1.2× | 0.4 |
 
-### Price · volume · 25/50/200-DMA · delivery
-![CANBK price/volume/DMA](charts/CANBK_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **CANBK now (2026-06-04,
-> computed):** +1.4% above the 50-DMA, −0.4% vs the 200-DMA — riding the rising long-term trend;
-> delivery 40.4% (investor participation), RelVol 1.20×, **absorption 0.40 (highest of the 10)** =
-> a buyer soaking up supply on dips. The 5:1 split (₹10→₹2, 15 May 2024, sourced) is back-adjusted —
-> no fake cliff.
+**Why 🟢:** only large PSU bank above its 50-DMA, **highest absorption in the basket (0.40)**, clean asset quality, modest P/B — fits the sector's EARNED 50-DMA reversion play. Watch the FY26-27 capital raise (dilution) and the lumpy quarterly profit.
 
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![CANBK financials](charts/CANBK_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹15.68 L cr vs Investments
-> ₹4.07 L cr=G-sec/SLR vs Borrowing ₹1.55 L cr — where the money sits); quarterly Net Profit
-> momentum; EPS. ₹ Cr, sourced screener. The clean post-FY21 inflection is the asset-quality
-> cleanup turning chronic losses into record profit.
-
-### Group / dependency graph
-![CANBK group graph](charts/dependency_CANBK.png)
-> **What it shows:** subsidiaries/associates (edge = stake %). Green = listed (price-validated
-> co-move with the parent), yellow = unlisted, purple = foreign JV partner.
-> [Legend](GLOSSARY.md#graph-diagrams).
-
----
-
-## About & Key Points (sourced — screener, dated)
-**About:** Canara Bank — incorporated **1906**, nationalised **1969**, **merged with Syndicate Bank
-on 1 Apr 2020**; HQ Bangalore. Full-service PSU bank (retail / wholesale / treasury + insurance & AMC
-associates).
-
-**Quality ratios (Q3 FY26):** NIM **2.50%**, GNPA **2.08%**, NNPA **0.45%**, CASA **29.52%**, PCR
-**94.19%**, Cost-to-Income **46.86%**, Cost of Funds **5.18%**. *(Q4 FY26 concall updates these — see
-below; GNPA improved to 1.84%.)*
-
-**Market share (Jun'23):** 6.2% of net advances, 6.5% of deposits.
-
-**Branch network (Q3 FY26):** 10,066 branches · 12,000 BC points · 7,048 ATMs · 3,740 recyclers · 4
-international branches. Mix: 32% rural / 30% semi-urban / 19% urban / 19% metro.
-
-**Loan book (Q3 FY26)** — gross advances **₹11,92,326 Cr**, split corporate-heavy at 41%:
-![CANBK loan mix](charts/CANBK_loan_mix.png)
-
-**The markets they lend to — corporate book exposure** (₹4,88,285 Cr, Q3 FY26, sourced):
-![CANBK corporate exposure](charts/CANBK_corp_exposure.png)
-> **Read:** a third of the corporate book is **NBFC** lending and another third **infrastructure** —
-> CANBK is heavily levered to the two fastest-growing system-credit segments (tailwind + concentration
-> risk; see the sector-force mapping, §3).
+**Links:** [Screener](https://www.screener.in/company/CANBK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-CANBK/) · [BSE](https://www.bseindia.com/stock-share-price/canara-bank/CANBK/532483/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=CANBK)
 
 **Geography:** domestic ~93% / overseas ~7% (4 overseas branches: London, New York, DIFC-Dubai, GIFT
 City; Canara Bank (Tanzania) being wound down).

@@ -62,12 +62,30 @@ Balance-sheet scale, Mar 2026 (sourced, screener, ₹ Cr):
 | BANKBARODA | 16,75,895 | 1,70,297 | 4,35,778 |
 | CANBK | 15,68,333 | 1,55,288 | 4,07,389 |
 
-**The loan-book SECTOR split (industry/segment exposure — "which markets they lend to") is
-`unknown` from screener** (the Quarterly Segment table — Retail / Wholesale / Treasury / Life
-Insurance — is **premium-gated**: row names present, values blank). To source it honestly requires
-either (a) the **RBI "Sectoral Deployment of Bank Credit"** release (industry-wide, via
-`xlsx_reader`), or (b) each bank's **annual-report segment note** (via `annual_report_reader`).
-Until then, do NOT infer loan-book composition from price. *This is a known open gap (see plan).*
+**Which markets they lend to — domestic advance mix (Q3 FY26, sourced: screener Key Points).**
+Each bank's per-segment split (full breakdown + chart on the company page):
+
+| Bank | Retail | Corporate | Agri | MSME/SME | Tilt |
+|---|---|---|---|---|---|
+| INDIANB | 23 | 34 | 25 | 18 | most RAM-tilted |
+| IOB† | 30 | 28 | 34 | 18 | agri/retail-led |
+| MAHABANK | 30 | 36 | 13 | 19 | retail-led |
+| UCOBANK | 30 | 33 | 16 | 21 | retail/MSME |
+| BANKBARODA | 31 | 38 | 16 | 15 | balanced |
+| SBIN | 42 | 33 | 10 | 15‡ | retail-led |
+| CANBK | 23 | 41 | 23 | 13 | corporate-heavy |
+| BANKINDIA | 25 | 41 | 18 | 16 | corporate-heavy |
+| PNB | 24 | 43 | 16 | 16 | corporate-heavy |
+| UNIONBANK | 24 | 43 | 17 | 15 | corporate-heavy |
+
+*% of domestic advances, sourced screener Q3 FY26 ("Corporate" includes corporate & others). †IOB's
+screener buckets overlap (priority-sector Agri/MSME double-count with retail) and sum >100% — read as
+share-per-segment, not a clean partition. ‡SBIN reports SME (not MSME). Canara is corporate-heavy with a
+~third NBFC / ~third infrastructure corporate book (see CANBK page).*
+
+For the **industry-wide** view — how system credit is deployed across sectors and what is growing fastest
+(Services/NBFC, infrastructure, personal/housing) — see the RBI **"Sectoral Deployment of Bank Credit"**
+release we sourced: `data/RBI_sectoral_deployment_apr2026.{md,json,xlsx}` (used in `00_comprehensive` §3b).
 
 ## 6. Structural drivers — why the sector re-rated
 - **Asset-quality clean-up**: GNPA collapsed across the cycle (CANBK GNPA 2.08% / NNPA 0.45%,

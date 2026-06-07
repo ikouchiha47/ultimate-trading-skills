@@ -28,8 +28,9 @@ _TradingView-style listing. **Stance** = our computed analyst-rating analog (see
 ## 2. The markets they are invested in (loan-book / credit deployment)
 
 **Two books per bank:** the **loan book** (credit by sector) and the **investment book** (mostly
-G-secs/SLR). The per-bank loan-book SECTOR split is **premium-gated on screener** (segment table
-blank), so it is sourced two ways instead:
+G-secs/SLR). Screener's *quarterly segment P&L* table is premium-gated, so the loan-book sector split is
+sourced two ways instead: **(2a)** the RBI system-wide release, and **(2b)** each bank's screener
+**Key-Points advance mix**.
 
 ### 2a. System-wide — RBI Sectoral Deployment of Bank Credit (April 2026, sourced)
 Authoritative RBI release (all scheduled commercial banks, ~95% of non-food credit; system-wide,
@@ -49,12 +50,15 @@ growth (Apr 2026 vs Apr 2025), sourced:**
 infra and retail mortgages, not classical agri/industry. This is the system picture; per-bank mix
 follows in 2b.
 
-### 2b. Per-bank — annual-report segment notes (in progress)
-Each bank's FY2025 annual report is being downloaded + text-extracted into `filings/ar/` (background
-batch). The segment/business-ratio note (retail vs corporate vs treasury, sector exposure) is read
-from there per bank. Where a bank's segment split is not yet extracted it is marked **`unknown`** in
-its per-bank report — never inferred from price. Investment-book SIZE is sourced now from each
-balance sheet (`data/<sym>_balance_sheet.csv`).
+### 2b. Per-bank — domestic advance mix (Q3 FY26, sourced: screener Key Points)
+Each bank's loan book split across Retail / Corporate / Agri / MSME — full table in
+[`00_industry` §5](00_industry.md) and a chart on every company page. The cohort splits into a
+**corporate-heavy** group (PNB, UNIONBANK, BANKINDIA, CANBK — corporate ~41–43%; CANBK's corporate book
+is ~⅓ NBFC / ~⅓ infrastructure) and a more **RAM/retail-tilted** group (INDIANB, IOB, MAHABANK,
+UCOBANK, SBIN, BANKBARODA). Mapping this onto 2a: the corporate-heavy names carry the most direct
+NBFC/infra exposure — the fastest-growing *and* most concentrated system segments. Investment-book SIZE
+is sourced from each balance sheet (`data/<sym>_balance_sheet.csv`); the annual-report segment notes in
+`filings/ar/` remain available for deeper exposure detail.
 
 ## 3. Full dashboard — fundamentals × price-action (computed, 2026-06-04)
 | Bank | P/B | ROE% | 5y profit CAGR | TTM profit | 1-yr ret | vs50 | vs200 | vol(20/120) | deliv% | absorp |

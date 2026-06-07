@@ -4,41 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🟡 Stance: **Watch for 200-DMA reclaim**
-> **₹141.0** · Mcap **₹64,402 Cr** · P/E **6.08** · P/B **0.71** · ROE **12.4%** · Div **3.29%** · 1-yr **+13.5%**
-> Trend: 🔴 **downtrend** — −1.3% vs 50-DMA, −0.3% vs 200-DMA (coiled at both, decision point)
-> **Why 🟡:** cheapest P/B in the basket (0.71), earnings recovering (+14% FY26), improving asset quality
-> (GNPA 1.98%, PCR 93.57%), but below both DMAs with modest absorption (0.20) — value without price
-> confirmation. Watch for a clean 200-DMA reclaim on volume to trigger the deep-value play.
->
-> **Links:** [Screener](https://www.screener.in/company/BANKINDIA/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-BANKINDIA/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-india/BANKINDIA/532149/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=BANKINDIA)
+## 🟡 Stance — Watch for 200-DMA reclaim
 
-_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹141 | ₹64,402 Cr | 6.08 | 0.71 | 12.4% | 3.29% | +13.5% |
 
----
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🔴 downtrend | -1.3% | -0.3% | 40.5% | 0.99× | 0.2 |
 
-## Visuals (charts first)
+**Why 🟡:** cheapest P/B in the basket (0.71), earnings recovering (+14% FY26), improving asset quality (GNPA 1.98%, PCR 93.57%), but below both DMAs with modest absorption (0.20) — value without price confirmation. Watch for a clean 200-DMA reclaim on volume to trigger the deep-value play.
 
-### Price · volume · 25/50/200-DMA · delivery
-![BANKINDIA price/volume/DMA](charts/BANKINDIA_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **BANKINDIA now (2026-06-04,
-> computed):** −1.3% below the 50-DMA, −0.3% below the 200-DMA — coiled at both, a binary decision
-> point; delivery 40.5%, RelVol 0.99×, **absorption 0.20** = no decisive buyer soaking up supply yet.
-
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![BANKINDIA financials](charts/BANKINDIA_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹9.31 L cr vs Investments
-> ₹2.79 L cr=G-sec/SLR vs Borrowing ₹1.19 L cr — where the money sits); quarterly Net Profit
-> momentum; EPS. ₹ Cr, sourced screener. The clean post-FY21 inflection is the asset-quality
-> cleanup turning chronic losses into record profit.
-
-### Group / dependency graph
-![BANKINDIA group graph](charts/dependency_BANKINDIA.png)
-> **What it shows:** subsidiaries/associates (edge = stake %). Green = listed (price-validated
-> co-move with the parent), yellow = unlisted, purple = foreign JV partner.
-> [Legend](GLOSSARY.md#graph-diagrams).
+**Links:** [Screener](https://www.screener.in/company/BANKINDIA/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-BANKINDIA/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-india/BANKINDIA/532149/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=BANKINDIA)
 
 ---
 

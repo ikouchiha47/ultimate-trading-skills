@@ -4,43 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🟡 Stance: **Hold / add at the 200-DMA**
-> **₹978.0** · Mcap **₹9,02,477 Cr** · P/E **10.8** · P/B **1.51** · ROE **15.4%** · Div **1.77%** · 1-yr **+20.7%**
-> Trend: 🔴 **downtrend** (below both DMAs) — vs50 −4.6%, vs200 −0.8%
-> **Why 🟡:** quality anchor of the basket — highest delivery% (43.6%), best deposit franchise
-> (22% share), industry-leading asset quality (GNPA 2.01%, PCR 74.36%), and a record ₹80,032 Cr
-> net profit. But the **richest P/B (1.51)** means least margin of safety, and the price is pulling
-> back to the 200-DMA on elevated volume (1.35×) — the EARNED 50-DMA strategy says wait for the
-> pullback to base near the 200-DMA rather than chase.
->
-> **Links:** [Screener](https://www.screener.in/company/SBIN/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-SBIN/) · [BSE](https://www.bseindia.com/stock-share-price/state-bank-of-india/SBIN/500112/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=SBIN)
+## 🟡 Stance — Hold / add at the 200-DMA
 
----
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹978 | ₹9,02,477 Cr | 10.8 | 1.51 | 15.4% | 1.77% | +20.7% |
 
-## Visuals (charts first)
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🔴 downtrend (below both DMAs) | -4.6% | -0.8% | 43.6% | 1.35× | 0.15 |
 
-### Price · volume · 25/50/200-DMA · delivery
-![SBIN price/volume/DMA](charts/SBIN_price_volume.png)
-> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **SBIN now (2026-06-04,
-> computed):** −4.6% below the 50-DMA, −0.8% vs the 200-DMA — pulling back to the long-term
-> anchor; delivery 43.6% (highest in basket — strong investor conviction), RelVol 1.35× (elevated),
-> **absorption 0.15** (low — no decisive buy-the-dip soak-up yet).
+**Why 🟡:** quality anchor of the basket — highest delivery% (43.6%), best deposit franchise (22% share), industry-leading asset quality (GNPA 2.01%, PCR 74.36%), and a record ₹80,032 Cr net profit. But the **richest P/B (1.51)** means least margin of safety, and the price is pulling back to the 200-DMA on elevated volume (1.35×) — the EARNED 50-DMA strategy says wait for the pullback to base near the 200-DMA rather than chase.
 
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![SBIN financials](charts/SBIN_financials.png)
-> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits
-> ₹60.43 L cr vs Investments ₹23.60 L cr (G-sec/SLR) vs Borrowing ₹7.77 L cr — an order of
-> magnitude above any peer; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend.
-> ₹ Cr, sourced screener. The earnings trajectory reflects the sector-wide asset-quality clean-up
-> powering a decade-long profit recovery.
-
-### Group / dependency graph
-![SBIN group graph](charts/dependency_SBIN.png)
-> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated
-> co-move with parent), yellow = unlisted, purple = foreign JV partner. See
-> [GLOSSARY](GLOSSARY.md#graph-diagrams).
+**Links:** [Screener](https://www.screener.in/company/SBIN/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-SBIN/) · [BSE](https://www.bseindia.com/stock-share-price/state-bank-of-india/SBIN/500112/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=SBIN)
 
 ---
 

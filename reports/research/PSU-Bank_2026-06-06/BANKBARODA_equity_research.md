@@ -4,41 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🔴 Stance: **Wait for 200-DMA reclaim**
-> **₹264** · Mcap **₹1,36,369 Cr** · P/E **6.88** · P/B **0.82** · ROE **12.7%** · Div **3.22%** · 1-yr **+4.0%**
-> Trend: 🔴 **downtrend** — −1.7% vs 50-DMA, −4.5% vs 200-DMA (below both, weakest in the top-4)
-> **Why 🔴:** below both DMAs on elevated volume (1.32×), **lowest absorption (0.19)**, TTM profit
-> **−4%** and ROE 12.7% (lowest of the four) — cheap on P/B (0.82) but momentum is against it;
-> the sector's EARNED 50-DMA reversion play requires a **200-DMA reclaim** first. Strong CASA (38.9%)
-> and domestic NIM 3.04% are positives — better NIM franchise than CANBK — but the chart says wait.
->
-> **Links:** [Screener](https://www.screener.in/company/BANKBARODA/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-BANKBARODA/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-baroda/BANKBARODA/532134/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=BANKBARODA)
+## 🔴 Stance — Wait for 200-DMA reclaim
 
----
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹264 | ₹1,36,369 Cr | 6.88 | 0.82 | 12.7% | 3.22% | +4.0% |
 
-## Visuals (charts first)
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🔴 downtrend | -1.7% | -4.5% | 37.4% | 1.32× | 0.19 |
 
-### Price · volume · 25/50/200-DMA · delivery
-![BANKBARODA price/volume/DMA](charts/BANKBARODA_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **BANKBARODA now (2026-06-04,
-> computed):** −1.7% vs 50-DMA, −4.5% vs 200-DMA — below both DMAs with delivery 37.4%, RelVol
-> 1.32×, **absorption 0.19 (low)** = no decisive buyer soaking up supply. Needs to reclaim the
-> 200-DMA to confirm the value thesis; until then, cheap can stay cheap.
+**Why 🔴:** below both DMAs on elevated volume (1.32×), **lowest absorption (0.19)**, TTM profit **−4%** and ROE 12.7% (lowest of the four) — cheap on P/B (0.82) but momentum is against it; the sector's EARNED 50-DMA reversion play requires a **200-DMA reclaim** first. Strong CASA (38.9%) and domestic NIM 3.04% are positives — better NIM franchise than CANBK — but the chart says wait.
 
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![BANKBARODA financials](charts/BANKBARODA_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹16.76 L cr vs Investments
-> ₹4.36 L cr=G-sec/SLR vs Borrowing ₹1.70 L cr — where the money sits); quarterly Net Profit
-> momentum; EPS. ₹ Cr, sourced screener. The post-FY21 recovery turned chronic losses into record
-> profit (FY26: ₹20,021 Cr concall / ₹20,070 Cr screener).
-
-### Group / dependency graph
-![BANKBARODA group graph](charts/dependency_BANKBARODA.png)
-> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated
-> co-move with parent), yellow = unlisted, purple = foreign JV partner.
-> [Legend](GLOSSARY.md#graph-diagrams).
+**Links:** [Screener](https://www.screener.in/company/BANKBARODA/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-BANKBARODA/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-baroda/BANKBARODA/532134/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=BANKBARODA)
 
 ---
 

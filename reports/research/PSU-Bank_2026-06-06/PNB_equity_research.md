@@ -4,42 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🔴 Stance: **Avoid / wait**
-> **₹107** · Mcap **₹1,22,802 Cr** · P/E **6.68** · P/B **0.82** · ROE **15.67%** · Div **2.81%** · 1-yr **−2.4%**
-> Trend: 🔴 **downtrend** — −0.6% vs 50-DMA, −7.5% vs 200-DMA (furthest below its 200-DMA in the basket)
-> **Why 🔴:** only negative 1-yr return in the basket, lowest delivery (30.4%) and absorption (0.13), zero TTM profit
-> growth, and the steepest discount to its 200-DMA. Asset quality is improving (GNPA 2.95% / PCR 97%) but the tape
-> shows zero demand — wait for a 200-DMA reclaim + delivery pickup before the 50-DMA reversion setup applies.
->
-> **Links:** [Screener](https://www.screener.in/company/PNB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-PNB/) · [BSE](https://www.bseindia.com/stock-share-price/punjab-national-bank/PNB/532461/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=PNB)
+## 🔴 Stance — Avoid / wait
 
-_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹107 | ₹1,22,802 Cr | 6.68 | 0.82 | 13% | 2.81% | -2.4% |
 
-## Visuals (charts first)
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🔴 downtrend | -0.6% | -7.5% | 30.4% | 1.1× | 0.13 |
 
-### Price · volume · 25/50/200-DMA · delivery
-![PNB price/volume/DMA](charts/PNB_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **PNB now (2026-06-04,
-> computed):** −0.6% vs 50-DMA, −7.5% vs 200-DMA — furthest below its 200-DMA in the basket = weakest
-> structure; delivery 30.4% (weakest investor conviction), RelVol 1.10×, **absorption 0.13 (lowest)** =
-> no buyer soaking up supply. No stock-split history (FV ₹2, unchanged).
+**Why 🔴:** only negative 1-yr return in the basket, lowest delivery (30.4%) and absorption (0.13), zero TTM profit growth, and the steepest discount to its 200-DMA. Asset quality is improving (GNPA 2.95% / PCR 97%) but the tape shows zero demand — wait for a 200-DMA reclaim + delivery pickup before the 50-DMA reversion setup applies.
 
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![PNB financials](charts/PNB_financials.png)
-> **What it shows:** (top-left) annual Revenue & Net Profit — FY26 revenue ₹1,30,772 Cr, net profit
-> ₹18,467 Cr (screener consolidated); (top-right) **the book** — Deposits ₹17.24 L Cr vs Investments
-> (G-sec/SLR) ₹5.24 L Cr vs Borrowing ₹1.08 L Cr — where the money sits; (bottom-left) quarterly Net
-> Profit momentum showing the Q1 FY26 tax-regime hit (₹2,167 Cr) and recovery to ₹5,602 Cr in Q4;
-> (bottom-right) EPS trend. ₹ Cr, sourced screener.
-
-### Group / dependency graph
-![PNB group graph](charts/dependency_PNB.png)
-> **What it shows:** subsidiaries/associates (edge = stake %). Green = listed (price-validated
-> co-move with parent), yellow = unlisted, purple = foreign JV partner. Listed: PNB Housing Finance
-> (28%), PNB Gilts (74%). Unlisted: PNB MetLife (30%, JV with MetLife), PNB Investment Services (100%),
-> PNB International UK (100%). [Legend](GLOSSARY.md#graph-diagrams).
+**Links:** [Screener](https://www.screener.in/company/PNB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-PNB/) · [BSE](https://www.bseindia.com/stock-share-price/punjab-national-bank/PNB/532461/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=PNB)
 
 ---
 

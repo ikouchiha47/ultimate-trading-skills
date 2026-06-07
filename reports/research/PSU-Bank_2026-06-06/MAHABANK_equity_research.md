@@ -4,67 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🟡 Stance: **Hold — don't chase (extended)**
-> **₹79.2** · Mcap **₹60,909 Cr** · P/E **8.68** · P/B **1.83** · ROE **22.7%** · Div **2.78%** · 1-yr **+39.8%**
-> Trend: 🟢 **uptrend** — +5.1% vs 50-DMA, +23.7% vs 200-DMA (extended)
-> **Why 🟡:** operationally the **best in the cohort** — ROE 22.7%, NIM 3.91%, CASA 52.5%, GNPA 1.45%,
-> NNPA 0.13% — every quality metric leads the pack. But the price is +23.7% above its 200-DMA on
-> **falling volume (0.60×) and near-zero absorption (0.04)** — extended and running out of fuel.
-> The EARNED strategy buys pullbacks to the 50-DMA, not extension. Hold quality; wait for a dip.
->
-> **Links:** [Screener](https://www.screener.in/company/MAHABANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-MAHABANK/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-maharashtra/MAHABANK/532525/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=MAHABANK)
+## 🟡 Stance — Hold — don't chase (extended)
 
-_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹79.2 | ₹60,909 Cr | 8.68 | 1.83 | 22.7% | 2.78% | +39.8% |
 
----
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🟢 uptrend | +5.1% | +23.7% | 38% | 0.6× | 0.04 |
 
-## Visuals (charts first)
+**Why 🟡:** operationally the **best in the cohort** — ROE 22.7%, NIM 3.91%, CASA 52.5%, GNPA 1.45%, NNPA 0.13% — every quality metric leads the pack. But the price is +23.7% above its 200-DMA on **falling volume (0.60×) and near-zero absorption (0.04)** — extended and running out of fuel. The EARNED strategy buys pullbacks to the 50-DMA, not extension. Hold quality; wait for a dip.
 
-### Price · volume · 25/50/200-DMA · delivery
-![MAHABANK price/volume/DMA](charts/MAHABANK_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **MAHABANK now (2026-06-04,
-> computed):** +5.1% above the 50-DMA, +23.7% above the 200-DMA — extended in a strong uptrend;
-> delivery 38.0%, RelVol 0.60× (falling), **absorption 0.04 (lowest in basket)** = no fresh
-> institutional accumulation.
-
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![MAHABANK financials](charts/MAHABANK_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹3.51 L cr vs Investments
-> ₹1.02 L cr=G-sec/SLR vs Borrowing ₹0.35 L cr — lowest leverage in the basket); quarterly Net
-> Profit momentum; EPS. ₹ Cr, sourced screener. The clean post-FY19 inflection is the asset-quality
-> cleanup and retail-led shift turning chronic losses into record profit (7× in 5 years).
-
-### Group / dependency graph
-![MAHABANK group graph](charts/dependency_MAHABANK.png)
-> **What it shows:** subsidiaries/associates (edge = stake %). Green = listed (price-validated
-> co-move with the parent), yellow = unlisted, purple = foreign JV partner.
-> [Legend](GLOSSARY.md#graph-diagrams).
-
----
-
-## About & Key Points (sourced — screener, dated)
-**About:** Bank of Maharashtra — HQ Pune. Full-service PSU bank with a deliberate **retail-led
-transformation** under way.
-
-**Revenue mix (sourced, Q3 FY26 vs FY22):** Retail Banking **~46%** (vs ~35% FY22), Corporate/
-Wholesale **~35%** (vs ~30%), Treasury **~19%** (vs ~32%) — a sustained shift into highest-quality
-lending.
-
-**Quality ratios (FY26, concall):** NIM **3.91%** (best in cohort), GNPA **1.45%**, NNPA **0.13%**
-(best in cohort), PCR **~98%** (`unknown` exact; implied by GNPA/NNPA gap), CASA **52.51%** (best in
-cohort), Cost-to-Income **37.08%** (best), Cost of Funds **4.15%** (reduced 7 bps YoY), Cost of
-Deposits **4.52%** (improved 14 bps).
-
-**Market share:** smallest by mcap (₹60,909 Cr) but the best operator — 11th-largest PSU by size,
-targeting 9th in 2–3 years (concall).
-
-**Loan book (Mar 2026)** — advances +22% YoY, within which RAM **63%** (retail +32%, agri/MSME
-+11–15%), corporate **37%**. Home loans +29% YoY, vehicle/gold also strong. Retail focus enabled
-by 2,500+ branches with a core-business review framework.
-![MAHABANK advance mix](charts/MAHABANK_loan_mix.png)
-> Advance mix (Q3 FY26, sourced screener): corporate 36% / retail 30% / MSME 19% / agri 13% — the RAM tilt is retail-led.
+**Links:** [Screener](https://www.screener.in/company/MAHABANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-MAHABANK/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-maharashtra/MAHABANK/532525/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=MAHABANK)
 
 **Deposits (Mar 2026):** ₹3,50,538 Cr (+14%), CASA 52.51% (₹1.84 L cr). Investment book ₹1,01,588 Cr.
 Borrowing ₹35,234 Cr — **lowest leverage ratio in the basket**.

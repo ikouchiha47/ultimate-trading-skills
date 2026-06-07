@@ -4,52 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🔴 Stance: **Avoid (weakest)**
-> **₹25.3** · Mcap **₹31,675 Cr** · P/E **12.8** · P/B **1.03** · ROE **8.5%** · Div **1.74%** · 1-yr **−25.6%**
-> Trend: 🔴 **downtrend** — −0.9% vs 50-DMA, −11.5% vs 200-DMA (worst structure in basket)
-> **Why 🔴:** lowest ROE (8.5%) trading at the highest P/E (12.8) = the cohort's worst quality/price
-> mismatch. Flat 5-yr profit growth, CEO leadership gap, ₹2,700 Cr dilution overhang, and deepest
-> downtrend (−11.5% below 200-DMA). Every signal red except an optical TTM +48% low-base artefact.
->
-> **Links:** [Screener](https://www.screener.in/company/UCOBANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-UCOBANK/) · [BSE](https://www.bseindia.com/stock-share-price/uco-bank/UCOBANK/532505/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=UCOBANK)
+## 🔴 Stance — Avoid (weakest)
 
-_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹25.3 | ₹31,675 Cr | 12.8 | 1.03 | 8.5% | 1.74% | -25.6% |
 
----
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🔴 downtrend | -0.9% | -11.5% | 39.3% | 0.59× | 0.19 |
 
-## Visuals (charts first)
+**Why 🔴:** lowest ROE (8.5%) trading at the highest P/E (12.8) = the cohort's worst quality/price mismatch. Flat 5-yr profit growth, CEO leadership gap, ₹2,700 Cr dilution overhang, and deepest downtrend (−11.5% below 200-DMA). Every signal red except an optical TTM +48% low-base artefact.
 
-### Price · volume · 25/50/200-DMA · delivery
-![UCOBANK price/volume/DMA](charts/UCOBANK_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **UCOBANK now (2026-06-04,
-> computed):** −0.9% below the 50-DMA, −11.5% below the 200-DMA — deeply in a confirmed downtrend;
-> delivery 39.3%, RelVol 0.59×, **absorption 0.19** = no accumulation.
-
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![UCOBANK financials](charts/UCOBANK_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹2.94 L cr vs Investments
-> ₹0.94 L cr=G-sec/SLR vs Borrowing ₹0.29 L cr); quarterly Net Profit momentum; EPS. ₹ Cr, sourced
-> screener. The corporate/treasury-heavy mix has produced the flattest profit curve in the cohort.
-
----
-
-## About & Key Points (sourced — screener, dated)
-**About:** UCO Bank — HQ Kolkata (West Bengal). Full-service PSU bank. Revenue mix (Q3 FY26,
-sourced): **Corporate Banking ~37%, Treasury ~27%, Retail ~36%** — corporate/treasury-heavy
-mix (lower quality, more cyclical than peer RAM shifts).
-
-**Quality ratios (FY26, concall — AI summary):** NIM **3.03%** global (3.23% domestic), GNPA
-**2.17%**, NNPA **0.27%**, PCR **97.79%** (ex-TWO 87.66%), CASA **38.65%**, Cost-to-Income
-**52.66%**, Cost of Funds **`unknown`** (not extracted).
-
-**Market share:** smallest in the cohort by mcap (₹31,675 Cr). 5-yr stock CAGR **−3%** (sourced).
-
-**Loan book (Mar 2026)** — gross advances +19.44% YoY. RAM pivot underway: RAM **65%** (Retail >26%,
-Agri ~26%, MSME ~19%). Retail highlights: housing +~19%, car loans +~71%.
-![UCOBANK advance mix](charts/UCOBANK_loan_mix.png)
-> Domestic advance mix (Q3 FY26, sourced screener): corporate 33% / retail 30% / MSME 21% / agri 16%.
+**Links:** [Screener](https://www.screener.in/company/UCOBANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-UCOBANK/) · [BSE](https://www.bseindia.com/stock-share-price/uco-bank/UCOBANK/532505/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=UCOBANK)
 
 **Deposits (Mar 2026):** ₹2,93,542 Cr (+11.59%), CASA 38.65% (+75 bps). Investment book ₹94,153 Cr.
 Borrowing ₹28,687 Cr.

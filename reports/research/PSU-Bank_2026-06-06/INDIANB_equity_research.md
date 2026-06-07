@@ -4,42 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🟢 Stance: **Buy — let it base**
-> **₹842.0** · Mcap **₹1,13,421 Cr** · P/E **9.69** · P/B **1.42** · ROE **15.4%** · Div **2.17%** · 1-yr **+33.2%**
-> Trend: 🟡 **pullback within uptrend** — −3.3% vs 50-DMA, **+1.5% vs 200-DMA** (above the long-term anchor)
-> **Why 🟢:** highest 1-yr momentum among large PSU banks, best NIM (3.23%) and ROE (19.53%) in the
-> cohort, pristine asset quality (GNPA 1.98%, PCR 98.3%), strong RAM-led growth (+15.2%), and the
-> highest relative volume (1.62×) — real investor participation. The −3.3% below 50-DMA is a base-
-> building pullback within a strong uptrend. **Caveat:** richest P/B (1.42) after the small caps =
-> less margin of safety; leadership transition (ED moved to CANBK); management guided NIM lower in FY27.
->
-> **Links:** [Screener](https://www.screener.in/company/INDIANB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-INDIANB/) · [BSE](https://www.bseindia.com/stock-share-price/indian-bank/INDIANB/532814/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=INDIANB)
+## 🟢 Stance — Buy — let it base
 
----
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹842 | ₹1,13,421 Cr | 9.69 | 1.42 | 15.4% | 2.17% | +33.2% |
 
-## Visuals (charts first)
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🟡 pullback within uptrend | -3.3% | +1.5% | 34.8% | 1.62× | 0.17 |
 
-### Price · volume · 25/50/200-DMA · delivery
-![INDIANB price/volume/DMA](charts/INDIANB_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **INDIANB now (2026-06-04,
-> computed):** −3.3% below the 50-DMA (a base-building pullback), **+1.5% vs the 200-DMA** = above
-> the long-term anchor; delivery 34.8%, RelVol **1.62× (highest of the basket)** — real investor
-> participation into weakness, absorption 0.17. *Structure = strong trend on rising volume; wait for
-> the base to settle near the 50-DMA.*
+**Why 🟢:** highest 1-yr momentum among large PSU banks, best NIM (3.23%) and ROE (19.53%) in the cohort, pristine asset quality (GNPA 1.98%, PCR 98.3%), strong RAM-led growth (+15.2%), and the highest relative volume (1.62×) — real investor participation. The −3.3% below 50-DMA is a base- building pullback within a strong uptrend. **Caveat:** richest P/B (1.42) after the small caps = less margin of safety; leadership transition (ED moved to CANBK); management guided NIM lower in FY27.
 
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![INDIANB financials](charts/INDIANB_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹8.28 L cr vs Investments
-> ₹2.48 L cr=G-sec/SLR vs Borrowing ₹0.47 L cr — low leverage); quarterly Net Profit momentum
-> (steady 3,100–3,200 Cr range); EPS. ₹ Cr, sourced screener.
-
-### Group / dependency graph
-![INDIANB group graph](charts/dependency_INDIANB.png)
-> **What it shows:** subsidiaries/associates (edge = stake %). Green = listed (price-validated
-> co-move with the parent), yellow = unlisted, purple = foreign JV partner.
-> [Legend](GLOSSARY.md#graph-diagrams).
+**Links:** [Screener](https://www.screener.in/company/INDIANB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-INDIANB/) · [BSE](https://www.bseindia.com/stock-share-price/indian-bank/INDIANB/532814/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=INDIANB)
 
 ---
 

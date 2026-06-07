@@ -4,59 +4,19 @@
 **(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
 [GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
 
-> ### 🔴 Stance: **Avoid (overvalued laggard)**
-> **₹32.9** · Mcap **₹63,412 Cr** · P/E **11.7** · P/B **1.71** · ROE **15.6%** · Div **0.0%** · 1-yr **−18.8%**
-> Trend: 🔴 **downtrend** — −2.9% vs 50-DMA, −9.5% vs 200-DMA (deeply below declining long-term anchor)
-> **Why 🔴:** richest P/E (11.7) and P/B (1.71) in the cohort attached to the worst price-structure —
-> the market is de-rating the stock despite operational improvement. No dividend. Below a falling
-> 200-DMA: the EARNED strategy stands aside. The ₹5,000 Cr equity dilution plan is an overhang.
->
-> **Links:** [Screener](https://www.screener.in/company/IOB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-IOB/) · [BSE](https://www.bseindia.com/stock-share-price/indian-overseas-bank/IOB/532388/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=IOB)
+## 🔴 Stance — Avoid (overvalued laggard)
 
-_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹32.9 | ₹63,412 Cr | 11.7 | 1.71 | 15.6% | 0% | -18.8% |
 
----
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| 🔴 downtrend | -2.9% | -9.5% | 44.2% | 0.42× | 0.28 |
 
-## Visuals (charts first)
+**Why 🔴:** richest P/E (11.7) and P/B (1.71) in the cohort attached to the worst price-structure — the market is de-rating the stock despite operational improvement. No dividend. Below a falling 200-DMA: the EARNED strategy stands aside. The ₹5,000 Cr equity dilution plan is an overhang.
 
-### Price · volume · 25/50/200-DMA · delivery
-![IOB price/volume/DMA](charts/IOB_price_volume.png)
-> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
-> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
-> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **IOB now (2026-06-04,
-> computed):** −2.9% below the 50-DMA, −9.5% below the 200-DMA — deep in a confirmed downtrend;
-> delivery 44.2% (high — retail holders), RelVol 0.42× (thinnest in basket), **absorption 0.28**
-> = no accumulation.
-
-### Financials — revenue/profit · the investment book · quarterly · EPS
-![IOB financials](charts/IOB_financials.png)
-> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹3.68 L cr vs Investments
-> ₹1.19 L cr=G-sec/SLR vs Borrowing ₹0.52 L cr — where the money sits); quarterly Net Profit
-> momentum; EPS. ₹ Cr, sourced screener.
-
----
-
-## About & Key Points (sourced — screener, dated)
-**About:** Indian Overseas Bank — founded **1937** (Chidambaram Chettyar), nationalised **1969**,
-HQ Chennai. Full-service PSU bank.
-
-**Business mix (Q3 FY26, sourced):** Advances **46%**, Term Deposits **32%**, Savings **18%**,
-Current **4%** — an advances-led book funded mostly by term deposits (structural CASA headwind).
-
-**Quality ratios (FY26, concall):** NIM **3.21%** (global), GNPA **1.42%**, NNPA **0.21%**,
-PCR **`unknown`** (not extracted — but strong given NNPA/GNPA gap), CASA **40.99%**, Cost-to-Income
-**`unknown`**, Cost of Funds **`unknown`**.
-
-**Market share:** small PSU — not in the top-tier by advances.
-
-**Loan book (Mar 2026)** — total advances +24.16% YoY; RAM book **83% of domestic advances**
-(retail 30.94%, agri 35.26%, MSME — core MSME +23.77%). Retail advances +45.12% YoY, agri +40%
-YoY — exceptional growth but from a low base.
-![IOB advance mix](charts/IOB_loan_mix.png)
-> **Note:** screener's segment breakdown (Agri 34 / Retail 30 / Corporate 28 / MSME 18) sums to
-> >100% — IOB's priority-sector buckets (Agri/MSME) overlap with retail in the disclosure, so read
-> these as share-of-advances per segment, not a clean partition. The signal is clear: **Agri+Retail
-> dominate** (the most retail/agri-skewed book in the basket).
+**Links:** [Screener](https://www.screener.in/company/IOB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-IOB/) · [BSE](https://www.bseindia.com/stock-share-price/indian-overseas-bank/IOB/532388/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=IOB)
 
 **Deposits (Mar 2026):** ₹3,68,191 Cr (+18.03%), of which CASA 41% (₹1,50,936 Cr), retail term
 53% (₹1,83,601 Cr). Investment book ₹1,19,285 Cr. Borrowing ₹51,603 Cr.
