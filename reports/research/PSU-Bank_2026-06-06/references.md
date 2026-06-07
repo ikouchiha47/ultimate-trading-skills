@@ -121,3 +121,9 @@ screener company page in filings/; FY2025 annual reports (text-extracted) in fil
     - Reg. 34 (1) Annual Report. 21 May — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca19db4a-430a-4e1a-80cf-974fcfe16f77.pdf
     - Notice Of Annual General Meeting Of The Bank 18 May - UCO Bank AGM on 12 June 2026 to approve dividend and Rs2 — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b3e325d4-7101-43c7-ba73-34e24df8f7b7.pdf
     - Announcement under Regulation 30 (LODR)-Change in Directorate 14 May - UCO Bank appoints Shri Hari Har Mishra  — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be464e0d-d1ef-45ae-94ae-ddba0c51c3b8.pdf
+
+## SBIN group / dependency graph (5c)
+- SBI subsidiaries + stakes: https://en.wikipedia.org/wiki/State_Bank_of_India
+- SBI MF IPO (2026), stake detail: https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html
+- SBI affiliates: https://sbi.bank.in/web/affiliates/affiliates
+- Listed-subsidiary co-move (computed, split-adjusted): SBICARD +0.31, SBILIFE +0.32 vs SBIN

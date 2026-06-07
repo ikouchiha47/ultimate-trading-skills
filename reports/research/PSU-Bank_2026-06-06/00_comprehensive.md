@@ -107,6 +107,26 @@ Lead-lag-validated graph (2023–, daily; `graph/influence_report.txt`, `charts/
 - **US10Y / USDINR: no daily link** (corr ≈ +0.06) — macro transmits to PSU banks **via flow over
   weeks**, not daily price. Don't trade these banks off daily yield/FX ticks.
 
+## 5c. Group / dependency graph — SBIN (sourced)
+The bank↔group-entity dependency graph for the bellwether, built the authoritative way (each edge a
+sourced disclosure with SBI's stake as strength; listed subsidiaries price-validated against the
+parent). Full graph: `graph/dependency_SBIN.json`; diagram: `charts/dependency_SBIN.png`.
+
+![SBIN group / dependency graph](charts/dependency_SBIN.png)
+
+- **Listed subsidiaries co-move with the parent** (price overlay = corroboration): SBI Cards
+  **SBICARD corr +0.31**, SBI Life **SBILIFE corr +0.32** — the group link shows up in prices.
+- **Unlisted group entities** (no price node): SBI General Insurance (69.95%), SBI Funds Mgmt /
+  SBI MF (IPO expected 2026), SBI-SG (65%), SBI Ventures (100%).
+- **JV partners** (foreign): BNP Paribas (SBI Life), AMUNDI (SBI MF), Société Générale (SBI-SG).
+- Stakes/relationships sourced from SBI disclosures (Wikipedia/SBI affiliates) + the SBI-MF-IPO
+  filing; see `references.md`.
+
+**Method finding (honest):** screener's Related-Party feed is **useless for banks** — it returns
+transaction TYPES (Advance/Deposit/Remuneration), not counterparty entities. This is exactly why the
+dependency-graph SKILL ranks screener as *corroboration only* and the annual-report AOC-1 / direct
+disclosures as authoritative. The graph above uses the authoritative path.
+
 ## 6. Caveats (discipline)
 - RBI sectoral data is **system-wide**, not PSU-only; per-bank loan mix is being sourced from ARs
   (some `unknown` until extracted). Repo/policy current level: pull from RBI before quoting a number.

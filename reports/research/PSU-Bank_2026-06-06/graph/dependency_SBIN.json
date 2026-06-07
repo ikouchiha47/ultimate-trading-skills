@@ -1,0 +1,258 @@
+{
+  "nodes": [
+    {
+      "id": "SBIN",
+      "name": "State Bank of India",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "SBIN",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "SBICARD",
+      "name": "SBI Cards & Payment Services",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "SBICARD",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "SBILIFE",
+      "name": "SBI Life Insurance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "SBILIFE",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "BNP Paribas",
+      "name": "BNP Paribas",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SBIGEN",
+      "name": "SBI General Insurance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "SBIMF",
+      "name": "SBI Funds Management (SBI MF)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "AMUNDI",
+      "name": "AMUNDI",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SBISG",
+      "name": "SBI-SG Global Securities",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Societe Generale",
+      "name": "Societe Generale",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SBIVEN",
+      "name": "SBI Ventures",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "SBIN",
+      "dst": "SBICARD",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "SBI holds 68.98% of SBI Cards & Payment Services",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 68.98,
+      "confidence": "high",
+      "corr0": 0.3141620382161527,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBILIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "SBI holds 55.45% of SBI Life Insurance",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 55.45,
+      "confidence": "high",
+      "corr0": 0.32003348959276184,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBILIFE",
+      "dst": "BNP Paribas",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "SBI Life Insurance is a JV with BNP Paribas",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBIGEN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "SBI holds 69.95% of SBI General Insurance",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 69.95,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBIMF",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "SBI holds majority% of SBI Funds Management (SBI MF)",
+          "url": "https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIMF",
+      "dst": "AMUNDI",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "SBI Funds Management (SBI MF) is a JV with AMUNDI",
+          "url": "https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBISG",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "SBI holds 65.0% of SBI-SG Global Securities",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 65.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBISG",
+      "dst": "Societe Generale",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "SBI-SG Global Securities is a JV with Societe Generale",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBIVEN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "SBI holds 100.0% of SBI Ventures",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}
