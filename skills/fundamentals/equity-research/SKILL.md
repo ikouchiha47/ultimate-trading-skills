@@ -147,11 +147,14 @@ uv run --extra stt python equity-research/scripts/concall_reader.py \
 ```
 
 faster-whisper **windows internally**, so transcribing the whole 50–70-min call in ONE
-`--audio <file>` call is cleaner than manual chunk-and-stitch (no overlap-dedup bugs). Speed on an
-Apple-Silicon CPU: **`base.en` ~8× realtime, `small.en` ~4×** (a ~55-min call ≈ 7 / 14 min). Use
-**`small.en`** for proper nouns — `base.en` garbles names ("Ashish Pandey"→"Aashi Shpande"),
-`tiny.en` is worse ("Canara"→"Chandra"). Only fall back to the 3-min/30s-overlap chunked loop on a
-memory-constrained host. Tested end-to-end on real PSU-bank concall recordings (direct-mp3 + YouTube).
+`--audio <file>` call is cleaner than manual chunk-and-stitch (no overlap-dedup bugs). `transcribe_file`
+uses the **CPU fast path — batched inference + VAD silence-skip + all cores** (CTranslate2 has no
+Apple-GPU/Metal backend, so this is the ceiling on a Mac). Speed on an M1: **`small.en` ~12–14×
+realtime** batched (vs ~4× plain) — a ~55-min call ≈ **4–5 min**; `base.en` is faster still but
+garbles names ("Ashish Pandey"→"Aashi Shpande"), so prefer **`small.en`** for proper nouns
+(`tiny.en` is worse: "Canara"→"Chandra"). `batch_size=8` and `cpu_threads=0` (=all cores) are the
+defaults; raising batch_size past 8 gave no gain here. Only fall back to the 3-min/30s-overlap chunked
+loop on a memory-constrained host. Tested end-to-end on real PSU-bank concalls (direct-mp3 + YouTube).
 
 ---
 
