@@ -89,7 +89,10 @@ Output `screener.json` — commentary text + full documents index (annual report
 ---
 
 ### Step 2: Concall transcripts
-Priority: Transcript PDF -> AI Summary modal -> PPT
+Priority cascade (`concall_reader` does this automatically via `--from-docs`):
+**Transcript PDF → AI Summary → PPT → Recording.** Note: BSE transcript PDFs on the `AttachHis`
+archive host are **Akamai-gated** (no transport trick beats them) — the reader auto-falls back to
+the screener **AI summary** (cleaner key points anyway). PPT decks parse as PDF or `.pptx`.
 
 **Always fetch the last 3 available concalls.** Check `screener.json` documents for available dates, pick the 3 most recent that have a transcript or AI summary.
 
@@ -121,6 +124,31 @@ uv run python equity-research/scripts/concall_reader.py \
 ```
 
 Output: Markdown transcript per concall. Agent reads across quarters for tone shifts, guidance accuracy, key metric evolution.
+
+#### Step 2b: Concall recording → STT (only if a recording is the ONLY source; opt-in, `.[stt]`)
+When a concall has just a **recording** (audio/video link, no transcript/AI-summary/PPT), YOU (the
+agent) orchestrate transcription — download + convert + **split into 3-min chunks with 30s overlap**
+with `yt-dlp`/`ffmpeg`, transcribe each chunk with the thin primitive, then stitch (keep each
+chunk's non-overlap region only, so no duplication). The code does NOT auto-do this; it's a
+multi-step agent task. Needs system `ffmpeg` + `uv pip install -e '.[stt]'`.
+
+```bash
+# 1) download audio
+yt-dlp -x --audio-format mp3 -o /tmp/rec.mp3 "<recording_url>"
+# 2) duration, then split into 180s windows stepping 150s (=> 30s overlap)
+dur=$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 /tmp/rec.mp3)
+i=0; start=0
+while [ "$(echo "$start < $dur" | bc)" -eq 1 ]; do
+  ffmpeg -y -ss $start -t 180 -i /tmp/rec.mp3 /tmp/chunk_$i.mp3 -loglevel error
+  uv run --extra stt python equity-research/scripts/concall_reader.py \
+     --audio /tmp/chunk_$i.mp3 --model base.en --output /tmp/chunk_$i.txt
+  start=$((start+150)); i=$((i+1))
+done
+# 3) stitch: emit each chunk's first 150s only (the 30s tail is re-covered by the next chunk),
+#    except the LAST chunk (emit fully). Then read the stitched transcript for key points.
+```
+Use a **larger model** (`base.en`/`small.en`) for accuracy; `tiny.en` slips proper nouns (e.g.
+"Canara"→"Chandra"). Tested working end-to-end on a real concall recording.
 
 ---
 

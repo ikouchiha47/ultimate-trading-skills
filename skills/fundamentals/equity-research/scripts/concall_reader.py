@@ -122,6 +122,20 @@ def parse_ppt(url: str) -> str | None:
     return None
 
 
+def transcribe_file(path: str, model: str = "base.en") -> str | None:
+    """THIN primitive: transcribe ONE audio file with faster-whisper (local, no API cost).
+    The AGENT orchestrates download/convert/split (yt-dlp + ffmpeg) per the SKILL's chunked-STT
+    instructions and calls this per chunk; this just turns one clip into text. Needs the `stt` extra."""
+    try:
+        from faster_whisper import WhisperModel
+    except Exception:  # noqa: BLE001
+        print("[concall] faster-whisper not installed (uv pip install -e '.[stt]')")
+        return None
+    wm = WhisperModel(model, device="cpu", compute_type="int8")
+    segs, _ = wm.transcribe(path, beam_size=1)
+    return " ".join(s.text.strip() for s in segs).strip() or None
+
+
 def pick_concall(docs: dict, date_filter: str) -> dict | None:
     """Find a concall entry matching a date string like 'Feb 2026'."""
     date_filter = date_filter.strip().lower()
@@ -192,15 +206,16 @@ def run(args):
             result["text"] = text
             print(f"[concall] PPT: {len(text)} chars extracted")
 
-    # ── Priority 4: Recording (audio/video) — STT, opt-in ─────────
-    # Claude can't ingest audio here, so transcription is a separate, config-gated step:
-    #   yt-dlp (grab audio) -> faster-whisper (local CTranslate2 STT) -> transcript.
-    # Heavy + rarely needed (transcript/AI-summary/PPT cover ~all), so default = capture link only.
+    # ── Priority 4: Recording (audio/video) — link only here ──────
+    # If only a recording exists, capture the link. Transcription is AGENT-ORCHESTRATED (see the
+    # equity-research SKILL "Concall recording → STT" workflow): the agent uses yt-dlp + ffmpeg to
+    # download and split into 3-min/30s-overlap chunks, runs `concall_reader.py --audio <chunk>` on
+    # each, and stitches. Not auto-run in this script (heavy, opt-in, and a multi-step agent task).
     if not result["text"] and rec_url:
         result["source"] = "recording_link"
-        result["text"] = (f"Audio/video recording only — speech-to-text NOT run (opt-in).\n"
-                          f"Recording: {rec_url}\nTo extract: yt-dlp → faster-whisper (config-gated).")
-        print(f"[concall] Only a recording — captured link; STT (yt-dlp+faster-whisper) is opt-in: {rec_url}")
+        result["text"] = (f"Audio/video recording only — see SKILL 'Concall recording → STT' "
+                          f"(agent: yt-dlp + ffmpeg split + `--audio` per chunk).\nRecording: {rec_url}")
+        print(f"[concall] Recording link captured: {rec_url}")
 
     if not result["text"]:
         print("[concall] No content retrieved.")
@@ -228,11 +243,23 @@ def main():
     parser.add_argument("--date", help="Concall date to pick, e.g. 'Feb 2026'")
     parser.add_argument("--transcript", help="Direct BSE transcript PDF URL")
     parser.add_argument("--ai-summary", help="Screener AI summary URL (/concalls/summary/<id>/)")
-    parser.add_argument("--output", help="Save JSON result to this path")
+    parser.add_argument("--audio", help="Transcribe ONE audio chunk (agent-split) via faster-whisper")
+    parser.add_argument("--model", default="base.en", help="faster-whisper model (default base.en)")
+    parser.add_argument("--output", help="Save JSON/text result to this path")
     args = parser.parse_args()
 
+    # thin STT primitive — the agent splits with ffmpeg and calls this per chunk (see SKILL)
+    if args.audio:
+        text = transcribe_file(args.audio, args.model) or ""
+        if args.output:
+            Path(args.output).write_text(text)
+            print(f"[saved] {args.output} ({len(text)} chars)")
+        else:
+            print(text)
+        return
+
     if not args.from_docs and not args.transcript and not args.ai_summary:
-        parser.error("Provide --from-docs or at least one of --transcript / --ai-summary")
+        parser.error("Provide --from-docs, --transcript/--ai-summary, or --audio <chunk>")
 
     run(args)
 

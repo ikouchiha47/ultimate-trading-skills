@@ -26,6 +26,10 @@ data = [
 backtest = [
     "vectorbt",
 ]
+stt = [               # opt-in concall-recording transcription (heavy); needs system ffmpeg
+    "yt-dlp",         # pull audio from the recording link (YouTube/BSE media)
+    "faster-whisper", # local CTranslate2 speech-to-text (no API cost)
+]
 # Headless-browser fallback for sites that intermittently block plain requests
 # (niftyindices constituent CSVs). Primary path is requests+cookie-warmup; this is
 # only the fallback. Requires `playwright install chromium` after pip install.
