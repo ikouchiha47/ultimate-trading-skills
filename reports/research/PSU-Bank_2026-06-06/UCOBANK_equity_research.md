@@ -1,99 +1,183 @@
-<!-- ASSEMBLED:BEGIN -->
 # UCO Bank (UCOBANK) — Equity Research
 
+*2026-06-06. Prices split-adjusted (jugaad `adjust=True`). Provenance on every figure:
+**(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
+[GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
+
 > ### 🔴 Stance: **Avoid (weakest)**
-> **₹25.3** · Mcap ₹31,675 Cr · P/E 12.8 · P/B 1.03 · ROE 8.5% · Div 1.74% · 1-yr -25.6%
-> Trend: 🔴 downtrend (below both DMAs) — vs50 -0.9%, vs200 -11.5%
+> **₹25.3** · Mcap **₹31,675 Cr** · P/E **12.8** · P/B **1.03** · ROE **8.5%** · Div **1.74%** · 1-yr **−25.6%**
+> Trend: 🔴 **downtrend** — −0.9% vs 50-DMA, −11.5% vs 200-DMA (worst structure in basket)
+> **Why 🔴:** lowest ROE (8.5%) trading at the highest P/E (12.8) = the cohort's worst quality/price
+> mismatch. Flat 5-yr profit growth, CEO leadership gap, ₹2,700 Cr dilution overhang, and deepest
+> downtrend (−11.5% below 200-DMA). Every signal red except an optical TTM +48% low-base artefact.
 >
 > **Links:** [Screener](https://www.screener.in/company/UCOBANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-UCOBANK/) · [BSE](https://www.bseindia.com/stock-share-price/uco-bank/UCOBANK/532505/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=UCOBANK)
 
 _Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
 
+---
+
 ## Visuals (charts first)
 
 ### Price · volume · 25/50/200-DMA · delivery
 ![UCOBANK price/volume/DMA](charts/UCOBANK_price_volume.png)
-> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🔴 downtrend (below both DMAs); delivery 39.3%, RelVol 0.59×.
+> **What it shows:** split-adjusted daily price with 25/50/200-day moving averages, volume bars
+> (green up / red down) and delivery %. **How to read:** above the 200-DMA = long-term uptrend; the
+> **50-DMA is the buy-the-dip anchor** (the sector's EARNED strategy). **UCOBANK now (2026-06-04,
+> computed):** −0.9% below the 50-DMA, −11.5% below the 200-DMA — deeply in a confirmed downtrend;
+> delivery 39.3%, RelVol 0.59×, **absorption 0.19** = no accumulation.
 
 ### Financials — revenue/profit · the investment book · quarterly · EPS
 ![UCOBANK financials](charts/UCOBANK_financials.png)
-> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+> **What it shows:** annual Revenue & Net Profit; **the book** (Deposits ₹2.94 L cr vs Investments
+> ₹0.94 L cr=G-sec/SLR vs Borrowing ₹0.29 L cr); quarterly Net Profit momentum; EPS. ₹ Cr, sourced
+> screener. The corporate/treasury-heavy mix has produced the flattest profit curve in the cohort.
 
 ---
 
-<!-- ASSEMBLED:END -->
-## 1. Basic information
-| Field | Value | Prov. |
-|---|---|---|
-| Price · Mcap | ₹25.3 · ₹31,675 Cr (smallest of 10) | sourced |
-| Tally | < 0.2% ✓ | computed |
-| P/E · P/B · Div% · ROE | **12.8 (richest)** · 1.03 · 1.74% · **8.5% (worst)** | sourced |
-| Stance | **Avoid (weakest + expensive)** (§7) | computed read |
-| Target | `unknown` | — |
+## About & Key Points (sourced — screener, dated)
+**About:** UCO Bank — HQ Kolkata (West Bengal). Full-service PSU bank. Revenue mix (Q3 FY26,
+sourced): **Corporate Banking ~37%, Treasury ~27%, Retail ~36%** — corporate/treasury-heavy
+mix (lower quality, more cyclical than peer RAM shifts).
 
-## 2. Business description
-Full-service PSU bank. **Revenue mix Q3 FY26 (sourced): Corporate Banking ~37%, Treasury ~27%,
-Retail ~36%** — corporate/treasury-heavy (lower-quality, more cyclical mix than the retail leaders).
-Deposits ₹2,93,542 Cr, Investments ₹94,153 Cr, Borrowing ₹28,687 Cr (Mar 2026, sourced).
+**Quality ratios (FY26, concall — AI summary):** NIM **3.03%** global (3.23% domestic), GNPA
+**2.17%**, NNPA **0.27%**, PCR **97.79%** (ex-TWO 87.66%), CASA **38.65%**, Cost-to-Income
+**52.66%**, Cost of Funds **`unknown`** (not extracted).
 
-## 3. Industry & positioning
-Smallest, lowest-ROE PSU of the 10. See `00_industry.md`.
+**Market share:** smallest in the cohort by mcap (₹31,675 Cr). 5-yr stock CAGR **−3%** (sourced).
 
-## 4. Investment summary
-**The weakest name on nearly every axis.** ROE just **8.5%** (half the leaders'), 5-yr profit CAGR
-**0%**, and although TTM is **+48%** that is a **low-base artefact** on tiny absolute profit
-(quarterly Net Profit only ₹607→640→**666 Cr** (sourced)). Stock **−25.6% over 1-yr** (worst).
-Recent: CEO **Ashwani Kumar ceased (1 Jun)** — leadership transition into weakness.
+**Loan book (Mar 2026)** — gross advances +19.44% YoY. RAM pivot underway: RAM **65%** (Retail >26%,
+Agri ~26%, MSME ~19%). Retail highlights: housing +~19%, car loans +~71%.
 
-## 5. Valuation
-P/E **12.8 (richest in the cohort)** for the **lowest ROE** — the clearest valuation/quality
-mismatch in the group. P/B 1.03. DCF `unknown`.
+**Deposits (Mar 2026):** ₹2,93,542 Cr (+11.59%), CASA 38.65% (+75 bps). Investment book ₹94,153 Cr.
+Borrowing ₹28,687 Cr.
 
-## 6. Financial analysis
-Low profitability (ROE 8.5%), flat 5-yr profit, corporate/treasury-tilted book. The +48% TTM is base
-effect, not durable growth. Loan mix sourced (above).
+**Subsidiaries / associates:** No major domestic JV/associate.
 
-## 7. Price & flow
-`charts/UCOBANK_price_volume.png`. Computed: **−11.5% below 200-DMA (worst structure)**, −0.9% below
-50-DMA, 1-yr **−25.6% (worst)**, volume 0.59×, delivery 39.3%, absorption 0.19. *Deep in a downtrend
-below a falling 200-DMA — no reversion edge; the EARNED strategy stands aside.*
+**Corporate-action history (sourced):** Multiple **GOI preferential allotments** (2016–2021)
+· **QIP** (Mar 2025: ₹584 Cr shares at ₹24.27 premium). No stock split or merger.
+**Recent corporate action:** Board approved **₹2,700 Cr equity capital raising** (AGM 12 Jun 2026).
+CEO **Ashwani Kumar ceased 31 May 2026** — leadership gap.
 
-## 8. Risks
-Lowest ROE + richest P/E + worst price-action + CEO change = stacked negatives; smallest/least liquid.
-No qualified opinion sourced.
-
-## 9. ESG — GoI-majority; CEO transition (governance). Detail `unknown`.
-
-## 10. References — `references.md`.
-
----
-**Stance:** Avoid — the cohort's weakest operator (ROE 8.5%, 0% 5-yr profit) trading at its richest
-P/E, with the worst price-action and a leadership change. Every signal red except the optical TTM.
-Stand aside.
+_Source: [screener Key Points panel](https://www.screener.in/company/UCOBANK/consolidated/) (with its
+citation links); figures are SOURCED disclosures, not our computed numbers._
 
 ---
 
+## 1. Investment summary
+**The cohort's weakest name on every fundamental axis — at the richest P/E.** FY26 (concall,
+sourced): net profit **₹2,768 Cr (+13.21%)**, NII `unknown`, operating profit ₹6,429 Cr (+6.49%).
+Many operational metrics are genuinely improving — GNPA 2.17% (improving from 7.89% in 2022),
+NIM 3.03%, CASA 38.65% — but the **stock price tells the real story**: −25.6% over 1-yr, −11.5%
+below the 200-DMA, and the EARNED strategy provides **no entry signal in a falling long-term trend**.
+**The paradox:** UCOBANK is not operationally terrible — its NIM is above CANBK's — but ROE 8.5%
+is half the cohort average, 5-yr profit CAGR is **0%**, and the absolute profit scale (₹666 Cr
+quarterly) is 5× smaller than CANBK's. The market is correctly pricing structural weakness, not
+improving trend metrics.
+
+## 2. Valuation
+- Relative: P/E **12.8** (richest in cohort), P/B **1.03** (near book — but book barely grows),
+  div yield **1.74%**. CHEAPEST QUALITY paying the MOST for LOWEST QUALITY. (sourced)
+- Management: ROA aspiration **0.95–1%** (concall, CEO). No explicit ROE target guided.
+- Dilution risk: ₹2,700 Cr equity plan — significant relative to current mcap ₹31,675 Cr (~8.5%).
+- Absolute (DCF / residual income): **`unknown`** — not fabricated.
+
+## 3. Industry forces → how they hit UCOBANK (sector analysis applied)
+*(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+- **Porter — supplier power (funding):** UCOBANK's **CASA 38.65%** is decent (above CANBK's 29.5%)
+  and improving (+75 bps), but its **corporate-heavy book (37%)** means it competes on corporate
+  lending spreads where pricing power is weak. The **₹2,700 Cr capital raise** will fund growth but
+  dilutes existing holders.
+- **Porter — rivalry:** Mid-size PSU fighting for corporate market share against larger, better-
+  capitalised peers. Pivot to RAM (65%) is late vs MAHABANK/CANBK. Management acknowledges they
+  were not focusing on deposits earlier (low CD ratio); now scrambling.
+- **PESTEL — rates:** NIM 3.03% is decent (above CANBK's 2.52%), but cost-to-income 52.66% is the
+  **worst in the cohort** — meaning high costs erode the NIM advantage. AFS MTM hit ₹−135 Cr in Q4
+  (treasury loss ₹−16 Cr vs ~₹130 Cr profit prior quarter); some reversal visible.
+- **PESTEL — policy/ownership:** GoI holds **90.95%** (sourced, Mar 2026 — near-total control).
+  **CEO Ashwani Kumar ceased 31 May 2026** — leadership vacuum. ₹2,700 Cr capital plan awaits AGM
+  approval. Director Hari Har Mishra appointed.
+- **RBI sectoral deployment (system):** UCOBANK's corporate/treasury tilt is the most cyclical mix
+  in the basket. The pivot to RAM is positive but late.
+- **Influence graph (computed):** Market-beta-dominated. Ultra-thin free float (9.05%) with
+  absorption 0.19 means any institutional flow moves the stock disproportionately.
+- **Strategy (computed, EARNED):** **Below a falling 200-DMA there is no reversion edge.** The
+  sector's EARNED 50-DMA mean-reversion play is only valid above the 200-DMA. UCOBANK is −11.5%
+  below — the deepest structural downtrend in the basket. Stand aside.
+
+## 4. Financial analysis
+- Net profit trajectory — **stagnant at low absolute levels** (sourced): ₹188 Cr (FY21) → ₹895 →
+  ₹1,826 → ₹1,672 → **₹2,468 Cr (FY25)**. EPS ~₹1.97. Dividend **₹0.44/share — 20% payout** (FV ₹10; yield 1.74%, sourced).
+  5-yr profit CAGR **0%** (sourced).
+- **The book:** Deposits ₹2.94 L cr (+11.6%), advances ₹`unknown`, Investments ₹0.94 L cr,
+  Borrowing ₹0.29 L cr (Mar 2025, sourced — FY26 not available in CSVs).
+- **RAM pivot:** RAM 65% (Retail >26%, housing +19%, car loans +71%, Agri ~26%, MSME ~19%).
+  Management pivoting away from corporate to RAM — late but material.
+- **Quarterly momentum (sourced, with GNPA/NNPA):** Net Profit ₹607 Cr (Sep 24) → ₹640 Cr (Dec 24)
+  → **₹666 Cr (Mar 25)** — growth is linear, not compound. GNPA improving: 3.18%→2.91%→**2.69%**.
+  NNPA 0.73%→0.63%→**0.50%**. The asset-quality cleanup is genuine but slow.
+- **Quality caution:** Cost-to-income 52.66% (improved 581 bps YoY) is still the worst; ROA aspires
+  to 0.95–1% (vs MAHABANK's 1.86%); fee income ₹516 Cr (+32%) is tiny vs capital requirement.
+  The QIP is not imminent but "at the right opportune time" — an overhang.
+
+## 5. Investment risks
+Lowest ROE (8.5%) + richest P/E (12.8) + worst price-action (−25.6%) + CEO leadership gap (ceased
+31 May 2026) = stacked negatives; ₹2,700 Cr equity dilution overhang; smallest/least liquid (mcap
+₹31,675 Cr); cost-to-income 52.66% (highest in basket); corporate/treasury-heavy mix most exposed
+to rate cycle; AFS MTM loss ₹−135 Cr in Q4 (rates 6.59→7.05). No qualified opinion sourced. Credit
+ratings: SMERA/CARE/CRISIL/Infomerics — all 2025–26; no downgrade signal noted.
+
+## 6. ESG
+GoI-super-majority (90.95%); governance: **CEO transition risk** (Ashwani Kumar ceased, no permanent
+replacement announced). BRSR **filed FY26** (sourced). Director change: Hari Har Mishra appointed
+14 May 2026. Detail beyond filings: **`unknown`**.
+
 ---
 
-## Concall — key points (latest, sourced)
-_⏳ extraction pending (`filings/concall/UCOBANK.json`)._
+## Concall — key points (FY26, sourced: AI summary)
+*(Source: `filings/concall/UCOBANK.json` — AI summary produced from the transcript.)*
+- **Growth:** business +14.95%; advances +19.44%; deposits +11.59%.
+- **Mix:** CASA 38.65% (+75 bps YoY, above guidance 37–38%). RAM 65% (Retail >26%, Agri ~26%,
+  MSME ~19%). Retail housing +19%, car loans +71%.
+- **Margins:** global NIM **3.03%** (guided 2.8–2.9%); domestic NIM **3.23%**. Yield on advances
+  maintained. CD ratio 80.21%.
+- **Profit:** FY net profit ₹2,768 Cr **(+13.21% YoY)** ; Q4 net profit ₹801 Cr (+22%).
+  Operating profit ₹6,429 Cr (+6.49%).
+- **Asset quality:** GNPA **2.17%** (−52 bps), NNPA **0.27%** (−23 bps), PCR 97.79% (+110 bps),
+  PCR ex-TWO 87.66% (+571 bps). Credit cost 0.62% (<1% guide). Slippage 0.78% (1–1.25% guide).
+  Recovery/upgradation ₹2,944 Cr (₹2,200–2,700 guide).
+- **Capital:** CRAR 18.61%, Tier-1 16.59%. **Dividend ₹0.44/share — 20% payout** (yield 1.74%, sourced).
+- **Digital:** Project Parivartan (31 customer journeys), digital business >₹25,000 Cr, mobile
+  active users 14→70 lakhs, tab banking >10 lakh accounts, WhatsApp banking 20 lakh customers.
+- **FY27 guidance (management):** Deposits 10–12%; Credit 12–14%; CASA 37–38%; RAM 62–65%;
+  CD ratio 80–82%; Credit cost <0.75%; Global NIM 2.8–2.9%; GNPA <2%, NNPA <0.2%;
+  Slippage <1%; Recovery ₹2,000–2,500 Cr.
+- **CEO commentary:** Guidance not lowered due to West Asia/geopolitics ("there is no such thing").
+  SMA controlled at ~0.45%. ECL buffer ₹1,038 Cr + contingency ₹341 Cr + COVID ₹530 Cr = ~₹1,900 Cr.
+  **Pricing discipline**: refusing low-yield corporate. Corporate pipeline ~₹14,000 Cr (some held
+  back on pricing). QIP not imminent ("at the right opportune time").
+- **Risk:** Retail 'other' bucket (gold loans ₹5,400 Cr + staff loans). Personal loan NPA slight
+  uptick ₹31→₹39 Cr (1.43% of book). MTM loss ₹−135 Cr in Q4; some reversal already seen.
 
-_Key points pending agent review — the transcript is captured; raw text is **not** dumped here (would be boilerplate). Read it in `filings/concall/UCOBANK.json`._
+_Full extract: `filings/concall/UCOBANK.json` (AI summary)._
 
 ## DRHP
-N/A for the parent — UCO Bank is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: No recent group IPO of note.
+N/A for the parent (UCO Bank is a long-listed PSU bank). No recent group IPO.
 
 ## References (this company)
-- Screener: https://www.screener.in/company/UCOBANK/consolidated/
-- TradingView: https://in.tradingview.com/symbols/NSE-UCOBANK/
-- BSE: https://www.bseindia.com/stock-share-price/uco-bank/UCOBANK/532505/
-- NSE: https://www.nseindia.com/get-quotes/equity?symbol=UCOBANK
-- Audit snapshot: `filings/UCOBANK_screener_page.pdf`
-- Data: `data/UCOBANK_*.json` / `.csv`
+- [Screener](https://www.screener.in/company/UCOBANK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-UCOBANK/) · [BSE](https://www.bseindia.com/stock-share-price/uco-bank/UCOBANK/532505/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=UCOBANK)
+- Audit snapshot: `filings/UCOBANK_screener_page.pdf` · Data: `data/UCOBANK_*.json/.csv` · Concall: `filings/concall/UCOBANK.json`
 
-**News & disclosures (dated, sourced):**
-- Announcement under Regulation 30 (LODR)-Cessation 1 Jun - Ashwani Kumar ceased as UCO Bank MD & CEO on 31 May 2026 after — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0513c04c-b0e6-4f9e-a996-31e293011943.pdf
-- Business Responsibility and Sustainability Reporting (BRSR) 21 May - UCO Bank filed BRSR 2025-26 under SEBI LODR and pos — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee8760ac-293d-4b0e-a594-1f3e03963066.pdf
-- Reg. 34 (1) Annual Report. 21 May — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca19db4a-430a-4e1a-80cf-974fcfe16f77.pdf
-- Notice Of Annual General Meeting Of The Bank 18 May - UCO Bank AGM on 12 June 2026 to approve dividend and Rs2,700 crore — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b3e325d4-7101-43c7-ba73-34e24df8f7b7.pdf
-- Announcement under Regulation 30 (LODR)-Change in Directorate 14 May - UCO Bank appoints Shri Hari Har Mishra as directo — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be464e0d-d1ef-45ae-94ae-ddba0c51c3b8.pdf
+### News & disclosures (dated, sourced)
+- **CEO Ashwani Kumar ceased (31 May 2026)** — leadership vacuum. [BSE filings](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0513c04c-b0e6-4f9e-a996-31e293011943.pdf)
+- **AGM 12 Jun 2026** — agenda includes **₹2,700 Cr equity capital raising** and dividend. [BSE filings](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b3e325d4-7101-43c7-ba73-34e24df8f7b7.pdf)
+- **Director appointment — Shri Hari Har Mishra (14 May 2026)**. [BSE filings](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be464e0d-d1ef-45ae-94ae-ddba0c51c3b8.pdf)
+- **BRSR FY26 filed** and annual report submitted (21 May 2026). [BSE filings](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee8760ac-293d-4b0e-a594-1f3e03963066.pdf)
+
+---
+**Stance (computed read, not advice):** 🔴 **Avoid.** UCOBANK is the cohort's weakest name: ROE
+8.5% (lowest) at P/E 12.8 (richest) — the worst quality/price mismatch in the basket. The
+−11.5% below a falling 200-DMA means the EARNED strategy provides no entry signal. Despite
+genuine improvements in NIM (3.03%), GNPA (2.17%), and CASA (38.65%), the structural negatives
+— CEO gap, ₹2,700 Cr dilution, 52.66% cost-to-income, tiny absolute profit — outweigh the
+turnaround optics. Every signal red. Stand aside.

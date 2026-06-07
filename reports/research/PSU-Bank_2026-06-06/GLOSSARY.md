@@ -45,7 +45,8 @@ prices / backtests); **(sourced)** = from a dated disclosure (screener / filings
 | **GNPA / NNPA** | Gross / Net Non-Performing Assets % — bad-loan ratio (lower = healthier) |
 | **PCR** | Provision Coverage Ratio — % of bad loans provided for (higher = safer) |
 
-## Graph diagrams (charts/dependency_*.png)
+## Graph diagrams
+*(`charts/dependency_*.png`)*
 Node colour: green = listed company (has a price) · yellow = unlisted group entity · purple = foreign
 JV partner. Edge: **green = price-validated co-move / high-confidence** · blue = leads · dotted =
 unvalidated. `group_entity` = subsidiary/associate; `partners_with` = JV partner. Edge "strength" =
