@@ -170,6 +170,29 @@ UNIONBANK).
 
 ---
 
+## Concall — recording transcript (Q4 FY26 call, STT)
+*Full earnings call transcribed locally (faster-whisper `small.en`) → `filings/concall/UNIONBANK_recording.json`.
+Recording: [YouTube](https://youtu.be/qEdClPrHVqY). **STT caveat:** the bullets are the *intent*; figures in
+**(call: …)** are as *spoken on the recording* (clearly-stated numbers only) and are **pending verification**
+— the unify step cross-checks them against `data/` + the AI summary, which win on any disagreement.*
+
+- **A deliberate balance-sheet "churn", not a growth sprint:** MD & CEO Ashish Pandey framed H2 FY26 as
+  shedding bulk deposits and low-yield IBPC / short-tenor corporate loans while building CASA and retail
+  term deposits — defending margin over chasing headline deposit growth (call: business +₹1,71,000 Cr in H2;
+  bulk deposits shed ~₹70,000 Cr; CASA ~32.5%→35.2%).
+- **The prudent provision is a cushion, not a flag:** repeatedly described as a good-times buffer for the
+  ECL transition / contingencies — explicitly *not* against any known stressed account, and parked outside
+  P&L and capital (call: ₹700 Cr; standing ECL shortfall estimate ~₹4,300 Cr).
+- **Q4 profit quality (management's own attribution):** helped by a one-off recovery from the Sterling
+  Biotech settlement (call: ₹658 Cr) and lower employee cost (actuarial discount-rate change), partly
+  offset by higher other opex — flagged as the normal Q4 pattern.
+- **Geopolitics (West Asia):** closely monitoring remittances, import flows and energy-sensitive sectors
+  (e.g. the Morbi cluster); no material stress seen yet; tapped export credit-guarantee and RBI trade-relief schemes.
+- **Forward tone:** "industry-plus" growth with quality and profitability; NIM seen bottoming and to be
+  defended/improved; NII growth guided to track loan growth from here; new LCR guidelines a net positive.
+- **Analyst Q&A focus:** Ashok Ajmera, Jai Mundra (ICICI Sec), Param Subramanian (Investec), Para Capital
+  and others pressed on the NIM trajectory, deposit/LCR strategy, the prudent provision, and credit cost.
+
 ## Concall — key points (Q4 & FY26 call, Apr 2026, sourced: screener AI summary)
 - **Profit:** FY net profit **₹18,697 Cr**; dividend ₹5/share (50% of FV, payout 20.6%).
 - **RoA:** ~1.25% flat YoY; Q4 RoA improved 1.35→1.36% QoQ. Created ₹700 Cr additional contingency

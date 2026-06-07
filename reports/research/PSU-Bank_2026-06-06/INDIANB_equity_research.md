@@ -173,6 +173,37 @@ detail: **`unknown`** (not pulled for INDIANB).
 
 ---
 
+## Concall — recording transcript (Q3 FY26 call, 22 Jan 2026, STT)
+*Full earnings call transcribed locally (faster-whisper `small.en`) → `filings/concall/INDIANB_recording.json`.
+Recording: [YouTube](https://youtu.be/YAimioUc_xo). This is the **Q3 FY26** call (the latest with an
+available recording — one quarter behind the AI summary below). **STT caveat:** the bullets are the *intent*;
+figures in **(call: …)** are as *spoken on the recording* (clearly-stated numbers only) and are **pending
+verification** — the unify step cross-checks them against `data/` + the AI summary, which win on any disagreement.*
+
+- **ECL: front-load, don't drag it out (the headline intent):** MD & CEO Binod Kumar said the plan is to
+  absorb the ECL transition fast — *not* over the permitted multi-year glide path — provisioning
+  quarter-by-quarter to minimise the switch-over hit; SMA-1 provision coverage was already stepped up
+  (call: 5%→10%, +₹380 Cr). He flagged the *worst-case* sensitivity (an LGD floor and punitive treatment of
+  restructured assets) as the swing factor and said the bank sent comments on the RBI draft.
+- **SMA-2 optics explained:** a couple of state-government-guaranteed PSU accounts oscillate between SMA
+  buckets, inflating headline SMA-2 (call: ~₹3,000 Cr of the ~₹4,300 Cr SMA-2) — management views slip risk as low.
+- **Growth mix is a deliberate choice:** intent to hold RAM:corporate ~65:35 as "responsible banking"
+  (must participate in infra/nation-building); growth led by RAM plus *selective* corporate — green finance
+  (EV, solar manufacturing/plants), logistics/warehousing — with a strong sanction pipeline (call: ~₹50,000 Cr
+  corporate pipeline; IBPC ~₹7,000 Cr sold this quarter).
+- **CASA is structural, so play it granular:** management accepts the industry-wide shift away from CASA;
+  the answer is granular acquisition (salary accounts, fintech tie-ups with ~22 state-govt departments, QR)
+  — intent to *maintain* CASA, conceding cost-of-funds pressure as bulk rates rise post-December
+  (call: bulk rates +20–30 bps since December).
+- **M&A speculation dismissed:** explicitly rejected the idea of chasing growth to avoid being a merger
+  target — even shedding IBPC — saying amalgamation turns on long-term viability, not one quarter's optics.
+- **Capital & tariffs:** well-capitalised, retired Tier-1 without refinancing, keeps an enabling equity
+  approval purely to raise *opportunistically* if the market rewards (not needed operationally); direct US
+  tariff exposure described as negligible (export book miniscule).
+- **Digital intent:** heavy investment with agentic-AI use cases (onboarding, cross-sell, grievance,
+  suspicious-transaction), virtual ATM, MSME app — goal to roughly double total business over five years
+  (call: ~₹2,000 Cr/yr capex+opex).
+
 ## Concall — key points (Q4 & FY26 call, 29 Apr 2026, sourced: screener AI summary)
 - **Growth:** total business +12.79%; advances +13.43% (RAM +15.18%); deposits +12.29%; total
   sanctions ₹4.26 trillion (+62% YoY).

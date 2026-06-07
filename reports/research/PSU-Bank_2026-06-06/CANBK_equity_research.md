@@ -149,6 +149,43 @@ GoI-majority (governance: govt-appointed board; leadership change — see refere
 
 ---
 
+## Concall — recording transcript (Q2 FY26 call, STT)
+*Full earnings call transcribed locally (faster-whisper `small.en`) → `filings/concall/CANBK_recording.json`.
+Recording: [YouTube](https://youtu.be/x6BgY8XLz8k). This is the **Q2 FY26** call (the latest with an
+available recording — earlier than the AI summary below). **STT caveat:** the bullets are the *intent*;
+figures in **(call: …)** are as *spoken on the recording* (clearly-stated numbers only) and are **pending
+verification** — the unify step cross-checks them against `data/` + the AI summary, which win on any
+disagreement. Raw STT garbles names ("Canara"→"Candra").*
+
+- **The two admitted weak spots — CASA and NIM:** MD & CEO K. Satyanarayana Raju said the bank hit most of
+  its FY guidance parameters (call: 11 of 13); the laggards are CASA and NIM. CASA is the perennial
+  structural weakness (low vs peers), and holding the ratio while the balance sheet grows fast
+  (call: ~14% YoY) is the core challenge.
+- **CASA intent — go granular & segment-targeted:** new segment products (SB individuals; a two-in-one
+  product for NGOs/societies/pilgrim centres; planned farmer and gig-worker products), CRM/relationship-
+  manager push, and current-account opening via tab — management flagged the first double-digit YoY CASA
+  growth in years (call: CASA ~30.7% vs 32% target; +₹20,000 Cr incremental SB-individual balances).
+- **NIM is rate-cut driven, seen near trough:** a large share of the book is repo-linked and reprices
+  immediately while deposits lag (call: ~45–46% repo-linked; 9–12-month deposit lag); intent is stability
+  now, then an uptick and a recovery toward the prior peak (call: NIM ~2.5%, previously ~3%) *if there are
+  no further cuts*.
+- **ECL — already self-buffering:** management expects minimal incremental credit-cost impact because it
+  has proactively over-provided on standard assets / large SMA accounts for ~2 years (an in-house ECL
+  cushion), e.g. a precautionary provision on a Telangana drinking-water/irrigation account it does *not*
+  expect to slip (call: ₹380 Cr; total SMA <3% of book; credit cost ~0.68%, to stay <1%).
+- **One-offs flagged (book in a later quarter):** the gain from listing two subsidiaries (Canara Robeco,
+  Canara HSBC Life) to be booked in Q3 (call: ~₹1,935 Cr net of IPO costs), plus PSLC sales as a flexible
+  tool (large surplus, the only major supplier).
+- **Growth mix:** RAM to grow faster than corporate (call: RAM:corporate ~59:41 now → 60:40 target within
+  ~1–1.5 yrs; corporate held to ~10–11%), against a strong sanction pipeline (call: ₹26,000 Cr cleared in
+  one recent board meeting).
+- **Strategy build-out:** online loan-against-mutual-funds (STP); revamping the Canara Bank Securities
+  subsidiary (capital + new platform) to unlock value; building M&A-financing capability ahead of RBI's
+  new acquisition-financing norms; gold-loan leadership (call: ~₹2.11 lakh Cr book, largest bank lender),
+  with RBI's higher LTV (75%→85%) a tailwind, used conservatively.
+- **Leadership/M&A:** the MD & CEO's December retirement and the FSIB selection (now open to private-sector
+  candidates) were raised — declined to speculate; said there have been no merger discussions, formal or informal.
+
 ## Concall — key points (Q4 & FY26 call, 11 May 2026, sourced: screener AI summary)
 - **Growth:** global business ₹28.0 L cr (+12.11%); advances +15.3%; deposits +9.71%.
 - **Margins:** Q4 NII ₹9,808 Cr (+3.88%); NIM ~2.51% FY / ~2.54% Q4; guided to **hover 2.5–2.6%**.
