@@ -100,6 +100,7 @@ is sourced from each balance sheet (`data/<sym>_balance_sheet.csv`); the annual-
 
 ## 5b. What drives the sector / who leads — influence graph (computed)
 Lead-lag-validated graph (2023–, daily; `graph/influence_report.txt`, `charts/influence_graph.png`):
+
 - **NIFTY50 → PSU_BANK +0.90** — daily moves are **dominated by market beta**, not bank-specific
   news. (i.e. on any given day the basket mostly does what the market does.)
 - **Bellwethers** (constituents most representative of the basket, by co-move): **PNB +0.44,

@@ -55,6 +55,7 @@ correction. The EARNED strategy buys pullbacks to the 50-DMA. **This is a hold, 
 
 ## 3. Industry forces → how they hit MAHABANK (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** MAHABANK's **CASA 52.51%** is the **highest in the PSU
   basket** — a structural funding-cost advantage. **Cost of deposits 4.52%** (down 14 bps YoY) and
   **cost of funds 4.15%** are the lowest. Its **NIM 3.91%** is best-in-class — this is the force

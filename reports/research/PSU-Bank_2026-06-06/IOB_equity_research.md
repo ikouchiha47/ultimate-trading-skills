@@ -54,6 +54,7 @@ But the premium multiple gives no margin of safety.
 
 ## 3. Industry forces → how they hit IOB (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** IOB's **CASA 40.99%** is the second-best in the cohort
   (behind MAHABANK's 52.5%) — a genuine strength. The retail deposit franchise (retail term 53%)
   is well-developed. **NIM 3.21%** is the second-best, making IOB the least constrained on funding

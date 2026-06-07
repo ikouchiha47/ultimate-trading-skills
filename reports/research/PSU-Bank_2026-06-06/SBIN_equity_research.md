@@ -87,6 +87,7 @@ but the quarterly is noisy.
 
 ## 3. Industry forces → how they hit SBIN (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** SBIN's **CASA 39.46%** is the best in the PSU basket
   (CANBK 29.5%, system avg ~38%) — its deposit franchise is the key structural moat. Cost of funds:
   **`unknown`** (not in about panel), but the CASA advantage gives SBIN the widest NIM buffer among

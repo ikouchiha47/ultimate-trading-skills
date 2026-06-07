@@ -87,6 +87,7 @@ on **rising volume (1.62×)** — let it settle, don't chase.
 
 ## 3. Industry forces → how they hit INDIANB (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** INDIANB's **CASA 39.67%** is **best-in-cohort** among large
   PSUs — this is the structural advantage that sustains its sector-leading NIM.
 - **Porter — rivalry / substitutes:** disciplined RAM tilt (Retail +18.7%, MSME +16.4%) and pristine

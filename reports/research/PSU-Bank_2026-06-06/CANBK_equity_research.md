@@ -56,6 +56,7 @@ headline.
 
 ## 3. Industry forces → how they hit CANBK (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** CANBK's **CASA 29.5%** is below the strong-franchise banks and
   **cost of funds 5.18%** is mid-pack → its thin **NIM 2.5%** is the structural pressure point. This is
   the force that most constrains CANBK.

@@ -54,6 +54,7 @@ the parent's stake %. Listed subs annotated with correlation to the parent (corr
 
 ## Credit ratings (what the grades mean)
 Indian **long-term** scale (CRISIL / ICRA / CARE / India Ratings–Fitch / Brickwork), best → worst:
+
 - **AAA** — highest safety, lowest credit risk (the big PSU banks' senior debt).
 - **AA** (AA+/AA/AA−) — high safety, marginally more risk than AAA (typical for PSU **AT1 / Tier-I**
   bonds, and the *senior* debt of weaker PSU banks).

@@ -72,6 +72,7 @@ further underperformance.
 
 ## 3. Industry forces → how they hit BANKINDIA (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** BANKINDIA's **CASA 37%** is creditable but its **NIM 2.52%**
   is the tightest in the cohort (compressed 30 bps YoY from 2.82%). The **retail deposit franchise**
   (retail term 44.14%, CASA 37%) buffers cost-of-funds pressure but cannot fully offset margin

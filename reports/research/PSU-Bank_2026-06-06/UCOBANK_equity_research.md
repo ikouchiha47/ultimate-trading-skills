@@ -53,6 +53,7 @@ improving trend metrics.
 
 ## 3. Industry forces → how they hit UCOBANK (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** UCOBANK's **CASA 38.65%** is decent (above CANBK's 29.5%)
   and improving (+75 bps), but its **corporate-heavy book (37%)** means it competes on corporate
   lending spreads where pricing power is weak. The **₹2,700 Cr capital raise** will fund growth but

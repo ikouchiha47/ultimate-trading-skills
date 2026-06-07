@@ -86,6 +86,7 @@ create a ₹700 Cr contingency buffer (non-P&L impacting); and the FY26 headline
 
 ## 3. Industry forces → how they hit UNIONBANK (sector analysis applied)
 *(The sector frameworks live in [00_industry](00_industry.md); here is how each maps to THIS bank.)*
+
 - **Porter — supplier power (funding):** UNIONBANK's **CASA 35.21%** is improving fast but still below
   top-tier private peers; its deliberate **shift from bulk (shed ₹70,000 Cr) to retail TD** is the key
   defence — management estimates funding-cost advantage of bulk (~7%) vs CASA/retail (~4.5–4.75%).
