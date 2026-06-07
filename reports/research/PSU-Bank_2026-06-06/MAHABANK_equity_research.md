@@ -63,6 +63,8 @@ targeting 9th in 2–3 years (concall).
 **Loan book (Mar 2026)** — advances +22% YoY, within which RAM **63%** (retail +32%, agri/MSME
 +11–15%), corporate **37%**. Home loans +29% YoY, vehicle/gold also strong. Retail focus enabled
 by 2,500+ branches with a core-business review framework.
+![MAHABANK advance mix](charts/MAHABANK_loan_mix.png)
+> Advance mix (Q3 FY26, sourced screener): corporate 36% / retail 30% / MSME 19% / agri 13% — the RAM tilt is retail-led.
 
 **Deposits (Mar 2026):** ₹3,50,538 Cr (+14%), CASA 52.51% (₹1.84 L cr). Investment book ₹1,01,588 Cr.
 Borrowing ₹35,234 Cr — **lowest leverage ratio in the basket**.

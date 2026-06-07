@@ -53,7 +53,8 @@ CASA **37%**, Cost-to-Income **`unknown`** (not extracted), Cost of Funds **`unk
 **Market share:** ~6th among nationalised banks by advances (Q3 FY25, sourced).
 
 **Loan book (Mar 2026)** — global advances **₹9.27 lakh Cr**, with RAM advances +19.11% YoY
-to ₹3.85 lakh Cr. Corporate book tilt: see sector-force mapping (§3).
+to ₹3.85 lakh Cr. Advance mix (Q3 FY26, sourced screener): corporate-led at 41%.
+![BANKINDIA advance mix](charts/BANKINDIA_loan_mix.png)
 
 **Deposits (Mar 2026):** ₹9,30,973 Cr, of which CASA 37% (~₹3.01 L cr), retail term deposits
 ~44%. Investment book ₹2,79,084 Cr (G-sec/SLR). Borrowing ₹1,18,626 Cr.

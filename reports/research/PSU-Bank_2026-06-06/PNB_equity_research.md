@@ -62,6 +62,9 @@ toward RAM (retail/agri/MSME). Retail excl. IBPC **+18.2%**, MSME **+19.9%**, Ag
 Corporate sanctions during FY26: **₹4 L Cr** with ₹1.18 L Cr pending disbursement. CD ratio **73.6%**.
 IBPC book reduced to ₹34,049 Cr (from ~₹53,000 Cr) — bank plans to exit IBPC entirely.
 
+**Advance mix (Q3 FY26, sourced screener):** still corporate-led at 43% (the RAM pivot in progress).
+![PNB advance mix](charts/PNB_loan_mix.png)
+
 **RAM share (concall, sourced):** ~54% of advances; target **60% long-term** (58% for FY27). Corporate
 book share targeting reduction to **40%** (from ~46%).
 

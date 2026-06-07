@@ -56,8 +56,10 @@ business, merchant banking, agency business, insurance, mutual fund, wealth mana
 
 **Branch network:** 8,597 branches (sourced screener) — network covering all major states.
 
-**Loan book (Mar 2026)** — gross advances **₹13,63,436 Cr** (sourced, +9.74% YoY). Loan-book sector
-split **`unknown`** (premium-gated on screener; pending AR extraction in `filings/ar/`).
+**Loan book (Mar 2026)** — gross advances **₹13,63,436 Cr** (sourced, +9.74% YoY). Advance mix
+(Q3 FY26, sourced screener): corporate-led at 43%. Industry exposure to the top cyclical sectors
+fell to ~33% of domestic advances (from 43% in FY22, sourced).
+![UNIONBANK advance mix](charts/UNIONBANK_loan_mix.png)
 
 **The markets they lend to — corporate book exposure:** **`unknown`** at constituent level (AR
 segment note pending). From the concall: management deliberately **shed ₹35,000 Cr IBPC and

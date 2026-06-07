@@ -59,6 +59,9 @@ international +24.4%). RAM (Retail/Agri/MSME) now **61%** of book — retail boo
 (+17.9%: auto +20.6%, mortgage +19.3%, home +14.6%); agri +20.7%, MSME +15.6%. Corporate loans
 +11.2%. Slippage ratio 0.72% (FY26, ↓6 bps YoY); credit cost 0.46% (excl. floating provision 0.34%).
 
+**Advance mix (Q3 FY26, sourced screener):** corporate-led at 38%.
+![BANKBARODA advance mix](charts/BANKBARODA_loan_mix.png)
+
 **Deposit growth (FY26, concall):** total deposits +12% (domestic +12.8%, international +7.5%);
 CASA +9.8%, term deposits +14.8%. Domestic credit-deposit ratio **83.46%**. Bulk deposits reduced to
 **~19%** of total (from 23-24% earlier).

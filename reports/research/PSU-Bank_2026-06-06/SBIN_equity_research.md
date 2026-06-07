@@ -61,8 +61,8 @@ PSU franchise, ~4× the next peer.
 with >50,000 branches/ATMs historically — verify from AR.
 
 **Loan book** — total advances **₹37,99,848 Cr** (derived from deposit/CDR of 73.08% — sourced
-concall). Sector split: **`unknown`** (premium-gated; available via AR segment note, not yet
-extracted).
+concall). Domestic advance mix (Q3 FY26, sourced screener): Retail-led at 42%.
+![SBIN advance mix](charts/SBIN_loan_mix.png)
 
 **The investment book (Mar 2026, sourced):** **₹23,59,502 Cr** — the single largest G-sec/SLR
 book in the system. Every 1 bps rate move moves ~₹23,595 Cr of MTM → material treasury sensitivity.

@@ -52,6 +52,11 @@ PCR **`unknown`** (not extracted — but strong given NNPA/GNPA gap), CASA **40.
 **Loan book (Mar 2026)** — total advances +24.16% YoY; RAM book **83% of domestic advances**
 (retail 30.94%, agri 35.26%, MSME — core MSME +23.77%). Retail advances +45.12% YoY, agri +40%
 YoY — exceptional growth but from a low base.
+![IOB advance mix](charts/IOB_loan_mix.png)
+> **Note:** screener's segment breakdown (Agri 34 / Retail 30 / Corporate 28 / MSME 18) sums to
+> >100% — IOB's priority-sector buckets (Agri/MSME) overlap with retail in the disclosure, so read
+> these as share-of-advances per segment, not a clean partition. The signal is clear: **Agri+Retail
+> dominate** (the most retail/agri-skewed book in the basket).
 
 **Deposits (Mar 2026):** ₹3,68,191 Cr (+18.03%), of which CASA 41% (₹1,50,936 Cr), retail term
 53% (₹1,83,601 Cr). Investment book ₹1,19,285 Cr. Borrowing ₹51,603 Cr.

@@ -58,8 +58,9 @@ ROE **19.53%** (FY — best of the large PSUs).
 **Branch network:** 8,175+ branches (sourced) + 102 new branches opened in FY26 (on track toward ~300
 in 3 years).
 
-**Loan book (Q4 FY26)** — gross advances **₹7,55,778 Cr** (sourced, +13.43% YoY). Loan-book sector
-split **`unknown`** (premium-gated on screener; pending AR extraction in `filings/ar/`).
+**Loan book (Q4 FY26)** — gross advances **₹7,55,778 Cr** (sourced, +13.43% YoY). Advance mix
+(Q3 FY26, sourced screener): the most RAM-tilted of the basket — Corporates only 34%, Agri 25%, Retail 23%, MSME 18%.
+![INDIANB advance mix](charts/INDIANB_loan_mix.png)
 
 **The markets they lend to — RAM tilt (concall, sourced):** Retail +18.72%, MSME +16.39%, Corporate
 +9.19% (recovering from ~3% prior year). **Jewel loans** ~28% growth to **₹1.27 trillion** (~16–17%

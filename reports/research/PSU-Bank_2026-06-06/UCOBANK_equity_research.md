@@ -48,6 +48,8 @@ mix (lower quality, more cyclical than peer RAM shifts).
 
 **Loan book (Mar 2026)** — gross advances +19.44% YoY. RAM pivot underway: RAM **65%** (Retail >26%,
 Agri ~26%, MSME ~19%). Retail highlights: housing +~19%, car loans +~71%.
+![UCOBANK advance mix](charts/UCOBANK_loan_mix.png)
+> Domestic advance mix (Q3 FY26, sourced screener): corporate 33% / retail 30% / MSME 21% / agri 16%.
 
 **Deposits (Mar 2026):** ₹2,93,542 Cr (+11.59%), CASA 38.65% (+75 bps). Investment book ₹94,153 Cr.
 Borrowing ₹28,687 Cr.
