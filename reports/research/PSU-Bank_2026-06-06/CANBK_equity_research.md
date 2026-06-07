@@ -71,6 +71,10 @@ City; Canara Bank (Tanzania) being wound down).
 Life Insurance (**36.5%**, JV with HSBC + PNB), CanFin Homes (**~30%**, listed), Canara Bank
 Securities (WoS), Canbank Factors (**70%**).
 
+**Corporate-action history (sourced, screener Corporate Actions modal):** Syndicate Bank **merger**
+(158:1000, Mar 2020) · **rights** issue 1:10 (Feb 2017, premium ₹197) · **stock split** 5:1
+(₹10→₹2, eff. 15 May 2024 — back-adjusted in our price series).
+
 **Recent corporate action:** Canara Robeco and Canara HSBC Life **listed in Oct 2025**; an OFS cut the
 bank's stake (51%→38% and →36.5%) so both became **associates**, generating a **net gain of ₹1,930 Cr**
 (after ₹76 Cr IPO costs) — a one-off that flatters FY26 and won't repeat (management flagged this).
@@ -121,8 +125,9 @@ headline.
   is *accumulate pullbacks toward the 50-DMA*, not chase strength.
 
 ## 4. Financial analysis
-- Net profit trajectory: loss → ₹2,957 Cr (FY21) → … → **₹19,187 Cr (FY26)** (sourced); EPS ~₹19,
-  dividend **210% = ₹4.20/share** (FV ₹2).
+- Net profit trajectory — **cyclical losses → sustained recovery** (sourced): losses in FY16
+  (−₹2,535 Cr), FY18 (−₹3,873 Cr), FY20 (−₹1,921 Cr) → turned profitable **₹2,957 Cr (FY21)** →
+  ₹6,158 → ₹11,345 → ₹15,401 → ₹17,692 → **₹19,187 Cr (FY26)**. EPS ~₹19, dividend **210% = ₹4.20/share** (FV ₹2).
 - **The book:** Deposits ₹15.68 L cr (+9.71%), advances ₹12.37 L cr (+15.30%), Investments ₹4.07 L cr
   (G-sec/SLR), Borrowing ₹1.55 L cr (Mar 2026, sourced).
 - **RAM tilt (quality):** RAM book ₹7.30 L cr (+19.73%) — retail +32.9%, housing +17.6%, vehicle +26.3%,
