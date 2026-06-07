@@ -42,6 +42,10 @@ changes (user pivots to a different search), and on a context change **confirm b
 2. **Gather (scripted)** — data + charts + graphs + backtests + filings (the inputs you embed).
 3. **Structure (you)** — author each page from `templates/` (company + sector), filling sections
    from the gathered data; embed charts as images with caption cards.
+   - **Prose → charts:** when a section is compositional/percentage data (loan-book mix, sector/
+     corporate exposure = "markets they lend to", shareholding, geographic split, revenue mix) or a
+     trajectory, render it as a chart via `framework.charts.composition_chart({label: pct}, ...)` /
+     `financial_charts` and embed it (keep a one-line read) — don't leave a long comma-list in prose.
 4. **Unify (you)** — make the N pages ONE report: (a) identical section structure/order/colours so
    pages are comparable; (b) cross-link Overview↔company↔Industry↔Glossary↔strategies; (c) reconcile
    — the same number/Stance is identical everywhere (no contradictions); (d) one narrative thread
@@ -249,3 +253,5 @@ reference them in prose.
 - [ ] Prices are split-adjusted (jugaad `adjust=True` default — verify no fake cliffs).
 - [ ] Every strategy claim reports **Sharpe-over-null**, not a bare Sharpe.
 - [ ] Tables saved as both `.json` and `.csv`; charts saved as PNG; folder layout followed.
+- [ ] Compositional/% data (loan mix, sector/corporate exposure, shareholding, geography) rendered as
+      **charts** (`composition_chart`), not left as long comma-lists — reviewer decides what's chart-worthy.

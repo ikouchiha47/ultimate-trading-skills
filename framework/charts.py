@@ -15,6 +15,38 @@ from pathlib import Path
 import pandas as pd
 
 
+def composition_chart(title: str, data: dict, outpath: str | Path,
+                      unit: str = "%", color: str = "#5b8def") -> str:
+    """Generic breakdown chart (horizontal bars, sorted, value-labelled) from a {label: value} dict.
+
+    The agent calls this in the unify/review stage to turn compositional PROSE into a visual —
+    loan-book mix, corporate-sector exposure, shareholding, geographic split, revenue mix, etc.
+    Generic + thin: the agent decides WHAT is chart-worthy and supplies the parsed numbers (sourced).
+    """
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    items = sorted(((k, float(v)) for k, v in data.items() if v is not None),
+                   key=lambda kv: kv[1])
+    labels = [k for k, _ in items]
+    vals = [v for _, v in items]
+    fig, ax = plt.subplots(figsize=(9, max(2.5, 0.45 * len(items) + 1)))
+    bars = ax.barh(labels, vals, color=color)
+    for b, v in zip(bars, vals):
+        ax.text(b.get_width(), b.get_y() + b.get_height() / 2, f" {v:g}{unit}",
+                va="center", fontsize=9)
+    ax.set_title(title, fontsize=12, fontweight="bold")
+    ax.set_xlim(0, max(vals) * 1.15 if vals else 1)
+    ax.spines[["top", "right"]].set_visible(False)
+    fig.tight_layout()
+    out = Path(outpath)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out, dpi=110, bbox_inches="tight")
+    plt.close(fig)
+    return str(out)
+
+
 def _read_fin_csv(path) -> dict:
     """Screener financial CSV (line_item, year cols) -> {periods, rows{label:[floats]}}."""
     import csv as _csv

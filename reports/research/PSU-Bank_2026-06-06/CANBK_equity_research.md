@@ -56,13 +56,14 @@ below; GNPA improved to 1.84%.)*
 **Branch network (Q3 FY26):** 10,066 branches · 12,000 BC points · 7,048 ATMs · 3,740 recyclers · 4
 international branches. Mix: 32% rural / 30% semi-urban / 19% urban / 19% metro.
 
-**Loan book (Q3 FY26)** — gross advances **₹11,92,326 Cr**:
-- Corporate **41%** · Agriculture **23%** · Retail **23%** · MSME **13%**.
+**Loan book (Q3 FY26)** — gross advances **₹11,92,326 Cr**, split corporate-heavy at 41%:
+![CANBK loan mix](charts/CANBK_loan_mix.png)
 
-**The markets they lend to — Corporate book exposure** (₹4,88,285 Cr, sourced): **NBFCs ~37%**,
-**Infrastructure ~33%**, Commercial Real Estate ~6%, Textile ~5%, Iron & Steel ~4%, Engineering ~4%,
-Chemicals ~3%, Food Processing ~3%, Petroleum/Coal/Nuclear ~3%, Construction ~2%. *(A third of the
-corporate book is NBFC lending and another third infrastructure — see the sector-force mapping, §3.)*
+**The markets they lend to — corporate book exposure** (₹4,88,285 Cr, Q3 FY26, sourced):
+![CANBK corporate exposure](charts/CANBK_corp_exposure.png)
+> **Read:** a third of the corporate book is **NBFC** lending and another third **infrastructure** —
+> CANBK is heavily levered to the two fastest-growing system-credit segments (tailwind + concentration
+> risk; see the sector-force mapping, §3).
 
 **Geography:** domestic ~93% / overseas ~7% (4 overseas branches: London, New York, DIFC-Dubai, GIFT
 City; Canara Bank (Tanzania) being wound down).
