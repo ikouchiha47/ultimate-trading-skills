@@ -19,20 +19,20 @@ plugins:
   - search
 nav:
   - Home: index.md
-  - Psu Bank 2026 06 06:
-      - Overview: research/PSU-Bank_2026-06-06/index.md
-      - 00 comprehensive: research/PSU-Bank_2026-06-06/00_comprehensive.md
-      - 01 observations: research/PSU-Bank_2026-06-06/01_observations.md
-      - 00 industry: research/PSU-Bank_2026-06-06/00_industry.md
-      - BANKBARODA equity research: research/PSU-Bank_2026-06-06/BANKBARODA_equity_research.md
-      - BANKINDIA equity research: research/PSU-Bank_2026-06-06/BANKINDIA_equity_research.md
-      - CANBK equity research: research/PSU-Bank_2026-06-06/CANBK_equity_research.md
-      - INDIANB equity research: research/PSU-Bank_2026-06-06/INDIANB_equity_research.md
-      - IOB equity research: research/PSU-Bank_2026-06-06/IOB_equity_research.md
-      - MAHABANK equity research: research/PSU-Bank_2026-06-06/MAHABANK_equity_research.md
-      - PNB equity research: research/PSU-Bank_2026-06-06/PNB_equity_research.md
-      - RBI sectoral deployment apr2026: research/PSU-Bank_2026-06-06/data/RBI_sectoral_deployment_apr2026.md
-      - SBIN equity research: research/PSU-Bank_2026-06-06/SBIN_equity_research.md
-      - UCOBANK equity research: research/PSU-Bank_2026-06-06/UCOBANK_equity_research.md
-      - UNIONBANK equity research: research/PSU-Bank_2026-06-06/UNIONBANK_equity_research.md
-      - references: research/PSU-Bank_2026-06-06/references.md
+  - PSU Bank — 2026-06-06:
+      - Overview (screener): research/PSU-Bank_2026-06-06/00_comprehensive.md
+      - Industry analysis: research/PSU-Bank_2026-06-06/00_industry.md
+      - Observations (buy/sell): research/PSU-Bank_2026-06-06/01_observations.md
+      - Glossary: research/PSU-Bank_2026-06-06/GLOSSARY.md
+      - References: research/PSU-Bank_2026-06-06/references.md
+      - Companies:
+          - BANKBARODA: research/PSU-Bank_2026-06-06/BANKBARODA_equity_research.md
+          - BANKINDIA: research/PSU-Bank_2026-06-06/BANKINDIA_equity_research.md
+          - CANBK: research/PSU-Bank_2026-06-06/CANBK_equity_research.md
+          - INDIANB: research/PSU-Bank_2026-06-06/INDIANB_equity_research.md
+          - IOB: research/PSU-Bank_2026-06-06/IOB_equity_research.md
+          - MAHABANK: research/PSU-Bank_2026-06-06/MAHABANK_equity_research.md
+          - PNB: research/PSU-Bank_2026-06-06/PNB_equity_research.md
+          - SBIN: research/PSU-Bank_2026-06-06/SBIN_equity_research.md
+          - UCOBANK: research/PSU-Bank_2026-06-06/UCOBANK_equity_research.md
+          - UNIONBANK: research/PSU-Bank_2026-06-06/UNIONBANK_equity_research.md

@@ -32,14 +32,31 @@ def _skip(p: Path) -> bool:
 
 
 def _title(folder: str) -> str:
-    return folder.replace("_", " ").replace("-", " ").title()
+    import re as _re
+    m = _re.match(r"(.+)_(\d{4}-\d{2}-\d{2})$", folder)
+    if m:
+        return f"{m.group(1).replace('-', ' ')} — {m.group(2)}"   # "PSU Bank — 2026-06-06"
+    return folder.replace("_", " ").replace("-", " ")
 
 
 # Order the markdown reports sensibly: comprehensive, observations, industry, then per-name A-Z.
 def _md_order(name: str) -> tuple:
-    pri = {"00_comprehensive.md": 0, "01_observations.md": 1, "00_industry.md": 2,
-           "references.md": 9}
+    pri = {"00_comprehensive.md": 0, "00_industry.md": 1, "01_observations.md": 2,
+           "GLOSSARY.md": 8, "references.md": 9}
     return (pri.get(name, 5), name)
+
+
+_LABELS = {"00_comprehensive.md": "Overview (screener)", "00_industry.md": "Industry analysis",
+           "01_observations.md": "Observations (buy/sell)", "GLOSSARY.md": "Glossary",
+           "references.md": "References"}
+
+
+def _page_label(name: str) -> str:
+    if name in _LABELS:
+        return _LABELS[name]
+    if name.endswith("_equity_research.md"):
+        return name.replace("_equity_research.md", "")
+    return Path(name).stem.replace("_", " ")
 
 
 def copy_report(folder: Path) -> dict:
@@ -90,11 +107,16 @@ def write_mkdocs_yml(reports: list[dict]) -> None:
     nav = ["nav:", "  - Home: index.md"]
     for r in sorted(reports, key=lambda x: x["name"], reverse=True):
         nav.append(f"  - {r['title']}:")
-        nav.append(f"      - Overview: research/{r['name']}/index.md")
-        for m in r["mds"]:
-            if Path(m).name == "index.md":
-                continue
-            nav.append(f"      - {Path(m).stem.replace('_',' ')}: research/{r['name']}/{m}")
+        base = f"research/{r['name']}"
+        top = [m for m in r["mds"] if "/" not in m and Path(m).name != "index.md"]  # nav = top-level only
+        companies = [m for m in top if Path(m).name.endswith("_equity_research.md")]
+        others = [m for m in top if m not in companies]
+        for m in others:                                   # Overview, Industry, Observations, ...
+            nav.append(f"      - {_page_label(Path(m).name)}: {base}/{m}")
+        if companies:                                      # nest the per-company pages
+            nav.append("      - Companies:")
+            for m in sorted(companies):
+                nav.append(f"          - {_page_label(Path(m).name)}: {base}/{m}")
     yml = f"""site_name: Systematic Trading Research
 site_description: India sector & company research — computed + sourced, audit-first
 theme:

@@ -29,14 +29,29 @@ computed number). Mark provenance on every figure.
 
 ```
 reports/research/<SECTOR-or-COMPANY>_<YYYY-MM-DD>/
-  00_report.md                 # the assembled narrative (this is the deliverable)
-  data/                        # every table as .json AND .csv (the raw numbers)
-  charts/                      # generated PNGs (price+vol+DMA, rel-strength, ratios)
-  filings/                     # extracted AR / DRHP / concall .md + .json per company
-  strategies/                  # one subfolder per strategy run (see §6)
-    <strategy>_<sector>/       #   backtest result, equity curve, params, verdict
+  00_comprehensive.md          # sector SCREENER listing + dashboard + strategy + graphs (the deliverable)
+  00_industry.md               # sector frameworks (Porter/PESTEL/life-cycle/value-chain/SWOT)
+  01_observations.md           # price-action/volume/profit -> buy/sell stance per name + why
+  <SYMBOL>_equity_research.md  # one per company (CFA structure) — MUST embed its charts
+  GLOSSARY.md                  # every header / line item / chart colour explained (link from each report)
+  data/                        # every table as .json AND .csv + RBI xlsx
+  charts/                      # PNGs: <sym>_price_volume.png, <sym>_financials.png,
+                               #       dependency_<sym>.png, dependency_<sector>_network.png, influence_graph.png
+  graph/                       # influence + dependency graph json/verdict
+  filings/                     # audit page PDFs; ar/ (annual-report extracts, gitignored — large)
+  strategies/<strategy>_<sector>/   # backtest result, params, EARNED/NO-EDGE verdict
   references.md                # ALL source links, for testing/audit
 ```
+
+**VISUALS ARE MANDATORY (this is where reports fail).** Charts MUST be embedded as real markdown
+images `![alt](charts/x.png)` — NEVER referenced as inline code `` `charts/x.png` `` (that renders as
+text, shows nothing). Every per-company report has a **## Visuals** block near the top with: the
+price/volume/DMA chart, the financial chart (`framework.charts.financial_charts` — revenue/profit,
+the Deposits/Investments/Borrowing book, quarterly profit, EPS), and the group/dependency graph if
+built. The sector report leads with a **TradingView-style screener listing** (one row per name:
+price, mkt cap, P/E, P/B, ROE, div, growth, 1y ret, vs50/vs200, RelVol, deliv, **Stance** = our
+analyst-rating analog) and embeds the influence graph + group-network gallery. Link `GLOSSARY.md`
+from every report so headers/line-items/chart-colours are self-explanatory.
 
 ## Templates (credible backbones — START from these, don't invent structure)
 
@@ -77,10 +92,16 @@ to a number or a dated sourced link — a framework is a checklist, not a licenc
   - DRHP (if recent IPO) → `drhp_reader.py` / `drhp_vision.py`
   - Concall (latest) → `concall_reader.py`
   Run these in the background (minutes each). They emit `.md` + `.json`.
-- **Data tables** — `fetch_company_fundamentals` / `fetch_company_ratios` → write each to
-  `data/<symbol>_ratios.json` AND `.csv` (P&L, balance sheet, cash flow, growth, shareholding).
-- **Charts** — `framework.charts.price_volume_chart` (price + 25/50/200-DMA + volume + delivery)
-  into `charts/`; plus ratio charts (P/E, P/B, dividend yield over time, like screener).
+- **Data tables** — `fetch_company_fundamentals` (incl. **quarters**) / `fetch_company_ratios` →
+  write each to `data/<symbol>_*.json` AND `.csv` (P&L, balance sheet, cash flow, **quarters**,
+  shareholding). Tables in the report carry a header note or link to `GLOSSARY.md`.
+- **Charts (BOTH, embedded as images)** —
+  1. `framework.charts.price_volume_chart` → `charts/<sym>_price_volume.png` (price + 25/50/200-DMA
+     + volume + delivery)
+  2. `framework.charts.financial_charts(symbol, data_dir, charts_dir)` → `charts/<sym>_financials.png`
+     (revenue & profit, the Deposits/Investments/Borrowing **book**, quarterly profit, EPS — screener-style)
+  3. group/dependency graph (see dependency-graph skill) → `charts/dependency_<sym>.png`
+  Put all in the report's **## Visuals** block as `![...](charts/...)` — embedded, not inline-code.
 - **Other research** — anything else gathered, each with its source.
 
 ### 3. RBI policy + news (per company/stock)
@@ -134,7 +155,7 @@ They cover disjoint data; capture from BOTH, then cross-check the one field they
 |---|---|---|
 | daily OHLCV, **volume, delivery %** | `data.sources.JugaadData.history` | screener has NO daily series; this is the backtest engine |
 | split/dividend ratios | jugaad+yfinance (default) OR screener **Corporate Actions** modal | screener's modal is authoritative — prefer it to confirm a split |
-| P&L / Balance Sheet / Cash Flow (12y) | screener `fetch_company_fundamentals` | jugaad has ZERO fundamentals |
+| P&L / Balance Sheet / Cash Flow / **Quarters** (12y) | screener `fetch_company_fundamentals` | jugaad has ZERO fundamentals; `tables` now includes `quarters` |
 | shareholding (promoter/FII/DII trend) | screener (same call) | the ownership-flow signal |
 | growth CAGRs, ratios (P/E, NIM, GNPA, div yield) | screener `fetch_company_fundamentals` / `fetch_company_ratios` | — |
 | segments (Retail/Wholesale/Treasury/Life Ins) | screener (premium-GATED) | row NAMES present, VALUES blank → write `unknown`, NOT a bug |
@@ -145,9 +166,14 @@ They cover disjoint data; capture from BOTH, then cross-check the one field they
   index, do NOT `set_index("date")`); columns `open/high/low/close/volume/vwap/trades/deliverable_qty/delivery_pct`.
 - `fetch_company_fundamentals(sym)` → `{symbol,url,numeric,ratios,growth,tables,documents_note}` where
   `tables[section] = {"periods":[...], "rows": {line_item: [floats]}}` for section in
-  `profit_loss/balance_sheet/cash_flow/shareholding`. (CSV = header `line_item,*periods`, one row per line_item.)
+  `quarters/profit_loss/balance_sheet/cash_flow/shareholding`. (CSV = header `line_item,*periods`.)
 - `fetch_company_about(sym)` → `{about, key_points{raw,sections}, links, website, bse, nse}` (SOURCED).
+  Bank key_points OFTEN carry the **segment/revenue mix** (e.g. Retail/Corporate/Treasury %) — use it.
 - `fetch_company_ratios(sym)` → `{ratios{label:str}, numeric{key:float}}`.
+- `fetch_company_signals(sym)` → announcements / credit_ratings / annual_reports / concalls / corp-actions.
+- `fetch_related_party(sym)` → related entities (corroboration; **transaction TYPES for banks**, not
+  entities — for a bank group graph use sourced subsidiary disclosures instead, see dependency-graph skill).
+- `framework.charts.financial_charts(sym, data_dir, charts_dir)` → screener-style financial PNG.
 
 **Data tally check (do this once per name):** jugaad latest `close` must ≈ screener `numeric.price`
 (only field both carry). Verified CANBK ₹135.81 (jugaad 4-Jun) ≈ ₹136 (screener) ✓. A mismatch > a
@@ -177,11 +203,16 @@ The routing table lists what's *available*; these MUST actually be RUN and their
 or the report ships with unfilled gaps (this bit us once — the influence graph was documented but
 never executed, so lead-lag shipped as `unknown`). For every sector report, the driver runs:
 1. gather (fundamentals/about/signals/quarters/chart/audit PDF) — `framework.batch`
-2. **influence graph** — `framework.influence_graph.build_sector_graph(sector)` → `graph/` +
-   `charts/influence_graph.png` (drives the "what moves it / who leads / bellwethers" section;
-   never leave lead-lag as `unknown` without having tried this)
-3. strategy proving-ground — anchor sweep + flow-gate → `strategies/`
-4. loan-book sourcing — RBI Sectoral Deployment (`xlsx_reader`, Akamai-proof) + AR segment notes
+2. **financial charts** — `framework.charts.financial_charts(sym, …)` per name → `charts/<sym>_financials.png`
+3. **influence graph** — `framework.influence_graph.build_sector_graph(sector)` → `graph/` +
+   `charts/influence_graph.png` (drives "what moves it / who leads / bellwethers"; never leave
+   lead-lag `unknown` without trying this)
+4. **group/dependency graphs** — per name + combined network → `charts/dependency_*.png`
+   (for banks: SOURCED subsidiary disclosures, NOT screener related-party — it returns txn types)
+5. strategy proving-ground — anchor sweep + flow-gate → `strategies/`
+6. loan-book sourcing — RBI Sectoral Deployment (`xlsx_reader`, Akamai-proof) + AR segment notes
+7. **assemble**: screener-style sector listing (with Stance), per-name reports with EMBEDDED
+   `## Visuals`, `GLOSSARY.md`, references. Then `tools/build_pages.py` to publish.
 Each is a concrete script call; if you write a custom driver, include ALL of these, don't just
 reference them in prose.
 

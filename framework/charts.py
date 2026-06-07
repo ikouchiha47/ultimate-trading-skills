@@ -15,6 +15,88 @@ from pathlib import Path
 import pandas as pd
 
 
+def _read_fin_csv(path) -> dict:
+    """Screener financial CSV (line_item, year cols) -> {periods, rows{label:[floats]}}."""
+    import csv as _csv
+    rows: dict[str, list] = {}
+    periods: list[str] = []
+    with open(path, newline="") as fh:
+        for i, r in enumerate(_csv.reader(fh)):
+            if i == 0:
+                periods = r[1:]
+                continue
+            vals = []
+            for x in r[1:]:
+                try:
+                    vals.append(float(str(x).replace(",", "")))
+                except (ValueError, AttributeError):
+                    vals.append(None)
+            rows[r[0]] = vals
+    return {"periods": periods, "rows": rows}
+
+
+def financial_charts(symbol: str, data_dir: str | Path, outdir: str | Path) -> str:
+    """Screener-style 2x2 financial dashboard from the gathered CSVs (₹ Cr):
+    (1) Revenue & Net Profit, (2) the BOOK — Deposits/Investments/Borrowing (where the money is),
+    (3) Quarterly Net Profit, (4) EPS. Returns the PNG path."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    data_dir = Path(data_dir)
+    pl = _read_fin_csv(data_dir / f"{symbol}_profit_loss.csv")
+    bs = _read_fin_csv(data_dir / f"{symbol}_balance_sheet.csv")
+    q = _read_fin_csv(data_dir / f"{symbol}_quarters.csv")
+
+    def _row(tbl, label):
+        return tbl["rows"].get(label, [])
+
+    fig, ax = plt.subplots(2, 2, figsize=(13, 8))
+    fig.suptitle(f"{symbol} — financials (₹ Cr unless noted; source: screener, annual/quarterly)",
+                 fontsize=13, fontweight="bold")
+
+    # (1) Revenue & Net Profit
+    yrs = pl["periods"]
+    rev, npf = _row(pl, "Revenue"), _row(pl, "Net Profit")
+    x = range(len(yrs))
+    a = ax[0][0]
+    a.bar([i - 0.2 for i in x], [v or 0 for v in rev], width=0.4, label="Revenue", color="#5b8def")
+    a.bar([i + 0.2 for i in x], [v or 0 for v in npf], width=0.4, label="Net Profit", color="#2da44e")
+    a.set_title("Revenue & Net Profit (annual)"); a.legend(fontsize=8)
+    a.set_xticks(list(x)); a.set_xticklabels(yrs, rotation=45, ha="right", fontsize=7)
+
+    # (2) The book — Deposits / Investments / Borrowing
+    byrs = bs["periods"]; bx = range(len(byrs))
+    a = ax[0][1]
+    for lbl, col in [("Deposits", "#8250df"), ("Investments", "#e3a008"), ("Borrowing", "#cf222e")]:
+        vals = _row(bs, lbl)
+        if vals:
+            a.plot(list(bx), [v or 0 for v in vals], marker="o", ms=3, label=lbl, color=col)
+    a.set_title("The book: Deposits / Investments / Borrowing"); a.legend(fontsize=8)
+    a.set_xticks(list(bx)); a.set_xticklabels(byrs, rotation=45, ha="right", fontsize=7)
+
+    # (3) Quarterly Net Profit
+    qyrs = q["periods"]; qx = range(len(qyrs)); qnp = _row(q, "Net Profit")
+    a = ax[1][0]
+    a.bar(list(qx), [v or 0 for v in qnp], color="#2da44e", alpha=0.8)
+    a.set_title("Quarterly Net Profit")
+    a.set_xticks(list(qx)); a.set_xticklabels(qyrs, rotation=45, ha="right", fontsize=7)
+
+    # (4) EPS
+    eps = _row(pl, "EPS in Rs")
+    a = ax[1][1]
+    a.plot(list(x), [v or 0 for v in eps], marker="o", color="#0969da")
+    a.set_title("EPS (₹)")
+    a.set_xticks(list(x)); a.set_xticklabels(yrs, rotation=45, ha="right", fontsize=7)
+
+    fig.tight_layout(rect=(0, 0, 1, 0.97))
+    out = Path(outdir); out.mkdir(parents=True, exist_ok=True)
+    p = out / f"{symbol}_financials.png"
+    fig.savefig(p, dpi=110, bbox_inches="tight")
+    plt.close(fig)
+    return str(p)
+
+
 def price_volume_chart(symbol: str, df: pd.DataFrame, outdir: str | Path,
                        since: str | None = None) -> str:
     """Draw price + 25/50/200-DMA + volume for one symbol; return the PNG path."""
