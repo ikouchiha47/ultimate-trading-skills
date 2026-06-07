@@ -51,73 +51,68 @@ Activate this skill when the user asks about:
 
 ## Workflow
 
+> **Data comes from the audited seam `framework/data_api.py`, never WebSearch.** All numbers
+> are `provenance="computed"` from official feeds; WebSearch is allowed ONLY for narrative
+> sector colour (Step 7), labelled `sourced`. No broker MCP / API keys are needed — those are
+> only for live execution (deferred). See repo `CLAUDE.md` + `PORTING_PLAN.md`.
+
 Follow these steps in order when the user requests FII/DII flow analysis:
 
 ### Step 1: Fetch Current FII/DII Flow Data
 
-Use web search to retrieve the latest FII/DII cash market data from authoritative sources:
+Two complementary official sources via the seam:
 
+```python
+from framework import data_api as api
+
+# Provisional daily cash FII/DII pulse (NSE) — latest snapshot, rows: FII, DII
+fii_dii = api.fii_dii()                  # cols: category, buyValue, sellValue, netValue, date
+
+# Authoritative NSDL FPI custody flow — Equity/Debt split, net in BOTH Rs Cr AND USD Mn
+fpi = api.fpi_flow()                     # latest report; pass trade_date=YYYY-MM-DD for a day
 ```
-WebSearch: "FII DII data today {current_date} cash market net buy sell"
-WebSearch: "NSDL FII activity {current_month} {current_year}"
-WebSearch: "MoneyControl FII DII activity {current_date}"
-```
 
-Primary data sources to query:
-- **NSDL** (National Securities Depository Limited): Official FII/FPI transaction data
-- **NSE** (National Stock Exchange): Daily institutional trading statistics
-- **MoneyControl FII/DII page**: Aggregated daily flow data with historical tables
-- **CDSL** (Central Depository Services Limited): Supplementary FPI data
-- **Trendlyne / Tickertape**: Pre-computed flow summaries and charts
+Extract from `fii_dii`: FII/DII gross buy, gross sell, net (₹ crores), date. From `fpi` use the
+`asset_class=='Equity'`, `investment_route=='Sub-total'` row for `net_rs_cr`, `net_usd_mn`,
+`usd_inr` — the USD figure ties the flow to the dollar (the US-driver thesis, manuals/12).
 
-Extract the following data points:
-- FII gross buy value (in crores)
-- FII gross sell value (in crores)
-- FII net buy/sell value (in crores)
-- DII gross buy value (in crores)
-- DII gross sell value (in crores)
-- DII net buy/sell value (in crores)
-- Date of the data
+> Prefer `fii_dii()` for the fast daily pulse; cite `fpi_flow()` as the authoritative
+> equity/debt + USD figure. They can differ (provisional cash vs final custody) — say which.
 
 ### Step 2: Fetch Historical Flow Data for Trend Analysis
 
-Use web search to gather flow data for the trailing period:
+`fii_dii()` is a latest-snapshot endpoint (no long history). For the trailing-period trend,
+loop NSDL FPI over recent trading days (official, dated):
 
-```
-WebSearch: "FII DII data last 10 trading days {current_month} {current_year}"
-WebSearch: "FII net investment {current_month} {current_year} month to date"
-WebSearch: "FII DII yearly data {current_year} year to date"
+```python
+import pandas as pd
+
+# Anchor to the LATEST published report, not today() — NSDL lags the calendar, and you
+# must never query future/unpublished dates (they return empty, not an error).
+latest_date = pd.to_datetime(api.fpi_flow()["report_date"].iloc[0])
+hist = []
+for d in pd.bdate_range(end=latest_date, periods=12):
+    try:
+        df = api.fpi_flow(trade_date=d.date())
+        eq = df[(df.asset_class == "Equity") & (df.investment_route == "Sub-total")]
+        if len(eq):
+            hist.append({"date": d.date(), "fpi_equity_net_rs_cr": float(eq.net_rs_cr.iloc[0])})
+    except Exception:
+        pass            # non-trading day / not-yet-published -> skip, do not fabricate
+trend = pd.DataFrame(hist)
 ```
 
-Build a table of the last 10 trading days with daily FII and DII net values.
+Build the last-10-trading-days table from `trend`. (A single-call long daily FII/DII *cash*
+history is a known gap — do NOT backfill it from WebSearch numbers.)
 
 ### Step 3: Fetch Nifty 50 Price Data
 
-Use Groww MCP tools to get Nifty price data for correlation analysis:
+For flow-vs-price correlation, get the index from the seam (official NSE OHLC via nselib) and
+USDINR for the INR-impact leg — no broker MCP:
 
 ```python
-# Get current Nifty LTP
-get_ltp(search_queries=["NIFTY"], segment="CASH", query_type="stocks")
-
-# Get historical Nifty data for correlation (last 30 trading days, daily candles)
-fetch_historical_candle_data(
-    trading_symbol="NIFTY",
-    start_time="{30_trading_days_ago} 09:15:00",
-    end_time="{today} 15:30:00",
-    interval_in_minutes="1440",
-    exchange="NSE",
-    segment="CASH"
-)
-```
-
-Use `resolve_market_time_and_calendar` to determine the correct trading day range:
-
-```python
-resolve_market_time_and_calendar(
-    time_period_unit="day",
-    number_of_periods=30,
-    period_relative_position="previous"
-)
+nifty  = api.index("NIFTY 50", since="2024-01-01")   # daily OHLC + volume
+usdinr = api.driver("USDINR", since="2024-01-01")    # FII-outflow -> INR weakness leg
 ```
 
 ### Step 4: Analyze Flow Patterns
@@ -241,19 +236,20 @@ Present the report in a clear, structured format with:
 
 ## Tools Used
 
-Use whichever broker MCP is connected (Groww or Zerodha Kite):
+All numeric data comes from the audited seam — **no broker MCP, no API keys**:
 
-| Action | Groww MCP | Zerodha Kite MCP | Fallback |
-|--------|-----------|------------------|----------|
-| Nifty LTP | `get_ltp` | `get_ltp` | yfinance |
-| Historical data | `fetch_historical_candle_data` | `get_historical_data` | yfinance |
-| Trading calendar | `resolve_market_time_and_calendar` | — | Web search |
-| Market movers | `fetch_market_movers_and_trending_stocks_funds` | — | Web search |
-| Shareholding data | `fetch_stocks_fundamental_data` | — | Web search |
-| Portfolio check | `get_equity_portfolio_holdings` | `get_holdings` | — |
+| Action | Seam call (`framework.data_api`) | Source |
+|--------|----------------------------------|--------|
+| Daily FII/DII cash pulse | `fii_dii()` | NSE provisional (nsepython) |
+| Official FPI flow (equity/debt, ₹ + USD) | `fpi_flow(trade_date=…)` | NSDL (nselib) |
+| Nifty 50 OHLC | `index("NIFTY 50", since=…)` | NSE official (nselib) |
+| INR / dollar leg | `driver("USDINR", since=…)` | yfinance |
 
 | Tool | Purpose |
 |------|---------|
-| `WebSearch` | Fetch latest FII/DII data from NSDL, NSE, MoneyControl |
-| `WebFetch` | Scrape specific FII/DII data pages for structured data |
-| `calculator` | Compute flow ratios, correlations, and aggregates |
+| `WebSearch` | **Narrative sector colour ONLY** (Step 7), labelled `sourced` — never for the flow numbers |
+| `calculator` / pandas | flow ratios, correlations, aggregates |
+
+> Broker MCP (Groww/Zerodha) is **not used here** — it requires an API key + daily-renewed
+> trading session and serves live/execution data. It belongs only to the future live layer
+> (`data.sources.OpenAlgoSource`), not this research skill.

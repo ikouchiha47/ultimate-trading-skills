@@ -161,7 +161,7 @@ def process_breadth_charts(charts_dir: str, right_percentage: int = 25) -> dict:
             try:
                 output_path = extract_right_edge(image_path, right_percentage)
                 results[image_path] = output_path
-                print(f"✓ Processed: {filename} → {os.path.basename(output_path)}")
+                print(f"✓ Processed: {filename} -> {os.path.basename(output_path)}")
             except Exception as e:
                 print(f"✗ Error processing {filename}: {str(e)}", file=sys.stderr)
 

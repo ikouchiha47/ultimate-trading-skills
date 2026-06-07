@@ -20,11 +20,11 @@ OHLCV / Tickets
        v
  [review]  <──────────────────────┐
        |                          |
-       ├── PASS   → accumulated   |
-       ├── REJECT → accumulated   |
-       └── REVISE → [revision] ───┘  (max 2 iterations)
+       ├── PASS   -> accumulated   |
+       ├── REJECT -> accumulated   |
+       └── REVISE -> [revision] ───┘  (max 2 iterations)
                           |
-                   remaining REVISE → research_probe downgrade
+                   remaining REVISE -> research_probe downgrade
        |
        v
  [export]      ───> strategies/<candidate_id>/

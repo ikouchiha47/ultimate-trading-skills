@@ -109,7 +109,7 @@ def score_risk_management(
         dd_score = int(12 * (50 - max_drawdown_pct) / 30)
 
     # Profit factor component (0-8)
-    # Continuous: PF 1.0→3.0 maps linearly to 0→8, capped at 8 for PF≥3.0
+    # Continuous: PF 1.0->3.0 maps linearly to 0->8, capped at 8 for PF≥3.0
     pf = calc_profit_factor(win_rate, avg_win_pct, avg_loss_pct)
     if pf < 1.0:
         pf_score = 0

@@ -192,9 +192,9 @@ User: "Analyze these three charts: Reliance, HDFC Bank, and Bank Nifty"
 Analyst:
 1. Confirms receipt of 3 charts
 2. Reads technical_analysis_framework.md
-3. Analyzes Reliance chart → Generates report → Saves as RELIANCE_technical_analysis_2026-03-12.md
-4. Analyzes HDFC Bank chart → Generates report → Saves as HDFCBANK_technical_analysis_2026-03-12.md
-5. Analyzes Bank Nifty chart → Generates report → Saves as BANKNIFTY_technical_analysis_2026-03-12.md
+3. Analyzes Reliance chart -> Generates report -> Saves as RELIANCE_technical_analysis_2026-03-12.md
+4. Analyzes HDFC Bank chart -> Generates report -> Saves as HDFCBANK_technical_analysis_2026-03-12.md
+5. Analyzes Bank Nifty chart -> Generates report -> Saves as BANKNIFTY_technical_analysis_2026-03-12.md
 6. Notifies user that all three analyses are complete
 ```
 

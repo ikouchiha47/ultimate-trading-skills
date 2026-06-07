@@ -104,8 +104,8 @@ Resistance represents price levels where selling interest has historically preve
 ### Support-Resistance Flip
 
 When broken, support often becomes resistance and vice versa:
-- **Broken Support → Resistance**: After downside break, previous support acts as new resistance on retests
-- **Broken Resistance → Support**: After upside break, previous resistance acts as new support on pullbacks
+- **Broken Support -> Resistance**: After downside break, previous support acts as new resistance on retests
+- **Broken Resistance -> Support**: After upside break, previous resistance acts as new support on pullbacks
 
 ## 3. Moving Average Analysis
 

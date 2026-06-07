@@ -304,10 +304,10 @@ class TestClassifyRegime:
         # Contraction should NOT score from unavailable credit data
         assert result["regime_scores"]["contraction"] == 0
 
-    # --- Improvement 1: Tiebreak → Transitional ---
+    # --- Improvement 1: Tiebreak -> Transitional ---
 
     def test_tiebreak_broadening_contraction_becomes_transitional(self):
-        """Tied broadening=3, contraction=3, low composite → transitional."""
+        """Tied broadening=3, contraction=3, low composite -> transitional."""
         # broadening: conc broadening(+2) + credit easing(+1) = 3
         # contraction: sector risk_off(+2) + eb risk_off(+1) = 3
         # concentration: size large_cap? no, size=unknown -> 0
@@ -321,13 +321,13 @@ class TestClassifyRegime:
             "sector_rotation": self._make_component(20, "risk_off"),
         }
         result = classify_regime(components)
-        # Low composite (all scores ~20) < 50 → tied → transitional
+        # Low composite (all scores ~20) < 50 -> tied -> transitional
         assert result["current_regime"] == "transitional"
         assert result.get("tied_regimes") is not None
         assert set(result["tied_regimes"]) == {"broadening", "contraction"}
 
     def test_tiebreak_keeps_winner_high_composite(self):
-        """Tied but composite >= 50 → keeps top scorer (not forced transitional)."""
+        """Tied but composite >= 50 -> keeps top scorer (not forced transitional)."""
         # Same tie but high individual scores
         # broadening: conc broadening(+2) + credit easing(+1) = 3
         # contraction: sector risk_off(+2) + eb risk_off(+1) = 3
@@ -346,7 +346,7 @@ class TestClassifyRegime:
         assert result.get("tied_regimes") is not None
 
     def test_no_tied_regimes_clear_winner(self):
-        """Clear winner → tied_regimes is None."""
+        """Clear winner -> tied_regimes is None."""
         components = {
             "concentration": self._make_component(60, "concentrating"),
             "yield_curve": self._make_component(10, "stable"),
@@ -394,7 +394,7 @@ class TestClassifyRegime:
     # --- Improvement 4: Regime Consistency ---
 
     def test_check_regime_consistency_broadening(self):
-        """Broadening regime with matching components → all consistent."""
+        """Broadening regime with matching components -> all consistent."""
         components = {
             "concentration": self._make_component(60, "broadening"),
             "yield_curve": self._make_component(10, "stable"),
@@ -424,7 +424,7 @@ class TestClassifyRegime:
         assert result["sector_rotation"] == "contradicting"
 
     def test_check_regime_consistency_transitional(self):
-        """Transitional regime → all neutral (no expectations)."""
+        """Transitional regime -> all neutral (no expectations)."""
         components = {
             "concentration": self._make_component(60, "broadening"),
             "yield_curve": self._make_component(10, "stable"),
@@ -443,7 +443,7 @@ class TestClassifyRegime:
         """When regime is ambiguous (tied), confidence should be moderate at most."""
         # Contraction: credit tightening(+2) + sector risk_off(+2) + eb risk_off(+1) = 5
         # Inflationary: corr positive(+3) + eb risk_off(+1) = 4
-        # Difference = 1 → ambiguous
+        # Difference = 1 -> ambiguous
         components = {
             "concentration": self._make_component(40, "concentrating"),
             "yield_curve": self._make_component(60, "flattening"),

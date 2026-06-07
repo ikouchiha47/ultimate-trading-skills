@@ -11,7 +11,7 @@ Three positions in tension:
   reflected all information, no one would be paid to gather it — so no one would — so prices
   *couldn't* reflect it. Markets must be *inefficient enough* to compensate information
   gatherers. **This is the gap we trade.** Forced / uninformed selling (rotation, FII risk-off,
-  redemptions) moves prices without information → fadeable dislocation.
+  redemptions) moves prices without information -> fadeable dislocation.
 - **Adaptive Markets** (Lo): reconciles the two — efficiency is not binary but evolves;
   edges appear, get arbitraged away, reappear as conditions change.
 
@@ -24,7 +24,7 @@ Three positions in tension:
 
 ## Where it fits
 This is the *justification* for the entire strategy. The edge = telling **flow-driven**
-dislocation (no information → reverts) from **information-driven** (real news → does not). If we
+dislocation (no information -> reverts) from **information-driven** (real news -> does not). If we
 can't articulate why a given sell-off is uninformed, we don't have a trade.
 
 ## Notes

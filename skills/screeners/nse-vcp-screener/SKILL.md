@@ -16,7 +16,16 @@ The screening pipeline has 3 phases:
 
 ## Data Source
 
-This screener uses **yfinance** with `.NS` suffix for NSE stocks and the **niftystocks** package for stock universe lists. No paid API keys required.
+All data via the audited seam `framework/data_api.py` — **no yfinance/niftystocks directly, no keys.**
+- **Universe** (`get_universe`): `--universe nifty50` uses the curated `NIFTY50` seed list;
+  `nifty200`/`nifty500` use the live tracked sector constituents (`data_api.constituents`)
+  unioned with NIFTY50 (true superset); `custom` uses your tickers. (niftystocks was stale -> removed.)
+- **Per-stock OHLCV** (`_seam_ohlcv`): `data_api.history(symbol, source="yfinance")`, normalized then
+  given Capitalized columns the calculators expect. `source="jugaad"` adds delivery%.
+- **Benchmark** (`fetch_benchmark`): `data_api.index(benchmark)` — official NSE OHLC. Selectable via
+  `--benchmark`; any NSE index works (verified): broad — `NIFTY 50/NEXT 50/100/200/500`,
+  `NIFTY MIDCAP 100/150`, `NIFTY SMALLCAP 100/250`, `NIFTY MICROCAP 250`; or a sector index
+  (`NIFTY PSU BANK`, etc.) to score a stock against its own peer index, not just the broad market.
 
 ## Execution
 

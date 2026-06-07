@@ -1,20 +1,20 @@
-Company Name,Industry,Symbol,Series,ISIN Code
-APL Apollo Tubes Ltd.,Capital Goods,APLAPOLLO,EQ,INE702C01027
-Adani Enterprises Ltd.,Metals & Mining,ADANIENT,EQ,INE423A01024
-Dummy Vedanta Ltd. 1,Metals & Mining,DUMMYVEDL1,EQ,DU1205A01025
-Dummy Vedanta Ltd. 2,Power,DUMMYVEDL2,EQ,DU2205A01025
-Dummy Vedanta Ltd. 3,Oil Gas & Consumable Fuels,DUMMYVEDL3,EQ,DU3205A01025
-Dummy Vedanta Ltd. 4,Metals & Mining,DUMMYVEDL4,EQ,DU4205A01025
-Hindalco Industries Ltd.,Metals & Mining,HINDALCO,EQ,INE038A01020
-Hindustan Copper Ltd.,Metals & Mining,HINDCOPPER,EQ,INE531E01026
-Hindustan Zinc Ltd.,Metals & Mining,HINDZINC,EQ,INE267A01025
-JSW Steel Ltd.,Metals & Mining,JSWSTEEL,EQ,INE019A01038
-Jindal Stainless Ltd.,Metals & Mining,JSL,EQ,INE220G01021
-Jindal Steel Ltd.,Metals & Mining,JINDALSTEL,EQ,INE749A01030
-Lloyds Metals And Energy Ltd.,Metals & Mining,LLOYDSME,EQ,INE281B01032
-NMDC Ltd.,Metals & Mining,NMDC,EQ,INE584A01023
-National Aluminium Co. Ltd.,Metals & Mining,NATIONALUM,EQ,INE139A01034
-Steel Authority of India Ltd.,Metals & Mining,SAIL,EQ,INE114A01011
-Tata Steel Ltd.,Metals & Mining,TATASTEEL,EQ,INE081A01020
-Vedanta Ltd.,Metals & Mining,VEDL,EQ,INE205A01025
-Welspun Corp Ltd.,Capital Goods,WELCORP,EQ,INE191B01025
+Symbol
+APLAPOLLO
+ADANIENT
+DUMMYVEDL1
+DUMMYVEDL2
+DUMMYVEDL3
+DUMMYVEDL4
+HINDALCO
+HINDCOPPER
+HINDZINC
+JSWSTEEL
+JSL
+JINDALSTEL
+LLOYDSME
+NMDC
+NATIONALUM
+SAIL
+TATASTEEL
+VEDL
+WELCORP

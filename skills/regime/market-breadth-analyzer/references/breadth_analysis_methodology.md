@@ -79,7 +79,7 @@ This means the long-term trend is declining AND the short-term breadth has falle
 **Rationale:** Breadth moves in cycles. Knowing whether we are in the early, middle, or late phase of a cycle helps calibrate expectations.
 
 **Cycle phases:**
-1. **Trough → Early Recovery (0-20 days):** Highest potential for upside if 8MA is rising
+1. **Trough -> Early Recovery (0-20 days):** Highest potential for upside if 8MA is rising
 2. **Sustained Recovery (21-60 days):** Confirmed recovery with decreasing upside magnitude
 3. **Mature Recovery (60+ days):** Late-cycle, watch for next peak
 4. **Post-Peak Decline (0-20 days):** Highest risk period
@@ -200,9 +200,9 @@ The analyzer maintains a rolling history of composite scores to detect trend dir
 - **Duplicate prevention:** If an entry with the same date already exists, it is overwritten (no duplicates).
 - **Rolling window:** Maximum 20 entries retained. When the limit is reached, the oldest entry is pruned first.
 - **Trend detection:** The delta between the first and last score in the most recent N entries (default N=5) determines the trend label:
-  - `delta > 2` → "Improving"
-  - `delta < -2` → "Deteriorating"
-  - `-2 <= delta <= 2` → "Stable"
+  - `delta > 2` -> "Improving"
+  - `delta < -2` -> "Deteriorating"
+  - `-2 <= delta <= 2` -> "Stable"
 
 **Usage in reports:** The trend summary (`direction`, `delta`, `entries`) is included in both JSON and Markdown outputs, giving analysts a quick read on whether market breadth is accelerating or decelerating.
 

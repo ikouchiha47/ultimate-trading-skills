@@ -338,7 +338,7 @@ def test_cap_synthetic_tickets_limits_count() -> None:
         }
         for i in range(10)
     ]
-    # ratio=1.5 → max_synthetic = max(3*1.5, 3) = 4 (ceil of 4.5)
+    # ratio=1.5 -> max_synthetic = max(3*1.5, 3) = 4 (ceil of 4.5)
     capped = sec.cap_synthetic_tickets(
         real_tickets=real_tickets,
         synthetic_tickets=synthetic_tickets,
@@ -371,7 +371,7 @@ def test_cap_synthetic_tickets_floor_applies() -> None:
         }
         for i in range(10)
     ]
-    # ratio=1.5 → max_synthetic = max(ceil(1*1.5), 3) = max(2, 3) = 3
+    # ratio=1.5 -> max_synthetic = max(ceil(1*1.5), 3) = max(2, 3) = 3
     capped = sec.cap_synthetic_tickets(
         real_tickets=real_tickets,
         synthetic_tickets=synthetic_tickets,
@@ -451,7 +451,7 @@ def test_main_max_synthetic_ratio(tmp_path: Path, monkeypatch) -> None:
     assert sec.main() == 0
 
     result = yaml.safe_load(output_path.read_text())
-    # 2 real tickets, ratio=1.5, floor=3 → max_synthetic = max(ceil(2*1.5), 3) = 3
+    # 2 real tickets, ratio=1.5, floor=3 -> max_synthetic = max(ceil(2*1.5), 3) = 3
     assert result["source"]["synthetic_ticket_count"] == 3
 
 

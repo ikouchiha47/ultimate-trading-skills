@@ -27,18 +27,18 @@
 When uncertain about investment decisions, answer these 3 questions:
 
 ### Q1: "Are non-investors recommending?"
-- YES → Mass penetration complete, likely late stage
-- NO → Still early-to-mid stage
+- YES -> Mass penetration complete, likely late stage
+- NO -> Still early-to-mid stage
 
 ### Q2: "Has the narrative become 'common sense'?"
-- YES → Euphoria stage, dissent socially unacceptable
-- NO → Skeptical views still tolerated, healthy state
+- YES -> Euphoria stage, dissent socially unacceptable
+- NO -> Skeptical views still tolerated, healthy state
 
 ### Q3: "Is 'this time is different' the mantra?"
-- YES → Historically typical bubble sign
-- NO → Healthy caution still functioning
+- YES -> Historically typical bubble sign
+- NO -> Healthy caution still functioning
 
-**All 3 YES → Critical zone, prioritize profit-taking/exit**
+**All 3 YES -> Critical zone, prioritize profit-taking/exit**
 
 ---
 
@@ -154,10 +154,10 @@ current_vix = vix.history(period='1d')['Close'].iloc[-1]
 Position: $10,000 initial investment
 Targets:  +20%, +40%, +60%, +80%
 
-+20% ($12,000) → Sell 25% = $3,000 secured
-+40% ($14,000) → Sell 25% = $3,500 secured
-+60% ($16,000) → Sell 25% = $4,000 secured
-+80% ($18,000) → Sell 25% = $4,500 secured
++20% ($12,000) -> Sell 25% = $3,000 secured
++40% ($14,000) -> Sell 25% = $3,500 secured
++60% ($16,000) -> Sell 25% = $4,000 secured
++80% ($18,000) -> Sell 25% = $4,500 secured
 
 Total profits: $15,000 (+50% equivalent)
 ```
@@ -195,13 +195,13 @@ print(f"Trailing Stop: ${stop:.2f}")
 
 ```
 Stage 1 (Boom period):
-  → Reduce 50% of position via stair-step profit-taking
+  -> Reduce 50% of position via stair-step profit-taking
 
 Stage 2 (Euphoria period):
-  → Apply ATR trailing to remaining 50%, follow upside
+  -> Apply ATR trailing to remaining 50%, follow upside
 
 Stage 3 (Panic signs):
-  → Exit immediately when ATR stop hit
+  -> Exit immediately when ATR stop hit
 ```
 
 ---
@@ -239,8 +239,8 @@ Condition Check:
 [✓] 6. VIX +35% surge
 [×] 7. No policy changes
 
-→ 4/7 met, shorts consideration OK
-→ Small position (25% of normal) for test entry
+-> 4/7 met, shorts consideration OK
+-> Small position (25% of normal) for test entry
 ```
 
 ---
@@ -289,20 +289,20 @@ Q: Down -5% or more?
     ↓YES
 Q: ATR stop reached?
     ↓YES
-→ Sell immediately (no debate)
+-> Sell immediately (no debate)
 
     ↓NO (Stop not reached)
 Q: Bubble-O-Meter score 13+?
     ↓YES
-→ Consider 75%+ profit-taking
+-> Consider 75%+ profit-taking
 
     ↓NO (Score ≤12)
 Q: VIX surge +30%+?
     ↓YES
-→ 50% profit-taking, tighten remaining stops
+-> 50% profit-taking, tighten remaining stops
 
     ↓NO
-→ Business as usual, continue calm observation
+-> Business as usual, continue calm observation
 ```
 
 ---

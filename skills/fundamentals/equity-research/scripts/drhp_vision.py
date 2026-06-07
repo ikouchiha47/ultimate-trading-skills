@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-drhp_vision.py — Enhanced DRHP extractor using moondream:v2 for table-heavy pages.
+drhp_vision.py — Enhanced DRHP extractor using a local vision model for table-heavy pages.
 
 Strategy per page:
-  - If pdfplumber detects tables → render page as image → ask moondream to extract
-  - Otherwise → use pdfplumber text extraction (fast path)
+  - If pdfplumber detects tables -> render page as image -> ask the vision model to extract
+  - Otherwise -> use pdfplumber text extraction (fast path)
 
-Requires: pdf2image (poppler), ollama with moondream:v2
+Requires: pdf2image (poppler), ollama with qwen2.5vl:3b (validated chart/table OCR)
 
 Usage:
     python drhp_vision.py --input output/JUBLFOOD/drhp.json --output output/JUBLFOOD/drhp_vision.md
@@ -28,7 +28,7 @@ from pdf2image import convert_from_bytes
 from pdf_to_md import table_to_md, text_to_md, Page, pages_to_markdown
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-MOONDREAM_MODEL = "moondream:v2"
+VISION_MODEL = "qwen2.5vl:3b"
 
 TABLE_PROMPT = (
     "This is a page from a legal/financial document. "
@@ -44,9 +44,9 @@ def image_to_base64(img) -> str:
     return base64.b64encode(buf.getvalue()).decode()
 
 
-def moondream_extract(img) -> str:
+def vision_extract(img) -> str:
     payload = json.dumps({
-        "model": MOONDREAM_MODEL,
+        "model": VISION_MODEL,
         "prompt": TABLE_PROMPT,
         "images": [image_to_base64(img)],
         "stream": False,
@@ -63,7 +63,7 @@ def moondream_extract(img) -> str:
             result = json.loads(resp.read())
             return result.get("response", "").strip()
     except Exception as e:
-        print(f"  [moondream] Error: {e}")
+        print(f"  [vision] Error: {e}")
         return ""
 
 
@@ -86,7 +86,7 @@ def process_pdf_bytes(pdf_bytes: bytes, dpi: int = 150) -> str:
             if has_tables(pg):
                 table_pages.add(i)
 
-        print(f"[drhp_vision] {len(table_pages)} pages with tables → vision; {total - len(table_pages)} → text")
+        print(f"[drhp_vision] {len(table_pages)} pages with tables -> vision; {total - len(table_pages)} -> text")
 
         # Render table pages to images
         page_images = {}
@@ -104,7 +104,7 @@ def process_pdf_bytes(pdf_bytes: bytes, dpi: int = 150) -> str:
 
             if i in table_pages:
                 print(f"  [vision] page {page_num}", end="\r")
-                text = moondream_extract(page_images[i])
+                text = vision_extract(page_images[i])
                 if text:
                     section.append(text)
                 else:
@@ -123,7 +123,7 @@ def process_pdf_bytes(pdf_bytes: bytes, dpi: int = 150) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Vision-enhanced DRHP extractor using moondream:v2")
+    parser = argparse.ArgumentParser(description="Vision-enhanced DRHP extractor using a local vision model")
     parser.add_argument("--input", help="Path to existing drhp.json (from drhp_reader.py)")
     parser.add_argument("--pdf", help="Direct path to DRHP PDF file")
     parser.add_argument("--output", required=True, help="Output .md file path")
@@ -149,7 +149,7 @@ def main():
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(markdown)
-    print(f"[drhp_vision] Saved {len(markdown)//1024}KB → {out}")
+    print(f"[drhp_vision] Saved {len(markdown)//1024}KB -> {out}")
 
 
 if __name__ == "__main__":

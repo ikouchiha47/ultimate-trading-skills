@@ -105,9 +105,15 @@ Classify the headline into one of these categories:
 
    For each stock, provide:
    - Ticker (NSE symbol)
-   - Current price (use broker MCP `get_ltp` — Groww or Zerodha Kite — if available)
+   - Current price — `data_api.history(symbol, since)["close"].iloc[-1]` (EOD via the seam; no
+     broker MCP / keys). Last-traded live price is execution-layer only (deferred).
    - Impact channel (why this stock is affected)
    - Magnitude estimate (High/Medium/Low)
+
+   > This is the influence graph run FORWARD (event -> ranked impacts). It is a hypothesis
+   > generator, not a truth oracle (manuals/12, repo CLAUDE.md): rank impacts by directness,
+   > prefer near supply-chain nodes, and flag far/multi-hop links as needing lead-lag validation.
+   > Use `data_api.news(query)` for related news (RSS recent / WebSearch historical, `sourced`).
 
 ### Phase 3: Report Generation
 
@@ -128,9 +134,9 @@ Classify the headline into one of these categories:
 ## Quality Standards
 
 - All probabilities must sum to 100%
-- Every impact claim must have a causal chain (event → mechanism → impact)
+- Every impact claim must have a causal chain (event -> mechanism -> impact)
 - Stock picks must include the impact channel, not just "will benefit"
-- Consider second-order effects (e.g., rate cut → weak INR → IT sector benefit)
+- Consider second-order effects (e.g., rate cut -> weak INR -> IT sector benefit)
 - Flag any confirmation bias in scenario construction
 - Include both sectors that benefit AND those that lose
 
@@ -144,9 +150,9 @@ Analyst:
 2. Key entities: RBI, repo rate, 25 bps, 6%
 3. Collects recent RBI commentary and market expectations
 4. Scenarios:
-   - Base (50%): One more cut expected → banks pass on, housing demand rises
-   - Bull (30%): Cycle of 75-100 bps cuts → strong credit growth, equity rally
-   - Bear (20%): Global inflation returns → RBI pauses → rate-sensitive sell-off
+   - Base (50%): One more cut expected -> banks pass on, housing demand rises
+   - Bull (30%): Cycle of 75-100 bps cuts -> strong credit growth, equity rally
+   - Bear (20%): Global inflation returns -> RBI pauses -> rate-sensitive sell-off
 5. 1° impacts: Banks, NBFCs, Housing Finance, Auto
 6. 2° impacts: Real Estate, Consumer Durables
 7. 3° impacts: Cement, Infrastructure

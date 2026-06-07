@@ -64,7 +64,7 @@ Modern version of Joe Kennedy selling before the 1929 crash after hearing a shoe
 ### 2. Boom (Expansion)
 
 **Characteristics:**
-- Self-reinforcing loop: price rise → media exposure → new participants → liquidity expansion
+- Self-reinforcing loop: price rise -> media exposure -> new participants -> liquidity expansion
 - Positive expert views increase
 - Valuations high but "explainable by growth expectations"
 
@@ -116,12 +116,12 @@ Modern version of Joe Kennedy selling before the 1929 crash after hearing a shoe
 
 **Characteristics:**
 - Objective confirmation of trend breakdown (failure to make new highs, MA breaks)
-- Forced liquidations → liquidation cascade
+- Forced liquidations -> liquidation cascade
 - Liquidity evaporates
 
 **Psychology:**
-- Loss aversion reverses: "don't want to realize loss" → "must avoid further loss by panic selling"
-- Herding reverses: buying crowd → selling crowd
+- Loss aversion reverses: "don't want to realize loss" -> "must avoid further loss by panic selling"
+- Herding reverses: buying crowd -> selling crowd
 
 **Detection Indicators:**
 - Circuit breakers triggered
@@ -135,11 +135,11 @@ Modern version of Joe Kennedy selling before the 1929 crash after hearing a shoe
 ### 1. FOMO (Fear of Missing Out)
 
 **Mechanism:**
-- Social proof: "Everyone's buying → must be right"
+- Social proof: "Everyone's buying -> must be right"
 - Regret aversion: "regret of missing out" > "regret of losing money"
 
 **Bubble Condition:**
-FOMO elevates from individual psychology to **social norm** → non-conformity becomes professional/social risk
+FOMO elevates from individual psychology to **social norm** -> non-conformity becomes professional/social risk
 
 ### 2. Confirmation Bias
 
@@ -160,9 +160,9 @@ FOMO elevates from individual psychology to **social norm** → non-conformity b
 **Most Dangerous Phase:**
 Investors who experienced "rapid rise after early profit-taking"
 
-1. Take profit → price rises further → regret
-2. Re-enter → buy high → can't cut loss due to loss aversion
-3. Further rise → illusion of being "right" reinforces
+1. Take profit -> price rises further -> regret
+2. Re-enter -> buy high -> can't cut loss due to loss aversion
+3. Further rise -> illusion of being "right" reinforces
 4. Miss exit when reversal comes
 
 ---

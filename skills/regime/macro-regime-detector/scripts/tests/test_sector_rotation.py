@@ -60,7 +60,7 @@ class TestCalculateSectorRotation:
         assert 0 <= result["score"] <= 100
 
     def test_stale_crossover_reversal(self):
-        """Stale golden cross with declining recent momentum → risk_off + reversing."""
+        """Stale golden cross with declining recent momentum -> risk_off + reversing."""
         # Build ratio that crosses up early then declines recently
         # 24 months: rise for first 12, then decline for next 12
         xly_closes = [180 + i * 3 for i in range(12)] + [215 - i * 5 for i in range(12)]

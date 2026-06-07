@@ -2,7 +2,7 @@
 
 Consolidated Claude skill stack for **Indian-market** systematic trading. One decision chain:
 
-> **regime → sector rotation → quality filter → edge experiment → backtest → (sandbox execute)**
+> **regime -> sector rotation -> quality filter -> edge experiment -> backtest -> (sandbox execute)**
 
 Built by vendoring four sources into four layers. Provenance and India-port status tracked below.
 
@@ -14,7 +14,7 @@ Built by vendoring four sources into four layers. Provenance and India-port stat
 | **2 Regime brain** | `skills/regime/` | macro regime, sector rotation, breadth, bubble risk | tradermonty (US) | **needs port** ⚠️ |
 | **3 Screeners** | `skills/screeners/` | breadth, FII/DII, VCP, F&O, news, stock analysis | ajeesh (India) | native India ✅ |
 | **4 Fundamentals** | `skills/fundamentals/` | screener.in, concalls, DRHP, fundamentals = quality filter | your equity-research | native India ✅ |
-| **Edge pipeline** | `skills/edge-pipeline/` | hypothesis → strategy → review → backtest (the experiment harness) | tradermonty | market-agnostic ✅ |
+| **Edge pipeline** | `skills/edge-pipeline/` | hypothesis -> strategy -> review -> backtest (the experiment harness) | tradermonty | market-agnostic ✅ |
 | **Engines** | `engines/` | OU mean-reversion, HMM regime, vectorbt, yfinance, stats | claude-scientific-skills | agnostic ✅ |
 
 ### The backbone (this is the real product, not any single strategy)
@@ -42,13 +42,13 @@ A sector gets force-sold (rotation / FII risk-off, not earnings). Fundamentally-
 
 ## Run order (daily)
 
-1. `regime/macro-regime-detector` + `regime/sector-analyst` → which cycle phase, which sectors lead/lag *(PORT NEEDED — see PORT_PLAN.md)*
-2. `screeners/india-market-breadth` + `fii-dii-flow-tracker` → is breadth / institutional flow confirming?
-3. `regime/exposure-coach` → given the regime, how much risk is allowed? (often: none — wait)
-4. `screeners/nse-vcp-screener` → candidates inside the favoured sectors
-5. `fundamentals/equity-research` → quality gate: did it fall but *shouldn't have*?
-6. `edge-pipeline/*` → formalize as a falsifiable strategy + `backtest-expert` (fed **OpenAlgo historical data**, not yfinance) with costs + a no-filter null
-7. **OpenAlgo sandbox** → forward-test the survivor on unseen live data (₹1cr paper) before any real capital. Live execution deferred.
+1. `regime/macro-regime-detector` + `regime/sector-analyst` -> which cycle phase, which sectors lead/lag *(PORT NEEDED — see PORT_PLAN.md)*
+2. `screeners/india-market-breadth` + `fii-dii-flow-tracker` -> is breadth / institutional flow confirming?
+3. `regime/exposure-coach` -> given the regime, how much risk is allowed? (often: none — wait)
+4. `screeners/nse-vcp-screener` -> candidates inside the favoured sectors
+5. `fundamentals/equity-research` -> quality gate: did it fall but *shouldn't have*?
+6. `edge-pipeline/*` -> formalize as a falsifiable strategy + `backtest-expert` (fed **OpenAlgo historical data**, not yfinance) with costs + a no-filter null
+7. **OpenAlgo sandbox** -> forward-test the survivor on unseen live data (₹1cr paper) before any real capital. Live execution deferred.
 
 ## Backtesting note
 OpenAlgo provides **data + sandbox forward-testing**, not a historical backtest *engine*. Historical

@@ -48,7 +48,7 @@ Based on macro-regime-detector output:
 
 ### Top Risk Score (Inverted)
 
-Higher distribution day counts and top probability → lower score:
+Higher distribution day counts and top probability -> lower score:
 
 | Distribution Days | Top Probability | Score |
 |-------------------|-----------------|-------|

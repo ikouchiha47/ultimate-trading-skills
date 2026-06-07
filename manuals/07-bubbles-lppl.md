@@ -27,7 +27,7 @@ Competes as a `CrashTiming` / rebound-timing provider via backtest like everythi
 - 🔗 Sornette's ETH "Financial Crisis Observatory" — DS LPPLS Confidence™/Trust™.
 
 ## Where it fits
-*Optional* timing overlay for the reversion entry (negative-bubble → rebound) and a separate
+*Optional* timing overlay for the reversion entry (negative-bubble -> rebound) and a separate
 crash-risk read for the bubble detector. Must earn its place against the null in the harness.
 
 ## Local implementation

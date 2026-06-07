@@ -67,40 +67,34 @@ Find the ONE instrument most likely to move meaningfully this week.
 
 ### Steps
 
-1. **Screen market movers and sectors**:
-
-Use whichever broker MCP is connected:
+1. **Screen market movers and sectors** — via the seam/universe builder, **no broker MCP**:
 
 ```python
-# Groww MCP
-fetch_market_movers_and_trending_stocks_funds(
-    discovery_filter_types=["TOP_GAINERS", "TOP_LOSERS", "VOLUME_SHOCKERS",
-                           "YEARLY_HIGH", "YEARLY_LOW", "STOCKS_IN_NEWS"]
-)
-fetch_curated_fno(fno_filter_types=["GAINERS", "LOSERS", "TOP_TRADED"])
+from framework import data_api
+from framework.universe import build_universe
 
-# Zerodha Kite MCP — use web search for movers, then:
-# search_instruments(query="{sector_leader}")
+# Movers = rank a base universe by momentum (and volume/breadth) — no broker "movers" feed
+u = build_universe("Nifty 500", since="<~3 months ago>")          # transparent metric table
+movers = u.table.sort_values("ret_window", ascending=False)        # top gainers / losers
+sectors = data_api.constituents()                                  # sector membership for rotation
+# new highs/lows, % above DMA, A/D for the week:
+breadth = data_api.breadth("NIFTY 50", since="<~1y ago>")
 ```
 
-2. **Check institutional flows** (invoke `fii-dii-flow-tracker` skill):
-   - FII net buy/sell trend (last 5-10 days)
-   - DII positioning
-   - Sector-wise FII allocation shifts
+2. **Check institutional flows** (invoke `fii-dii-flow-tracker` skill — already on the seam:
+   `data_api.fii_dii()` + `fpi_flow()`):
+   - FII net buy/sell trend (last 5-10 days), DII positioning, FPI equity/debt + USD tie-in.
 
 3. **Narrow to ONE instrument** using this priority:
-   - **Index (Nifty/BankNifty)**: For macro/geopolitical/broad market themes
-   - **Sector ETF or index**: For sector rotation themes
-   - **Single stock**: For earnings/company-specific catalysts (must be in F&O list)
+   - **Index (Nifty/BankNifty)**: macro/geopolitical/broad themes — `index("NIFTY 50"/"NIFTY BANK")`
+   - **Sector index**: sector-rotation themes — `index("NIFTY <sector>")`
+   - **Single stock**: earnings/company catalysts (must be F&O-eligible — see note below)
 
-4. **Validate F&O availability**:
-```python
-# Groww MCP
-fno_mcx_contracts_search_tool(search_term="{instrument_name}")
-
-# Zerodha Kite MCP
-search_instruments(query="{instrument_name}", segment="NFO-OPT")
-```
+4. **F&O availability / live option data — MISSING (do not fabricate):** there is no audited free
+   source for the live F&O contract list, lot sizes, option chain, or OI
+   (`data_api.option_chain()` raises `MISSING`; that's OpenAlgo's live layer, deferred). Plan the
+   **directional view + underlying levels** from the seam; defer exact strikes/premiums/OI/margin
+   to the live layer. Keep a small static F&O-eligibility seed if needed, flagged as possibly-stale.
 
 ### Selection Criteria
 
@@ -359,8 +353,8 @@ WebSearch: "breaking news global markets after hours {current_date}"
    - **This is the "lottery ticket" entry** — high R:R, limited downside
 
    Example (Bearish gap expected):
-   - Nifty at 23,778 → Buy 23,000 PE at ₹109 (778 pts OTM)
-   - Next day gap to 23,200 → 23,000 PE jumps to ₹250+ (130% overnight gain)
+   - Nifty at 23,778 -> Buy 23,000 PE at ₹109 (778 pts OTM)
+   - Next day gap to 23,200 -> 23,000 PE jumps to ₹250+ (130% overnight gain)
    - 6 lots × 65 × ₹141 profit = ₹55,000 on ₹42,500 invested
 
 7. **Output: Immediate Entry Alert**:

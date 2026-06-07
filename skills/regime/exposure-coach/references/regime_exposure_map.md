@@ -64,27 +64,27 @@ This document maps macro regime states to baseline exposure ceilings and bias re
 
 ## Regime Transition Signals
 
-### Broadening → Concentration
+### Broadening -> Concentration
 - RSP/SPY rolling over while SPY makes new highs
 - Breadth divergence (fewer stocks at highs)
 - Reduce exposure ceiling by 10-20%
 
-### Concentration → Transitional
+### Concentration -> Transitional
 - Mega-cap leaders showing distribution
 - Volatility expansion
 - Reduce exposure ceiling by 15-25%
 
-### Transitional → Contraction
+### Transitional -> Contraction
 - Credit spreads widening
 - Safe haven flows (bonds, gold, yen)
 - Reduce exposure ceiling by 25-40%
 
-### Contraction → Transitional
+### Contraction -> Transitional
 - Distribution day count resetting
 - Breadth thrusts
 - Begin rebuilding exposure cautiously
 
-### Transitional → Broadening
+### Transitional -> Broadening
 - RSP/SPY ratio turning up
 - Uptrend participation expanding
 - Aggressive exposure increase warranted

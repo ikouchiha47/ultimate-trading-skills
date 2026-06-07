@@ -468,7 +468,7 @@ def compute_confidence_score(findings: list[ReviewFinding]) -> int:
 
 def determine_verdict(findings: list[ReviewFinding], confidence: int) -> str:
     """Determine PASS / REVISE / REJECT."""
-    # C1 or C2 fail → immediate REJECT
+    # C1 or C2 fail -> immediate REJECT
     for f in findings:
         if f.criterion in ("C1_edge_plausibility", "C2_overfitting_risk") and f.severity == "fail":
             return "REJECT"
@@ -511,7 +511,7 @@ def review_draft(
     verdict = determine_verdict(findings, confidence)
     export_ok = is_export_eligible(draft, verdict, exportable_families)
 
-    # Strict export: export-eligible PASS with any warn → REVISE
+    # Strict export: export-eligible PASS with any warn -> REVISE
     if strict_export and verdict == "PASS" and export_ok:
         has_warn = any(f.severity == "warn" for f in findings)
         if has_warn:

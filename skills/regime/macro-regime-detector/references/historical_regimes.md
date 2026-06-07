@@ -102,13 +102,13 @@ Reference cases for the 5 regime classifications. Use these to contextualize cur
 
 ### Common Sequences
 
-1. **Concentration → Broadening**: Usually requires catalyst (Fed easing, fiscal stimulus, valuation compression in leaders)
+1. **Concentration -> Broadening**: Usually requires catalyst (Fed easing, fiscal stimulus, valuation compression in leaders)
 
-2. **Broadening → Contraction**: Credit tightening is the typical trigger. Watch HYG/LQD for early warning.
+2. **Broadening -> Contraction**: Credit tightening is the typical trigger. Watch HYG/LQD for early warning.
 
-3. **Contraction → Broadening**: Policy response (rate cuts, QE) → credit easing → small-cap recovery
+3. **Contraction -> Broadening**: Policy response (rate cuts, QE) -> credit easing -> small-cap recovery
 
-4. **Any → Inflationary**: Positive stock-bond correlation is the key signal. Can emerge from either broadening or contraction.
+4. **Any -> Inflationary**: Positive stock-bond correlation is the key signal. Can emerge from either broadening or contraction.
 
 ### Transition Timing
 

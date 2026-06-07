@@ -73,41 +73,25 @@ When the market-wide position limit (MWPL) for a stock's F&O contracts exceeds
 
 ---
 
-## Broker MCP Tool Integration
+## Data integration — PARTIALLY BLOCKED (live F&O data is MISSING)
 
-This skill uses broker MCP tools for live market data and execution support. Use whichever broker is connected (Groww or Zerodha Kite). Always prefer live data over assumptions.
+This skill needs **live option chain / OI / Greeks**, which we do NOT have an audited free source
+for — `data_api.option_chain()` raises `MISSING` (nseindia API is Akamai-gated; real-time F&O is
+OpenAlgo's job, deferred). So this skill is **honestly partial** until the live layer exists:
+do NOT fabricate option prices, OI, PCR, or Greeks.
 
-### Groww MCP Tools (if connected)
+| Need | Status |
+|------|--------|
+| **Underlying spot/history** (NIFTY, BANKNIFTY, stock) | ✅ `index("NIFTY 50"/"NIFTY BANK")` / `history(stock)` |
+| **Realized vol** (for IV context, payoff ranges) | ✅ from `history(...)` (ATR/stdev via `framework.indicators`) |
+| Option chain, bid/ask, OI, PCR | ❌ `MISSING` — `option_chain()` (OpenAlgo/live, deferred) |
+| Live option prices / Greeks / straddle premium | ❌ `MISSING` — needs live F&O feed |
+| Lot sizes / contract/expiry search | ❌ `MISSING` — maintain a small static seed if needed, flag as possibly-stale |
+| Margin / orders / positions / place_order | ❌ execution layer (OpenAlgo, deferred) — never auto-trade |
 
-| Tool | Purpose |
-|------|---------|
-| `get_ltp` (segment=FNO, query_type=fno) | Live option/futures prices and OI |
-| `get_quotes_and_depth` (segment=FNO) | Bid/ask spreads and market depth |
-| `fno_mcx_contracts_search_tool` | Search F&O contracts, lot sizes, expiries |
-| `fetch_historical_candle_data` (segment=FNO) | Historical option price data |
-| `fetch_curated_fno` | F&O gainers, losers, most traded |
-| `get_open_interest_analysis` | OI structure, PCR, support/resistance |
-| `get_greeks_for_fno_contract` | Live Greeks for specific contracts |
-| `get_greeks_for_fno_symbol` | Greeks for all contracts of an underlying |
-| `get_atm_straddle_chart` | ATM straddle premium analysis |
-| `get_payoff_chart_steps` | Payoff diagram generation instructions |
-| `calculate_fno_margin` | Margin requirement calculation |
-| `get_available_margin_details` | User's available margin |
-| `resolve_market_time_and_calendar` | Market hours and trading calendar |
-
-### Zerodha Kite MCP Tools (if connected)
-
-| Tool | Purpose |
-|------|---------|
-| `get_ltp` | Last traded price for F&O instruments |
-| `get_quotes` | Real-time quotes with bid/ask depth |
-| `get_ohlc` | OHLC data for options/futures contracts |
-| `get_historical_data` | Historical candle data for F&O |
-| `search_instruments` | Search for F&O contracts by name/expiry |
-| `get_margins` | Account margins and available funds |
-| `get_positions` | Current F&O positions |
-| `get_orders` / `get_order_history` | Order status and execution details |
-| `place_order` / `modify_order` / `cancel_order` | Order management |
+Use this skill for **strategy structure + payoff reasoning on the underlying** (which spreads suit
+a view, breakevens from spot + realized vol); compute live premiums/Greeks only once the OpenAlgo
+live layer is wired. State clearly in output which numbers are computed vs unavailable.
 | `place_gtt_order` / `get_gtts` | GTT order management |
 
 ### Tool Equivalence Map
@@ -226,12 +210,12 @@ Collect the following from the user:
 
 1. **Resolve market time and calendar:**
    ```
-   resolve_market_time_and_calendar() → confirm market is open, get trading days to expiry
+   resolve_market_time_and_calendar() -> confirm market is open, get trading days to expiry
    ```
 
 2. **Search for contracts:**
    ```
-   fno_mcx_contracts_search_tool(search_term="NIFTY 25 MAR") → get exact trading symbols
+   fno_mcx_contracts_search_tool(search_term="NIFTY 25 MAR") -> get exact trading symbols
    ```
 
 3. **Get live prices:**

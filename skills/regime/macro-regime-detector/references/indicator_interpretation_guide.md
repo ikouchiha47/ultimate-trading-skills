@@ -91,7 +91,7 @@ Quick reference for interpreting each component's output values and signals.
 | 0 to 0.3 | Near zero | Transitional — hedging unreliable |
 | > 0.3 | Positive (inflationary) | Both move together — diversification fails |
 
-**Critical signal**: Correlation sign change (negative → positive or vice versa) is one of the most important regime signals. Positive correlation typically occurs during:
+**Critical signal**: Correlation sign change (negative -> positive or vice versa) is one of the most important regime signals. Positive correlation typically occurs during:
 - Inflation shocks (2022)
 - Stagflation concerns
 - Central bank credibility crises

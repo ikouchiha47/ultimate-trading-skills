@@ -168,7 +168,7 @@ def run(args):
         print("ERROR: Could not find DRHP URL. Provide --url, --from-docs, or --name.")
         sys.exit(1)
 
-    # Resolve landing page → actual PDF URL
+    # Resolve landing page -> actual PDF URL
     pdf_url = resolve_pdf_url(landing_url)
     if not pdf_url:
         print(f"ERROR: Could not find PDF link on page: {landing_url}")

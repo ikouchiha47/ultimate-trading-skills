@@ -6,17 +6,21 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "pandas>=2.0",
     "requests>=2.31",
+    "python-dotenv>=1.0",   # single config seam (framework/config.py); enforced via ensure_env()
 ]
 
 [project.optional-dependencies]
 # Data sources — audited one at a time. Kept optional so the core framework
 # installs without dragging in flaky India-market scrapers.
 data = [
-    "jugaad-data",   # FREE bulk NSE/BSE historical bhavcopy — primary backtest source
-    "nsepython",     # NSE official endpoints (indices, option chain, FII/DII)
+    "jugaad-data",   # FREE bulk NSE/BSE historical bhavcopy — primary per-stock source
+    "nselib",        # NSE archive: index OHLC+turnover (primary index source; bypasses Akamai)
+    "nsepython",     # NSE official endpoints (FII/DII, index name list)
     "yfinance",      # fallback OHLCV
     "mftool",        # AMFI mutual-fund NAV history (scheme performance)
     "niftystocks",   # live NSE sectoral index constituents
+    "openpyxl",      # XLSX engine for xlsx_reader (RBI Sectoral Deployment tables)
+    "tabulate",      # markdown table rendering for xlsx_reader output
 ]
 backtest = [
     "vectorbt",
@@ -31,6 +35,13 @@ scrape = [
 # news uses date-scoped WebSearch (agentic, no dep), verified viable.
 news = [
     "feedparser",
+]
+# Optional local-model fallback for the technical-analyst vision skill, via langchain
+# (provider-agnostic — Ollama now, swappable later). Validated with qwen2.5vl. Config-gated by
+# .env (LOCAL_VISION_*). Pillow preps/downscales the image.
+local = [
+    "langchain-ollama",
+    "pillow",
 ]
 
 [tool.uv]

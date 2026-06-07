@@ -10,7 +10,7 @@ description: Track and analyze Indian stock market news, corporate announcements
 This skill fetches, categorizes, scores, and summarizes Indian market news from multiple sources. It tracks corporate announcements, SEBI circulars, bulk/block deals, insider trades, earnings calendars, and breaking market news — then feeds actionable insights to the user or other skills (like Scenario Analyzer).
 
 > ## Two modes (ultimate-trading-skills adaptation)
-> The vendored `scripts/news_fetcher.py` is **RSS-based → RECENT news only** (verified working;
+> The vendored `scripts/news_fetcher.py` is **RSS-based -> RECENT news only** (verified working;
 > needs the `news` extra: `uv pip install -e ".[news]"`). RSS feeds do not carry old items, so
 > `--days` cannot reach back months/years.
 >
@@ -85,27 +85,22 @@ Use web search to fetch news from these sources, in order of reliability:
 | **X/Twitter** | Breaking news, market sentiment | `site:x.com [topic] NSE OR BSE` |
 | **Reddit (ISB)** | Retail sentiment, trading ideas | `site:reddit.com/r/IndianStreetBets [topic]` |
 
-## Broker MCP Integration
+## Cross-referencing news with market data (via the seam)
 
-Use broker MCP tools to cross-reference news with live market data:
+Cross-reference news with price/flow data through `framework/data_api.py` — **no broker MCP, no
+keys.** The news↔price join is the heart of flow-vs-information classification (manuals/01).
 
-### Groww MCP (if connected)
-- `fetch_market_movers_and_trending_stocks_funds` with `STOCKS_IN_NEWS` — stocks currently in news
-- `get_ltp` — check price reaction to news
-- `fetch_historical_candle_data` — verify price movement post-announcement
-- `fetch_stocks_fundamental_data` — earnings data to compare with announced results
-- `fetch_market_movers_and_trending_stocks_funds` with `VOLUME_SHOCKERS` — abnormal volume (often news-driven)
-- `resolve_market_time_and_calendar` — trading day context
+| Need | Seam call |
+|------|-----------|
+| News (recent RSS / historical) | `news(query, since=None)` — recent items or a WebSearch directive (`sourced`) |
+| Price reaction post-announcement | `history(symbol, since)` — EOD OHLCV + **delivery %** (a flow vs information tell: news-driven moves on high delivery vs churn) |
+| Abnormal volume / "volume shockers" | derive from `history(...)` volume vs its 20d average |
+| Stocks-in-news / movers | rank `universe.build_universe(...)` by momentum/volume, or WebSearch (`sourced`) |
+| Earnings to compare vs announced | `fundamentals(symbol)` (growth + P&L tables) |
+| Index context | `index("NIFTY 50", since)` |
 
-### Zerodha Kite MCP (if connected)
-- `get_ltp` — last traded price for news impact verification
-- `get_quotes` — real-time quotes with depth
-- `get_historical_data` — price history for post-news analysis
-- `search_instruments` — resolve company names to trading symbols
-
-### No Broker Available
-- Use web search for all data (MoneyControl, Google Finance for prices)
-- yfinance as fallback for historical price data
+The stage-6 join discipline (measured inflection + dated sourced event + fundamentals) is in the
+"Two modes" note above. Live last-traded price is execution-layer only (deferred) — EOD suffices.
 
 ## Workflow
 
@@ -205,7 +200,7 @@ Trigger: "What's happening in banking sector?", "IT sector news", "Pharma sector
 **Steps:**
 
 1. **Map sector to NSE sectoral index and constituent stocks**
-   - See `references/sector_mapping.md` for sector → index → stocks mapping
+   - See `references/sector_mapping.md` for sector -> index -> stocks mapping
 
 2. **Fetch sector-specific news** (parallel searches)
    ```
@@ -411,7 +406,7 @@ This skill is designed to feed actionable news into other skills:
 
 | News Type | Feed To | How |
 |-----------|---------|-----|
-| Major headline / policy event | **Scenario Analyzer** | "Analyze: [headline]" → 3 scenarios |
+| Major headline / policy event | **Scenario Analyzer** | "Analyze: [headline]" -> 3 scenarios |
 | Stock earnings / corporate action | **India Stock Analysis** | "Analyze [stock] in context of [news]" |
 | Sector rotation signals | **India Market Breadth** | Check if breadth confirms sector narrative |
 | FII/DII bulk deal activity | **FII/DII Flow Tracker** | "What are institutional flows telling us about [sector]?" |
@@ -453,7 +448,7 @@ This skill is designed to feed actionable news into other skills:
 User: "Market news today"
 
 News Tracker:
-1. Fetches date context → Thursday, March 12, 2026, market open
+1. Fetches date context -> Thursday, March 12, 2026, market open
 2. Parallel web searches across MoneyControl, ET, LiveMint
 3. Fetches STOCKS_IN_NEWS via Groww MCP
 4. Fetches VOLUME_SHOCKERS for unusual activity

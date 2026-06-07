@@ -286,7 +286,7 @@ def run_review_loop(
     """Run the review-revision feedback loop."""
     result = ReviewLoopResult()
 
-    # Build initial draft map: draft_id → (draft_data, file_path)
+    # Build initial draft map: draft_id -> (draft_data, file_path)
     current_drafts: dict[str, tuple[dict[str, Any], Path]] = {}
     for path in sorted(drafts_dir.glob("*.yaml")):
         payload = yaml.safe_load(path.read_text())
@@ -461,7 +461,7 @@ def parse_args() -> argparse.Namespace:
         "--strict-export",
         action="store_true",
         default=False,
-        help="Forward --strict-export to review stage (warn on export-eligible → REVISE)",
+        help="Forward --strict-export to review stage (warn on export-eligible -> REVISE)",
     )
     parser.add_argument(
         "--max-synthetic-ratio",

@@ -75,7 +75,7 @@ Maps event types to their impact on NSE sectoral indices. Impact rated as: **Hig
 
 1. **Identify the event type** from the headline
 2. **Look up the row** in the matrix for direct impact sectors
-3. **Follow the cascade**: 1° impact → 2° impact → 3° impact
+3. **Follow the cascade**: 1° impact -> 2° impact -> 3° impact
 4. **Verify with historical patterns** from headline_event_patterns.md
 5. **Consider timing**: Some impacts are immediate, others take months
 

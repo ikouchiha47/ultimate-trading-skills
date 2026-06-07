@@ -1,0 +1,29 @@
+# Default index targets for constituent fetching + universe building.
+# EDIT HERE, not in code. Code reads this via data/nse_constituents.load_index_targets();
+# callers may override with an explicit `targets=` argument. Names must match nselib index
+# names (discover them with `from nselib import indices; indices.index_list(<category>)`).
+#
+# This is the project's "hardcoded = seed, real inputs loaded from a file" rule applied to the
+# index catalog: the list of what we track is declarative data, not buried in Python.
+
+[sectors]   # our sector key -> nselib index name (resolved Akamai-free via nselib)
+"PSU Bank"           = "Nifty PSU Bank"
+"Private Bank"       = "Nifty Private Bank"
+"Financial Services" = "Nifty Financial Services"
+"Auto"               = "Nifty Auto"
+"IT"                 = "Nifty IT"
+"Pharma"             = "Nifty Pharma"
+"FMCG"               = "Nifty FMCG"
+"Metal"              = "Nifty Metal"
+"Energy"             = "Nifty Energy"
+"Realty"             = "Nifty Realty"
+"Infra"              = "Nifty Infrastructure"
+
+[broad]     # broad-market universes for screening -> nselib index name
+"Nifty 50"     = "Nifty 50"
+"Nifty 100"    = "Nifty 100"
+"Nifty 200"    = "Nifty 200"
+"Nifty 500"    = "Nifty 500"
+"Midcap 150"   = "Nifty Midcap 150"
+"Smallcap 250" = "Nifty Smallcap 250"
+"Microcap 250" = "Nifty Microcap 250"

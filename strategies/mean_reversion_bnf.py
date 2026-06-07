@@ -47,7 +47,7 @@ class MeanReversionBNF(IStrategy):
             if std == 0:
                 continue
             z = (close.iloc[-1] - mean) / std
-            if z <= self.z_entry:                      # stretched below mean → fade
+            if z <= self.z_entry:                      # stretched below mean -> fade
                 signals.append(Signal(symbol, Side.LONG, strength=min(1.0, abs(z) / 3),
                                       meta={"z": round(float(z), 2)}))
         return signals

@@ -1,6 +1,6 @@
 # Indian Market Sector Mapping
 
-## NSE Sectoral Indices → Key Stocks
+## NSE Sectoral Indices -> Key Stocks
 
 ### Banking & Financial Services
 
@@ -105,7 +105,7 @@
 
 **Key news categories:** China+1 beneficiaries, agrochemical demand, specialty chemicals growth, environmental regulations, anti-dumping
 
-## Sector → Event Sensitivity Map
+## Sector -> Event Sensitivity Map
 
 | Event Type | Most Sensitive Sectors |
 |------------|----------------------|

@@ -619,9 +619,9 @@ class TestIntegration:
             with open(json_files[0]) as f:
                 data = json.load(f)
 
-            # All critical inputs missing → LOW confidence
+            # All critical inputs missing -> LOW confidence
             assert data["confidence"] == "LOW"
-            # Missing critical inputs triggers haircut → lower exposure
+            # Missing critical inputs triggers haircut -> lower exposure
             assert data["exposure_ceiling_pct"] < 50
         finally:
             sys.argv = original_argv

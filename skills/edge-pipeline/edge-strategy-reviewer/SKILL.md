@@ -46,10 +46,10 @@ Deterministic quality gate for strategy drafts produced by `edge-strategy-design
 
 ## Verdict Logic
 
-- C1 or C2 severity=fail → immediate REJECT
-- confidence >= 70, no fail findings → PASS
-- confidence < 35 → REJECT
-- Otherwise → REVISE (with revision instructions)
+- C1 or C2 severity=fail -> immediate REJECT
+- confidence >= 70, no fail findings -> PASS
+- confidence < 35 -> REJECT
+- Otherwise -> REVISE (with revision instructions)
 
 ## Running the Script
 
@@ -71,7 +71,7 @@ python3 skills/edge-strategy-reviewer/scripts/review_strategy_drafts.py \
   --format json \
   --markdown-summary
 
-# Strict export mode: export-eligible drafts with any warn → REVISE
+# Strict export mode: export-eligible drafts with any warn -> REVISE
 python3 skills/edge-strategy-reviewer/scripts/review_strategy_drafts.py \
   --drafts-dir reports/edge_strategy_drafts/ \
   --output-dir reports/ \

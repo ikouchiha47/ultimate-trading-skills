@@ -5,39 +5,30 @@ description: Use when user requests analysis of Indian stocks, fundamental asses
 
 # India Stock Analysis Skill
 
-Analyze Indian stocks listed on NSE and BSE using broker MCP tools and web search. All analysis is denominated in INR and follows Indian fiscal year conventions (April-March). No API keys are required.
+Analyze Indian stocks listed on NSE and BSE. All analysis is denominated in INR and follows
+Indian fiscal year conventions (April-March). **No API keys / no broker MCP** — all data comes
+from the audited seam `framework/data_api.py` (free, no auth).
 
 ## Data Sources
 
-Use whichever broker MCP is connected. Both provide equivalent data for stock analysis.
+> **All numeric data via the seam `framework.data_api`; numbers are `provenance="computed"`.**
+> WebSearch is allowed ONLY for narrative (news, analyst views, catalysts), labelled `sourced`.
+> Wherever an older step below names a broker-MCP tool (`get_ltp`, `fetch_historical_candle_data`,
+> `fetch_stocks_fundamental_data`, `get_historical_technical_indicators`, …), use this mapping:
 
-### Option A: Groww MCP (if connected)
-- `fetch_stocks_fundamental_data` -- Financials, ratios, shareholding, mutual fund holdings
-- `fetch_historical_candle_data` -- OHLCV price history
-- `get_historical_technical_indicators` -- RSI, MACD, Bollinger, SMA, EMA, SuperTrend, VWAP, ADX, and more
-- `get_ltp` -- Live/last traded price and open interest
-- `get_quotes_and_depth` -- Real-time bid/ask and market depth
-- `curate_symbols` -- Resolve stock symbols and exchange
-- `fetch_market_movers_and_trending_stocks_funds` -- Market movers, gainers, losers
-- `fetch_fundamentals_screener` -- Screen stocks by fundamental criteria
-- `fetch_technical_screener` -- Screen stocks by technical signals
-- `search_stock_and_others_symbol` -- Search for stocks, indices, and companies
-- `resolve_market_time_and_calendar` -- Current market time, trading days, holidays
+| Need | Seam call | Notes |
+|------|-----------|-------|
+| Price / OHLCV history | `history(symbol, since, source="jugaad")` | jugaad adds **delivery %** (flow-vs-info, manuals/02); `source="yfinance"` fallback |
+| Last price (EOD) | last `close` from `history(...)` | live LTP is execution-layer only (deferred); EOD suffices for research |
+| Fundamentals: ratios + growth + P&L/BS/CF | `fundamentals(symbol)` | header (P/E, ROCE, ROE, D/E, book value) + growth 3/5/10y + tables (OPM, Borrowings, FCF) |
+| Shareholding (promoter %, FII/DII trend) | `fundamentals(symbol)["tables"]["shareholding"]` | quarterly Promoters/FIIs/DIIs/Public. **Pledge** not captured -> read screener promoter-detail or WebSearch (`sourced`) |
+| Technical indicators (SMA/RSI/MACD/ATR/Bollinger/ADX) | `indicators.indicator_snapshot(history(...))` | `framework/indicators.py` computes from OHLCV (verified). NOTE: `technical-analyst` is VISION-only (reads chart images) — it is NOT the numeric engine; do not defer numbers to it |
+| Index / benchmark | `index("NIFTY 50", since)` | for relative performance |
+| Peer comparison | loop `fundamentals()` over peers | same metric set across names |
+| Symbol resolution | use the NSE symbol directly | for name->symbol, screener search or WebSearch (`sourced`) |
+| Concall / DRHP / annual reports | `equity-research` skill (agentic readers) | seam returns a pointer only — reading is the skill's job |
 
-### Option B: Zerodha Kite MCP (if connected)
-- `get_ltp` -- Last traded price for instruments
-- `get_quotes` -- Real-time market quotes with depth
-- `get_ohlc` -- OHLC data for instruments
-- `get_historical_data` -- Historical OHLCV candle data
-- `search_instruments` -- Search and resolve trading instruments
-- `get_holdings` -- User's portfolio holdings
-- `get_positions` -- Current trading positions
-- `get_margins` -- Account margin details
-- `get_profile` -- User profile information
-
-### Supplementary
-- Web search for news, analyst reports, sector developments, and regulatory updates
-- yfinance (free, no API key) as fallback for historical data
+- Web search: news, analyst reports, sector developments, regulatory updates — **narrative only**.
 
 ## Workflow
 

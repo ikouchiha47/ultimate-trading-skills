@@ -5,7 +5,7 @@ to cap downside, is as important as the entry.
 
 ## What it is
 - **Kelly criterion** — the bet fraction maximizing long-run log growth: `f* = edge / odds`.
-  Full Kelly is too aggressive in practice (estimation error, fat tails) → use **fractional Kelly**
+  Full Kelly is too aggressive in practice (estimation error, fat tails) -> use **fractional Kelly**
   (¼–½).
 - **Volatility targeting / risk parity** — size inversely to volatility so each position contributes
   comparable risk; scale exposure to a target portfolio vol.
@@ -27,7 +27,7 @@ cluster by sector, so size at the *sector* level, not per name.
 
 ## Local implementation
 - 🛠 `engines/quant-models/references/risk-metrics.md` (VaR, Sharpe, drawdown).
-- 🛠 `skills/regime/exposure-coach` (port pending) — regime → allowed risk.
+- 🛠 `skills/regime/exposure-coach` (port pending) — regime -> allowed risk.
 
 ## Notes
 - _(expand: fractional-Kelly with shrunk edge estimate; sector-level correlation cap; vol-target

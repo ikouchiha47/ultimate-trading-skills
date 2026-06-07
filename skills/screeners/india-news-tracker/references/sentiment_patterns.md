@@ -71,7 +71,7 @@
 
 | Event | Indian Market Correlation | Lag |
 |-------|--------------------------|-----|
-| **US Fed rate decision** | High for IT, Banks, FII flows | Same day (evening IST → next morning) |
+| **US Fed rate decision** | High for IT, Banks, FII flows | Same day (evening IST -> next morning) |
 | **US non-farm payrolls** | Medium — affects Fed expectations | Next trading day |
 | **China PMI data** | Medium — affects metals, chemicals | 1-2 days |
 | **US-China trade tensions** | Medium — China+1 narrative for India | Multi-week theme |
@@ -154,10 +154,10 @@ Impact
 ```
 
 **Exceptions to decay:**
-- Earnings re-ratings → sustain for quarters
-- Regulatory structural changes → sustain for months
-- Fraud/governance → permanent derating
-- M&A → sustains until deal completion/failure
+- Earnings re-ratings -> sustain for quarters
+- Regulatory structural changes -> sustain for months
+- Fraud/governance -> permanent derating
+- M&A -> sustains until deal completion/failure
 
 ## Contrarian Signals
 

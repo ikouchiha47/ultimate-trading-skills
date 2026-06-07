@@ -10,7 +10,7 @@ description: Evaluates market bubble risk through quantitative data-driven analy
 **Critical Changes from v2.0:**
 1. ✅ **Mandatory Quantitative Data Collection** - Use measured values, not impressions or speculation
 2. ✅ **Clear Threshold Settings** - Specific numerical criteria for each indicator
-3. ✅ **Two-Phase Evaluation Process** - Quantitative evaluation → Qualitative adjustment (strict order)
+3. ✅ **Two-Phase Evaluation Process** - Quantitative evaluation -> Qualitative adjustment (strict order)
 4. ✅ **Stricter Qualitative Criteria** - Max +3 points (reduced from +5), requires measurable evidence
 5. ✅ **Confirmation Bias Prevention** - Explicit checklist to avoid over-scoring
 6. ✅ **Granular Risk Phases** - Added "Elevated Risk" phase (8-9 points) for nuanced risk management
@@ -289,8 +289,8 @@ Verify the following when using:
 ### 1. Data > Impressions
 Ignore "many news reports" or "experts are cautious" without quantitative data.
 
-### 2. Strict Order: Quantitative → Qualitative
-Always evaluate in this order: Phase 1 (Data Collection) → Phase 2 (Quantitative) → Phase 3 (Qualitative Adjustment).
+### 2. Strict Order: Quantitative -> Qualitative
+Always evaluate in this order: Phase 1 (Data Collection) -> Phase 2 (Quantitative) -> Phase 3 (Qualitative Adjustment).
 
 ### 3. Upper Limit on Subjective Indicators
 Qualitative adjustment has a total limit of +5 points. It cannot override quantitative evaluation.
@@ -303,19 +303,19 @@ Do not readily acknowledge mass penetration without direct recommendations from 
 ## Common Failures and Solutions (Revised)
 
 ### Failure 1: Evaluating Based on News Articles
-❌ "Many reports on Takaichi Trade" → Media saturation 2 points
-✅ Verify Google Trends numbers → Evaluate with measured values
+❌ "Many reports on Takaichi Trade" -> Media saturation 2 points
+✅ Verify Google Trends numbers -> Evaluate with measured values
 
 ### Failure 2: Overreaction to Expert Comments
-❌ "Warning of overheating" → Euphoria zone
+❌ "Warning of overheating" -> Euphoria zone
 ✅ Judge with measured values of Put/Call, VIX, margin debt
 
 ### Failure 3: Emotional Reaction to Price Rise
-❌ 4.5% rise in 1 day → Price acceleration 2 points
-✅ Verify position in 10-year distribution → Objective evaluation
+❌ 4.5% rise in 1 day -> Price acceleration 2 points
+✅ Verify position in 10-year distribution -> Objective evaluation
 
 ### Failure 4: Judgment Based on Valuation Alone
-❌ P/E 17 → Valuation disconnect 2 points
+❌ P/E 17 -> Valuation disconnect 2 points
 ✅ P/E + narrative dependence + other quantitative indicators for comprehensive judgment
 
 ---
@@ -509,14 +509,14 @@ Only consider shorts after confirming at least 3 of the following:
 
 **v2.0 Problem (Identified Nov 2025):**
 - Qualitative adjustment too loose (+5 max)
-- "AI narrative elevated" → +1 point (no data)
-- "P/E 30.8" → +1 point (double-counting with quantitative)
+- "AI narrative elevated" -> +1 point (no data)
+- "P/E 30.8" -> +1 point (double-counting with quantitative)
 - **Result: 11/16 points - overly bearish without evidence**
 
 **v2.1 Solution:**
 - Qualitative adjustment stricter (+3 max)
-- "AI narrative elevated" → 0 points (unmeasured)
-- "P/E 30.8 but AI has fundamental backing" → 0 points (fundamentals support)
+- "AI narrative elevated" -> 0 points (unmeasured)
+- "P/E 30.8 but AI has fundamental backing" -> 0 points (fundamentals support)
 - **Result: 9/15 points - balanced, data-driven assessment**
 
 **Key Improvements:**

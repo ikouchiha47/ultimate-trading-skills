@@ -164,10 +164,10 @@ Based on historical analysis, the following strategy has demonstrated strong per
 
 **Confirmation Status Classification**:
 
-- **CONFIRMED (Green Light)**: Steps 1-4 complete, 8MA rising for 2-3+ consecutive periods and CURRENTLY rising → ENTER
-- **DEVELOPING (Yellow Light)**: Steps 1-2 complete, but < 2 consecutive increases → WAIT, MONITOR CLOSELY
-- **FAILED (Red Light)**: Steps 1-2 occurred, but 8MA has rolled over and is declining → DO NOT ENTER, signal invalidated
-- **NO SIGNAL (Red Light)**: No trough formed → WAIT
+- **CONFIRMED (Green Light)**: Steps 1-4 complete, 8MA rising for 2-3+ consecutive periods and CURRENTLY rising -> ENTER
+- **DEVELOPING (Yellow Light)**: Steps 1-2 complete, but < 2 consecutive increases -> WAIT, MONITOR CLOSELY
+- **FAILED (Red Light)**: Steps 1-2 occurred, but 8MA has rolled over and is declining -> DO NOT ENTER, signal invalidated
+- **NO SIGNAL (Red Light)**: No trough formed -> WAIT
 
 **Time-Based Confirmation**:
 - Typical confirmation period: 2-4 weeks after trough
@@ -245,9 +245,9 @@ The most recent 3-5 data points on the chart (rightmost edge) represent the CURR
 Scenario: 8MA formed trough at 30% three weeks ago
 
 Week-by-Week Analysis (from trough to present):
-- Week 1 after trough: 30% → 40% (UP 10%)
-- Week 2 after trough: 40% → 52% (UP 12%)
-- Week 3 after trough: 52% → 48% (DOWN 4%)
+- Week 1 after trough: 30% -> 40% (UP 10%)
+- Week 2 after trough: 40% -> 52% (UP 12%)
+- Week 3 after trough: 52% -> 48% (DOWN 4%)
 
 Current Slope: FALLING
 Consecutive Increases: 0 (last period was DOWN)
@@ -260,10 +260,10 @@ Action: DO NOT ENTER. Signal is invalid. Wait for new trough formation.
 Scenario: 8MA formed trough at 25% four weeks ago
 
 Week-by-Week Analysis (from trough to present):
-- Week 1 after trough: 25% → 35% (UP 10%)
-- Week 2 after trough: 35% → 45% (UP 10%)
-- Week 3 after trough: 45% → 55% (UP 10%)
-- Week 4 after trough: 55% → 60% (UP 5%)
+- Week 1 after trough: 25% -> 35% (UP 10%)
+- Week 2 after trough: 35% -> 45% (UP 10%)
+- Week 3 after trough: 45% -> 55% (UP 10%)
+- Week 4 after trough: 55% -> 60% (UP 5%)
 
 Current Slope: RISING
 Consecutive Increases: 4 (all periods UP)

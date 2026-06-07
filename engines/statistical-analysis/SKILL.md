@@ -63,19 +63,19 @@ Use this decision tree to determine your analysis path:
 START
 │
 ├─ Need to SELECT a statistical test?
-│  └─ YES → See "Test Selection Guide"
-│  └─ NO → Continue
+│  └─ YES -> See "Test Selection Guide"
+│  └─ NO -> Continue
 │
 ├─ Ready to check ASSUMPTIONS?
-│  └─ YES → See "Assumption Checking"
-│  └─ NO → Continue
+│  └─ YES -> See "Assumption Checking"
+│  └─ NO -> Continue
 │
 ├─ Ready to run ANALYSIS?
-│  └─ YES → See "Running Statistical Tests"
-│  └─ NO → Continue
+│  └─ YES -> See "Running Statistical Tests"
+│  └─ NO -> Continue
 │
 └─ Need to REPORT results?
-   └─ YES → See "Reporting Results"
+   └─ YES -> See "Reporting Results"
 ```
 
 ---
@@ -87,22 +87,22 @@ START
 Use `references/test_selection_guide.md` for comprehensive guidance. Quick reference:
 
 **Comparing Two Groups:**
-- Independent, continuous, normal → Independent t-test
-- Independent, continuous, non-normal → Mann-Whitney U test
-- Paired, continuous, normal → Paired t-test
-- Paired, continuous, non-normal → Wilcoxon signed-rank test
-- Binary outcome → Chi-square or Fisher's exact test
+- Independent, continuous, normal -> Independent t-test
+- Independent, continuous, non-normal -> Mann-Whitney U test
+- Paired, continuous, normal -> Paired t-test
+- Paired, continuous, non-normal -> Wilcoxon signed-rank test
+- Binary outcome -> Chi-square or Fisher's exact test
 
 **Comparing 3+ Groups:**
-- Independent, continuous, normal → One-way ANOVA
-- Independent, continuous, non-normal → Kruskal-Wallis test
-- Paired, continuous, normal → Repeated measures ANOVA
-- Paired, continuous, non-normal → Friedman test
+- Independent, continuous, normal -> One-way ANOVA
+- Independent, continuous, non-normal -> Kruskal-Wallis test
+- Paired, continuous, normal -> Repeated measures ANOVA
+- Paired, continuous, non-normal -> Friedman test
 
 **Relationships:**
-- Two continuous variables → Pearson (normal) or Spearman correlation (non-normal)
-- Continuous outcome with predictor(s) → Linear regression
-- Binary outcome with predictor(s) → Logistic regression
+- Two continuous variables -> Pearson (normal) or Spearman correlation (non-normal)
+- Continuous outcome with predictor(s) -> Linear regression
+- Binary outcome with predictor(s) -> Logistic regression
 
 **Bayesian Alternatives:**
 All tests have Bayesian versions that provide:
@@ -166,14 +166,14 @@ print(result['recommendation'])
 ### What to Do When Assumptions Are Violated
 
 **Normality violated:**
-- Mild violation + n > 30 per group → Proceed with parametric test (robust)
-- Moderate violation → Use non-parametric alternative
-- Severe violation → Transform data or use non-parametric test
+- Mild violation + n > 30 per group -> Proceed with parametric test (robust)
+- Moderate violation -> Use non-parametric alternative
+- Severe violation -> Transform data or use non-parametric test
 
 **Homogeneity of variance violated:**
-- For t-test → Use Welch's t-test
-- For ANOVA → Use Welch's ANOVA or Brown-Forsythe ANOVA
-- For regression → Use robust standard errors or weighted least squares
+- For t-test -> Use Welch's t-test
+- For ANOVA -> Use Welch's ANOVA or Brown-Forsythe ANOVA
+- For regression -> Use robust standard errors or weighted least squares
 
 **Linearity violated (regression):**
 - Add polynomial terms

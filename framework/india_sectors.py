@@ -4,11 +4,11 @@ ONE place computes per-sector uptrend ratios + momentum from NSE constituents.
 Both skills import this so the data math is not duplicated, yet each skill stays
 its own thin, separately-runnable tool:
 
-    skills/regime/sector-analyst   → rotation read + cycle phase
-    skills/regime/uptrend-analyzer → 5-component breadth health score
+    skills/regime/sector-analyst   -> rotation read + cycle phase
+    skills/regime/uptrend-analyzer -> 5-component breadth health score
 
-Sector→constituent map from the ajeesh sector_mapping.md. IT is DEFENSIVE in India.
-Data via yfinance (.NS) by default; swap to data/sources.py adapters later.
+Sector->constituent SEED map (fallback; live membership loads from nselib). IT is DEFENSIVE
+in India. Data via the seam adapters (data/sources.py).
 """
 
 from __future__ import annotations
@@ -51,11 +51,63 @@ SECTOR_INDEX = {
 # format (a "Symbol" column). See data/constituents/README.md for how to fetch them.
 CONSTITUENTS_DIR = Path(__file__).resolve().parents[1] / "data" / "constituents"
 
-# Cyclical/defensive classification — domain judgment, a legit steering guardrail.
-# Overridable by callers, but stable enough to keep as default.
-CYCLICAL_SECTORS = ["PSU Bank", "Private Bank", "Financial Services", "Auto", "Realty", "Infra"]
+# --- Analysis mode (manuals/12) -------------------------------------------------
+# The dominant driver of a sector dictates the analysis MODE and — load-bearing — the
+# PRIOR on whether a sector-wide move is flow-driven (fadeable, our edge) or
+# information-driven (a trap). SEED from judgment (guardrail); each tag carries a NAMED
+# falsifiable test (seed + empirical-validation discipline — manuals/10). Not yet wired
+# into pipelines; this is the taxonomy the wiring will consume.
+#
+#   mode               : top_down_cyclical | bottom_up_idiosyncratic | thematic_cascade
+#   drivers            : the dominant return drivers to measure beta against
+#   flow_vs_info_prior : "high" => sector-wide move likely indiscriminate flow (fade edge);
+#                        "low"  => likely shared-driver information (trap)
+#   validation         : the falsifiable test that must confirm/refute this tag
+TOP_DOWN, BOTTOM_UP, THEMATIC = "top_down_cyclical", "bottom_up_idiosyncratic", "thematic_cascade"
+
+SECTOR_MODE: dict[str, dict] = {
+    "Metal":     {"mode": TOP_DOWN, "drivers": ["LME", "China demand", "USDINR"],
+                  "flow_vs_info_prior": "low",
+                  "validation": "high beta to LME/China; fade-the-dip expectancy ≈0 or <0"},
+    "Energy":    {"mode": TOP_DOWN, "drivers": ["crude", "rates", "USDINR"],
+                  "flow_vs_info_prior": "low",
+                  "validation": "high beta to crude; fade expectancy not positive"},
+    "Auto":      {"mode": TOP_DOWN, "drivers": ["rates", "fuel", "consumer cycle"],
+                  "flow_vs_info_prior": "low",
+                  "validation": "beta to rates/consumption confirms cyclical"},
+    "Pharma":    {"mode": BOTTOM_UP, "drivers": ["USFDA approvals", "US generic pricing", "USDINR"],
+                  "flow_vs_info_prior": "high",
+                  "validation": "high within-sector dispersion; fade expectancy >0"},
+    "IT":        {"mode": BOTTOM_UP, "drivers": ["US client tech-spend", "USDINR"],
+                  "flow_vs_info_prior": "high",
+                  "validation": "tier-1 vs midcap dispersion; USDINR beta; fade expectancy >0"},
+    "FMCG":      {"mode": BOTTOM_UP, "drivers": ["rural demand", "input costs", "pricing power"],
+                  "flow_vs_info_prior": "high",
+                  "validation": "low macro beta; idiosyncratic dispersion"},
+    "PSU Bank":  {"mode": TOP_DOWN, "drivers": ["rates", "credit cycle", "govt policy"],
+                  "flow_vs_info_prior": "low",
+                  "validation": "credit-growth/rate beta; but check asset-quality dispersion"},
+    "Private Bank": {"mode": TOP_DOWN, "drivers": ["rates", "credit cycle", "capex cycle"],
+                  "flow_vs_info_prior": "low",
+                  "validation": "rate/credit beta; high name-level dispersion ⇒ partial bottom-up"},
+    "Financial Services": {"mode": TOP_DOWN, "drivers": ["rates", "credit cycle"],
+                  "flow_vs_info_prior": "low", "validation": "rate beta confirms cyclical"},
+    "Realty":    {"mode": TOP_DOWN, "drivers": ["rates", "capex cycle"],
+                  "flow_vs_info_prior": "low", "validation": "rate-sensitivity beta"},
+    "Infra":     {"mode": THEMATIC, "drivers": ["govt capex", "order book", "rates"],
+                  "flow_vs_info_prior": "low",
+                  "validation": "lead-lag vs capex/order announcements; cascade reach"},
+}
+
+# Cyclical/defensive classification — DERIVED from SECTOR_MODE (back-compat steering guardrail).
+CYCLICAL_SECTORS = [s for s, m in SECTOR_MODE.items() if m["mode"] == TOP_DOWN]
 DEFENSIVE_SECTORS = ["IT", "Pharma", "FMCG"]   # IT defensive in India (USD export / INR hedge)
 COMMODITY_SECTORS = ["Metal", "Energy"]
+
+
+def sector_mode(sector: str) -> dict | None:
+    """Return the analysis-mode tag for a sector (manuals/12), or None if unclassified."""
+    return SECTOR_MODE.get(sector)
 
 
 def _read_nse_csv_symbols(path: Path) -> list[str]:
@@ -73,7 +125,7 @@ def _read_nse_csv_symbols(path: Path) -> list[str]:
 
 
 def load_sector_constituents(source: str = "seed", csv_path: str | None = None) -> dict[str, list[str]]:
-    """Return the sector→constituents map. THIS is the real input.
+    """Return the sector->constituents map. THIS is the real input.
 
     source:
       "seed"      — hardcoded fallback (offline / guardrail).
@@ -88,6 +140,24 @@ def load_sector_constituents(source: str = "seed", csv_path: str | None = None) 
     """
     if source == "seed":
         return dict(SEED_SECTORS)
+
+    if source == "nselib":
+        # PRIMARY: live via nselib (Akamai-free). Layer: seed -> cached CSV -> live nselib,
+        # so each sector ends up with the best available (live > cached > seed).
+        out = dict(SEED_SECTORS)
+        if CONSTITUENTS_DIR.is_dir():
+            for sector in SEED_SECTORS:
+                f = CONSTITUENTS_DIR / f"{sector}.csv"
+                if f.exists():
+                    syms = _read_nse_csv_symbols(f)
+                    if syms:
+                        out[sector] = syms
+        try:
+            from data.nse_constituents import fetch_sector_constituents_nselib
+            out.update(fetch_sector_constituents_nselib())  # only successful sectors override
+        except Exception:  # noqa: BLE001
+            pass
+        return out
 
     if source == "nse_fetch":
         out = dict(SEED_SECTORS)
@@ -117,7 +187,7 @@ def load_sector_constituents(source: str = "seed", csv_path: str | None = None) 
                         out[sector] = syms
         return out
 
-    # unknown source → safest default
+    # unknown source -> safest default
     return dict(SEED_SECTORS)
 
 
@@ -176,10 +246,39 @@ def _metrics_from_ohlcv(df) -> dict | None:
     max_dd = float((close / close.cummax() - 1).min())
     avg_delivery = (float(df["delivery_pct"].astype(float).mean())
                     if "delivery_pct" in df.columns else np.nan)
+    # 25-DMA deviation — the BNF / Kotegawa snap-back marker (manuals/03). dist_25dma is the
+    # current % deviation from the 25-DMA; dist_25dma_z z-scores it over the window so a large
+    # negative z = unusually stretched BELOW its mean — the fade candidate.
+    ma25_series = close.rolling(25).mean()
+    dev = ((close - ma25_series) / ma25_series).dropna()
+    dist_25dma = float(dev.iloc[-1]) if len(dev) else np.nan
+    dist_25dma_z = (float((dev.iloc[-1] - dev.mean()) / dev.std())
+                    if len(dev) > 1 and dev.std() > 0 else np.nan)
+    # VOLUME ACTION — first-class, not just price (manuals/02). A deep dist_25dma_z is only
+    # fadeable if a buyer is ABSORBING the selling; on price alone it is a trap-finder. These
+    # tell fade (flow-driven) from knife (information-driven):
+    #   vol_ratio       — latest volume vs its 20d median (a spike = real participation)
+    #   delivery_recent — latest delivery% (real ownership transfer, not intraday churn)
+    #   absorption      — flow_classifier score 0..1 on the latest bar (vol+delivery+close-in-range)
+    vol_ratio = np.nan
+    if "volume" in df.columns:
+        vol = df["volume"].astype(float)
+        vmed = vol.iloc[-20:].median() if len(vol) >= 20 else np.nan
+        vol_ratio = float(vol.iloc[-1] / vmed) if vmed and np.isfinite(vmed) and vmed > 0 else np.nan
+    delivery_recent = np.nan
+    if "delivery_pct" in df.columns:
+        _dv = df["delivery_pct"].astype(float).dropna()   # latest bar lags ~1d; use last settled
+        if len(_dv):
+            delivery_recent = float(_dv.iloc[-1])
+    from .flow_classifier import absorption_score
+    absorption = absorption_score(df, window=20)
     return {
         "n_bars": n, "last": float(last), "ma50": float(ma50), "ma200": float(ma200),
         "uptrend": uptrend, "ret_20d": ret_20d, "ret_window": ret_window,
         "cagr": cagr, "max_drawdown": max_dd, "avg_delivery_pct": avg_delivery,
+        "dist_25dma": dist_25dma, "dist_25dma_z": dist_25dma_z,
+        "vol_ratio": vol_ratio, "delivery_recent": delivery_recent,
+        "absorption": float(absorption) if absorption is not None else np.nan,
     }
 
 
@@ -215,7 +314,7 @@ def compute_sector_data(
 ) -> list[SectorData]:
     """Aggregate SectorData for every Indian sector from the per-stock table.
 
-    sectors    : explicit sector→constituents map (highest precedence).
+    sectors    : explicit sector->constituents map (highest precedence).
     source     : if sectors is None, load via load_sector_constituents(source)
                  ("seed" offline default, "nse_csv" for the live map).
     history_fn : optional injected fetcher (e.g. JugaadData().history); default yfinance.

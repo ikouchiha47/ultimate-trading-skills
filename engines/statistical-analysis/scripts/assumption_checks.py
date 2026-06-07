@@ -464,7 +464,7 @@ def comprehensive_assumption_check(
         all_normal = normality_results['Normal'].eq('Yes').all()
         print(f"\n   All groups normal: {'Yes' if all_normal else 'No'}")
         if not all_normal:
-            print("   → Consider non-parametric alternative (Mann-Whitney, Kruskal-Wallis)")
+            print("   -> Consider non-parametric alternative (Mann-Whitney, Kruskal-Wallis)")
 
         # Homogeneity of variance
         print(f"\n3. HOMOGENEITY OF VARIANCE")

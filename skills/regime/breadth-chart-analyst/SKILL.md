@@ -195,9 +195,9 @@ python3 skills/breadth-chart-analyst/scripts/extract_chart_right_edge.py <image_
 
 #### Analysis Protocol
 
-1. **Read full chart** → Document historical context
-2. **Run extraction script** → Generate right edge image
-3. **Read right edge image** → Document current values with HIGH CONFIDENCE
+1. **Read full chart** -> Document historical context
+2. **Run extraction script** -> Generate right edge image
+3. **Read right edge image** -> Document current values with HIGH CONFIDENCE
 4. **Cross-check**: If Stage 1 and Stage 2 values differ significantly, **Stage 2 (right edge) takes precedence**
 5. **Report both**: Include Stage 1 context AND Stage 2 current values in analysis
 
@@ -317,13 +317,13 @@ After determining the trend, ask yourself:
 - [ ] "If I claimed 8MA is RISING, but it's actually been FALLING for weeks, what would that look like?"
   - Answer: The rightmost data points would be LOWER than previous points (confirming FALLING)
 - [ ] "Does my analysis match the visual slope of the orange line at the rightmost edge?"
-  - If orange line visually slopes DOWN at the right edge → It's FALLING
-  - If orange line visually slopes UP at the right edge → It's RISING
+  - If orange line visually slopes DOWN at the right edge -> It's FALLING
+  - If orange line visually slopes UP at the right edge -> It's RISING
 - [ ] "Is there any pink background shading (downtrend) near the rightmost edge?"
-  - If YES → This confirms downtrend conditions, 8MA is likely FALLING
+  - If YES -> This confirms downtrend conditions, 8MA is likely FALLING
 - [ ] "Are the 8MA and 200MA converging (getting closer) or diverging?"
-  - Converging from below → Potential death cross forming → BEARISH
-  - Converging from above → Potential golden cross forming → BULLISH
+  - Converging from below -> Potential death cross forming -> BEARISH
+  - Converging from above -> Potential golden cross forming -> BULLISH
 
 #### 4.2 Identify Signal Markers
 
@@ -359,10 +359,10 @@ Apply the backtested strategy rules with STRICT confirmation requirements:
 6. ⭐ **Optional but Strong**: Is 8MA below or near 23% (extreme oversold) at trough?
 
 **BUY Signal Status**:
-- **CONFIRMED**: All 5 required criteria met → ENTER LONG
-- **DEVELOPING**: Trough formed, but < 2-3 consecutive increases → WAIT, MONITOR
-- **FAILED**: Trough formed, but 8MA has rolled over and is declining → DO NOT ENTER, WAIT FOR NEXT TROUGH
-- **NO SIGNAL**: No trough formed → WAIT
+- **CONFIRMED**: All 5 required criteria met -> ENTER LONG
+- **DEVELOPING**: Trough formed, but < 2-3 consecutive increases -> WAIT, MONITOR
+- **FAILED**: Trough formed, but 8MA has rolled over and is declining -> DO NOT ENTER, WAIT FOR NEXT TROUGH
+- **NO SIGNAL**: No trough formed -> WAIT
 
 **Check for SELL signal**:
 - Has 200MA formed a peak (red ▲)?
@@ -610,8 +610,8 @@ Before finalizing the report, verify:
 
 **Prevention**:
 - ALWAYS check: "Are 8MA and 200MA getting closer (converging) or further apart (diverging)?"
-- If converging with 8MA above 200MA → Potential death cross → BEARISH
-- If converging with 8MA below 200MA → Potential golden cross → BULLISH
+- If converging with 8MA above 200MA -> Potential death cross -> BEARISH
+- If converging with 8MA below 200MA -> Potential golden cross -> BULLISH
 - Explicitly state: "8MA is currently [above/below] 200MA, and they are [converging/diverging]"
 
 ### Error 4: Ignoring Pink Background Shading
@@ -663,7 +663,7 @@ Breadth Analyst (thinking in English):
 1. Executes CSV fetch for authoritative numerical values
 2. Confirms receipt of Chart 1 (200MA-based breadth index)
 3. Reads breadth_chart_methodology.md for Chart 1 guidance
-4. Two-stage analysis: full chart → right edge extraction
+4. Two-stage analysis: full chart -> right edge extraction
 5. Cross-checks CSV values with chart readings
 6. Generates comprehensive report in English
 ```

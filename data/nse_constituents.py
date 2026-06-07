@@ -14,9 +14,84 @@ in NSE's native format, so a successful fetch also doubles as the manual-downloa
 from __future__ import annotations
 
 import time
+import tomllib
+from functools import lru_cache
 from pathlib import Path
 
 CONSTITUENTS_DIR = Path(__file__).resolve().parent / "constituents"
+INDEX_TARGETS_PATH = Path(__file__).resolve().parent / "index_targets.toml"
+
+
+# ---------------------------------------------------------------------------
+# PRIMARY source: nselib (NSE archive — Akamai-free, unlike niftyindices scraping).
+# Resolves any index's members by auto-discovering its category. Targets default from
+# data/index_targets.toml (editable), overridable via a `targets` argument.
+# ---------------------------------------------------------------------------
+
+_NSELIB_CATEGORIES = (
+    "BroadMarketIndices", "SectoralIndices", "ThematicIndices", "StrategyIndices",
+)
+
+
+def load_index_targets(path: Path | None = None) -> dict:
+    """Read the declarative default index targets (sectors + broad). EDIT the .toml, not code."""
+    with (path or INDEX_TARGETS_PATH).open("rb") as fh:
+        return tomllib.load(fh)
+
+
+@lru_cache(maxsize=1)
+def _nselib_catalog() -> dict[str, tuple[str, str]]:
+    """{lowercased index name: (category, exact name)} across all nselib categories."""
+    from nselib import indices
+    catalog: dict[str, tuple[str, str]] = {}
+    for cat in _NSELIB_CATEGORIES:
+        try:
+            for name in indices.index_list(cat):
+                catalog[name.strip().lower()] = (cat, name)
+        except Exception:  # noqa: BLE001
+            continue
+    return catalog
+
+
+def fetch_index_members(index_name: str) -> list[str]:
+    """Symbols of any NSE index via nselib (e.g. 'Nifty 500', 'Nifty PSU Bank'). Raises if unknown."""
+    from nselib import indices
+    cat_exact = _nselib_catalog().get(index_name.strip().lower())
+    if cat_exact is None:
+        raise KeyError(f"index {index_name!r} not in nselib catalog ({len(_nselib_catalog())} known)")
+    category, exact = cat_exact
+    df = indices.constituent_stock_list(category, exact)
+    return [str(s).strip() for s in df["Symbol"] if str(s).strip()]
+
+
+def fetch_sector_constituents_nselib(
+    targets: dict[str, str] | None = None,
+    *,
+    cache_dir: Path = CONSTITUENTS_DIR,
+    write_cache: bool = True,
+) -> dict[str, list[str]]:
+    """Live sector constituents via nselib (PRIMARY). {sector_key: [symbols]}.
+
+    `targets` maps our sector key -> nselib index name; defaults to [sectors] in
+    index_targets.toml. Sectors that fail are simply absent (caller layers fallbacks).
+    Successful fetches are cached to cache_dir/<Sector>.csv (Symbol column) for offline reuse.
+    """
+    if targets is None:
+        targets = load_index_targets().get("sectors", {})
+    out: dict[str, list[str]] = {}
+    if write_cache:
+        cache_dir.mkdir(parents=True, exist_ok=True)
+    for sector_key, index_name in targets.items():
+        try:
+            syms = fetch_index_members(index_name)
+        except Exception:  # noqa: BLE001
+            continue
+        if syms:
+            out[sector_key] = syms
+            if write_cache:
+                (cache_dir / f"{sector_key}.csv").write_text(
+                    "Symbol\n" + "\n".join(syms) + "\n")
+    return out
 
 # sector key -> niftyindices CSV slug (resolved & verified against live endpoints).
 NIFTY_CSV_SLUG: dict[str, str] = {

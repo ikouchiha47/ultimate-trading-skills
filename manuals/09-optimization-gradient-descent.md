@@ -7,7 +7,7 @@
 - **Gradient descent** — iteratively step parameters downhill along the loss gradient:
   `θ ← θ − η ∇L(θ)`. Variants: SGD, momentum, Adam.
 - **Convex vs non-convex** — convex losses have one global minimum (clean); non-convex (LPPL fits,
-  neural nets) have many local minima → results depend on initialization, need multistart /
+  neural nets) have many local minima -> results depend on initialization, need multistart /
   care. This is exactly why LPPL `t_c` estimates are unstable (07).
 - **EM (Expectation–Maximization)** — the optimizer for latent-variable models like HMM
   (Baum–Welch is EM); alternates inferring hidden states and maximizing params.

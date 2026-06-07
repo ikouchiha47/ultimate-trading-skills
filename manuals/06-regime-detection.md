@@ -15,7 +15,7 @@ state and condition the strategy on it.
   matrix (next state depends only on current).
 - **Three classic problems (Rabiner):**
   1. *Evaluation* — likelihood of an observation sequence (forward algorithm).
-  2. *Decoding* — most likely hidden-state path (**Viterbi**) → "we are in the high-vol regime."
+  2. *Decoding* — most likely hidden-state path (**Viterbi**) -> "we are in the high-vol regime."
   3. *Learning* — fit transition + emission params (**Baum–Welch**, an EM algorithm).
 - **Why it fits us:** a 2–3 state Gaussian HMM on index returns/volatility cleanly separates
   "calm risk-on" from "stress/risk-off." We only take mean-reversion longs when the regime says

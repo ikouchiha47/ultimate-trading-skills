@@ -198,7 +198,7 @@ async def run(args):
 
             print(f"\nFound {len(results)} result(s):")
             for i, r in enumerate(results):
-                print(f"  [{i}] {r['name']}  →  {r['url']}")
+                print(f"  [{i}] {r['name']}  ->  {r['url']}")
 
             if args.pick is not None:
                 chosen = results[args.pick]
@@ -243,6 +243,288 @@ async def run(args):
 
         await browser.close()
         return result
+
+
+SESSION_FILE = SESSION_FILE if "SESSION_FILE" in globals() else Path.home() / ".screener_session.json"
+
+# Screener top-ratios label -> snake_case key for the quality ("shouldn't have fallen") test.
+_RATIO_KEYS = {
+    "Market Cap": "market_cap_cr", "Current Price": "price", "Stock P/E": "pe",
+    "Book Value": "book_value", "Dividend Yield": "dividend_yield_pct",
+    "ROCE": "roce_pct", "ROE": "roe_pct", "Face Value": "face_value",
+    "Debt to equity": "debt_to_equity", "Debt": "debt_cr",
+}
+
+
+def _num(raw: str) -> float | None:
+    """Parse a screener value cell ('₹ 9,02,155 Cr.', '6.13 %', '10.8') to a float."""
+    import re
+    if raw is None:
+        return None
+    m = re.search(r"-?\d[\d,]*\.?\d*", raw.replace(",", ""))
+    return float(m.group()) if m else None
+
+
+def fetch_company_ratios(symbol: str, headless: bool = True) -> dict:
+    """Sync scrape of screener.in top-ratios for SYMBOL (the quality metrics).
+
+    Uses the saved session if present (public ratios don't require login). Returns
+    {symbol, url, ratios{label:raw}, numeric{key:float}}. Raises if Playwright/chromium
+    is unavailable (caller surfaces as MISSING + install hint).
+    """
+    from playwright.sync_api import sync_playwright
+
+    url = f"{BASE_URL}/company/{symbol}/consolidated/"
+    ratios: dict[str, str] = {}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        ctx_kwargs = dict(user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"))
+        if SESSION_FILE.exists():
+            ctx_kwargs["storage_state"] = str(SESSION_FILE)
+        context = browser.new_context(**ctx_kwargs)
+        page = context.new_page()
+        page.goto(url, wait_until="domcontentloaded", timeout=30000)
+        page.wait_for_timeout(1500)
+        for li in page.locator("ul#top-ratios li").all():
+            try:
+                name = li.locator("span.name").inner_text().strip()
+                val = li.locator("span.value").inner_text().strip().replace("\n", " ")
+            except Exception:  # noqa: BLE001
+                continue
+            if name:
+                ratios[name] = val
+        browser.close()
+    numeric = {key: _num(ratios[label]) for label, key in _RATIO_KEYS.items() if label in ratios}
+    return {"symbol": symbol, "url": url, "ratios": ratios, "numeric": numeric}
+
+
+def fetch_company_about(symbol: str, headless: bool = True) -> dict:
+    """Screener ABOUT + KEY POINTS panel — the business narrative (sourced, not computed).
+
+    Returns {symbol, url, website, bse, nse, about, key_points{section:text}, links[]}. The
+    'about' is the company description; 'key_points' is the analyst-maintained warehouse (for a
+    bank: NIM/GNPA/NNPA/CASA/PCR, market share, branch network, loan-book split) WITH its
+    citation links preserved in 'links'. This is narrative+SOURCED — keep the citations; do not
+    treat the figures as our computed numbers. Raises if Playwright/chromium unavailable.
+    """
+    from playwright.sync_api import sync_playwright
+
+    url = f"{BASE_URL}/company/{symbol}/consolidated/"
+    out: dict = {"symbol": symbol, "url": url, "about": None,
+                 "key_points": {}, "links": [], "website": None, "bse": None, "nse": None}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        ctx_kwargs = dict(user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"))
+        if SESSION_FILE.exists():
+            ctx_kwargs["storage_state"] = str(SESSION_FILE)
+        page = browser.new_context(**ctx_kwargs).new_page()
+        page.goto(url, wait_until="domcontentloaded", timeout=30000)
+        page.wait_for_timeout(1500)
+        prof = page.locator("div.company-profile").first
+        if prof.count():
+            about = prof.locator("div.about p").first
+            if about.count():
+                out["about"] = about.inner_text().strip()
+            kp = prof.locator("div.commentary").first   # the KEY POINTS block
+            if kp.count():
+                # split by bold sub-headings (Market Share / Branch Network / Loan Book ...)
+                text = kp.inner_text().strip()
+                out["key_points"]["raw"] = text
+                for strong in kp.locator("strong").all():
+                    h = strong.inner_text().strip().rstrip(":")
+                    if h:
+                        out["key_points"].setdefault("sections", []).append(h)
+                out["links"] = [a.get_attribute("href") for a in kp.locator("a").all()
+                                if a.get_attribute("href")]
+        for sel, key in (("a:has-text('Website')", "website"),
+                         ("a:has-text('BSE')", "bse"), ("a:has-text('NSE')", "nse")):
+            lk = page.locator(sel).first
+            if lk.count():
+                out[key] = lk.get_attribute("href")
+        browser.close()
+    return out
+
+
+def _parse_ranges_table(t) -> dict:
+    """One 'ranges-table' (e.g. Compounded Sales Growth) -> {'10y':15.0,'5y':18.0,...}."""
+    period_key = {"10 years": "10y", "5 years": "5y", "3 years": "3y",
+                  "ttm": "ttm", "1 year": "1y", "last year": "last_yr"}
+    out: dict = {}
+    for r in t.locator("tr").all()[1:]:
+        txt = r.inner_text().strip()
+        if ":" not in txt:
+            continue
+        label, _, val = txt.partition(":")
+        key = period_key.get(label.strip().lower(), label.strip().lower())
+        out[key] = _num(val)
+    return out
+
+
+def _parse_data_table(page, section_id: str) -> dict:
+    """A financial section table -> {'periods':[...], 'rows':{label:[floats]}}.
+
+    Covers profit-loss / balance-sheet / cash-flow (the trajectory the quality test needs:
+    OPM%, Net Profit, Borrowings/debt, Cash from Operating)."""
+    tbl = page.locator(f"section#{section_id} table.data-table").first
+    if not tbl.count():
+        return {"periods": [], "rows": {}}
+    periods = [th.inner_text().strip() for th in tbl.locator("thead th").all()][1:]
+    rows: dict[str, list] = {}
+    for tr in tbl.locator("tbody tr").all():
+        cells = tr.locator("td").all()
+        if not cells:
+            continue
+        label = cells[0].inner_text().strip().splitlines()[0].strip().rstrip("+").strip()
+        if label:
+            rows[label] = [_num(c.inner_text()) for c in cells[1:]]
+    return {"periods": periods, "rows": rows}
+
+
+def fetch_company_fundamentals(symbol: str, headless: bool = True) -> dict:
+    """Full quality picture in ONE page load: header ratios + growth trajectory + financial
+    tables + document pointers (concall/DRHP/AR URLs for the skill to read — NOT read here).
+
+    Returns {symbol, url, numeric, ratios, growth, tables, documents}.
+    """
+    from playwright.sync_api import sync_playwright
+
+    url = f"{BASE_URL}/company/{symbol}/consolidated/"
+    ratios: dict[str, str] = {}
+    growth: dict[str, dict] = {}
+    tables: dict[str, dict] = {}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        ctx_kwargs = dict(user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"))
+        if SESSION_FILE.exists():
+            ctx_kwargs["storage_state"] = str(SESSION_FILE)
+        page = browser.new_context(**ctx_kwargs).new_page()
+        page.goto(url, wait_until="domcontentloaded", timeout=30000)
+        page.wait_for_timeout(1500)
+
+        for li in page.locator("ul#top-ratios li").all():
+            try:
+                ratios[li.locator("span.name").inner_text().strip()] = \
+                    li.locator("span.value").inner_text().strip().replace("\n", " ")
+            except Exception:  # noqa: BLE001
+                continue
+
+        _growth_title = {"compounded sales growth": "sales_growth",
+                         "compounded profit growth": "profit_growth",
+                         "stock price cagr": "stock_cagr", "return on equity": "roe_trend"}
+        for t in page.locator("table.ranges-table").all():
+            title = t.locator("th").first.inner_text().strip().lower()
+            key = _growth_title.get(title)
+            if key:
+                growth[key] = _parse_ranges_table(t)
+
+        # shareholding = India-critical (promoter %, FII/DII trend). Pledge lives in the
+        # promoter expand sub-row and is NOT captured here (skill reads it on demand).
+        for sec in ("quarters", "profit-loss", "balance-sheet", "cash-flow", "shareholding"):
+            tables[sec.replace("-", "_")] = _parse_data_table(page, sec)
+
+        browser.close()
+
+    numeric = {key: _num(ratios[label]) for label, key in _RATIO_KEYS.items() if label in ratios}
+    return {"symbol": symbol, "url": url, "numeric": numeric, "ratios": ratios,
+            "growth": growth, "tables": tables,
+            # Concall / DRHP / annual-report READING is the equity-research skill's agentic
+            # job (PDF->text->LLM), not the data seam. The skill calls get_documents()/
+            # concall_reader/drhp_reader on demand against this same `url`.
+            "documents_note": "use equity-research skill (get_documents + concall/drhp readers)"}
+
+
+def fetch_company_signals(symbol: str, headless: bool = True) -> dict:
+    """Capture the SOURCED narrative signals screener carries beyond the financial tables:
+    announcements (RBI penalties, board outcomes), credit ratings, annual-report / concall
+    document links, and the Corporate Actions modal (authoritative split/dividend history —
+    the same source our price adjuster relies on).
+
+    Returns {symbol, url, announcements:[{text,url}], credit_ratings:[{text,url}],
+             annual_reports:[{label,url}], concalls:[{date,links}], corporate_actions_text}.
+    All entries are SOURCED disclosures (keep the links) — never computed numbers.
+    """
+    from playwright.sync_api import sync_playwright
+
+    url = f"{BASE_URL}/company/{symbol}/consolidated/"
+    out: dict = {"symbol": symbol, "url": url, "announcements": [], "credit_ratings": [],
+                 "annual_reports": [], "concalls": [], "corporate_actions_text": None}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        ctx_kwargs = dict(user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"))
+        if SESSION_FILE.exists():
+            ctx_kwargs["storage_state"] = str(SESSION_FILE)
+        page = browser.new_context(**ctx_kwargs).new_page()
+        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(2500)
+
+        # Document cards: classify by heading text, keep label + href for each link.
+        for card in page.locator("div.documents").all():
+            try:
+                head = card.locator("h2, h3").first
+                title = (head.inner_text().strip().lower() if head.count() else "")
+                bucket = ("announcements" if "announce" in title else
+                          "credit_ratings" if "credit" in title else
+                          "annual_reports" if "annual" in title else
+                          "concalls" if "concall" in title else None)
+                if not bucket:
+                    continue
+                for a in card.locator("a[href]").all():
+                    label = " ".join(a.inner_text().split()).strip()
+                    href = a.get_attribute("href")
+                    if href and label and label.lower() not in {"all", "add missing"}:
+                        out[bucket].append({"text": label, "url": href})
+            except Exception:  # noqa: BLE001
+                continue
+
+        # Corporate Actions modal — authoritative split/dividend history (SOURCED text).
+        try:
+            btn = page.locator('button:has-text("CORPORATE ACTIONS")').first
+            if btn.count():
+                btn.click()
+                page.wait_for_timeout(1500)
+                modal = page.locator("div.modal-content, div[role=dialog], div.modal").first
+                if modal.count():
+                    out["corporate_actions_text"] = modal.inner_text().strip()
+        except Exception:  # noqa: BLE001
+            pass
+
+        browser.close()
+    return out
+
+
+def save_company_page_pdf(symbol: str, out_path: str | Path, headless: bool = True) -> str:
+    """Render the full screener company page to PDF for audit (verify scraped figures vs source).
+
+    Chromium-only (`page.pdf()` needs headless chromium). Expands the financial sections so the
+    snapshot carries P&L/BS/CF/shareholding as displayed. Returns the written path.
+    """
+    from playwright.sync_api import sync_playwright
+
+    out_path = Path(out_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    url = f"{BASE_URL}/company/{symbol}/consolidated/"
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        ctx_kwargs = dict(user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"))
+        if SESSION_FILE.exists():
+            ctx_kwargs["storage_state"] = str(SESSION_FILE)
+        page = browser.new_context(**ctx_kwargs).new_page()
+        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(2500)                  # let the financial tables hydrate
+        page.pdf(path=str(out_path), format="A3", print_background=True,
+                 margin={"top": "10mm", "bottom": "10mm", "left": "8mm", "right": "8mm"})
+        browser.close()
+    return str(out_path)
 
 
 def main():

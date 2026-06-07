@@ -59,8 +59,8 @@ queries_japan = [
 ```
 
 **Important: Collect specific numerical values for each search**
-- ❌ "VIX is at low levels" → Insufficient
-- ✅ "VIX is 15.3" → OK
+- ❌ "VIX is at low levels" -> Insufficient
+- ✅ "VIX is 15.3" -> OK
 
 ### Step 3: Organize and Verify Data
 
@@ -87,22 +87,22 @@ Organize collected data in table format:
 
 ```
 Indicator 1: Put/Call = 0.95
-  → 0.95 > 0.85 → 0 points
+  -> 0.95 > 0.85 -> 0 points
 
 Indicator 2: VIX = 15.3 + near highs
-  → VIX > 15 → 0 points
+  -> VIX > 15 -> 0 points
 
 Indicator 3: Margin YoY = +8%
-  → +8% < +10% → 0 points
+  -> +8% < +10% -> 0 points
 
 Indicator 4: IPO = 45 count (5-year average 35)
-  → 45/35 = 1.29x < 1.5x → 0 points
+  -> 45/35 = 1.29x < 1.5x -> 0 points
 
 Indicator 5: Breadth = 68%
-  → 68% > 60% → 0 points
+  -> 68% > 60% -> 0 points
 
 Indicator 6: Price Acceleration (requires calculation)
-  → Past 3 months +12%, 75th percentile in 10-year distribution → 0 points
+  -> Past 3 months +12%, 75th percentile in 10-year distribution -> 0 points
 
 Phase 2 Total: 0 points
 ```
@@ -260,12 +260,12 @@ Common mistakes to avoid:
 ❌ Bad Evaluation:
 "Many Takaichi Trade reports"
 "Experts warn of overheating"
-→ Media saturation 2 points
+-> Media saturation 2 points
 
 ✅ Good Evaluation:
 [web_search: "Google Trends Japan stocks Takaichi"]
 Result: 1.8x year-over-year
-→ Google Trends adjustment +0 points (below 3x)
+-> Google Trends adjustment +0 points (below 3x)
 ```
 
 ### NG Example 2: Scoring Based on Impressions
@@ -273,12 +273,12 @@ Result: 1.8x year-over-year
 ```
 ❌ Bad Evaluation:
 "VIX seems to be at low levels"
-→ Volatility suppression 2 points
+-> Volatility suppression 2 points
 
 ✅ Good Evaluation:
 [web_search: "VIX current level"]
 Result: VIX 15.8
-→ VIX > 15 = 0 points
+-> VIX > 15 = 0 points
 ```
 
 ### NG Example 3: Emotional Reaction to Price Rise
@@ -286,12 +286,12 @@ Result: VIX 15.8
 ```
 ❌ Bad Evaluation:
 "2,100 yen rise in one day is abnormal"
-→ Price acceleration 2 points
+-> Price acceleration 2 points
 
 ✅ Good Evaluation:
 [Verify daily return distribution over past 10 years]
 4.5% rise = 80th percentile over past 10 years (rare but not extreme)
-→ Price acceleration 0 points
+-> Price acceleration 0 points
 ```
 
 ---
@@ -426,9 +426,9 @@ After completing evaluation, verify the following:
 If any of the following are observed, redo the evaluation:
 
 ```
-🚩 "Many reports" → No numbers
-🚩 "Experts are cautious" → No quantitative data
-🚩 "Obviously too high" → Subjective judgment
+🚩 "Many reports" -> No numbers
+🚩 "Experts are cautious" -> No quantitative data
+🚩 "Obviously too high" -> Subjective judgment
 🚩 Score 10+ points but Put/Call > 1.0
 🚩 Score 10+ points but VIX > 20
 🚩 Score 10+ points but Margin YoY < +15%

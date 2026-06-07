@@ -1,0 +1,38 @@
+site_name: Systematic Trading Research
+site_description: India sector & company research — computed + sourced, audit-first
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle: { icon: material/weather-night, name: Dark }
+    - scheme: slate
+      primary: indigo
+      toggle: { icon: material/weather-sunny, name: Light }
+  features: [navigation.sections, navigation.top, search.suggest, content.code.copy, toc.integrate]
+markdown_extensions:
+  - tables
+  - admonition
+  - pymdownx.superfences
+  - toc: { permalink: true }
+plugins:
+  - search
+nav:
+  - Home: index.md
+  - Psu Bank 2026 06 06:
+      - Overview: research/PSU-Bank_2026-06-06/index.md
+      - 00 comprehensive: research/PSU-Bank_2026-06-06/00_comprehensive.md
+      - 01 observations: research/PSU-Bank_2026-06-06/01_observations.md
+      - 00 industry: research/PSU-Bank_2026-06-06/00_industry.md
+      - BANKBARODA equity research: research/PSU-Bank_2026-06-06/BANKBARODA_equity_research.md
+      - BANKINDIA equity research: research/PSU-Bank_2026-06-06/BANKINDIA_equity_research.md
+      - CANBK equity research: research/PSU-Bank_2026-06-06/CANBK_equity_research.md
+      - INDIANB equity research: research/PSU-Bank_2026-06-06/INDIANB_equity_research.md
+      - IOB equity research: research/PSU-Bank_2026-06-06/IOB_equity_research.md
+      - MAHABANK equity research: research/PSU-Bank_2026-06-06/MAHABANK_equity_research.md
+      - PNB equity research: research/PSU-Bank_2026-06-06/PNB_equity_research.md
+      - RBI sectoral deployment apr2026: research/PSU-Bank_2026-06-06/data/RBI_sectoral_deployment_apr2026.md
+      - SBIN equity research: research/PSU-Bank_2026-06-06/SBIN_equity_research.md
+      - UCOBANK equity research: research/PSU-Bank_2026-06-06/UCOBANK_equity_research.md
+      - UNIONBANK equity research: research/PSU-Bank_2026-06-06/UNIONBANK_equity_research.md
+      - references: research/PSU-Bank_2026-06-06/references.md

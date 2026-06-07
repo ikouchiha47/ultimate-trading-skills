@@ -10,7 +10,7 @@
 - Qualitative Adjustment (v2.0): +2 points
   - Media Narrative: +1 (based on "elevated AI narrative" - NO DATA)
   - Valuation: +1 (P/E 30.8 - DOUBLE COUNTED, ignored fundamental backing)
-- **Result**: 11/16 points → Euphoria phase → 40% risk budget (overly defensive)
+- **Result**: 11/16 points -> Euphoria phase -> 40% risk budget (overly defensive)
 
 **Root Cause:** Confirmation bias - analyst had bearish conclusion first, then adjusted qualitative points to match expectation.
 
@@ -38,7 +38,7 @@
   - P/E >25 (if NOT in Phase 2)
   - Fundamentals explicitly ignored in discourse
   - "This time is different" documented in major media
-- **Self-check**: If companies have real earnings supporting valuations → 0 points
+- **Self-check**: If companies have real earnings supporting valuations -> 0 points
 
 #### 2. Confirmation Bias Prevention
 
@@ -73,7 +73,7 @@ New mandatory checklist before adding ANY qualitative points:
 ### Impact on Nov 3, 2025 Analysis
 
 **Under v2.0:**
-- Score: 11/16 → Euphoria phase
+- Score: 11/16 -> Euphoria phase
 - Risk Budget: 40%
 - Positioning: Extreme defensive
 
@@ -82,7 +82,7 @@ New mandatory checklist before adding ANY qualitative points:
 - Qualitative:
   - Media Narrative: 0 points (no Google Trends data)
   - Valuation: 0 points (AI has fundamental backing, double-counting)
-- **Score: 9/15 → Elevated Risk phase**
+- **Score: 9/15 -> Elevated Risk phase**
 - **Risk Budget: 50-70%**
 - **Positioning: Cautious but not extreme**
 
@@ -108,7 +108,7 @@ New mandatory checklist before adding ANY qualitative points:
 - Introduced mandatory quantitative data collection
 - Eliminated reliance on impressions and speculation
 - Established clear threshold settings for each indicator
-- Two-phase evaluation process: Quantitative → Qualitative
+- Two-phase evaluation process: Quantitative -> Qualitative
 
 ---
 

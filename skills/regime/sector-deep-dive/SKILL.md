@@ -19,11 +19,25 @@ numbers — never freestanding (see `manuals/01`, repo CLAUDE.md).
 | Stage | What | Where |
 |---|---|---|
 | 1 | resolve constituents | `load_sector_constituents` (live `nse_fetch` / cached `nse_csv`) |
-| 2 | per-stock performance | CAGR, max drawdown, **Calmar** (risk-adj), 20d return, avg delivery %, excess-vs-sector |
-| 3 | sector vs market | sector NSE index vs NIFTY 50 relative strength |
-| 5 | charts (`--report`) | matplotlib PNGs → `reports/sector-deep-dive/<sector>_<date>/` |
-| 4 | event overlay | mark RBI/policy dates on the timeline — **TODO** |
-| 6 | narrative | Claude reads stages 2–4 + fundamentals/news skills → "who pivoted, who didn't" |
+| 2 | per-stock performance | CAGR, max drawdown, **Calmar**, 20d return, avg delivery %, excess-vs-sector, **uptrend**, **dist_25dma_z** (the BNF/Kotegawa fade marker, manuals/03) |
+| 3 | sector vs market | sector NSE index vs NIFTY 50 relative strength (via `data_api.index`, nselib) |
+| 5 | charts (`--report`) | matplotlib PNGs -> `reports/sector-deep-dive/<sector>_<date>/`, with stage-4 event overlay |
+| 4 | event overlay | **the AGENT fetches** dated RBI/policy events (WebSearch, `sourced`) -> writes `data/events/policy.csv` (date,label,kind) -> the script overlays them. The script NEVER invents events. |
+| 6 | narrative | the AGENT writes it from the script's `stage6_scaffold` (influence-graph driver verdicts + bellwethers) + the dated events + fundamentals/news — anchored, never freestanding |
+
+## Stage 4 & 6 — how the orchestrator (agent) drives them
+
+Principle: **knowledge lives in reference tables; dated events are fetched live.** The script
+never stores or invents events.
+- **Fetch events (Stage 4):** the script emits a `news_directive` in `stage6_scaffold`; run it as a
+  date-scoped WebSearch, get *dated, sourced* RBI/policy/regulatory events for the window, and write
+  them to `data/events/policy.csv`. Re-run with `--report` to overlay them on the rel-strength chart.
+- **Interpret impact:** reuse the event->sector knowledge table at
+  `skills/screeners/scenario-analyzer/references/sector_sensitivity_matrix.md` (RBI/FII/INR -> sector
+  impact) — do NOT duplicate it.
+- **Write Stage 6:** join measured inflections (stage 2–3 ranking + rel-strength) ↔ validated causes
+  (`stage6_scaffold.drivers`/`bellwethers` from the influence graph) ↔ dated events ↔ fundamentals.
+  Every claim cites a number or a sourced event; never from memory (manuals/01).
 
 ## Run
 

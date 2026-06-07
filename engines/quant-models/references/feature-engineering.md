@@ -186,7 +186,7 @@ feat["is_fiscal_yearend"] = close.index.month.isin([3]).astype(int)
 | Auto | Festive season (Oct-Nov) = peak sales. Jan = budget expectations. |
 | IT | Q4 (Jan-Mar) = US budget flush, deal closures. Q1 = visa season. |
 | Banking | Q4 = NPA provisioning. Rate decision months. |
-| FMCG | Monsoon = rural income (good monsoon → demand). Festive season. |
+| FMCG | Monsoon = rural income (good monsoon -> demand). Festive season. |
 | Real Estate | Post-monsoon (Oct-Dec) = auspicious buying season. Budget month. |
 
 ### 5. Interaction Features
@@ -302,7 +302,7 @@ model = GaussianHMM(n_components=3, covariance_type="full", n_iter=200)
 model.fit(returns)
 regimes = model.predict(returns)
 
-# Sort by mean return → 0=bear, 1=sideways, 2=bull
+# Sort by mean return -> 0=bear, 1=sideways, 2=bull
 means = model.means_.flatten()
 order = np.argsort(means)
 regime_map = {order[0]: 0, order[1]: 1, order[2]: 2}
@@ -429,11 +429,11 @@ Extract sentiment from news, earnings calls, social media. Requires text data + 
 feat["gdelt_tone_7d"]  # Rolling 7-day average tone for company/sector mentions
 
 # Option B: Use an LLM to score news headlines
-# Feed headlines to Claude/GPT → score -1 to +1 → aggregate as feature
+# Feed headlines to Claude/GPT -> score -1 to +1 -> aggregate as feature
 feat["news_sentiment_3d"]  # 3-day rolling average sentiment score
 
 # Option C: Earnings call sentiment (quarterly, forward-filled)
-# Transcript → LLM scores tone → feature
+# Transcript -> LLM scores tone -> feature
 feat["earnings_tone"]  # -1 (bearish) to +1 (bullish), updated quarterly
 
 # Option D: Social media buzz (Reddit, Twitter/X volume)
@@ -452,7 +452,7 @@ feat["satellite_stockpile_change"]  # Week-over-week change in visible ore stock
 
 # Web traffic (SimilarWeb, Google Trends)
 import requests
-# Google Trends for "coal india share price" → proxy for retail interest
+# Google Trends for "coal india share price" -> proxy for retail interest
 feat["google_trends_7d"]  # Rolling search interest
 
 # Shipping / logistics (AIS vessel tracking, port congestion)
@@ -594,7 +594,7 @@ Not a feature category, but critical for feature validity.
 
 ```python
 # Problem: yfinance only returns currently listed stocks
-# Stocks that delisted (went bankrupt, merged) are missing → upward bias
+# Stocks that delisted (went bankrupt, merged) are missing -> upward bias
 
 # Mitigations:
 # 1. Use index constituents as of each historical date (hard to get for free)

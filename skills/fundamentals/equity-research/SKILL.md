@@ -2,7 +2,7 @@
 name: equity-research
 description: >
   Comprehensive equity research pipeline for Indian listed companies (NSE/BSE).
-  Covers the full research lifecycle: Gather → Analyse → Model → Report.
+  Covers the full research lifecycle: Gather -> Analyse -> Model -> Report.
   Scripts produce structured JSON/MD output that the agent interprets and acts on.
   Designed to work as a private tracker, researcher, backtester, and quant engine.
 ---
@@ -25,14 +25,14 @@ is the analyst. Scripts dump structured output; the agent reads, interprets, and
 
 ## Architecture
 
-At the core of the gather phase is a **PDF/PPT → Markdown pipeline**:
+At the core of the gather phase is a **PDF/PPT -> Markdown pipeline**:
 
 ```
 PDF / PPT
-  └── pdf_to_md.py          # base transformer: PDF → clean Markdown (text + tables)
-        └── concall_reader.py     # concall-specific: transcript → structured MD
-        └── drhp_reader.py        # DRHP-specific: full doc → structured MD
-        └── annual_report_reader.py  # AR-specific: financials + MD&A → structured MD
+  └── pdf_to_md.py          # base transformer: PDF -> clean Markdown (text + tables)
+        └── concall_reader.py     # concall-specific: transcript -> structured MD
+        └── drhp_reader.py        # DRHP-specific: full doc -> structured MD
+        └── annual_report_reader.py  # AR-specific: financials + MD&A -> structured MD
 ```
 
 Every reader:
@@ -89,7 +89,7 @@ Output `screener.json` — commentary text + full documents index (annual report
 ---
 
 ### Step 2: Concall transcripts
-Priority: Transcript PDF → AI Summary modal → PPT
+Priority: Transcript PDF -> AI Summary modal -> PPT
 
 **Always fetch the last 3 available concalls.** Check `screener.json` documents for available dates, pick the 3 most recent that have a transcript or AI summary.
 
@@ -100,7 +100,7 @@ import json
 d = json.load(open('output/JUBLFOOD/screener.json'))
 for c in d['documents']['concalls'][:6]:
     has = [k for k in ['transcript','ai_summary','ppt'] if c.get(k)]
-    print(c['date'], '→', has)
+    print(c['date'], '->', has)
 "
 
 # Then fetch last 3 (example for JUBLFOOD as of May 2026)
@@ -149,7 +149,7 @@ python -c "
 import json
 d = json.load(open('output/JUBLFOOD/screener.json'))
 for r in d['documents']['annual_reports']:
-    print(r['label'], '→', r['url'])
+    print(r['label'], '->', r['url'])
 "
 
 # Fetch last 3 (example for JUBLFOOD)

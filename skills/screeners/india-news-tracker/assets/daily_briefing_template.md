@@ -92,7 +92,7 @@ This template defines the output format for daily market briefings. Fill in data
 |---------|--------|---------|---------|-------------|
 | [Company] | Dividend | Rs.[amount] per share | [Date] | [Date] |
 | [Company] | Bonus | [ratio] | [Date] | [Date] |
-| [Company] | Split | FV Rs.[from] → Rs.[to] | [Date] | [Date] |
+| [Company] | Split | FV Rs.[from] -> Rs.[to] | [Date] | [Date] |
 
 ---
 

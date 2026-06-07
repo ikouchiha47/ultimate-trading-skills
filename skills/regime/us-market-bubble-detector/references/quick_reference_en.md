@@ -27,18 +27,18 @@
 When uncertain about an investment decision, answer these 3 questions:
 
 ### Q1: "Are non-investors recommending it?"
-- YES → Mass penetration complete, likely late stage
-- NO → Still early to mid stage
+- YES -> Mass penetration complete, likely late stage
+- NO -> Still early to mid stage
 
 ### Q2: "Has the narrative become 'common sense'?"
-- YES → Euphoria stage, contrarian views socially unacceptable
-- NO → Healthy skepticism still functions
+- YES -> Euphoria stage, contrarian views socially unacceptable
+- NO -> Healthy skepticism still functions
 
 ### Q3: "Is 'this time is different' the catchphrase?"
-- YES → Classic historical bubble signal
-- NO → Healthy caution still present
+- YES -> Classic historical bubble signal
+- NO -> Healthy caution still present
 
-**All 3 YES → Critical zone, prioritize profit-taking/exit**
+**All 3 YES -> Critical zone, prioritize profit-taking/exit**
 
 ---
 
@@ -121,10 +121,10 @@ When uncertain about an investment decision, answer these 3 questions:
 Position: $10,000 initial investment
 Targets: +20%, +40%, +60%, +80%
 
-+20% ($12,000) → Sell 25% = $3,000 secured
-+40% ($14,000) → Sell 25% = $3,500 secured
-+60% ($16,000) → Sell 25% = $4,000 secured
-+80% ($18,000) → Sell 25% = $4,500 secured
++20% ($12,000) -> Sell 25% = $3,000 secured
++40% ($14,000) -> Sell 25% = $3,500 secured
++60% ($16,000) -> Sell 25% = $4,000 secured
++80% ($18,000) -> Sell 25% = $4,500 secured
 
 Total profit secured: $15,000 (+50% equivalent)
 ```
@@ -153,13 +153,13 @@ def calculate_trailing_stop(current_price, atr_20d, bubble_phase):
 
 ```
 Stage 1 (Boom):
-  → Stair-step reduces 50% of position
+  -> Stair-step reduces 50% of position
 
 Stage 2 (Euphoria):
-  → Apply ATR trailing to remaining 50%, ride upside
+  -> Apply ATR trailing to remaining 50%, ride upside
 
 Stage 3 (Panic signals):
-  → Exit immediately when ATR stop hit
+  -> Exit immediately when ATR stop hit
 ```
 
 ---
@@ -197,8 +197,8 @@ Conditions check:
 [✓] 6. VIX +35% spike
 [×] 7. No policy change
 
-→ 4/7 met, short consideration OK
-→ Small size (25% of normal) test entry
+-> 4/7 met, short consideration OK
+-> Small size (25% of normal) test entry
 ```
 
 ---
@@ -247,20 +247,20 @@ Q: Down -5%+ ?
     ↓YES
 Q: ATR stop hit?
     ↓YES
-→ Sell immediately (no debate)
+-> Sell immediately (no debate)
 
     ↓NO (stop not hit)
 Q: Bubble-O-Meter 13+?
     ↓YES
-→ Consider 75%+ profit-taking
+-> Consider 75%+ profit-taking
 
     ↓NO (score ≤12)
 Q: VIX spike +30%+?
     ↓YES
-→ Take 50% profits, tighten stops on rest
+-> Take 50% profits, tighten stops on rest
 
     ↓NO
-→ Normal monitoring, stay calm
+-> Normal monitoring, stay calm
 ```
 
 ---

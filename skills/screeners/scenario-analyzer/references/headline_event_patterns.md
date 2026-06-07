@@ -39,12 +39,12 @@ Historical patterns of how Indian markets react to major events. Use these as re
 ### Crude Up >10%
 - **Immediate**: OMCs (BPCL, HPCL, IOC) drop 3-8%; Airlines (IndiGo) drop
 - **2nd order**: Paints, chemicals under input cost pressure
-- **3rd order**: Current account deficit widens → INR weakens → IT benefits
+- **3rd order**: Current account deficit widens -> INR weakens -> IT benefits
 - **Pattern**: Nifty typically corrects 3-5% on sustained crude above $90
 
 ### Crude Down >10%
 - **Immediate**: OMCs, airlines, paints rally; Oil producers (ONGC) fall
-- **Positive chain**: Lower inflation → RBI rate cut expectations → rate-sensitive rally
+- **Positive chain**: Lower inflation -> RBI rate cut expectations -> rate-sensitive rally
 
 ## Global Risk-Off Events
 
@@ -56,7 +56,7 @@ Historical patterns of how Indian markets react to major events. Use these as re
 
 ### US Fed Rate Decision
 - **Rate hike**: INR weakens, FII outflows; IT sector benefits from weak INR
-- **Rate cut**: Emerging market flows → FII inflows → Nifty rally
+- **Rate cut**: Emerging market flows -> FII inflows -> Nifty rally
 - **Dot plot matters**: Forward guidance more important than actual decision
 
 ## India-Specific Events
@@ -69,7 +69,7 @@ Historical patterns of how Indian markets react to major events. Use these as re
 
 ### Monsoon
 - **Good monsoon forecast**: Agri inputs (fertilizers, pesticides), rural consumption, two-wheelers
-- **Poor monsoon**: FMCG rural demand impact, food inflation → RBI tightening risk
+- **Poor monsoon**: FMCG rural demand impact, food inflation -> RBI tightening risk
 - **Pattern**: Monsoon impact is gradual (June-September), not a single-day event
 
 ### India-China Tensions
@@ -81,7 +81,7 @@ Historical patterns of how Indian markets react to major events. Use these as re
 
 ### Major Earnings Surprise (>10% Beat)
 - **Immediate**: Stock gaps up 5-15%
-- **Sector effect**: Peers rally in sympathy (e.g., INFY beat → WIPRO, TCS rally)
+- **Sector effect**: Peers rally in sympathy (e.g., INFY beat -> WIPRO, TCS rally)
 - **Duration**: Momentum continues for 2-4 weeks if accompanied by guidance raise
 
 ### Promoter Pledge Increase

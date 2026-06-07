@@ -87,12 +87,12 @@
 **Current Strategy Signal**: [CONFIRMED BUY / DEVELOPING BUY / FAILED REVERSAL / SELL / HOLD / WAIT]
 
 **Signal Classification**:
-- **CONFIRMED BUY**: Trough formed + 2-3 consecutive increases + CURRENTLY rising → ENTER LONG
-- **DEVELOPING BUY**: Trough formed + < 2 consecutive increases → WAIT, MONITOR
-- **FAILED REVERSAL**: Trough formed + initially rose + now declining → DO NOT ENTER
-- **SELL**: 200MA peak formed → EXIT LONG
-- **HOLD**: Already long, no exit signal → MAINTAIN POSITION
-- **WAIT**: No trough, or waiting for new trough after failed reversal → STAY FLAT
+- **CONFIRMED BUY**: Trough formed + 2-3 consecutive increases + CURRENTLY rising -> ENTER LONG
+- **DEVELOPING BUY**: Trough formed + < 2 consecutive increases -> WAIT, MONITOR
+- **FAILED REVERSAL**: Trough formed + initially rose + now declining -> DO NOT ENTER
+- **SELL**: 200MA peak formed -> EXIT LONG
+- **HOLD**: Already long, no exit signal -> MAINTAIN POSITION
+- **WAIT**: No trough, or waiting for new trough after failed reversal -> STAY FLAT
 
 [Detailed explanation of why this signal status is assigned, including specific reference to Latest Data Point Trend Analysis findings]
 

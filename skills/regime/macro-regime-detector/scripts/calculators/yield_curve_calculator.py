@@ -8,7 +8,7 @@ Primary data: Treasury API (10Y-2Y spread directly)
 Fallback: SHY/TLT ratio as proxy for yield curve shape
 
 Transition signals:
-- Inversion → Normalization: Often precedes recession end, risk-on shift
+- Inversion -> Normalization: Often precedes recession end, risk-on shift
 - Steepening from flat: Economic recovery signal
 - Flattening from steep: Late-cycle tightening signal
 - Deep inversion: Recession warning

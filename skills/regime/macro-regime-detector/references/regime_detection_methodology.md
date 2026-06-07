@@ -8,14 +8,14 @@ The Macro Regime Detector uses a 3-layer signal detection approach applied to 6 
 
 ```
 Daily OHLCV (600 days, ~2.4 years)
-  → Monthly Downsampling (last business day per month, ~24 points)
-  → Ratio Calculation (e.g., RSP close / SPY close)
-  → Moving Average Computation (6M SMA, 12M SMA)
-  → Signal Detection (3 layers)
-  → Component Scoring (0-100 per component)
-  → Weighted Composite (6 components)
-  → Regime Classification (decision tree)
-  → Transition Probability Assessment
+  -> Monthly Downsampling (last business day per month, ~24 points)
+  -> Ratio Calculation (e.g., RSP close / SPY close)
+  -> Moving Average Computation (6M SMA, 12M SMA)
+  -> Signal Detection (3 layers)
+  -> Component Scoring (0-100 per component)
+  -> Weighted Composite (6 components)
+  -> Regime Classification (decision tree)
+  -> Transition Probability Assessment
 ```
 
 ## Monthly Downsampling

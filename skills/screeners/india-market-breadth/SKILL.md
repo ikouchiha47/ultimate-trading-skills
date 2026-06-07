@@ -18,55 +18,54 @@ This skill provides a systematic framework to assess NSE/BSE breadth health, sco
 
 ## Data Sources
 
-### Primary Sources
+> **Breadth is COMPUTED from constituent OHLCV via the seam — no WebSearch, no broker MCP, no
+> keys.** `data_api.breadth()` (see `data/breadth.py`) returns advancers/decliners, A/D line,
+> %>50/200-DMA, and new 52w highs/lows over our tracked constituent universe (~200 names across
+> the 11 sector indices, with a 200-DMA warm-up so every value is valid). All numbers are
+> `provenance="computed"`. WebSearch is allowed ONLY for event context (Step: Budget/RBI weeks).
 
-| Data Point | Source | Method |
-|------------|--------|--------|
-| Advance/Decline counts | NSE website / Web search | `WebSearch` for "NSE advance decline data today" |
-| Stocks above 200 DMA | Market screeners / Web search | `WebSearch` for "stocks above 200 DMA NSE" |
-| Stocks above 50 DMA | Market screeners / Web search | `WebSearch` for "stocks above 50 DMA NSE" |
-| New 52-week highs | Groww MCP | `fetch_market_movers_and_trending_stocks_funds` with `YEARLY_HIGH` filter |
-| New 52-week lows | Groww MCP | `fetch_market_movers_and_trending_stocks_funds` with `YEARLY_LOW` filter |
-| Sector performance | Groww MCP | `get_ltp` for sector indices (Nifty IT, Bank Nifty, Nifty Pharma, etc.) |
-| Nifty 50 level | Groww MCP | `get_ltp` for NIFTY |
-| Top gainers/losers | Groww MCP | `fetch_market_movers_and_trending_stocks_funds` with `TOP_GAINERS` / `TOP_LOSERS` |
+```python
+from framework import data_api as api, indicators as ind
 
-### Broker MCP Tools Used
+# Breadth internals (Steps 1, 3, 4) — broad market = "NIFTY 50" universe (tracked constituents)
+b = api.breadth("NIFTY 50", since="2023-01-01")     # cols: pct_above_50, pct_above_200,
+                                                    # advancers, decliners, ad_line,
+                                                    # new_highs, new_lows, n
+latest = b.iloc[-1]
+ad_ratio = latest["advancers"] / max(latest["decliners"], 1)
 
-Use whichever broker MCP is connected (Groww or Zerodha Kite):
+# Nifty level for divergence (Step 5, component 5)
+nifty = api.index("NIFTY 50", since="2023-01-01")
 
-**Groww MCP (if connected):**
-1. **`fetch_market_movers_and_trending_stocks_funds`** — Core tool for yearly highs/lows counts, top gainers/losers, volume data
-2. **`get_ltp`** — Get live prices for Nifty, Bank Nifty, sector indices
-3. **`fetch_historical_candle_data`** — Historical data for trend analysis
-4. **`get_historical_technical_indicators`** — Calculate moving averages for breadth assessment
-5. **`fetch_technical_screener`** — Screen for stocks by technical criteria (RSI, MACD, etc.)
-6. **`fetch_fundamentals_screener`** — Natural language screening for market-cap based analysis
+# Sector participation (component 4): how many of the 11 sector indices are above their 50-DMA
+sectors = ["NIFTY BANK","NIFTY IT","NIFTY PHARMA","NIFTY FMCG","NIFTY AUTO","NIFTY METAL",
+           "NIFTY REALTY","NIFTY ENERGY","NIFTY INFRASTRUCTURE","NIFTY PSU BANK","NIFTY PRIVATE BANK"]
+in_uptrend = sum(1 for s in sectors
+                 if (lambda d: d["close"] > (d["sma_50"] or 1e9))(ind.indicator_snapshot(api.index(s, since="2023-06-01"))))
+```
 
-**Zerodha Kite MCP (if connected):**
-1. **`get_ltp`** — Live prices for Nifty, Bank Nifty, sector indices
-2. **`get_quotes`** — Real-time quotes with market depth
-3. **`get_ohlc`** — OHLC data for indices and stocks
-4. **`get_historical_data`** — Historical candle data for trend analysis
-5. **`search_instruments`** — Search for instruments by name
+| Data point | Seam source |
+|------------|-------------|
+| Advance/Decline counts + A/D line | `breadth(...)` -> `advancers`, `decliners`, `ad_line` |
+| % above 50 / 200 DMA | `breadth(...)` -> `pct_above_50`, `pct_above_200` |
+| New 52-week highs / lows | `breadth(...)` -> `new_highs`, `new_lows` |
+| Sector participation (13->11 tracked) | loop `index(sector)` + `indicators.indicator_snapshot` (above 50-DMA) |
+| Nifty 50 level (divergence) | `index("NIFTY 50", since)` |
+| McClellan oscillator | `indicators.ema` of `(advancers - decliners)` (19 vs 39) from `breadth(...)` |
+
+> Note: our breadth universe is the ~200 tracked constituents across 11 sector indices, not the
+> full NSE 500 — state this in the report. Nifty Media / exact NSE A/D totals are not in the
+> tracked set (a known scope limit; do NOT WebSearch-substitute the counts).
 
 ---
 
 ## Workflow
 
-### Step 1: Fetch NSE Advance/Decline Data
+### Step 1: Fetch Advance/Decline Data
 
-Use web search to get NSE advance/decline data:
-```
-WebSearch: "NSE advance decline ratio today"
-WebSearch: "NSE market breadth today advances declines"
-```
-
-Key data points needed:
-- Number of advances (stocks that closed higher)
-- Number of declines (stocks that closed lower)
-- Number of unchanged
-- Total traded stocks
+From `b = api.breadth("NIFTY 50", since=...)` (above): `advancers`, `decliners`, and `ad_line`
+columns over the tracked universe. Use the latest row for today's counts and the series for
+trend. (`n` = members with data that day.) Do NOT WebSearch the counts.
 
 ### Step 2: Calculate Breadth Indicators
 
@@ -107,15 +106,8 @@ McClellan Oscillator = 19-day EMA - 39-day EMA
 
 ### Step 3: Assess % of Stocks Above 200 DMA and 50 DMA
 
-Use web search or screener tools:
-```
-WebSearch: "percentage of NSE stocks above 200 day moving average"
-```
-
-Or use Groww MCP technical screener to estimate:
-```
-fetch_technical_screener with various SMA/EMA filters
-```
+From `b["pct_above_200"]` and `b["pct_above_50"]` (latest row + trend) — computed across the
+tracked universe with a proper 200-DMA warm-up. No WebSearch/screener estimate needed.
 
 #### Key Thresholds
 
@@ -125,22 +117,10 @@ fetch_technical_screener with various SMA/EMA filters
 | % above 50 DMA | > 55% | 35-55% | < 35% |
 | % above 20 DMA | > 50% | 30-50% | < 30% |
 
-### Step 4: Count New 52-Week Highs vs Lows (via Groww MCP)
+### Step 4: Count New 52-Week Highs vs Lows
 
-Use Groww MCP tools:
-```python
-# Fetch stocks hitting yearly highs
-fetch_market_movers_and_trending_stocks_funds(
-    discovery_filter_types=["YEARLY_HIGH"],
-    size=20
-)
-
-# Fetch stocks hitting yearly lows
-fetch_market_movers_and_trending_stocks_funds(
-    discovery_filter_types=["YEARLY_LOW"],
-    size=20
-)
-```
+From `b["new_highs"]` and `b["new_lows"]` (latest row) — counted across the tracked universe
+on a 252-day window. No broker MCP needed.
 
 #### Interpretation
 

@@ -1,6 +1,6 @@
 # Sector constituents — live NSE source (auto-fetched, cached here)
 
-This is the **live, authoritative** sector→stock mapping from niftyindices.com. Files here are
+This is the **live, authoritative** sector->stock mapping from niftyindices.com. Files here are
 normally written automatically by `data/nse_constituents.py` (`source="nse_fetch"`); they can also
 be downloaded by hand if the fetch is ever blocked. The `niftystocks` package is NOT used (frozen
 at pre-2022 members).
@@ -18,7 +18,7 @@ fallback to `SEED_SECTORS` if a sector fails.
 
 ## Manual fallback — how to get the files by hand
 
-1. Go to **https://www.niftyindices.com** → *Indices* → pick the sectoral index.
+1. Go to **https://www.niftyindices.com** -> *Indices* -> pick the sectoral index.
 2. On the index page, use **Download (.csv)** for the constituent list
    (or directly: `https://www.niftyindices.com/IndexConstituent/ind_nifty<...>list.csv`).
 3. Save it here, **renamed to the sector key** (exact, including the space):

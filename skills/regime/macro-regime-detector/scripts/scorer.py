@@ -220,7 +220,7 @@ def classify_regime(component_results: dict[str, dict]) -> dict:
         if k in COMPONENT_WEIGHTS
     )
 
-    # Tiebreak + low composite → transitional
+    # Tiebreak + low composite -> transitional
     if is_tied and quick_composite < 50:
         best_regime = "transitional"
         regime_scores["transitional"] = best_score

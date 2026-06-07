@@ -23,7 +23,7 @@ a VCP-style tightening on drying volume is a cleaner entry trigger than catching
 Combines our reversion thesis (03) with volume confirmation (02) for timing.
 
 ## Local implementation
-- 🛠 `skills/screeners/nse-vcp-screener` (ajeesh, India-native) — candidate scanner inside favoured sectors.
+- 🛠 `skills/screeners/nse-vcp-screener` — India-native candidate scanner inside favoured sectors.
 
 ## Notes
 - _(expand: codify the trend-template + contraction-count as a filter on reversion candidates;

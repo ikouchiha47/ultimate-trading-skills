@@ -650,7 +650,7 @@ class TestExportLogic:
         strategies_dir = tmp_path / "strategies"
         strategies_dir.mkdir()
 
-        # No exportable_tickets_dir → must generate ticket
+        # No exportable_tickets_dir -> must generate ticket
         from orchestrate_edge_pipeline import export_draft
 
         export_draft(

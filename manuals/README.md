@@ -21,20 +21,22 @@ Legend: 📕 book · 📄 paper · 🛠 local skill/engine in this repo · 🔗 
 | 09 | [Optimization — gradient descent](09-optimization-gradient-descent.md) | calibrate every fitted model |
 | 10 | [Backtesting discipline](10-backtesting-discipline.md) | prove it survives costs + walk-forward vs a null |
 | 11 | [Risk & position sizing](11-risk-position-sizing.md) | Kelly, drawdown control |
+| 12 | [Analysis mode — top-down vs bottom-up](12-analysis-mode-topdown-bottomup.md) | sector mode sets the flow-vs-info prior; *gates where the edge applies* |
 
 ## How they connect (the experiment)
 
 ```
-01 Why edge exists   →  why the dislocation exists (forced / uninformed sector selling)
-02 Price–volume      →  confirm it: is the selling flow-driven (low delivery%) or informed?
-06 Regime detection  →  is it a rotation (tradeable) or a break (trap)?   [HMM]
-03 Mean reversion    →  the entry signal (oversold vs sector)   ┐
-07 LPPLS neg. bubble →  formal "fell but shouldn't" (optional)  ┘
-   quality filter    →  the "shouldn't have" — excludes weak names (fundamentals skill)
-05 VCP / 04 momentum →  optional setup-quality / timing overlay
-08 Factor models     →  strip out sector beta, isolate the alpha
-10 López de Prado    →  prove it survives costs + walk-forward (vs a null)
-09 Gradient descent / 11 risk → calibrate & size
+12 Analysis mode     ->  FIRST: which sector mode? (cyclical=trap / idiosyncratic=edge / thematic)
+01 Why edge exists   ->  why the dislocation exists (forced / uninformed sector selling)
+02 Price–volume      ->  confirm it: is the selling flow-driven (low delivery%) or informed?
+06 Regime detection  ->  is it a rotation (tradeable) or a break (trap)?   [HMM]
+03 Mean reversion    ->  the entry signal (oversold vs sector)   ┐
+07 LPPLS neg. bubble ->  formal "fell but shouldn't" (optional)  ┘
+   quality filter    ->  the "shouldn't have" — excludes weak names (fundamentals skill)
+05 VCP / 04 momentum ->  optional setup-quality / timing overlay
+08 Factor models     ->  strip out sector beta, isolate the alpha
+10 López de Prado    ->  prove it survives costs + walk-forward (vs a null)
+09 Gradient descent / 11 risk -> calibrate & size
 ```
 
 Core thesis lives in the repo `README.md`; this directory is the *why-it-should-work* backing.

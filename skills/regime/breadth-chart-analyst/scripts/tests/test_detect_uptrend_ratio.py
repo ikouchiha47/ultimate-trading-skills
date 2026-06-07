@@ -387,7 +387,7 @@ class TestMultiColorRightmostDetection:
     Example scenario (2026-01-12):
     - Column 1314: GREEN 6px (<10, skipped)
     - Column 1313: GREEN 8px (<10, skipped)
-    - Column 1306: RED 29px (>10, selected → WRONG)
+    - Column 1306: RED 29px (>10, selected -> WRONG)
 
     Expected: Should select column 1314 (GREEN, actual rightmost)
     Actual (before fix): Selected column 1306 (RED, first >10px)

@@ -1,0 +1,20 @@
+# Per-sector strategy parameters — EDIT HERE, not in code.
+# Read via framework.sector_params; written back by the calibration step.
+#
+# The reversion ANCHOR is the moving average a BNF-style fade measures deviation from. It is
+# NOT guessed and NOT defaulted: if a sector is absent below, the orchestrator must CALIBRATE
+# it (framework.calibrate.calibrate_anchor sweeps `candidates`, ranks by Sharpe-over-null),
+# judge whether the edge is real, then write the winner back via sector_params.set_anchor.
+#
+# Why per-sector: the same dip depth means different things in different sectors. A fast anchor
+# (25-DMA, BNF's original) fades shallow noise — good for mean-reverting baskets, bad for
+# trending ones; a slow anchor (200-DMA) only triggers on deep moves that are usually real
+# declines (knives). The right anchor is a measured property of the sector, not a constant.
+
+candidates = [25, 50, 100, 200]   # anchors the calibrator sweeps for a new sector
+
+[anchor]   # sector -> earned reversion DMA (written by calibration; absent = must calibrate)
+"PSU Bank" = 50
+
+[note]     # provenance for each earned anchor — honest, dated, with the evidence
+"PSU Bank" = "earned 2026-06: over_null 50-DMA +0.23 vs 25-DMA -0.57, 200-DMA -0.40 (NIFTY PSU BANK, since 2021-01, split-adjusted). One bull window — re-calibrate with OOS + wider data."

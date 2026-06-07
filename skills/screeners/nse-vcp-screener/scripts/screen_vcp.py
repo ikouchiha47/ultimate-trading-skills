@@ -11,14 +11,14 @@ Usage:
 
 import argparse
 import sys
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
-import yfinance as yf
 
-# Add parent directory to path for imports
+# Path: parent dir for calculators, repo root for the framework seam.
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
 from calculators.trend_template_calculator import calculate_trend_template
 from calculators.vcp_pattern_calculator import calculate_vcp
@@ -28,51 +28,71 @@ from calculators.relative_strength_calculator import calculate_relative_strength
 from scorer import calculate_composite_score
 from report_generator import generate_reports
 
+from framework import data_api
+
+
+def _seam_ohlcv(symbol: str, lookback_days: int = 400, source: str = "yfinance") -> pd.DataFrame:
+    """OHLCV via the audited seam, with Capitalized columns the calculators expect.
+
+    `symbol` is a bare NSE symbol (no .NS). source="yfinance" for fast bulk scans;
+    source="jugaad" adds delivery% for a single-name deep read.
+    """
+    start = date.today() - timedelta(days=lookback_days)
+    df = data_api.history(symbol, start, source=source)               # lowercase normalized
+    return df.rename(columns={c: c.capitalize() for c in df.columns})  # -> Open/High/Low/Close/Volume
+
+
+# Curated Nifty 50 constituents — a clean, reliable SEED list (guardrail philosophy: a
+# hardcoded list is fine as a known-good fallback). Used directly for --universe nifty50,
+# and unioned into the broader universe so it's a true superset.
+NIFTY50 = [
+    "RELIANCE", "TCS", "HDFCBANK", "INFY", "ICICIBANK",
+    "BHARTIARTL", "ITC", "SBIN", "LT", "KOTAKBANK",
+    "HINDUNILVR", "AXISBANK", "BAJFINANCE", "MARUTI", "TATAMOTORS",
+    "SUNPHARMA", "TITAN", "HCLTECH", "NTPC", "POWERGRID",
+    "ULTRACEMCO", "ADANIENT", "ASIANPAINT", "TATASTEEL", "WIPRO",
+    "ONGC", "JSWSTEEL", "COALINDIA", "NESTLEIND", "BAJAJFINSV",
+    "M&M", "TECHM", "DRREDDY", "CIPLA", "EICHERMOT",
+    "APOLLOHOSP", "DIVISLAB", "BRITANNIA", "HEROMOTOCO", "INDUSINDBK",
+    "TATACONSUM", "HDFCLIFE", "SBILIFE", "BAJAJ-AUTO", "GRASIM",
+    "BPCL", "ADANIPORTS", "HINDALCO", "BEL", "TRENT",
+]
+
 
 def get_universe(universe: str, custom_tickers: str | None = None) -> list[str]:
-    """Get stock universe tickers in yfinance format (.NS suffix)."""
+    """Screening universe as BARE NSE symbols (no .NS).
+
+    - custom  -> the user's tickers
+    - nifty50 -> the curated NIFTY50 seed list (clean, reliable)
+    - else (nifty200/nifty500) -> the live tracked sector constituents (~180 across the 11
+      sector indices, cached in data/constituents/) UNIONED with NIFTY50, so the broad set is a
+      true superset of Nifty 50. (Exact official Nifty 500 membership is a known gap — fetch
+      those index CSVs to extend.)
+    """
     if universe == "custom" and custom_tickers:
-        tickers = [t.strip().upper() for t in custom_tickers.split(",")]
-        return [f"{t}.NS" for t in tickers if t]
-
+        return [t.strip().upper() for t in custom_tickers.split(",") if t.strip()]
+    if universe == "nifty50":
+        return list(NIFTY50)
+    # Real index membership via nselib (Akamai-free). nifty200/nifty500 -> the actual index.
+    index_name = {"nifty200": "Nifty 200", "nifty500": "Nifty 500"}.get(universe, "Nifty 500")
     try:
-        from niftystocks import ns
-
-        if universe == "nifty50":
-            return ns.get_nifty50_with_ns()
-        elif universe == "nifty200":
-            return ns.get_nifty200_with_ns()
-        elif universe == "nifty500":
-            return ns.get_nifty_total_market_with_ns()
-        else:
-            return ns.get_nifty50_with_ns()
-    except ImportError:
-        # Fallback: Nifty 50 hardcoded core components
-        print("Warning: niftystocks package not available. Using hardcoded Nifty 50 list.", file=sys.stderr)
-        nifty50_core = [
-            "RELIANCE", "TCS", "HDFCBANK", "INFY", "ICICIBANK",
-            "BHARTIARTL", "ITC", "SBIN", "LT", "KOTAKBANK",
-            "HINDUNILVR", "AXISBANK", "BAJFINANCE", "MARUTI", "TATAMOTORS",
-            "SUNPHARMA", "TITAN", "HCLTECH", "NTPC", "POWERGRID",
-            "ULTRACEMCO", "ADANIENT", "ASIANPAINT", "TATASTEEL", "WIPRO",
-            "ONGC", "JSWSTEEL", "COALINDIA", "NESTLEIND", "BAJAJFINSV",
-            "M&M", "TECHM", "DRREDDY", "CIPLA", "EICHERMOT",
-            "APOLLOHOSP", "DIVISLAB", "BRITANNIA", "HEROMOTOCO", "INDUSINDBK",
-            "TATACONSUM", "HDFCLIFE", "SBILIFE", "BAJAJ-AUTO", "GRASIM",
-            "BPCL", "ADANIPORTS", "HINDALCO", "BEL", "TRENT",
-        ]
-        return [f"{t}.NS" for t in nifty50_core]
+        return data_api.index_members(index_name)
+    except Exception:  # noqa: BLE001 — fall back to tracked sector union + NIFTY50 seed
+        sectors = data_api.constituents(source="nse_csv")
+        return sorted({s for syms in sectors.values() for s in syms} | set(NIFTY50))
 
 
-def fetch_benchmark(period: str = "1y") -> pd.DataFrame:
-    """Fetch Nifty 50 index data as benchmark."""
+def fetch_benchmark(benchmark: str = "NIFTY 50") -> pd.DataFrame:
+    """Fetch the relative-strength benchmark index via the seam (official NSE OHLC).
+
+    `benchmark` is any NSE index name — default "NIFTY 50" (broad market), or a focused one
+    like "NIFTY PSU BANK" / "NIFTY SMALLCAP 100" to judge a stock against its own peer index.
+    """
     try:
-        df = yf.download("^NSEI", period=period, interval="1d", progress=False)
-        if isinstance(df.columns, pd.MultiIndex):
-            df.columns = df.columns.get_level_values(0)
-        return df
+        df = data_api.index(benchmark, since=date.today() - timedelta(days=400))
+        return df.rename(columns={c: c.capitalize() for c in df.columns})
     except Exception as e:
-        print(f"Warning: Could not fetch Nifty 50 benchmark: {e}", file=sys.stderr)
+        print(f"Warning: Could not fetch {benchmark} benchmark: {e}", file=sys.stderr)
         return pd.DataFrame()
 
 
@@ -83,9 +103,7 @@ def screen_stock(
 ) -> dict | None:
     """Screen a single stock for VCP pattern. Returns result dict or None."""
     try:
-        df = yf.download(ticker, period="1y", interval="1d", progress=False)
-        if isinstance(df.columns, pd.MultiIndex):
-            df.columns = df.columns.get_level_values(0)
+        df = _seam_ohlcv(ticker)   # bare NSE symbol; via the audited seam
 
         if len(df) < 200:
             return None
@@ -164,6 +182,9 @@ def main():
                         help="Stock universe to screen")
     parser.add_argument("--custom-tickers", type=str, default=None,
                         help="Comma-separated tickers for custom universe")
+    parser.add_argument("--benchmark", type=str, default="NIFTY 50",
+                        help="Relative-strength benchmark index (e.g. 'NIFTY 50', "
+                             "'NIFTY PSU BANK', 'NIFTY SMALLCAP 100')")
     parser.add_argument("--min-contractions", type=int, default=2,
                         help="Minimum contractions (2-4)")
     parser.add_argument("--t1-depth-min", type=float, default=10.0,
@@ -193,8 +214,8 @@ def main():
     print(f"Stocks to screen: {len(tickers)}")
 
     # Fetch benchmark
-    print("Fetching Nifty 50 benchmark...")
-    benchmark_df = fetch_benchmark()
+    print(f"Fetching benchmark: {args.benchmark}...")
+    benchmark_df = fetch_benchmark(args.benchmark)
 
     # Screen all stocks
     results = []
