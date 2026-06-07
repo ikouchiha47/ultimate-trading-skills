@@ -336,13 +336,17 @@ def fetch_company_about(symbol: str, headless: bool = True) -> dict:
             # KMP) live in a MODAL opened by "READ MORE" — the inline div.commentary is only a
             # 1-section preview. Click it and read the modal; fall back to the preview.
             kp_text, kp_links = "", []
-            rm = prof.locator("button:has-text('READ MORE'), button:has-text('Read More'), "
-                              "a:has-text('READ MORE'), a:has-text('Read More')").first
+            # The READ MORE in the profile is the KEY POINTS / "Key Insight" expander — verified
+            # there's exactly ONE in div.company-profile (tagged plausible-event-name="Key Insight").
+            # We click it AND then CONFIRM the modal is the Key Points panel (contains "KEY POINTS")
+            # before trusting it — so we never capture some other section's modal.
+            rm = prof.locator("button:has-text('READ MORE'), a:has-text('READ MORE'), "
+                              "button:has-text('Read More'), a:has-text('Read More')").first
             if rm.count():
                 try:
                     rm.click(); page.wait_for_timeout(1200)
                     modal = page.locator("div.modal-content, div[role=dialog]").first
-                    if modal.count():
+                    if modal.count() and "KEY POINTS" in modal.inner_text().upper():
                         kp_text = modal.inner_text().strip()
                         kp_links = [a.get_attribute("href") for a in modal.locator("a").all()
                                     if a.get_attribute("href")]
