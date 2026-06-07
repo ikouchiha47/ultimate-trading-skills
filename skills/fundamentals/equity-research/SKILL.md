@@ -125,30 +125,33 @@ uv run python equity-research/scripts/concall_reader.py \
 
 Output: Markdown transcript per concall. Agent reads across quarters for tone shifts, guidance accuracy, key metric evolution.
 
-#### Step 2b: Concall recording → STT (only if a recording is the ONLY source; opt-in, `.[stt]`)
-When a concall has just a **recording** (audio/video link, no transcript/AI-summary/PPT), YOU (the
-agent) orchestrate transcription — download + convert + **split into 3-min chunks with 30s overlap**
-with `yt-dlp`/`ffmpeg`, transcribe each chunk with the thin primitive, then stitch (keep each
-chunk's non-overlap region only, so no duplication). The code does NOT auto-do this; it's a
-multi-step agent task. Needs system `ffmpeg` + `uv pip install -e '.[stt]'`.
+#### Step 2b: Concall recording → STT (when a recording adds the full Q&A; opt-in, `.[stt]`)
+Use the **recording transcript as the primary** concall source and keep the screener **AI summary
+after it** as a supplement (the AI summary backstops exact figures/names). Recordings often lag the
+AI-summary quarter — label each transcript with its actual call title/quarter. Needs system
+`ffmpeg` + `uv pip install -e '.[stt]'`.
+
+**Acquisition — pick the RIGHT tool by URL type (yt-dlp is NOT universal).** `fetch_recording_audio`
+does this: a **direct audio file** (`.mp3/.wav/.m4a` — company IR sites like unionbankofindia /
+canarabank publish these) is fetched straight with **ffmpeg** (no extractor, no signature breakage,
+no bot-wall); only **YouTube / streaming pages** use **yt-dlp** (keep it current — `brew upgrade
+yt-dlp` / `yt-dlp -U` fixes "nsig extraction failed"; add `--cookies-from-browser` if it hits the
+bot check). Some links rot (404) or go private — fall back to the next REC or the AI summary.
 
 ```bash
-# 1) download audio
-yt-dlp -x --audio-format mp3 -o /tmp/rec.mp3 "<recording_url>"
-# 2) duration, then split into 180s windows stepping 150s (=> 30s overlap)
-dur=$(ffprobe -v error -show_entries format=duration -of default=nw=1:nk=1 /tmp/rec.mp3)
-i=0; start=0
-while [ "$(echo "$start < $dur" | bc)" -eq 1 ]; do
-  ffmpeg -y -ss $start -t 180 -i /tmp/rec.mp3 /tmp/chunk_$i.mp3 -loglevel error
-  uv run --extra stt python equity-research/scripts/concall_reader.py \
-     --audio /tmp/chunk_$i.mp3 --model base.en --output /tmp/chunk_$i.txt
-  start=$((start+150)); i=$((i+1))
-done
-# 3) stitch: emit each chunk's first 150s only (the 30s tail is re-covered by the next chunk),
-#    except the LAST chunk (emit fully). Then read the stitched transcript for key points.
+# acquire (right tool auto-picked) then transcribe the FULL call in one pass:
+uv run --extra stt python equity-research/scripts/concall_reader.py \
+  --recording "<rec_url>" --out /tmp/rec.mp3
+uv run --extra stt python equity-research/scripts/concall_reader.py \
+  --audio /tmp/rec.mp3 --model small.en --output /tmp/rec.txt
 ```
-Use a **larger model** (`base.en`/`small.en`) for accuracy; `tiny.en` slips proper nouns (e.g.
-"Canara"→"Chandra"). Tested working end-to-end on a real concall recording.
+
+faster-whisper **windows internally**, so transcribing the whole 50–70-min call in ONE
+`--audio <file>` call is cleaner than manual chunk-and-stitch (no overlap-dedup bugs). Speed on an
+Apple-Silicon CPU: **`base.en` ~8× realtime, `small.en` ~4×** (a ~55-min call ≈ 7 / 14 min). Use
+**`small.en`** for proper nouns — `base.en` garbles names ("Ashish Pandey"→"Aashi Shpande"),
+`tiny.en` is worse ("Canara"→"Chandra"). Only fall back to the 3-min/30s-overlap chunked loop on a
+memory-constrained host. Tested end-to-end on real PSU-bank concall recordings (direct-mp3 + YouTube).
 
 ---
 

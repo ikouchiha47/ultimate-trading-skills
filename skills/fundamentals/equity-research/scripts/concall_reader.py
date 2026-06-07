@@ -122,6 +122,49 @@ def parse_ppt(url: str) -> str | None:
     return None
 
 
+_AUDIO_EXT = (".mp3", ".wav", ".m4a", ".aac", ".ogg", ".opus", ".flac")
+
+
+def fetch_recording_audio(url: str, out_path: str) -> str | None:
+    """Download a concall RECORDING to a local 16k-mono mp3, picking the RIGHT tool by URL type.
+
+    yt-dlp is NOT the universal tool. Company IR sites (e.g. unionbankofindia, canarabank)
+    publish DIRECT audio files (.mp3/.wav/.m4a) — those we fetch straight with ffmpeg: no
+    extractor, no signature breakage, no bot-wall. ONLY YouTube / streaming pages need yt-dlp
+    (which also needs to be current, and may need --cookies-from-browser for the bot check).
+    Returns the local path, or None.
+    """
+    import shutil
+    import subprocess
+    from urllib.parse import urlparse
+
+    out = Path(out_path)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    is_direct = urlparse(url).path.lower().endswith(_AUDIO_EXT)
+    try:
+        if is_direct:
+            # ffmpeg reads the URL directly; normalize to 16k mono mp3 (whisper-friendly, smaller).
+            subprocess.run(["ffmpeg", "-y", "-i", url, "-vn", "-ac", "1", "-ar", "16000",
+                            "-acodec", "libmp3lame", str(out)],
+                           check=True, capture_output=True)
+        else:
+            if not shutil.which("yt-dlp"):
+                print("[concall] yt-dlp not on PATH (needed for non-direct/YouTube URLs)")
+                return None
+            # yt-dlp for YouTube/streaming pages; --audio-format mp3 via ffmpeg post-process.
+            subprocess.run(["yt-dlp", "-x", "--audio-format", "mp3", "--no-warnings",
+                            "-o", str(out.with_suffix("")) + ".%(ext)s", url],
+                           check=True, capture_output=True)
+            cand = out.with_suffix(".mp3")
+            if cand.exists() and cand != out:
+                cand.replace(out)
+        return str(out) if out.exists() else None
+    except subprocess.CalledProcessError as e:
+        err = (e.stderr or b"").decode("utf-8", "replace")[-400:] if e.stderr else str(e)
+        print(f"[concall] recording fetch failed ({'direct' if is_direct else 'yt-dlp'}): {err}")
+        return None
+
+
 def transcribe_file(path: str, model: str = "base.en") -> str | None:
     """THIN primitive: transcribe ONE audio file with faster-whisper (local, no API cost).
     The AGENT orchestrates download/convert/split (yt-dlp + ffmpeg) per the SKILL's chunked-STT
@@ -244,9 +287,19 @@ def main():
     parser.add_argument("--transcript", help="Direct BSE transcript PDF URL")
     parser.add_argument("--ai-summary", help="Screener AI summary URL (/concalls/summary/<id>/)")
     parser.add_argument("--audio", help="Transcribe ONE audio chunk (agent-split) via faster-whisper")
+    parser.add_argument("--recording", help="Download a RECORDING url to --out (direct-audio->ffmpeg, YouTube->yt-dlp)")
+    parser.add_argument("--out", help="Output path for --recording download")
     parser.add_argument("--model", default="base.en", help="faster-whisper model (default base.en)")
     parser.add_argument("--output", help="Save JSON/text result to this path")
     args = parser.parse_args()
+
+    # recording acquisition — right tool per URL type (the agent then splits + transcribes)
+    if args.recording:
+        if not args.out:
+            parser.error("--recording requires --out <path>")
+        p = fetch_recording_audio(args.recording, args.out)
+        print(f"[saved] {p}" if p else "[failed] recording download")
+        return
 
     # thin STT primitive — the agent splits with ffmpeg and calls this per chunk (see SKILL)
     if args.audio:
