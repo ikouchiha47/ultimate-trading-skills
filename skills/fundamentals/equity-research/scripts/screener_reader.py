@@ -500,6 +500,50 @@ def fetch_company_signals(symbol: str, headless: bool = True) -> dict:
     return out
 
 
+def fetch_related_party(symbol: str, headless: bool = True) -> dict:
+    """Scrape screener's Related Party transactions modal -> structured edges for the dependency
+    graph. Each party = a sourced related-entity link with transaction amounts over years (the
+    edge 'strength'). Screener flags this 'experimental' (AR extraction can err) — keep as SOURCED,
+    cite the company page. Returns {symbol, url, parties:[{name, transactions:{year:amount}}], raw}.
+    """
+    from playwright.sync_api import sync_playwright
+
+    url = f"{BASE_URL}/company/{symbol}/consolidated/"
+    out: dict = {"symbol": symbol, "url": url, "parties": [], "raw": None}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=headless)
+        ctx_kwargs = dict(user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"))
+        if SESSION_FILE.exists():
+            ctx_kwargs["storage_state"] = str(SESSION_FILE)
+        page = browser.new_context(**ctx_kwargs).new_page()
+        page.goto(url, wait_until="domcontentloaded", timeout=45000)
+        page.wait_for_timeout(2000)
+        btn = page.locator('button:has-text("RELATED PARTY")').first
+        if btn.count():
+            btn.click()
+            page.wait_for_timeout(2000)
+            modal = page.locator("div.modal-content, div[role=dialog], div.modal").first
+            if modal.count():
+                out["raw"] = modal.inner_text().strip()
+                years: list[str] = []
+                for tr in modal.locator("table tr").all():
+                    cells = [c.inner_text().strip() for c in tr.locator("th,td").all()]
+                    if not cells:
+                        continue
+                    if not years and any(c.startswith(("Mar", "20")) for c in cells):
+                        years = [c for c in cells if c]
+                        continue
+                    name = cells[0]
+                    if name and len(cells) > 1:
+                        vals = {years[i - 1]: cells[i] for i in range(1, len(cells))
+                                if i - 1 < len(years) and cells[i]}
+                        out["parties"].append({"name": name, "transactions": vals})
+        browser.close()
+    return out
+
+
 def save_company_page_pdf(symbol: str, out_path: str | Path, headless: bool = True) -> str:
     """Render the full screener company page to PDF for audit (verify scraped figures vs source).
 

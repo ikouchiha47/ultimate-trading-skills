@@ -147,6 +147,25 @@ Key reused mappings: `scenario-analyzer` = forward causal cascade (event->impact
   (`data/corporate_actions/` disk cache + 8s timeout, never hangs). Split-only (matches screener),
   not dividend-adjusted. Any pre-fix multi-year metric is suspect.
 
+## Dependency / social graph (business ecosystem) — core + agent-driven SKILL
+
+Who depends on a company, who it depends on, partners/competitors, group entities, plus the social
+layer (board interlocks, promoter group). **Country-polymorphic.**
+- **Core (generic, thin):** `framework/dependency_graph.py` — Entity/Edge model, `build_graph(seed,
+  country, ...)` BFS engine, `derive_social_edges` (board/promoter), `validate_with_prices`
+  (corroboration overlay via `influence_graph` — NEVER creates edges). `Entity.listed` distinguishes
+  listed (filings backbone) from PRIVATE (e.g. Razorpay → MCA/RBI/news).
+- **Providers (thin gatherers, per country):** `framework/dependency_providers/{india,us}.py`,
+  registered by country. **US = SEC EDGAR** (submissions + full-text reverse-lookup "who names X",
+  free/structured). **IN** = screener related-party (corroboration) + LODR/AR/MCA/RBI (agent-driven).
+  Add a country = new provider module + `register_provider`.
+- **Driver:** `skills/regime/dependency-graph/SKILL.md` — the agent REASONS the discovery strategy
+  (not a fixed recipe): characterise entity → pick from source ARCHETYPES (regulator/registrar/
+  domain-licence/self-disclosure/counterparty/news/aggregator/technical) → write a `discovery_plan.md`
+  → gather → typed+directional+SOURCED edges (price never implies a relationship; EDGAR low-confidence
+  reverse hits must be refined). Private seeds: domain via RBI register, customers via case-studies/
+  news, then sector-peers via `data_api.constituents()`.
+
 ## Publishing research to GitHub Pages (`tools/build_pages.py`)
 
 Turns `reports/research/*` into a MkDocs Material site, **excluding code** (driver scripts `_*.py`,
