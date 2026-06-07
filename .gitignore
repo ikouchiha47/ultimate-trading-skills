@@ -21,3 +21,6 @@ reports/research/*/filings/ar/
 
 # concall recording audio (large binaries; transcripts are the committed artifact)
 reports/research/*/filings/concall/_audio/
+
+# credit-rating rationale gather text (large; agent reads then extracts to the report)
+reports/research/*/filings/ratings/

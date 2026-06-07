@@ -59,8 +59,33 @@ changes (user pivots to a different search), and on a context change **confirm b
 5. **Review step-by-step (you, supervisor)** — FIRST **apply the sector analysis to EACH company and
    seed it**: how Porter/PESTEL forces, RBI credit-deployment mix, the influence-graph bellwether/
    beta role, and the EARNED strategy anchor hit THAT name → **update the company page** (its "Sector
-   forces → this company" mapping + refresh stance/risks). THEN run the discipline checklist. Gaps
-   route back to gather or re-author. Then publish.
+   forces → this company" mapping + refresh stance/risks). THEN run the **verification pass** (below)
+   and the discipline checklist. Gaps route back to gather or re-author. Then publish.
+
+### Verification pass — every claim, against its source-of-truth (whole report, not piecemeal)
+Verification is **holistic**: go claim-class by claim-class for each company, confirm each figure
+against the source that owns it, and stamp a status. **Price never implies a fact.** Render the result
+as one **`## Verification`** section per company page (near the end, before the closing stance) — a
+table of claim-class · source-of-truth · status, listing any ⚠️ disputes explicitly.
+
+| Claim class | Where in report | Source of truth | How to verify |
+|---|---|---|---|
+| Header metrics (price, mcap, P/E, P/B, ROE, div, 1-yr) | stance card | `_digest_all10.json` / `<sym>_fundamentals.json` | equal to digest |
+| Price-action (vs 50/200-DMA, delivery, RelVol, absorption) | stance card, price§ | computed digest | equal to digest |
+| Financial trajectory (net profit, EPS, deposits, advances, investments) | §Financial | `<sym>_profit_loss.csv` / `_balance_sheet.csv` | equal to CSV; flag concall-vs-screener diffs |
+| Quality ratios (NIM, GNPA, NNPA, CASA, PCR, CRAR, cost/income) | About, §3 | screener `key_points` (dated) or concall | present + dated in panel/concall |
+| Loan/advance mix | About chart | screener `key_points` advance mix | equals chart data |
+| Dividend (₹/share, %) | §Financial | `<sym>_fundamentals` payout% + FV | recompute ₹/share from EPS×payout |
+| Shareholding (GoI/FII/DII) | §Financial/§3 | `<sym>_shareholding.csv` | equal to CSV |
+| Corporate actions (merger/QIP/split/rights) | About | `signals.json` `corporate_actions` tabs | present in tabs |
+| Subsidiary stakes | About / graph | screener related-party / AR AOC-1 / WebSearch | dated source link; else `unknown` |
+| Concall **STT `(call: …)`** figures | concall STT | `data/` + AI summary (MATCHED quarter) | within tolerance → ✅; mismatch → fix/drop |
+| Credit ratings (level + outlook + action) | refs / ratings | agency rationale docs (CRISIL/ICRA/Fitch) — `_ratings.py` | parse {agency,instrument,rating,outlook,action,date} |
+| RBI / macro | comprehensive §3b | RBI sectoral-deployment xlsx | equal to release |
+
+**Status vocabulary:** ✅ verified · ⚠️ disputed (show BOTH values + which source wins) · 🔢 computed ·
+📄 sourced (dated link) · ❓ unknown (not sourceable — never inferred). On any sourced-vs-computed
+disagreement, `data/` + dated disclosure win over a paraphrase; correct the prose, don't average.
 
 ## Output layout — one folder per investigation
 
