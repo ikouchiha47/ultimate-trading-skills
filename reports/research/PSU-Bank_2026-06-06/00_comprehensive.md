@@ -9,22 +9,21 @@ sourceable. Companion files: `00_industry.md` (sector frameworks), `<BANK>_equit
 
 ---
 
-## 1. The 10 banks (ranked by market cap, sourced)
-| # | Bank | Mcap ₹Cr | Price ₹ | P/E | P/B | Div% | ROE% |
-|---|---|---|---|---|---|---|---|
-| 1 | SBIN | 9,02,477 | 978 | 10.8 | 1.51 | 1.77 | 15.4 |
-| 2 | BANKBARODA | 1,36,369 | 264 | 6.88 | 0.82 | 3.22 | 12.7 |
-| 3 | UNIONBANK | 1,27,481 | 167 | 6.56 | 0.95 | 2.84 | 15.7 |
-| 4 | CANBK | 1,23,189 | 136 | 6.87 | 1.05 | 3.09 | 16.1 |
-| 5 | PNB | 1,22,802 | 107 | 6.68 | 0.82 | 2.81 | 13.0 |
-| 6 | INDIANB | 1,13,421 | 842 | 9.69 | 1.42 | 2.17 | 15.4 |
-| 7 | BANKINDIA | 64,402 | 141 | 6.08 | 0.71 | 3.29 | 12.4 |
-| 8 | IOB | 63,412 | 32.9 | 11.7 | 1.71 | 0.00 | 15.6 |
-| 9 | MAHABANK | 60,909 | 79.2 | 8.68 | 1.83 | 2.78 | 22.7 |
-| 10 | UCOBANK | 31,675 | 25.3 | 12.8 | 1.03 | 1.74 | 8.5 |
+## 1. Sector screener — top-10 PSU banks (ranked by market cap)
+_TradingView-style listing. **Stance** = our computed analyst-rating analog (see [01_observations](01_observations.md) for the why; [GLOSSARY](GLOSSARY.md) for every column). All sourced from screener 2026-06-06; price/DMA/vol computed split-adjusted; tally vs jugaad <0.2%._
 
-All fundamentals sourced (screener, 2026-06-06). Price tally check (jugaad vs screener) passed
-< 0.2% for every name (computed).
+| Symbol | Price ₹ | Mkt cap ₹Cr | P/E | P/B | ROE% | Div% | 5y PAT CAGR | 1y ret | vs50% | vs200% | RelVol | Deliv% | Stance |
+|---|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|--:|---|
+| **SBIN** | 978.0 | 902,477 | 10.8 | 1.51 | 15.4 | 1.77 | 30.0% | 20.7% | -4.6 | -0.8 | 1.35 | 43.6 | 🟡 Hold/add@200 |
+| **BANKBARODA** | 264.0 | 136,369 | 6.88 | 0.82 | 12.7 | 3.22 | 73.0% | 4.0% | -1.7 | -4.5 | 1.32 | 37.4 | 🔴 Wait |
+| **UNIONBANK** | 167.0 | 127,481 | 6.56 | 0.95 | 15.7 | 2.84 | 47.0% | 10.1% | -2.8 | +4.3 | 0.77 | 39.2 | 🟢 Buy (dips) |
+| **CANBK** | 136.0 | 123,189 | 6.87 | 1.05 | 16.1 | 3.09 | 44.0% | 17.2% | +1.4 | -0.4 | 1.2 | 40.4 | 🟢 Accumulate |
+| **PNB** | 107.0 | 122,802 | 6.68 | 0.82 | 13.0 | 2.81 | 48.0% | -2.4% | -0.6 | -7.5 | 1.1 | 30.4 | 🔴 Avoid/wait |
+| **INDIANB** | 842.0 | 113,421 | 9.69 | 1.42 | 15.4 | 2.17 | 30.0% | 33.2% | -3.3 | +1.5 | 1.62 | 34.8 | 🟢 Buy (base) |
+| **BANKINDIA** | 141.0 | 64,402 | 6.08 | 0.71 | 12.4 | 3.29 | 39.0% | 13.5% | -1.3 | -0.3 | 0.99 | 40.5 | 🟡 Watch reclaim |
+| **IOB** | 32.9 | 63,412 | 11.7 | 1.71 | 15.6 | 0.0 | 48.0% | -18.8% | -2.9 | -9.5 | 0.42 | 44.2 | 🔴 Avoid |
+| **MAHABANK** | 79.2 | 60,909 | 8.68 | 1.83 | 22.7 | 2.78 | 65.0% | 39.8% | +5.1 | +23.7 | 0.6 | 38.0 | 🟡 Hold—don't chase |
+| **UCOBANK** | 25.3 | 31,675 | 12.8 | 1.03 | 8.5 | 1.74 | — | -25.6% | -0.9 | -11.5 | 0.59 | 39.3 | 🔴 Avoid |
 
 ## 2. The markets they are invested in (loan-book / credit deployment)
 
@@ -126,6 +125,26 @@ parent). Full graph: `graph/dependency_SBIN.json`; diagram: `charts/dependency_S
 transaction TYPES (Advance/Deposit/Remuneration), not counterparty entities. This is exactly why the
 dependency-graph SKILL ranks screener as *corroboration only* and the annual-report AOC-1 / direct
 disclosures as authoritative. The graph above uses the authoritative path.
+
+
+### 5d. Group networks (all banks) — sourced
+Per-bank group/dependency graphs (subsidiaries/JVs; stakes as edge strength; listed subs price-validated) and the combined PSU network where shared JVs cross-link banks (**Star Union Dai-ichi Life = Union Bank + Bank of India**).
+
+![PSU combined group network](charts/dependency_PSU_network.png)
+
+![SBIN group graph](charts/dependency_SBIN.png)
+
+![BANKBARODA group graph](charts/dependency_BANKBARODA.png)
+
+![UNIONBANK group graph](charts/dependency_UNIONBANK.png)
+
+![CANBK group graph](charts/dependency_CANBK.png)
+
+![PNB group graph](charts/dependency_PNB.png)
+
+![INDIANB group graph](charts/dependency_INDIANB.png)
+
+![BANKINDIA group graph](charts/dependency_BANKINDIA.png)
 
 ## 6. Caveats (discipline)
 - RBI sectoral data is **system-wide**, not PSU-only; per-bank loan mix is being sourced from ARs

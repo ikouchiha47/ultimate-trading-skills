@@ -1,0 +1,177 @@
+{
+  "nodes": [
+    {
+      "id": "INDIANB",
+      "name": "Indian Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "INDIANB",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "INDBANKMB",
+      "name": "Indbank Merchant Banking",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDBANKHOUSING",
+      "name": "Ind Bank Housing",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "UNIVSOMPO",
+      "name": "Universal Sompo Gen Ins",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Sompo (JV)",
+      "name": "Sompo (JV)",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "ASREC",
+      "name": "ASREC (India)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDBANKGSS",
+      "name": "Indbank Global Support",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "INDIANB",
+      "dst": "INDBANKMB",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of Indbank Merchant Banking",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "INDBANKHOUSING",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of Ind Bank Housing",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "UNIVSOMPO",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of Universal Sompo Gen Ins",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIVSOMPO",
+      "dst": "Sompo (JV)",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Universal Sompo Gen Ins JV partner Sompo (JV)",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "ASREC",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of ASREC (India)",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "INDBANKGSS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds 100.0% of Indbank Global Support",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

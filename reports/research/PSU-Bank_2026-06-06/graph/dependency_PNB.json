@@ -1,0 +1,177 @@
+{
+  "nodes": [
+    {
+      "id": "PNB",
+      "name": "Punjab National Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "PNB",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "PNBHOUSING",
+      "name": "PNB Housing Finance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "PNBHOUSING",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "PNBGILTS",
+      "name": "PNB Gilts",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "PNBGILTS",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "PNBMETLIFE",
+      "name": "PNB MetLife",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "MetLife",
+      "name": "MetLife",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "PNBINVEST",
+      "name": "PNB Investment Services",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "PNBINTL",
+      "name": "PNB International (UK)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "PNB",
+      "dst": "PNBHOUSING",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 28.0% of PNB Housing Finance",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 28.0,
+      "confidence": "high",
+      "corr0": 0.3495613532166354,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBGILTS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 74.0% of PNB Gilts",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 74.0,
+      "confidence": "high",
+      "corr0": 0.40656205569570636,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBMETLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 30.0% of PNB MetLife",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 30.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNBMETLIFE",
+      "dst": "MetLife",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "PNB MetLife JV partner MetLife",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBINVEST",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 100.0% of PNB Investment Services",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBINTL",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 100.0% of PNB International (UK)",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

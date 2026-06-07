@@ -1,7 +1,31 @@
+<!-- ASSEMBLED:BEGIN -->
 # Indian Bank (INDIANB) — Equity Research
 
-*2026-06-06. Split-adjusted. (computed)/(sourced)/`unknown`. Audit: `filings/INDIANB_screener_page.pdf`.*
+> ### 🟢 Stance: **Buy — let it base**
+> **₹842.0** · Mcap ₹113,421 Cr · P/E 9.69 · P/B 1.42 · ROE 15.4% · Div 2.17% · 1-yr +33.2%
+> Trend: 🟡 pullback within trend (below 50-DMA, near/above 200-DMA) — vs50 -3.3%, vs200 +1.5%
+>
+> **Links:** [Screener](https://www.screener.in/company/INDIANB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-INDIANB/) · [BSE](https://www.bseindia.com/stock-share-price/indian-bank/INDIANB/532814/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=INDIANB)
 
+_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+
+## Visuals (charts first)
+
+### Price · volume · 25/50/200-DMA · delivery
+![INDIANB price/volume/DMA](charts/INDIANB_price_volume.png)
+> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🟡 pullback within trend (below 50-DMA, near/above 200-DMA); delivery 34.8%, RelVol 1.62×.
+
+### Financials — revenue/profit · the investment book · quarterly · EPS
+![INDIANB financials](charts/INDIANB_financials.png)
+> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+
+### Group / dependency graph
+![INDIANB group graph](charts/dependency_INDIANB.png)
+> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated co-move with parent), yellow = unlisted, purple = foreign JV partner. See [GLOSSARY](GLOSSARY.md#graph-diagrams).
+
+---
+
+<!-- ASSEMBLED:END -->
 ## 1. Basic information
 | Field | Value | Prov. |
 |---|---|---|
@@ -48,3 +72,30 @@ Leadership transition; richest-but-one valuation = less cushion; rate cycle. No 
 ---
 **Stance:** Buy on a base toward the 50-DMA — best 1-yr momentum + highest volume confirmation,
 above the 200-DMA, solid ROE. The −3.3% below the 50-DMA says wait for the pullback to settle.
+
+---
+
+---
+
+## Concall — key points (latest, sourced)
+_⏳ extraction pending (`filings/concall/INDIANB.json`)._
+
+_Key points pending agent review — the transcript is captured; raw text is **not** dumped here (would be boilerplate). Read it in `filings/concall/INDIANB.json`._
+
+## DRHP
+N/A for the parent — Indian Bank is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: No recent group IPO of note.
+
+## References (this company)
+- Screener: https://www.screener.in/company/INDIANB/consolidated/
+- TradingView: https://in.tradingview.com/symbols/NSE-INDIANB/
+- BSE: https://www.bseindia.com/stock-share-price/indian-bank/INDIANB/532814/
+- NSE: https://www.nseindia.com/get-quotes/equity?symbol=INDIANB
+- Audit snapshot: `filings/INDIANB_screener_page.pdf`
+- Data: `data/INDIANB_*.json` / `.csv`
+
+**News & disclosures (dated, sourced):**
+- Announcement under Regulation 30 (LODR)-Cessation 1 Jun - Brajesh Kumar Singh ceased as Indian Bank Executive Director f — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eaf7ebe6-078f-44a5-a3b9-0efcb97c97aa.pdf
+- Announcement under Regulation 30 (LODR)-Interest Rates Updates 1 Jun - Indian Bank revises MCLR and TBLR rates from 03 J — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6f3324a9-8f58-4f76-81d7-92c5a3cf2356.pdf
+- Business Responsibility and Sustainability Reporting (BRSR) 23 May - Indian Bank filed its BRSR for FY 2025-26 on May 23 — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fedfdf47-49fa-4729-9ad5-29122e544729.pdf
+- Copy Of Notice Of 20Th Annual General Meeting (AGM) Of The Bank Scheduled To Be Held On Wednesday, The 17Th June 2026 23 — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ec303a35-3b24-43c2-979f-b45933614248.pdf
+- Reg. 34 (1) Annual Report. 23 May — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1fb9961e-55dc-496e-9726-6e605ddde9f0.pdf

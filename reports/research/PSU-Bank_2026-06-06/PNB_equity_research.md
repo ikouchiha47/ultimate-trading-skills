@@ -1,7 +1,31 @@
+<!-- ASSEMBLED:BEGIN -->
 # Punjab National Bank (PNB) — Equity Research
 
-*2026-06-06. Prices split-adjusted. (computed)/(sourced)/`unknown`. Audit: `filings/PNB_screener_page.pdf`.*
+> ### 🔴 Stance: **Avoid / wait**
+> **₹107.0** · Mcap ₹122,802 Cr · P/E 6.68 · P/B 0.82 · ROE 13.0% · Div 2.81% · 1-yr -2.4%
+> Trend: 🔴 downtrend (below both DMAs) — vs50 -0.6%, vs200 -7.5%
+>
+> **Links:** [Screener](https://www.screener.in/company/PNB/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-PNB/) · [BSE](https://www.bseindia.com/stock-share-price/punjab-national-bank/PNB/532461/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=PNB)
 
+_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+
+## Visuals (charts first)
+
+### Price · volume · 25/50/200-DMA · delivery
+![PNB price/volume/DMA](charts/PNB_price_volume.png)
+> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🔴 downtrend (below both DMAs); delivery 30.4%, RelVol 1.1×.
+
+### Financials — revenue/profit · the investment book · quarterly · EPS
+![PNB financials](charts/PNB_financials.png)
+> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+
+### Group / dependency graph
+![PNB group graph](charts/dependency_PNB.png)
+> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated co-move with parent), yellow = unlisted, purple = foreign JV partner. See [GLOSSARY](GLOSSARY.md#graph-diagrams).
+
+---
+
+<!-- ASSEMBLED:END -->
 ## 1. Basic information
 | Field | Value | Provenance |
 |---|---|---|
@@ -57,3 +81,33 @@ GoI-majority; FY26 BRSR filed (sourced). E/S/G detail: `unknown`.
 **Stance (computed read):** weakest of the four on every price-action/flow signal (furthest below
 200-DMA, lowest delivery, absorption, only negative 1-yr). Cheap on book but no demand confirmation
 — avoid/wait for a 200-DMA reclaim + delivery pickup before the 50-DMA reversion setup applies.
+
+---
+
+---
+
+## Concall — key points (latest, sourced)
+_✅ latest transcript captured (`filings/concall/PNB.json`)._
+
+- Sterling Biotech (a written-off account) write-back has been factored into operating profit (Q4FY26 call, sourced).
+- IL&FS recovery still held in standard provision — not yet taken to operating profit; may be recognised in Q1/Q2 FY27.
+- A standard-asset provision reversal this quarter relates to implementation of the RBI 7-June circular on restructuring.
+
+
+## DRHP
+N/A for the parent — Punjab National Bank is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: PNB Housing Finance already listed.
+
+## References (this company)
+- Screener: https://www.screener.in/company/PNB/consolidated/
+- TradingView: https://in.tradingview.com/symbols/NSE-PNB/
+- BSE: https://www.bseindia.com/stock-share-price/punjab-national-bank/PNB/532461/
+- NSE: https://www.nseindia.com/get-quotes/equity?symbol=PNB
+- Audit snapshot: `filings/PNB_screener_page.pdf`
+- Data: `data/PNB_*.json` / `.csv`
+
+**News & disclosures (dated, sourced):**
+- Review Of Interest Rates 30 May - PNB's MCLR, repo-linked lending rate and base rate remain unchanged from 1 June 2026. — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ce51287-2a9e-483c-a809-f229f3714e53.pdf
+- Newspaper Publication 29 May — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dae23220-15ac-47d8-bce5-bb2326ec5832.pdf
+- Annual Report For FY 2025-26 27 May - PNB FY26 annual report shows Rs16,904 crore profit and recommends Rs3 dividend. — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b25eb2d-ca39-408a-bed4-5a4179200db2.pdf
+- Business Responsibility and Sustainability Reporting (BRSR) 27 May - Punjab National Bank published its FY2025-26 BRSR r — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fa2620cf-e46d-4462-952e-73893b2fad03.pdf
+- Notice Of The 25Th Annual General Meeting Of The Bank 27 May — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=497b7c2e-3cac-4f36-9369-a9f92ddc27df.pdf

@@ -1,0 +1,150 @@
+{
+  "nodes": [
+    {
+      "id": "BANKINDIA",
+      "name": "Bank of India",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "BANKINDIA",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "SUDLIFE",
+      "name": "Star Union Dai-ichi Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Dai-ichi Life",
+      "name": "Dai-ichi Life",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "BOIMB",
+      "name": "BOI Merchant Bankers",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "BOISHL",
+      "name": "BOI Shareholding",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "STCI",
+      "name": "STCI Finance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "BANKINDIA",
+      "dst": "SUDLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds 28.96% of Star Union Dai-ichi Life",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 28.96,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SUDLIFE",
+      "dst": "Dai-ichi Life",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Star Union Dai-ichi Life JV partner Dai-ichi Life",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "BOIMB",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds 100.0% of BOI Merchant Bankers",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "BOISHL",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds 100.0% of BOI Shareholding",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "STCI",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds stake% of STCI Finance",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

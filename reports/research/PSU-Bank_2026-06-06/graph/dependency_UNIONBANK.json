@@ -1,0 +1,114 @@
+{
+  "nodes": [
+    {
+      "id": "UNIONBANK",
+      "name": "Union Bank of India",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "UNIONBANK",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "UNIONAMC",
+      "name": "Union Asset Management",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Dai-ichi Life",
+      "name": "Dai-ichi Life",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SUDLIFE",
+      "name": "Star Union Dai-ichi Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "UNIONBANK",
+      "dst": "UNIONAMC",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Union Bank of India holds 100.0% of Union Asset Management",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIONAMC",
+      "dst": "Dai-ichi Life",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Union Asset Management JV partner Dai-ichi Life",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIONBANK",
+      "dst": "SUDLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Union Bank of India holds 25.1% of Star Union Dai-ichi Life",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 25.1,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SUDLIFE",
+      "dst": "Dai-ichi Life",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Star Union Dai-ichi Life JV partner Dai-ichi Life",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "nodes": [
+    {
+      "id": "BANKBARODA",
+      "name": "Bank of Baroda",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "BANKBARODA",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "BOBCAPS",
+      "name": "BOB Capital Markets",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "BOBFIN",
+      "name": "BOB Financial Solutions",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "NAINITAL",
+      "name": "Nainital Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDIAFIRST",
+      "name": "IndiaFirst Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Legal & General",
+      "name": "Legal & General",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "INDIAINFRADEBT",
+      "name": "India Infradebt",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "BANKBARODA",
+      "dst": "BOBCAPS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 100.0% of BOB Capital Markets",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "BOBFIN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 100.0% of BOB Financial Solutions",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "NAINITAL",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 98.57% of Nainital Bank",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 98.57,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "INDIAFIRST",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds stake% of IndiaFirst Life",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIAFIRST",
+      "dst": "Legal & General",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "IndiaFirst Life JV partner Legal & General",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "INDIAINFRADEBT",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds stake% of India Infradebt",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

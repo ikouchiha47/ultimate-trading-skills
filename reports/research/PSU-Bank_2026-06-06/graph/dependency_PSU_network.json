@@ -1,0 +1,1191 @@
+{
+  "nodes": [
+    {
+      "id": "SBIN",
+      "name": "State Bank of India",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "SBIN",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "SBICARD",
+      "name": "SBI Cards",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "SBICARD",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "SBILIFE",
+      "name": "SBI Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "SBILIFE",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "BNP Paribas",
+      "name": "BNP Paribas",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SBIGEN",
+      "name": "SBI General Insurance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "SBIMF",
+      "name": "SBI Funds Mgmt (SBI MF)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "AMUNDI",
+      "name": "AMUNDI",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SBISG",
+      "name": "SBI-SG Global Sec",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Societe Generale",
+      "name": "Societe Generale",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SBIVEN",
+      "name": "SBI Ventures",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "BANKBARODA",
+      "name": "Bank of Baroda",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "BANKBARODA",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "BOBCAPS",
+      "name": "BOB Capital Markets",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "BOBFIN",
+      "name": "BOB Financial Solutions",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "NAINITAL",
+      "name": "Nainital Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDIAFIRST",
+      "name": "IndiaFirst Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Legal & General",
+      "name": "Legal & General",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "INDIAINFRADEBT",
+      "name": "India Infradebt",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "CANBK",
+      "name": "Canara Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "CANBK",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "CANFINHOME",
+      "name": "Can Fin Homes",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "CANFINHOME",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "CANHSBCLIFE",
+      "name": "Canara HSBC Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "HSBC",
+      "name": "HSBC",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "CRAMC",
+      "name": "Canara Robeco AMC",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Robeco/ORIX",
+      "name": "Robeco/ORIX",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "CANBANKFACTORS",
+      "name": "Canbank Factors",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "CANBANKVENTURE",
+      "name": "Canbank Venture Capital",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "PNB",
+      "name": "Punjab National Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "PNB",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "PNBHOUSING",
+      "name": "PNB Housing Finance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "PNBHOUSING",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "PNBGILTS",
+      "name": "PNB Gilts",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "PNBGILTS",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "PNBMETLIFE",
+      "name": "PNB MetLife",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "MetLife",
+      "name": "MetLife",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "PNBINVEST",
+      "name": "PNB Investment Services",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "PNBINTL",
+      "name": "PNB International (UK)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "UNIONBANK",
+      "name": "Union Bank of India",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "UNIONBANK",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "UNIONAMC",
+      "name": "Union Asset Management",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Dai-ichi Life",
+      "name": "Dai-ichi Life",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "SUDLIFE",
+      "name": "Star Union Dai-ichi Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDIANB",
+      "name": "Indian Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "INDIANB",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "INDBANKMB",
+      "name": "Indbank Merchant Banking",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDBANKHOUSING",
+      "name": "Ind Bank Housing",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "UNIVSOMPO",
+      "name": "Universal Sompo Gen Ins",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Sompo (JV)",
+      "name": "Sompo (JV)",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "ASREC",
+      "name": "ASREC (India)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "INDBANKGSS",
+      "name": "Indbank Global Support",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "BANKINDIA",
+      "name": "Bank of India",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "BANKINDIA",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "BOIMB",
+      "name": "BOI Merchant Bankers",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "BOISHL",
+      "name": "BOI Shareholding",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "STCI",
+      "name": "STCI Finance",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "SBIN",
+      "dst": "SBICARD",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "State Bank of India holds 68.98% of SBI Cards",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 68.98,
+      "confidence": "high",
+      "corr0": 0.31416196896076554,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBILIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "State Bank of India holds 55.45% of SBI Life",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 55.45,
+      "confidence": "high",
+      "corr0": 0.3200334563119374,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBILIFE",
+      "dst": "BNP Paribas",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "SBI Life JV partner BNP Paribas",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBIGEN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "State Bank of India holds 69.95% of SBI General Insurance",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 69.95,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBIMF",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "State Bank of India holds stake% of SBI Funds Mgmt (SBI MF)",
+          "url": "https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIMF",
+      "dst": "AMUNDI",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "SBI Funds Mgmt (SBI MF) JV partner AMUNDI",
+          "url": "https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBISG",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "State Bank of India holds 65.0% of SBI-SG Global Sec",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 65.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBISG",
+      "dst": "Societe Generale",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "SBI-SG Global Sec JV partner Societe Generale",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SBIN",
+      "dst": "SBIVEN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "State Bank of India holds 100.0% of SBI Ventures",
+          "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "BOBCAPS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 100.0% of BOB Capital Markets",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "BOBFIN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 100.0% of BOB Financial Solutions",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "NAINITAL",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 98.57% of Nainital Bank",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 98.57,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "INDIAFIRST",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds stake% of IndiaFirst Life",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIAFIRST",
+      "dst": "Legal & General",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "IndiaFirst Life JV partner Legal & General",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "INDIAINFRADEBT",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds stake% of India Infradebt",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANFINHOME",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 29.99% of Can Fin Homes",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 29.99,
+      "confidence": "high",
+      "corr0": 0.46225176711100435,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANHSBCLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 51.0% of Canara HSBC Life",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 51.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANHSBCLIFE",
+      "dst": "HSBC",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Canara HSBC Life JV partner HSBC",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CRAMC",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 51.0% of Canara Robeco AMC",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 51.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CRAMC",
+      "dst": "Robeco/ORIX",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Canara Robeco AMC JV partner Robeco/ORIX",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANBANKFACTORS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 100.0% of Canbank Factors",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANBANKVENTURE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 100.0% of Canbank Venture Capital",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBHOUSING",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 28.0% of PNB Housing Finance",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 28.0,
+      "confidence": "high",
+      "corr0": 0.3495613532166354,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBGILTS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 74.0% of PNB Gilts",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 74.0,
+      "confidence": "high",
+      "corr0": 0.40656205569570636,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBMETLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 30.0% of PNB MetLife",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 30.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNBMETLIFE",
+      "dst": "MetLife",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "PNB MetLife JV partner MetLife",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBINVEST",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 100.0% of PNB Investment Services",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "PNB",
+      "dst": "PNBINTL",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Punjab National Bank holds 100.0% of PNB International (UK)",
+          "url": "https://pnb.bank.in/subsidiaries-and-JVs.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIONBANK",
+      "dst": "UNIONAMC",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Union Bank of India holds 100.0% of Union Asset Management",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIONAMC",
+      "dst": "Dai-ichi Life",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Union Asset Management JV partner Dai-ichi Life",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIONBANK",
+      "dst": "SUDLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Union Bank of India holds 25.1% of Star Union Dai-ichi Life",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 25.1,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "SUDLIFE",
+      "dst": "Dai-ichi Life",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Star Union Dai-ichi Life JV partner Dai-ichi Life",
+          "url": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
+          "date": null,
+          "source_type": "filing"
+        },
+        {
+          "quote": "Star Union Dai-ichi Life JV partner Dai-ichi Life",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "INDBANKMB",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of Indbank Merchant Banking",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "INDBANKHOUSING",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of Ind Bank Housing",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "UNIVSOMPO",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of Universal Sompo Gen Ins",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "UNIVSOMPO",
+      "dst": "Sompo (JV)",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Universal Sompo Gen Ins JV partner Sompo (JV)",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "ASREC",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds stake% of ASREC (India)",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "INDIANB",
+      "dst": "INDBANKGSS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Bank holds 100.0% of Indbank Global Support",
+          "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "SUDLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds 28.96% of Star Union Dai-ichi Life",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 28.96,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "BOIMB",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds 100.0% of BOI Merchant Bankers",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "BOISHL",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds 100.0% of BOI Shareholding",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKINDIA",
+      "dst": "STCI",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of India holds stake% of STCI Finance",
+          "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

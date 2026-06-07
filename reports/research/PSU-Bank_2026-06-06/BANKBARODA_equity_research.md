@@ -1,7 +1,31 @@
+<!-- ASSEMBLED:BEGIN -->
 # Bank of Baroda (BANKBARODA) — Equity Research
 
-*2026-06-06. Prices split-adjusted. (computed)/(sourced)/`unknown`. Audit: `filings/BANKBARODA_screener_page.pdf`.*
+> ### 🔴 Stance: **Wait for 200-DMA reclaim**
+> **₹264.0** · Mcap ₹136,369 Cr · P/E 6.88 · P/B 0.82 · ROE 12.7% · Div 3.22% · 1-yr +4.0%
+> Trend: 🔴 downtrend (below both DMAs) — vs50 -1.7%, vs200 -4.5%
+>
+> **Links:** [Screener](https://www.screener.in/company/BANKBARODA/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-BANKBARODA/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-baroda/BANKBARODA/532134/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=BANKBARODA)
 
+_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+
+## Visuals (charts first)
+
+### Price · volume · 25/50/200-DMA · delivery
+![BANKBARODA price/volume/DMA](charts/BANKBARODA_price_volume.png)
+> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🔴 downtrend (below both DMAs); delivery 37.4%, RelVol 1.32×.
+
+### Financials — revenue/profit · the investment book · quarterly · EPS
+![BANKBARODA financials](charts/BANKBARODA_financials.png)
+> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+
+### Group / dependency graph
+![BANKBARODA group graph](charts/dependency_BANKBARODA.png)
+> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated co-move with parent), yellow = unlisted, purple = foreign JV partner. See [GLOSSARY](GLOSSARY.md#graph-diagrams).
+
+---
+
+<!-- ASSEMBLED:END -->
 ## 1. Basic information
 | Field | Value | Provenance |
 |---|---|---|
@@ -57,3 +81,30 @@ GoI-majority; recent senior-management changes (governance). E/S/G detail: `unkn
 **Stance (computed read):** value / mean-reversion candidate — cheapest on book + best yield, but
 below both DMAs with cooling earnings momentum. Fits the 50-DMA reversion playbook only on a
 reclaim of the 200-DMA; until then it's the "cheap but unconfirmed" name.
+
+---
+
+---
+
+## Concall — key points (latest, sourced)
+_✅ latest transcript captured (`filings/concall/BANKBARODA.json`)._
+
+_Key points pending agent review — the transcript is captured; raw text is **not** dumped here (would be boilerplate). Read it in `filings/concall/BANKBARODA.json`._
+
+## DRHP
+N/A for the parent — Bank of Baroda is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: No recent group IPO of note.
+
+## References (this company)
+- Screener: https://www.screener.in/company/BANKBARODA/consolidated/
+- TradingView: https://in.tradingview.com/symbols/NSE-BANKBARODA/
+- BSE: https://www.bseindia.com/stock-share-price/bank-of-baroda/BANKBARODA/532134/
+- NSE: https://www.nseindia.com/get-quotes/equity?symbol=BANKBARODA
+- Audit snapshot: `filings/BANKBARODA_screener_page.pdf`
+- Data: `data/BANKBARODA_*.json` / `.csv`
+
+**News & disclosures (dated, sourced):**
+- Announcement under Regulation 30 (LODR)-Newspaper Publication 8h - Newspaper Publication - Special Window for Transfer a — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e407aae1-d774-447c-9d78-a7852f4d87da.pdf
+- Announcement under Regulation 30 (LODR)-Newspaper Publication 1d - Corrigendum to the Annual Report - Newspaper Publicat — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=33f409b9-0016-471e-9129-a60a47bebde2.pdf
+- Announcement under Regulation 30 (LODR)-Change in Management 2d - Bank of Baroda reports senior management changes effec — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef22fde4-d1be-4c16-9c51-156f48fe49c4.pdf
+- Investor Conference Outcome 2d - Bank of Baroda participated in Citi India Conference 2026 on 4 June 2026; no UPSI share — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4b9bc92d-11a7-4e57-b150-736a82cf2150.pdf
+- Corrigendum To The Annual Report For The Financial Year 2025-2026 3 Jun - Bank of Baroda issued corrigendum to FY2025-26 — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=13ddd02f-ae7a-47be-bc88-9afcf4395763.pdf

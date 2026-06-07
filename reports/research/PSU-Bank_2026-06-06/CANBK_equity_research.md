@@ -1,8 +1,31 @@
+<!-- ASSEMBLED:BEGIN -->
 # Canara Bank (CANBK) — Equity Research
 
-*2026-06-06. Prices split-adjusted. (computed)=our scripts · (sourced)=dated disclosure · `unknown`.
-Audit snapshot: `filings/CANBK_screener_page.pdf`. Data: `data/CANBK_*.json/.csv`.*
+> ### 🟢 Stance: **Accumulate on 50-DMA dips**
+> **₹136.0** · Mcap ₹123,189 Cr · P/E 6.87 · P/B 1.05 · ROE 16.1% · Div 3.09% · 1-yr +17.2%
+> Trend: 🟡 pullback within trend (below 50-DMA, near/above 200-DMA) — vs50 +1.4%, vs200 -0.4%
+>
+> **Links:** [Screener](https://www.screener.in/company/CANBK/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-CANBK/) · [BSE](https://www.bseindia.com/stock-share-price/canara-bank/CANBK/532483/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=CANBK)
 
+_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+
+## Visuals (charts first)
+
+### Price · volume · 25/50/200-DMA · delivery
+![CANBK price/volume/DMA](charts/CANBK_price_volume.png)
+> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🟡 pullback within trend (below 50-DMA, near/above 200-DMA); delivery 40.4%, RelVol 1.2×.
+
+### Financials — revenue/profit · the investment book · quarterly · EPS
+![CANBK financials](charts/CANBK_financials.png)
+> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+
+### Group / dependency graph
+![CANBK group graph](charts/dependency_CANBK.png)
+> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated co-move with parent), yellow = unlisted, purple = foreign JV partner. See [GLOSSARY](GLOSSARY.md#graph-diagrams).
+
+---
+
+<!-- ASSEMBLED:END -->
 ## 1. Basic information
 | Field | Value | Provenance |
 |---|---|---|
@@ -77,3 +100,32 @@ disclosures: **`unknown`** (not pulled for CANBK). E/S detail: `unknown`.
 above its 50-DMA), strongest absorption, clean asset quality, modest P/B. Watch the capital raise
 (dilution) and flattening quarterly profit. The sector's EARNED strategy is **50-DMA mean-reversion**
 (accumulate pullbacks toward the 50-DMA), not chasing strength.
+
+---
+
+---
+
+## Concall — key points (latest, sourced)
+_✅ latest transcript captured (`filings/concall/CANBK.json`)._
+
+- Gold-loan interest pricing kept unchanged over recent quarters; management emphasised operating well within regulator-prescribed LTV limits (Q4 & FY26 earnings call, sourced: filings/concall/CANBK.json).
+- Gold loans flagged as a focus area in Q&A — LTV discipline stressed over pricing-led growth.
+
+
+## DRHP
+N/A for the parent — Canara Bank is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: Canara Robeco AMC & Canara HSBC Life IPOs (RBI-approved divestment).
+
+## References (this company)
+- Screener: https://www.screener.in/company/CANBK/consolidated/
+- TradingView: https://in.tradingview.com/symbols/NSE-CANBK/
+- BSE: https://www.bseindia.com/stock-share-price/canara-bank/CANBK/532483/
+- NSE: https://www.nseindia.com/get-quotes/equity?symbol=CANBK
+- Audit snapshot: `filings/CANBK_screener_page.pdf`
+- Data: `data/CANBK_*.json` / `.csv`
+
+**News & disclosures (dated, sourced):**
+- Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order 2m - Disclosure under Regulation 30 of SEBI (LOD — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=54e3dca5-cae1-47cd-89d0-b9132bfd3836.pdf
+- Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order 23h - RBI imposed ₹41.80 lakh penalty on Canara  — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d9a52a07-9aca-455d-8d0c-25ebedfd92b0.pdf
+- Board Meeting Outcome for Outcome Of The Board Meeting - Capital Raising Plan For The Financial Year 2026-27 2 Jun - Can — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ec22432-3689-42dc-925e-2f694f58bba4.pdf
+- Announcement under Regulation 30 (LODR)-Change in Directorate 1 Jun - Shri Brajesh Kumar Singh appointed MD & CEO of Can — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bb82dafd-4d46-47ad-a16d-1fdf6c9b7029.pdf
+- Announcement under Regulation 30 (LODR)-Newspaper Publication 28 May — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=532c5dc2-e777-4fe1-b441-f91948a8b399.pdf

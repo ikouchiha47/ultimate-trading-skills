@@ -1,0 +1,204 @@
+{
+  "nodes": [
+    {
+      "id": "CANBK",
+      "name": "Canara Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "CANBK",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "CANFINHOME",
+      "name": "Can Fin Homes",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "CANFINHOME",
+      "domain": "financial services",
+      "listed": true
+    },
+    {
+      "id": "CANHSBCLIFE",
+      "name": "Canara HSBC Life",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "HSBC",
+      "name": "HSBC",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "CRAMC",
+      "name": "Canara Robeco AMC",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "Robeco/ORIX",
+      "name": "Robeco/ORIX",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "CANBANKFACTORS",
+      "name": "Canbank Factors",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "CANBANKVENTURE",
+      "name": "Canbank Venture Capital",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "CANBK",
+      "dst": "CANFINHOME",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 29.99% of Can Fin Homes",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 29.99,
+      "confidence": "high",
+      "corr0": 0.46225176711100435,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANHSBCLIFE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 51.0% of Canara HSBC Life",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 51.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANHSBCLIFE",
+      "dst": "HSBC",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Canara HSBC Life JV partner HSBC",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CRAMC",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 51.0% of Canara Robeco AMC",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 51.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CRAMC",
+      "dst": "Robeco/ORIX",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "Canara Robeco AMC JV partner Robeco/ORIX",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANBANKFACTORS",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 100.0% of Canbank Factors",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "CANBK",
+      "dst": "CANBANKVENTURE",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Canara Bank holds 100.0% of Canbank Venture Capital",
+          "url": "https://en.wikipedia.org/wiki/Canara_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

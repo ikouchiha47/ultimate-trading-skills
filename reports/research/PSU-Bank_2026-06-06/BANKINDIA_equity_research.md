@@ -1,7 +1,31 @@
+<!-- ASSEMBLED:BEGIN -->
 # Bank of India (BANKINDIA) — Equity Research
 
-*2026-06-06. Split-adjusted. (computed)/(sourced)/`unknown`. Audit: `filings/BANKINDIA_screener_page.pdf`.*
+> ### 🟡 Stance: **Watch for 200-DMA reclaim**
+> **₹141.0** · Mcap ₹64,402 Cr · P/E 6.08 · P/B 0.71 · ROE 12.4% · Div 3.29% · 1-yr +13.5%
+> Trend: 🔴 downtrend (below both DMAs) — vs50 -1.3%, vs200 -0.3%
+>
+> **Links:** [Screener](https://www.screener.in/company/BANKINDIA/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-BANKINDIA/) · [BSE](https://www.bseindia.com/stock-share-price/bank-of-india/BANKINDIA/532149/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=BANKINDIA)
 
+_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+
+## Visuals (charts first)
+
+### Price · volume · 25/50/200-DMA · delivery
+![BANKINDIA price/volume/DMA](charts/BANKINDIA_price_volume.png)
+> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🔴 downtrend (below both DMAs); delivery 40.5%, RelVol 0.99×.
+
+### Financials — revenue/profit · the investment book · quarterly · EPS
+![BANKINDIA financials](charts/BANKINDIA_financials.png)
+> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+
+### Group / dependency graph
+![BANKINDIA group graph](charts/dependency_BANKINDIA.png)
+> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated co-move with parent), yellow = unlisted, purple = foreign JV partner. See [GLOSSARY](GLOSSARY.md#graph-diagrams).
+
+---
+
+<!-- ASSEMBLED:END -->
 ## 1. Basic information
 | Field | Value | Prov. |
 |---|---|---|
@@ -46,3 +70,30 @@ Lowest-ROE-tier; cheap can stay cheap without a catalyst; smaller/less liquid. N
 ---
 **Stance:** Watch for a 200-DMA reclaim — cheapest on book with improving earnings, sitting exactly
 at its DMAs. Buy the reclaim, not before; ROE caps the upside vs the leaders.
+
+---
+
+---
+
+## Concall — key points (latest, sourced)
+_✅ latest transcript captured (`filings/concall/BANKINDIA.json`)._
+
+_Key points pending agent review — the transcript is captured; raw text is **not** dumped here (would be boilerplate). Read it in `filings/concall/BANKINDIA.json`._
+
+## DRHP
+N/A for the parent — Bank of India is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: No recent group IPO of note.
+
+## References (this company)
+- Screener: https://www.screener.in/company/BANKINDIA/consolidated/
+- TradingView: https://in.tradingview.com/symbols/NSE-BANKINDIA/
+- BSE: https://www.bseindia.com/stock-share-price/bank-of-india/BANKINDIA/532149/
+- NSE: https://www.nseindia.com/get-quotes/equity?symbol=BANKINDIA
+- Audit snapshot: `filings/BANKINDIA_screener_page.pdf`
+- Data: `data/BANKINDIA_*.json` / `.csv`
+
+**News & disclosures (dated, sourced):**
+- Bank Of India Has informed About One To One Physical Investor / Analyst Meet With M/S Schonfeld Strategic Advisors. 2d - — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=72148836-51b6-44bb-8240-de74ad2b2dd2.pdf
+- Announcement under Regulation 30 (LODR)-Change in Management 3 Jun - Shri Lalit Taneja appointed as CVO of Bank of India — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d80502dc-4175-47e5-b15d-888b147d332f.pdf
+- Bank Of India Has informed About The One To One Virtual Investor/Analyst Meet. 3 Jun - Bank of India held a one-to-one v — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c3bb23d-8494-4c8f-947a-9e86ca6905ba.pdf
+- Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome 2 Jun - Bank of India participated in BofA Ind — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=87b6b9b4-70f2-4584-a01c-a3f8e9943fec.pdf
+- Announcement under Regulation 30 (LODR)-Change in Management 1 Jun - Bank of India elevates Shri Vikash Krishna from Gen — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3efd2dc1-1f9b-49cf-8d9b-3f04d5b0924e.pdf

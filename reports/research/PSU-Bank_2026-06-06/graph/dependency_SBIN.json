@@ -11,7 +11,7 @@
     },
     {
       "id": "SBICARD",
-      "name": "SBI Cards & Payment Services",
+      "name": "SBI Cards",
       "country": "IN",
       "kind": "company",
       "ticker": "SBICARD",
@@ -20,7 +20,7 @@
     },
     {
       "id": "SBILIFE",
-      "name": "SBI Life Insurance",
+      "name": "SBI Life",
       "country": "IN",
       "kind": "company",
       "ticker": "SBILIFE",
@@ -47,7 +47,7 @@
     },
     {
       "id": "SBIMF",
-      "name": "SBI Funds Management (SBI MF)",
+      "name": "SBI Funds Mgmt (SBI MF)",
       "country": "IN",
       "kind": "company",
       "ticker": null,
@@ -65,7 +65,7 @@
     },
     {
       "id": "SBISG",
-      "name": "SBI-SG Global Securities",
+      "name": "SBI-SG Global Sec",
       "country": "IN",
       "kind": "company",
       "ticker": null,
@@ -98,7 +98,7 @@
       "relation": "group_entity",
       "evidence": [
         {
-          "quote": "SBI holds 68.98% of SBI Cards & Payment Services",
+          "quote": "State Bank of India holds 68.98% of SBI Cards",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": "2026",
           "source_type": "filing"
@@ -106,7 +106,7 @@
       ],
       "strength": 68.98,
       "confidence": "high",
-      "corr0": 0.3141620382161527,
+      "corr0": 0.31416196896076554,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -116,7 +116,7 @@
       "relation": "group_entity",
       "evidence": [
         {
-          "quote": "SBI holds 55.45% of SBI Life Insurance",
+          "quote": "State Bank of India holds 55.45% of SBI Life",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": "2026",
           "source_type": "filing"
@@ -124,7 +124,7 @@
       ],
       "strength": 55.45,
       "confidence": "high",
-      "corr0": 0.32003348959276184,
+      "corr0": 0.3200334563119374,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -134,7 +134,7 @@
       "relation": "partners_with",
       "evidence": [
         {
-          "quote": "SBI Life Insurance is a JV with BNP Paribas",
+          "quote": "SBI Life JV partner BNP Paribas",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": null,
           "source_type": "filing"
@@ -152,7 +152,7 @@
       "relation": "group_entity",
       "evidence": [
         {
-          "quote": "SBI holds 69.95% of SBI General Insurance",
+          "quote": "State Bank of India holds 69.95% of SBI General Insurance",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": "2026",
           "source_type": "filing"
@@ -170,7 +170,7 @@
       "relation": "group_entity",
       "evidence": [
         {
-          "quote": "SBI holds majority% of SBI Funds Management (SBI MF)",
+          "quote": "State Bank of India holds stake% of SBI Funds Mgmt (SBI MF)",
           "url": "https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html",
           "date": "2026",
           "source_type": "filing"
@@ -188,7 +188,7 @@
       "relation": "partners_with",
       "evidence": [
         {
-          "quote": "SBI Funds Management (SBI MF) is a JV with AMUNDI",
+          "quote": "SBI Funds Mgmt (SBI MF) JV partner AMUNDI",
           "url": "https://www.business-standard.com/markets/news/sbi-to-sell-6-3-stake-in-sbi-mf-via-ipo-retain-majority-shareholding-125110600780_1.html",
           "date": null,
           "source_type": "filing"
@@ -206,7 +206,7 @@
       "relation": "group_entity",
       "evidence": [
         {
-          "quote": "SBI holds 65.0% of SBI-SG Global Securities",
+          "quote": "State Bank of India holds 65.0% of SBI-SG Global Sec",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": "2026",
           "source_type": "filing"
@@ -224,7 +224,7 @@
       "relation": "partners_with",
       "evidence": [
         {
-          "quote": "SBI-SG Global Securities is a JV with Societe Generale",
+          "quote": "SBI-SG Global Sec JV partner Societe Generale",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": null,
           "source_type": "filing"
@@ -242,7 +242,7 @@
       "relation": "group_entity",
       "evidence": [
         {
-          "quote": "SBI holds 100.0% of SBI Ventures",
+          "quote": "State Bank of India holds 100.0% of SBI Ventures",
           "url": "https://en.wikipedia.org/wiki/State_Bank_of_India",
           "date": "2026",
           "source_type": "filing"

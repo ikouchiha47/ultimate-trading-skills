@@ -1,7 +1,31 @@
+<!-- ASSEMBLED:BEGIN -->
 # State Bank of India (SBIN) — Equity Research
 
-*2026-06-06. Prices split-adjusted. (computed)/(sourced)/`unknown`. Audit: `filings/SBIN_screener_page.pdf`.*
+> ### 🟡 Stance: **Hold / add at the 200-DMA**
+> **₹978.0** · Mcap ₹902,477 Cr · P/E 10.8 · P/B 1.51 · ROE 15.4% · Div 1.77% · 1-yr +20.7%
+> Trend: 🔴 downtrend (below both DMAs) — vs50 -4.6%, vs200 -0.8%
+>
+> **Links:** [Screener](https://www.screener.in/company/SBIN/consolidated/) · [TradingView](https://in.tradingview.com/symbols/NSE-SBIN/) · [BSE](https://www.bseindia.com/stock-share-price/state-bank-of-india/SBIN/500112/) · [NSE](https://www.nseindia.com/get-quotes/equity?symbol=SBIN)
 
+_Colour code: 🟢 constructive · 🟡 neutral/watch · 🔴 avoid. See [GLOSSARY](GLOSSARY.md) for every header, term and chart colour._
+
+## Visuals (charts first)
+
+### Price · volume · 25/50/200-DMA · delivery
+![SBIN price/volume/DMA](charts/SBIN_price_volume.png)
+> **What it shows:** daily split-adjusted price with 25/50/200-day moving averages, volume bars (green up / red down) and delivery%. **How to read:** above the 200-DMA = long-term uptrend; the 50-DMA is the buy-the-dip anchor (our EARNED strategy). **This name:** 🔴 downtrend (below both DMAs); delivery 43.6%, RelVol 1.35×.
+
+### Financials — revenue/profit · the investment book · quarterly · EPS
+![SBIN financials](charts/SBIN_financials.png)
+> **What it shows:** (top-left) annual Revenue & Net Profit; (top-right) **the book** — Deposits vs Investments (G-sec/SLR) vs Borrowing = where the money is; (bottom-left) quarterly Net Profit momentum; (bottom-right) EPS trend. ₹ Cr, sourced screener.
+
+### Group / dependency graph
+![SBIN group graph](charts/dependency_SBIN.png)
+> **What it shows:** subsidiaries/JVs (sourced; edge = stake %). Green node = listed (price-validated co-move with parent), yellow = unlisted, purple = foreign JV partner. See [GLOSSARY](GLOSSARY.md#graph-diagrams).
+
+---
+
+<!-- ASSEMBLED:END -->
 ## 1. Basic information
 | Field | Value | Provenance |
 |---|---|---|
@@ -59,3 +83,30 @@ GoI-majority; governance via govt-appointed board. E/S/G detail: `unknown`.
 **Stance (computed read):** core hold / quality anchor. Best franchise + highest delivery%
 (investor conviction), but the priciest on P/B and currently below its 50-DMA on rising volume —
 the 50-DMA strategy says wait for the pullback to base near the 200-DMA rather than chase.
+
+---
+
+---
+
+## Concall — key points (latest, sourced)
+_✅ latest transcript captured (`filings/concall/SBIN.json`)._
+
+_Key points pending agent review — the transcript is captured; raw text is **not** dumped here (would be boilerplate). Read it in `filings/concall/SBIN.json`._
+
+## DRHP
+N/A for the parent — State Bank of India is a long-listed PSU bank (no recent IPO/DRHP). Group IPOs: SBI Funds Mgmt (SBI MF) IPO expected 2026.
+
+## References (this company)
+- Screener: https://www.screener.in/company/SBIN/consolidated/
+- TradingView: https://in.tradingview.com/symbols/NSE-SBIN/
+- BSE: https://www.bseindia.com/stock-share-price/state-bank-of-india/SBIN/500112/
+- NSE: https://www.nseindia.com/get-quotes/equity?symbol=SBIN
+- Audit snapshot: `filings/SBIN_screener_page.pdf`
+- Data: `data/SBIN_*.json` / `.csv`
+
+**News & disclosures (dated, sourced):**
+- Group Chief Risk Officer 1d - Shri Ratna Teja Dinakara Akella appointed Group Chief Risk Officer on 5 June 2026. — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=88c6f5be-75e8-498d-b8d1-2a054a322212.pdf
+- Cancellation Of Meeting With Institutional Investors Schedule On 04.06.2026 3 Jun - SBI cancelled investor/analyst meeti — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4671ab4b-162f-4911-b70a-b9c20705a28d.pdf
+- Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome 1 Jun - SBI held analyst and institutional inv — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4bc31c79-a8c3-44a6-b35f-254642e2afb9.pdf
+- Raising Of Senior/ Unsecured/ Fixed Rate / Reg S Bond 29 May - SBI priced USD 200 million senior unsecured Reg-S notes,  — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a53dee49-a081-4178-b3be-294e7a5364ea.pdf
+- Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome 28 May - SBI held investor interactions in Lon — https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ed8944a8-8e73-4286-a3a2-af58a7ec220a.pdf
