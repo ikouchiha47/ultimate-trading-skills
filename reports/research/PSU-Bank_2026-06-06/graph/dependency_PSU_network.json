@@ -154,6 +154,15 @@
       "listed": false
     },
     {
+      "id": "IIBMALAYSIA",
+      "name": "India International Bank (Malaysia)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
       "id": "CANBK",
       "name": "Canara Bank",
       "country": "IN",
@@ -422,6 +431,60 @@
       "ticker": null,
       "domain": "financial services",
       "listed": false
+    },
+    {
+      "id": "IOB",
+      "name": "Indian Overseas Bank",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "IOB",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "Bank of Baroda (JV)",
+      "name": "Bank of Baroda (JV)",
+      "country": "FOREIGN",
+      "kind": "company",
+      "ticker": null,
+      "domain": null,
+      "listed": false
+    },
+    {
+      "id": "ODISHAGRAMYA",
+      "name": "Odisha Gramya Bank (RRB)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "MAHABANK",
+      "name": "Bank of Maharashtra",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "MAHABANK",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "METCO",
+      "name": "Maharashtra Executor & Trustee Co",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "MAHAGRAMIN",
+      "name": "Maharashtra Gramin Bank (RRB)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
     }
   ],
   "edges": [
@@ -439,7 +502,7 @@
       ],
       "strength": 68.98,
       "confidence": "high",
-      "corr0": 0.31416196896076554,
+      "corr0": 0.31416201170951025,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -457,7 +520,7 @@
       ],
       "strength": 55.45,
       "confidence": "high",
-      "corr0": 0.3200334563119374,
+      "corr0": 0.32003318615692383,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -696,6 +759,24 @@
       "lead_corr": null
     },
     {
+      "src": "BANKBARODA",
+      "dst": "IIBMALAYSIA",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 40.0% of India International Bank (Malaysia)",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 40.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
       "src": "CANBK",
       "dst": "CANFINHOME",
       "relation": "group_entity",
@@ -709,7 +790,7 @@
       ],
       "strength": 29.99,
       "confidence": "high",
-      "corr0": 0.46225176711100435,
+      "corr0": 0.46225174901544785,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -835,7 +916,7 @@
       ],
       "strength": 28.0,
       "confidence": "high",
-      "corr0": 0.3495613532166354,
+      "corr0": 0.3495615372762071,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -853,7 +934,7 @@
       ],
       "strength": 74.0,
       "confidence": "high",
-      "corr0": 0.40656205569570636,
+      "corr0": 0.40656183461115897,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -1071,6 +1152,12 @@
           "url": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
           "date": null,
           "source_type": "filing"
+        },
+        {
+          "quote": "Universal Sompo Gen Ins JV partner Sompo (JV)",
+          "url": "https://en.wikipedia.org/wiki/Indian_Overseas_Bank",
+          "date": null,
+          "source_type": "filing"
         }
       ],
       "strength": null,
@@ -1177,6 +1264,114 @@
         {
           "quote": "Bank of India holds stake% of STCI Finance",
           "url": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "IOB",
+      "dst": "IIBMALAYSIA",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Overseas Bank holds 35.0% of India International Bank (Malaysia)",
+          "url": "https://en.wikipedia.org/wiki/Indian_Overseas_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 35.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "IIBMALAYSIA",
+      "dst": "Bank of Baroda (JV)",
+      "relation": "partners_with",
+      "evidence": [
+        {
+          "quote": "India International Bank (Malaysia) JV partner Bank of Baroda (JV)",
+          "url": "https://en.wikipedia.org/wiki/Indian_Overseas_Bank",
+          "date": null,
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "IOB",
+      "dst": "ODISHAGRAMYA",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Overseas Bank holds stake% of Odisha Gramya Bank (RRB)",
+          "url": "https://en.wikipedia.org/wiki/Indian_Overseas_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "IOB",
+      "dst": "UNIVSOMPO",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Indian Overseas Bank holds stake% of Universal Sompo Gen Ins",
+          "url": "https://en.wikipedia.org/wiki/Indian_Overseas_Bank",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "MAHABANK",
+      "dst": "METCO",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Maharashtra holds 100.0% of Maharashtra Executor & Trustee Co",
+          "url": "https://bankofmaharashtra.bank.in/metco-trustee",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "MAHABANK",
+      "dst": "MAHAGRAMIN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Maharashtra holds stake% of Maharashtra Gramin Bank (RRB)",
+          "url": "https://bankofmaharashtra.bank.in/metco-trustee",
           "date": "2026",
           "source_type": "filing"
         }

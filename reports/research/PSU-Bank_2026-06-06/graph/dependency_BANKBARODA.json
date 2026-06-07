@@ -62,6 +62,15 @@
       "ticker": null,
       "domain": "financial services",
       "listed": false
+    },
+    {
+      "id": "IIBMALAYSIA",
+      "name": "India International Bank (Malaysia)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
     }
   ],
   "edges": [
@@ -169,6 +178,24 @@
       ],
       "strength": null,
       "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "BANKBARODA",
+      "dst": "IIBMALAYSIA",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Baroda holds 40.0% of India International Bank (Malaysia)",
+          "url": "https://bankofbaroda.bank.in/about-us/subsidiaries-and-joint-ventures",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 40.0,
+      "confidence": "high",
       "corr0": null,
       "lead_lag": null,
       "lead_corr": null

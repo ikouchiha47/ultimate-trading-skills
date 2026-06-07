@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "MAHABANK",
+      "name": "Bank of Maharashtra",
+      "country": "IN",
+      "kind": "company",
+      "ticker": "MAHABANK",
+      "domain": "PSU bank",
+      "listed": true
+    },
+    {
+      "id": "METCO",
+      "name": "Maharashtra Executor & Trustee Co",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    },
+    {
+      "id": "MAHAGRAMIN",
+      "name": "Maharashtra Gramin Bank (RRB)",
+      "country": "IN",
+      "kind": "company",
+      "ticker": null,
+      "domain": "financial services",
+      "listed": false
+    }
+  ],
+  "edges": [
+    {
+      "src": "MAHABANK",
+      "dst": "METCO",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Maharashtra holds 100.0% of Maharashtra Executor & Trustee Co",
+          "url": "https://bankofmaharashtra.bank.in/metco-trustee",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": 100.0,
+      "confidence": "high",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    },
+    {
+      "src": "MAHABANK",
+      "dst": "MAHAGRAMIN",
+      "relation": "group_entity",
+      "evidence": [
+        {
+          "quote": "Bank of Maharashtra holds stake% of Maharashtra Gramin Bank (RRB)",
+          "url": "https://bankofmaharashtra.bank.in/metco-trustee",
+          "date": "2026",
+          "source_type": "filing"
+        }
+      ],
+      "strength": null,
+      "confidence": "medium",
+      "corr0": null,
+      "lead_lag": null,
+      "lead_corr": null
+    }
+  ]
+}

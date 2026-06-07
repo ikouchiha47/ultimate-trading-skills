@@ -14,26 +14,30 @@ BANKS = ["SBIN","BANKBARODA","UNIONBANK","CANBK","PNB","INDIANB","BANKINDIA","IO
 READER = str(ROOT / "skills/fundamentals/equity-research/scripts/concall_reader.py")
 
 
-def latest_transcript(sym: str) -> str | None:
-    sig = json.loads((HERE / "data" / f"{sym}_signals.json").read_text())
-    for c in sig.get("concalls", []):
-        if "Transcript" in c.get("text", "") and c.get("url"):
-            return c["url"]
-    return None
+SREADER = str(ROOT / "skills/fundamentals/equity-research/scripts/screener_reader.py")
 
 
 def fetch(sym: str) -> str:
-    url = latest_transcript(sym)
-    if not url:
-        raise RuntimeError("no transcript url")
+    """Get screener documents (transcript+ai_summary+ppt per concall), then run the reader on the
+    LATEST concall via --from-docs so it cascades transcript-PDF → AI-summary → PPT. BSE transcript
+    PDFs are Akamai-gated (AttachHis); the AI summary (screener) is the reliable, clean source."""
+    docs = HERE / "filings" / "concall" / f"{sym}_docs.json"
+    docs.parent.mkdir(parents=True, exist_ok=True)
+    subprocess.run(["uv","run","--extra","data","--extra","scrape","python",SREADER,
+                    "--symbol",sym,"--section","documents","--output",str(docs)],
+                   cwd=str(ROOT), capture_output=True, text=True, timeout=300)
+    d = json.loads(docs.read_text()); dd = d.get("documents", d)
+    concalls = dd.get("concalls", [])
+    if not concalls:
+        raise RuntimeError("no concalls listed")
+    latest = concalls[0]["date"]
     out = HERE / "filings" / "concall" / f"{sym}.json"
-    out.parent.mkdir(parents=True, exist_ok=True)
     r = subprocess.run(["uv","run","--extra","data","--extra","scrape","python",READER,
-                        "--transcript",url,"--output",str(out)],
+                        "--from-docs",str(docs),"--date",latest,"--output",str(out)],
                        cwd=str(ROOT), capture_output=True, text=True, timeout=400)
     if not out.exists():
-        raise RuntimeError(f"reader failed: {r.stderr[-200:]}")
-    return f"filings/concall/{sym}.json"
+        raise RuntimeError(f"reader failed: {r.stdout[-150:]} {r.stderr[-150:]}")
+    return f"filings/concall/{sym}.json ({latest})"
 
 
 if __name__ == "__main__":

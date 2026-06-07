@@ -106,7 +106,7 @@
       ],
       "strength": 68.98,
       "confidence": "high",
-      "corr0": 0.31416196896076554,
+      "corr0": 0.31416201170951025,
       "lead_lag": null,
       "lead_corr": null
     },
@@ -124,7 +124,7 @@
       ],
       "strength": 55.45,
       "confidence": "high",
-      "corr0": 0.3200334563119374,
+      "corr0": 0.32003318615692383,
       "lead_lag": null,
       "lead_corr": null
     },

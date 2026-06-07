@@ -29,6 +29,8 @@ S = {
     "UNION": "https://www.unionbankofindia.bank.in/en/common/subsidiaries-and-joint-ventures",
     "INDIANB": "https://www.indianbank.in/departments/subsidiaries-and-joint-ventures/",
     "BOI": "https://www.business-standard.com/article/finance/bank-of-india-to-divest-25-in-star-union-dai-ichi-life-for-rs-1-106-crore-119040600066_1.html",
+    "IOB": "https://en.wikipedia.org/wiki/Indian_Overseas_Bank",
+    "MAHA": "https://bankofmaharashtra.bank.in/metco-trustee",
 }
 
 # Per bank: (entity_id, display, ticker|None, stake%|None, jv_partner|None, src_key)
@@ -79,11 +81,24 @@ GROUPS: dict[str, list[tuple]] = {
         ("BOISHL", "BOI Shareholding", None, 100.0, None, "BOI"),
         ("STCI", "STCI Finance", None, None, None, "BOI"),
     ],
+    "IOB": [
+        ("IIBMALAYSIA", "India International Bank (Malaysia)", None, 35.0, "Bank of Baroda (JV)", "IOB"),
+        ("ODISHAGRAMYA", "Odisha Gramya Bank (RRB)", None, None, None, "IOB"),
+        ("UNIVSOMPO", "Universal Sompo Gen Ins", None, None, "Sompo (JV)", "IOB"),
+    ],
+    "MAHABANK": [
+        ("METCO", "Maharashtra Executor & Trustee Co", None, 100.0, None, "MAHA"),
+        ("MAHAGRAMIN", "Maharashtra Gramin Bank (RRB)", None, None, None, "MAHA"),
+    ],
 }
+# BANKBARODA also co-owns India International Bank (Malaysia) — adds the IOB↔BoB cross-link.
+GROUPS["BANKBARODA"].append(
+    ("IIBMALAYSIA", "India International Bank (Malaysia)", None, 40.0, None, "BBK"))
 BANK_NAMES = {"SBIN": "State Bank of India", "BANKBARODA": "Bank of Baroda",
               "CANBK": "Canara Bank", "PNB": "Punjab National Bank",
               "UNIONBANK": "Union Bank of India", "INDIANB": "Indian Bank",
-              "BANKINDIA": "Bank of India"}
+              "BANKINDIA": "Bank of India", "IOB": "Indian Overseas Bank",
+              "MAHABANK": "Bank of Maharashtra"}
 LISTED_SUBS = {"SBICARD", "SBILIFE", "CANFINHOME", "PNBHOUSING", "PNBGILTS"}
 
 
