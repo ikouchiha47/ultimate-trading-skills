@@ -1,0 +1,18 @@
+edge                         exp  corr0  lead(d)  leadcorr  verdict
+--------------------------------------------------------------------------------
+NIFTY50->PSU_BANK            +1    +0.90     +0    +0.90   supported (co-move)
+PNB->PSU_BANK                +1    +0.44     +0    +0.44   supported (co-move)
+CANBK->PSU_BANK              +1    +0.42     +0    +0.42   supported (co-move)
+BANKBARODA->PSU_BANK         +1    +0.41     +0    +0.41   supported (co-move)
+UNIONBANK->PSU_BANK          +1    +0.39     +0    +0.39   supported (co-move)
+SBIN->PSU_BANK               +1    +0.38     +0    +0.38   supported (co-move)
+MAHABANK->PSU_BANK           +1    +0.37     +0    +0.37   supported (co-move)
+BANKINDIA->PSU_BANK          +1    +0.36     +0    +0.36   supported (co-move)
+INDIANB->PSU_BANK            +1    +0.35     +0    +0.35   supported (co-move)
+CENTRALBK->PSU_BANK          +1    +0.33     +0    +0.33   supported (co-move)
+PSB->PSU_BANK                +1    +0.32     +0    +0.32   supported (co-move)
+UCOBANK->PSU_BANK            +1    +0.31     +0    +0.31   supported (co-move)
+IOB->PSU_BANK                +1    +0.30     +0    +0.30   supported (co-move)
+US10Y->PSU_BANK              -1    +0.06     +3    +0.14   weak
+USDINR->PSU_BANK             -1    +0.06     +3    +0.07   no daily link (try weekly / via flow)
+VIX->PSU_BANK                -1    -0.03     +1    -0.34   supported (leads 1d -0.34)

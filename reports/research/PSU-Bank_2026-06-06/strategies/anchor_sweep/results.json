@@ -1,0 +1,50 @@
+[
+  {
+    "anchor": 50,
+    "sharpe": 1.316036109735973,
+    "sharpe_over_null": 0.22691028345236441,
+    "cagr": 0.32369352157378994,
+    "max_drawdown": -0.19507125890736277,
+    "n_trades": 18,
+    "notes": [
+      "OOS-tail Sharpe (30%): 0.92",
+      "EDGE: Sharpe 1.32 vs null 1.09"
+    ]
+  },
+  {
+    "anchor": 200,
+    "sharpe": 0.6875090072456858,
+    "sharpe_over_null": -0.4016168190379228,
+    "cagr": 0.1562443218487337,
+    "max_drawdown": -0.28284269396791273,
+    "n_trades": 10,
+    "notes": [
+      "OOS-tail Sharpe (30%): -0.08",
+      "no edge over null: Sharpe 0.69 vs null 1.09"
+    ]
+  },
+  {
+    "anchor": 25,
+    "sharpe": 0.5174999652314217,
+    "sharpe_over_null": -0.5716258610521868,
+    "cagr": 0.09167635476964575,
+    "max_drawdown": -0.20337021360895613,
+    "n_trades": 22,
+    "notes": [
+      "OOS-tail Sharpe (30%): 0.38",
+      "no edge over null: Sharpe 0.52 vs null 1.09"
+    ]
+  },
+  {
+    "anchor": 100,
+    "sharpe": 0.32911105652060363,
+    "sharpe_over_null": -0.7600147697630049,
+    "cagr": 0.051624231845103674,
+    "max_drawdown": -0.2705222564184381,
+    "n_trades": 12,
+    "notes": [
+      "OOS-tail Sharpe (30%): 0.83",
+      "no edge over null: Sharpe 0.33 vs null 1.09"
+    ]
+  }
+]

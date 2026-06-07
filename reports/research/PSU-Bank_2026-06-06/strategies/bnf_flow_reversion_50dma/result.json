@@ -1,0 +1,15 @@
+{
+  "strategy": "BnfFlowReversion",
+  "anchor_dma": 50,
+  "sharpe": 0.6891655932491795,
+  "sharpe_over_null": -0.39996023303442907,
+  "cagr": 0.09954239765927664,
+  "max_drawdown": -0.10071850262599469,
+  "n_trades": 5,
+  "deflated_sharpe": 1.0,
+  "notes": [
+    "OOS-tail Sharpe (30%): 1.45",
+    "no edge over null: Sharpe 0.69 vs null 1.09"
+  ],
+  "verdict": "NO EDGE"
+}

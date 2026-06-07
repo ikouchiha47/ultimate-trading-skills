@@ -1,0 +1,18 @@
+{
+  "symbol": "MAHABANK",
+  "url": "https://www.screener.in/company/MAHABANK/consolidated/",
+  "about": "Bank of Maharashtra is engaged in providing banking services. The Bank's segments include Treasury, Corporate/Wholesale Banking, Retail Banking and Other banking operations.[1]",
+  "key_points": {
+    "raw": "Revenue Breakup\nRetail Banking: ~46% in Q3 FY26 vs ~35% in FY22\nCorporate/ Wholesale Banking: ~35% in Q3 FY26 vs ~30% in FY22\nTreasury: 19% in Q3 FY26 vs 32% in FY22\nOther Operations: 1% in Q3 FY26 vs 3% in FY22 [1][2]",
+    "sections": [
+      "Revenue Breakup"
+    ]
+  },
+  "links": [
+    "https://www.bseindia.com/xml-data/corpfiling/AttachHis/b1c24ba0-860d-46df-8cce-eb70662ad4bb.pdf#page=13",
+    "https://www.bseindia.com/xml-data/corpfiling/AttachHis/129dc68c-34a0-4bbf-873b-e3f0102887fc.pdf#page=12"
+  ],
+  "website": "https://bankofmaharashtra.bank.in/",
+  "bse": "https://www.bseindia.com/stock-share-price/bank-of-maharashtra/MAHABANK/532525/",
+  "nse": "https://www.nseindia.com/get-quotes/equity?symbol=MAHABANK"
+}
