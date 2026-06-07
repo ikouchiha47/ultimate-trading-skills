@@ -508,7 +508,9 @@ def fetch_company_signals(symbol: str, headless: bool = True) -> dict:
             except Exception:  # noqa: BLE001
                 continue
 
-        # Corporate Actions modal — authoritative split/dividend history (SOURCED text).
+        # Corporate Actions modal — TABBED (Equity History / Prefs / Dividend / Split / Merger /
+        # Right). Authoritative split/dividend/merger/rights history (SOURCED). Capture EVERY tab,
+        # not just the default view.
         try:
             btn = page.locator('button:has-text("CORPORATE ACTIONS")').first
             if btn.count():
@@ -516,7 +518,18 @@ def fetch_company_signals(symbol: str, headless: bool = True) -> dict:
                 page.wait_for_timeout(1500)
                 modal = page.locator("div.modal-content, div[role=dialog], div.modal").first
                 if modal.count():
-                    out["corporate_actions_text"] = modal.inner_text().strip()
+                    out["corporate_actions_text"] = modal.inner_text().strip()   # default view
+                    out["corporate_actions"] = {}
+                    for tab in ("Equity History", "Prefs", "Dividend", "Split", "Merger", "Right"):
+                        t = modal.locator(f"button:has-text('{tab}'), a:has-text('{tab}')").first
+                        if t.count():
+                            try:
+                                t.click(); page.wait_for_timeout(500)
+                                # capture the tab body (exclude the tab bar by taking the table/list)
+                                body = modal.inner_text().strip()
+                                out["corporate_actions"][tab] = body
+                            except Exception:  # noqa: BLE001
+                                continue
         except Exception:  # noqa: BLE001
             pass
 
