@@ -131,6 +131,14 @@ after it** as a supplement (the AI summary backstops exact figures/names). Recor
 AI-summary quarter — label each transcript with its actual call title/quarter. Needs system
 `ffmpeg` + `uv pip install -e '.[stt]'`.
 
+**Numbers from STT — bracket + flag, don't trust the paraphrase alone.** Author the bullets as the
+*intent* (strategy/tone/Q&A), and where the call states a number **clearly** (not garbled, not
+super-long) append it inline as **`(call: …)`**. These are *spoken, unverified* figures: the **unify
+step kicks off a verification search** to confirm each `(call: …)` against `data/` + the AI summary (which
+win on disagreement). Do NOT silently fold STT numbers into prose as if sourced. STT garbles proper
+nouns/large numbers ("Canara"→"Candra", "₹18,697 Cr"→"2.18,697") — fix names in your prose, drop any
+figure you can't read cleanly.
+
 **Acquisition — pick the RIGHT tool by URL type (yt-dlp is NOT universal).** `fetch_recording_audio`
 does this: a **direct audio file** (`.mp3/.wav/.m4a` — company IR sites like unionbankofindia /
 canarabank publish these) is fetched straight with **ffmpeg** (no extractor, no signature breakage,
