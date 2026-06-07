@@ -48,6 +48,11 @@ changes (user pivots to a different search), and on a context change **confirm b
      as the author (instructions/template), NOT a Python post-processor.
    - **Currency:** use the market's appropriate currency + local digit grouping (India ₹ with
      lakh/crore, e.g. ₹1,36,369 Cr; US $ with thousands). State the unit once, stay consistent.
+   - **Markdown hygiene (renders correctly):** put a **blank line before every list, table and
+     heading** — python-markdown/MkDocs will NOT start a list/table that directly follows a prose
+     line (it absorbs it into the paragraph and the `-`/`|` render as literal text — a common bug).
+     Keep each heading on ONE line (don't hard-wrap headings). After authoring, sanity-check the
+     built page, not just the source.
    - **Prose → charts:** when a section is compositional/percentage data (loan-book mix, sector/
      corporate exposure = "markets they lend to", shareholding, geographic split, revenue mix) or a
      trajectory, render it as a chart via `framework.charts.composition_chart({label: pct}, ...)` /

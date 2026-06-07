@@ -9,6 +9,9 @@ Adapted for India (NSE/BSE) + this repo's flow-vs-information edge and IRON DISC
 every figure is computed-by-us OR a dated sourced link; unsourceable = `unknown`; computed and
 sourced numbers are kept visibly separate; strategy claims report Sharpe-OVER-NULL, not bare Sharpe.
 Delete bracketed guidance when filling. Fields marked (sourced)/(computed) MUST carry provenance.
+MARKDOWN HYGIENE: leave a BLANK LINE before every list, table and heading (MkDocs won't start a
+list/table that directly follows a prose line — it renders the -/| as literal text); keep headings
+on one line (no hard-wrap).
 -->
 
 # <Company> (<TICKER>) — Equity Research
