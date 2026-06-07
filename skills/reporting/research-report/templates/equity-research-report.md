@@ -13,17 +13,35 @@ Delete bracketed guidance when filling. Fields marked (sourced)/(computed) MUST 
 
 # <Company> (<TICKER>) — Equity Research
 
-## 1. Basic information  *(the header — CFA "Basic Information")*
-| Field | Value | Provenance |
-|---|---|---|
-| Ticker / exchange | <SYMBOL> / NSE·BSE | sourced |
-| Sector / industry | <sector> | sourced |
-| Recommendation | <Buy/Hold/Avoid — or `unknown` if not derived> | computed/`unknown` |
-| Current price | ₹<x> | sourced (screener, dated) |
-| **Tally check** | jugaad close ₹<x> vs screener ₹<y> = <z>% | computed — must be < a few % |
-| Market cap | ₹<x> Cr | sourced |
-| Target price | <₹x or `unknown`> | computed/`unknown` |
-| Float / major shareholders | promoter <x>%, FII <x>%, DII <x>% | sourced (shareholding) |
+*<date>. Prices split-adjusted (jugaad `adjust=True`). Provenance on every figure:
+**(computed)** = our scripts · **(sourced)** = dated disclosure · **`unknown`** = not sourceable.
+[GLOSSARY](GLOSSARY.md) explains every header, term and chart colour.*
+
+<!-- HEADER = a scannable stance card: an emoji-stance HEADING (so it appears in the mobile TOC),
+two metric TABLES, a short Why, and Links. NEVER a run-on blockquote paragraph, and NEVER hand-typed
+numbers — the metric cells are the gathered values (data/_digest_all10.json or <sym>_fundamentals.json
++ the computed price-action digest), so the header always tallies with the body. Emoji: 🟢 constructive
+· 🟡 neutral/watch · 🔴 avoid. Use the market's APPROPRIATE CURRENCY and local digit grouping —
+India: ₹ with lakh/crore grouping (₹1,36,369 Cr); US: $ with thousands grouping ($1,363.69M / $B).
+State the unit once and stay consistent. -->
+
+## <emoji> Stance — <one-line call, e.g. "Buy on dips" / "Hold — don't chase" / "Wait for 200-DMA reclaim">
+
+| Price | M-cap | P/E | P/B | ROE | Div yield | 1-yr |
+|---|---|---|---|---|---|---|
+| ₹<x> | ₹<x,xx,xxx> Cr | <x> | <x> | <x>% | <x>% | <±x>% |
+
+| Trend | vs 50-DMA | vs 200-DMA | Delivery | RelVol | Absorption |
+|---|---|---|---|---|---|
+| <emoji> <trend> | <±x>% | <±x>% | <x>% | <x>× | <x> |
+
+**Why <emoji>:** 2–4 sentences tying valuation (P/B vs ROE) + price-action (vs DMAs, absorption) +
+the EARNED strategy read into the one-line call. Keep it tight; detail lives in the sections below.
+
+**Links:** [Screener](<url>) · [TradingView](<url>) · [BSE](<url>) · [NSE](<url>)
+
+*(Tally check — jugaad close vs screener within a few % — is a gather-step computed assertion; keep it
+in `data/`/logs, not the header.)*
 
 ## 2. Business description  *(CFA "Business Description")*
 - What the company does; products/services; **economics** — key drivers of revenue & expense.

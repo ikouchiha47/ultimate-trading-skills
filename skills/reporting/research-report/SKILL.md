@@ -42,6 +42,12 @@ changes (user pivots to a different search), and on a context change **confirm b
 2. **Gather (scripted)** — data + charts + graphs + backtests + filings (the inputs you embed).
 3. **Structure (you)** — author each page from `templates/` (company + sector), filling sections
    from the gathered data; embed charts as images with caption cards.
+   - **Header = stance card (tables, not a paragraph):** an emoji-stance HEADING + two metric tables
+     (valuation + price-action) + a tight Why + Links — per the template. Pull the metric cells from
+     the gathered digest so they tally; never hand-type or script-format them. Formatting is your job
+     as the author (instructions/template), NOT a Python post-processor.
+   - **Currency:** use the market's appropriate currency + local digit grouping (India ₹ with
+     lakh/crore, e.g. ₹1,36,369 Cr; US $ with thousands). State the unit once, stay consistent.
    - **Prose → charts:** when a section is compositional/percentage data (loan-book mix, sector/
      corporate exposure = "markets they lend to", shareholding, geographic split, revenue mix) or a
      trajectory, render it as a chart via `framework.charts.composition_chart({label: pct}, ...)` /
