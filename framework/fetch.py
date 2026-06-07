@@ -107,14 +107,17 @@ def fetch(url: str, *, expect: str = "any", referer: str | None = None,
           with_playwright: bool = True, timeout: int = 45) -> bytes | None:
     """Fetch with an escalation ladder. `expect` in {pdf,xlsx,pptx,zip,any}.
 
-    PHILOSOPHY: prefer an alternate UN-GATED source over fighting anti-bot. The CALLER should cascade
-    to a different source (e.g. concall: BSE PDF → screener AI-summary) rather than rely on defeating
-    Akamai. This fn only escalates the transport for ONE url:
+    PHILOSOPHY (the important part): **prefer an alternate UN-GATED source over fighting anti-bot.**
+    TESTED REALITY: BSE `AttachHis` (archived filings) sits behind an Akamai config that **neither
+    curl_cffi TLS-impersonation NOR headless Playwright defeats** — both still get the HTML challenge.
+    The thing that works is the CALLER cascading to a different source (concall: BSE PDF →
+    screener AI-summary). RBI `rbidocs` (xlsx) DID yield to the Playwright route. So the rungs below
+    help weaker WAFs / some hosts, but are NOT a guaranteed Akamai bypass — don't rely on them.
       1. requests (browser-like UA)            — cheap
-      2. curl_cffi TLS impersonation           — cheap, optional dep; beats many WAFs sans browser
-      3. Playwright headless navigation+capture — solves JS challenges that render the file
-      (future rungs if ever needed: playwright-stealth / headful; undetected-chromedriver/Selenium)
-    Returns bytes or None (None ⇒ caller should try a different source/format)."""
+      2. curl_cffi TLS impersonation           — cheap, optional; helps some WAFs (NOT BSE AttachHis)
+      3. Playwright headless navigation+capture — works for RBI rbidocs; NOT for BSE AttachHis
+      (heavier rungs if ever needed: playwright-stealth/headful; undetected-chromedriver/Selenium)
+    Returns bytes or None (None ⇒ caller MUST try a different source/format, not just retry transport)."""
     data = _via_requests(url, referer, timeout)
     if _ok(data, expect):
         return data
