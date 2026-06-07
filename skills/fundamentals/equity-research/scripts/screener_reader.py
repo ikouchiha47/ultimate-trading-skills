@@ -332,17 +332,34 @@ def fetch_company_about(symbol: str, headless: bool = True) -> dict:
             about = prof.locator("div.about p").first
             if about.count():
                 out["about"] = about.inner_text().strip()
-            kp = prof.locator("div.commentary").first   # the KEY POINTS block
-            if kp.count():
-                # split by bold sub-headings (Market Share / Branch Network / Loan Book ...)
-                text = kp.inner_text().strip()
-                out["key_points"]["raw"] = text
-                for strong in kp.locator("strong").all():
-                    h = strong.inner_text().strip().rstrip(":")
-                    if h:
-                        out["key_points"].setdefault("sections", []).append(h)
-                out["links"] = [a.get_attribute("href") for a in kp.locator("a").all()
+            # The FULL Key Points (Loan Book / Corporate Exposure / subsidiaries / IPO / outlook /
+            # KMP) live in a MODAL opened by "READ MORE" — the inline div.commentary is only a
+            # 1-section preview. Click it and read the modal; fall back to the preview.
+            kp_text, kp_links = "", []
+            rm = prof.locator("button:has-text('READ MORE'), button:has-text('Read More'), "
+                              "a:has-text('READ MORE'), a:has-text('Read More')").first
+            if rm.count():
+                try:
+                    rm.click(); page.wait_for_timeout(1200)
+                    modal = page.locator("div.modal-content, div[role=dialog]").first
+                    if modal.count():
+                        kp_text = modal.inner_text().strip()
+                        kp_links = [a.get_attribute("href") for a in modal.locator("a").all()
+                                    if a.get_attribute("href")]
+                except Exception:  # noqa: BLE001
+                    pass
+            if not kp_text:                              # fallback: inline preview
+                kp = prof.locator("div.commentary").first
+                if kp.count():
+                    kp_text = kp.inner_text().strip()
+                    kp_links = [a.get_attribute("href") for a in kp.locator("a").all()
                                 if a.get_attribute("href")]
+            if kp_text:
+                out["key_points"]["raw"] = kp_text
+                out["key_points"]["sections"] = [ln.strip() for ln in kp_text.split("\n")
+                                                 if ln.strip() and not any(c.isdigit() for c in ln)
+                                                 and len(ln.strip()) < 40][:25]
+                out["links"] = kp_links
         for sel, key in (("a:has-text('Website')", "website"),
                          ("a:has-text('BSE')", "bse"), ("a:has-text('NSE')", "nse")):
             lk = page.locator(sel).first
