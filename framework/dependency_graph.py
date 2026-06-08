@@ -53,6 +53,8 @@ class Entity:
     ticker: str | None = None        # NSE/BSE/US symbol if listed (enables price validation)
     domain: str | None = None        # sector/domain, SOURCED (e.g. "fintech/payments" for Razorpay)
     listed: bool = True              # private cos (Razorpay) have NO exchange/EDGAR filings -> MCA/news
+    employment_history: list[dict] | None = None  # [{company, role, start, end}] — person-kind only
+    investments: list[dict] | None = None         # [{company, round, date}] — person angel/VC
 
 
 @dataclass
